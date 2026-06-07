@@ -195,25 +195,25 @@ function ContactForm() {
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
         <div className="field">
-          <label>{t(lang, 'Name', 'الاسم')}</label>
+          <label>{t(lang, 'Name', 'الاسم', 'Nombre')}</label>
           <input type="text" required value={form.name} onChange={onChange('name')} placeholder={t(lang, 'Full name', 'الاسم الكامل', 'Nombre completo')} />
         </div>
         <div className="field">
-          <label>{t(lang, 'Company', 'الشركة')}</label>
+          <label>{t(lang, 'Company', 'الشركة', 'Empresa')}</label>
           <input type="text" value={form.company} onChange={onChange('company')} placeholder={t(lang, 'Consultancy / Contractor', 'استشاري / مقاول', 'Consultoría / Contratista')} />
         </div>
         <div className="field">
-          <label>{t(lang, 'Email', 'البريد الإلكتروني')}</label>
+          <label>{t(lang, 'Email', 'البريد الإلكتروني', 'Correo')}</label>
           <input type="email" required value={form.email} onChange={onChange('email')} placeholder="name@firm.com" />
         </div>
         <div className="field">
-          <label>{t(lang, 'Phone', 'الهاتف')}</label>
+          <label>{t(lang, 'Phone', 'الهاتف', 'Teléfono')}</label>
           <input type="tel" value={form.phone} onChange={onChange('phone')} placeholder="+966" />
         </div>
       </div>
 
       <div className="field">
-        <label>{t(lang, 'Message', 'الرسالة')}</label>
+        <label>{t(lang, 'Message', 'الرسالة', 'Mensaje')}</label>
         <textarea required value={form.message} onChange={onChange('message')}
         placeholder={t(lang, 'Project, scope, square metres, target start date…', 'المشروع، النطاق، الأمتار المربعة، تاريخ البدء…', 'Proyecto, alcance, metros cuadrados, fecha de inicio…')} />
       </div>

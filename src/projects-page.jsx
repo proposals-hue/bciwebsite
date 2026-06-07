@@ -70,6 +70,7 @@ function CountUp({ value, group = true, style, className, animate = true }) {
 }
 
 const SECTOR_AR = { All: 'الكل', Infrastructure: 'بنية تحتية', Residential: 'سكني', Commercial: 'تجاري', Industrial: 'صناعي', Water: 'مياه' };
+const SECTOR_ES = { All: 'Todos', Infrastructure: 'Infraestructura', Residential: 'Residencial', Commercial: 'Comercial', Industrial: 'Industrial', Water: 'Agua' };
 
 /* Split the system string "BC 237 polyurea tunnel lining · 42 km" into
    a system descriptor and a pulled-out scale figure. */
@@ -120,7 +121,7 @@ function PhotoCard({ p, featured }) {
           objectPosition: featured ? 'center bottom' : 'center', display: p.noImg ? 'none' : 'block',
           transform: hover ? 'scale(1.04)' : 'scale(1)', transition: 'transform 700ms cubic-bezier(.2,.7,.2,1)' }} />
       {featured && (
-        <span style={{ position: 'absolute', top: 20, insetInlineEnd: 20, background: 'var(--bci-green-500)', color: '#fff', padding: '6px 12px', fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700, borderRadius: 2, zIndex: 2 }}>{t(lang, 'Featured', 'مميّز')}</span>
+        <span style={{ position: 'absolute', top: 20, insetInlineEnd: 20, background: 'var(--bci-green-500)', color: '#fff', padding: '6px 12px', fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700, borderRadius: 2, zIndex: 2 }}>{t(lang, 'Featured', 'مميّز', 'Destacado')}</span>
       )}
       {!p.composed && <PhotoCaption p={p} big={featured} />}
       <div style={{ position: 'absolute', inset: 0, borderInlineStart: hover ? '3px solid var(--bci-green-500)' : '3px solid transparent', transition: 'border-color 160ms ease', pointerEvents: 'none' }} />
@@ -141,19 +142,20 @@ function MoreCard() {
         boxShadow: hover ? 'var(--shadow-lg)' : 'none', transform: hover ? 'translateY(-3px)' : 'translateY(0)',
         transition: 'box-shadow 200ms ease, transform 200ms ease' }}>
       <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 600, color: 'var(--bci-green-400)' }}>
-        {t(lang, '500+ projects delivered', '+500 مشروع منجز')}
+        {t(lang, '500+ projects delivered', '+500 مشروع منجز', '+500 proyectos entregados')}
       </span>
       <div>
         <h3 style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 700, fontSize: 26, lineHeight: 1.12, letterSpacing: isAr ? 0 : '-0.015em', color: '#fff', margin: '0 0 12px' }}>
-          {t(lang, 'This is just a selection.', 'هذه مجرد نماذج مختارة.')}
+          {t(lang, 'This is just a selection.', 'هذه مجرد نماذج مختارة.', 'Esto es solo una selección.')}
         </h3>
         <p style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-text)', fontSize: 14, lineHeight: 1.5, color: 'rgba(255,255,255,0.74)', margin: 0 }}>
           {t(lang,
             'Contact us for project references relevant to your sector and scope.',
-            'تواصل معنا للحصول على مراجع مشاريع تناسب قطاعك ونطاق عملك.')}
+            'تواصل معنا للحصول على مراجع مشاريع تناسب قطاعك ونطاق عملك.',
+            'Contáctanos para obtener referencias de proyectos relevantes para tu sector y alcance.')}
         </p>
         <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 16, fontFamily: 'var(--ff-mono)', fontSize: 12, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 600, color: '#fff', flexDirection: isAr ? 'row-reverse' : 'row' }}>
-          {t(lang, 'Request references', 'اطلب المراجع')}
+          {t(lang, 'Request references', 'اطلب المراجع', 'Solicitar referencias')}
           <span style={{ display: 'inline-flex', transform: hover ? (isAr ? 'translateX(-4px)' : 'translateX(4px)') : 'none', transition: 'transform 160ms ease' }}><Arrow /></span>
         </span>
       </div>
@@ -172,13 +174,15 @@ function ProjectsPage() {
   return (
     <main>
       <PageHero
-        eyebrow={t(lang, 'Projects', 'المشاريع')}
-        crumb={t(lang, 'Projects', 'المشاريع')}
+        eyebrow={t(lang, 'Projects', 'المشاريع', 'Proyectos')}
+        crumb={t(lang, 'Projects', 'المشاريع', 'Proyectos')}
         title="Specified across the Kingdom."
         titleAr="معتمدون في أنحاء المملكة."
+        titleEs="Especificados en todo el Reino."
         subtitle={t(lang,
           'From metro tunnels to villa roofs, BCI systems protect Saudi Arabia\u2019s most demanding assets. A selection of reference projects across every sector.',
-          'من أنفاق المترو إلى أسطح الفلل، تحمي أنظمة BCI أصعب الأصول في السعودية. مجموعة من المشاريع المرجعية عبر كل القطاعات.')}
+          'من أنفاق المترو إلى أسطح الفلل، تحمي أنظمة BCI أصعب الأصول في السعودية. مجموعة من المشاريع المرجعية عبر كل القطاعات.',
+          'Desde túneles de metro hasta techos de villas, los sistemas BCI protegen los activos más exigentes de Arabia Saudí. Una selección de proyectos de referencia en todos los sectores.')}
       />
 
       {/* Stat band */}
@@ -188,7 +192,7 @@ function ProjectsPage() {
             {STATS.map((s, i) => (
               <div key={i} style={{ padding: '40px 28px', borderRight: i < 3 ? '1px solid rgba(255,255,255,0.08)' : 'none', textAlign: isAr ? 'right' : 'left' }}>
                 <CountUp value={s.v} animate={!/^\d{4}$/.test(s.v)} group={!/^\d{4}$/.test(s.v)} className="display" style={{ display: 'block', fontFamily: 'var(--ff-display)', fontWeight: 700, fontSize: 48, color: '#fff', lineHeight: 1 }} />
-                <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--bci-green-400)', marginTop: 10 }}>{t(lang, s.en, s.ar)}</div>
+                <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--bci-green-400)', marginTop: 10 }}>{t(lang, s.en, s.ar, s.es)}</div>
               </div>
             ))}
           </div>
@@ -209,12 +213,12 @@ function ProjectsPage() {
                     border: `1px solid ${on ? 'var(--bci-navy)' : 'var(--bci-hairline-light)'}`,
                     background: on ? 'var(--bci-navy)' : 'transparent', color: on ? '#fff' : 'var(--bci-navy)',
                     transition: 'all 100ms linear',
-                  }}>{t(lang, sec, SECTOR_AR[sec])}</button>
+                  }}>{t(lang, sec, SECTOR_AR[sec], SECTOR_ES[sec])}</button>
                 );
               })}
             </div>
             <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--bci-steel)', whiteSpace: 'nowrap' }}>
-              {String(list.length).padStart(2, '0')} {t(lang, 'projects', 'مشروع')}
+              {String(list.length).padStart(2, '0')} {t(lang, 'projects', 'مشروع', 'proyectos')}
             </span>
           </div>
 
@@ -236,8 +240,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <CtaBand
       title="Have a project to protect?"
       titleAr="لديك مشروع تريد حمايته؟"
+      titleEs="¿Tienes un proyecto que proteger?"
       body="Tell us the scope and we’ll recommend the right system, with references from similar work."
-      bodyAr="أخبرنا بنطاق العمل ونوصي بالنظام المناسب مع مراجع من أعمال مماثلة." />
+      bodyAr="أخبرنا بنطاق العمل ونوصي بالنظام المناسب مع مراجع من أعمال مماثلة."
+      bodyEs="Cuéntanos el alcance y te recomendaremos el sistema adecuado, con referencias de trabajos similares." />
     <Footer />
   </LangProvider>
 );

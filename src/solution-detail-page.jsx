@@ -20,9 +20,9 @@ function SolutionDetailPage() {
   return (
     <main>
       <PageHero
-        eyebrow={t(lang, 'Solution Line', 'خط حلول')}
+        eyebrow={t(lang, 'Solution Line', 'خط حلول', 'Línea de Solución')}
         crumb={s[lang].name}
-        title={s.en.name} titleAr={s.ar.name}
+        title={s.en.name} titleAr={s.ar.name} titleEs={(s.es || s.en).name}
         subtitle={s[lang].tagline}
       />
 
@@ -54,13 +54,13 @@ function SolutionDetailPage() {
             </div>
             <table className="spec-table" style={{ background: '#fff', border: '1px solid var(--bci-hairline-light)' }}>
               <tbody>
-                <tr><th>{t(lang, 'Line', 'الخط')}</th><td className="value">{s.num}</td></tr>
-                <tr><th>{t(lang, 'Products', 'المنتجات')}</th><td className="value">{s.products.length}</td></tr>
-                <tr><th>{t(lang, 'Origin', 'المنشأ')}</th><td className="value">KSA</td></tr>
+                <tr><th>{t(lang, 'Line', 'الخط', 'Línea')}</th><td className="value">{s.num}</td></tr>
+                <tr><th>{t(lang, 'Products', 'المنتجات', 'Productos')}</th><td className="value">{s.products.length}</td></tr>
+                <tr><th>{t(lang, 'Origin', 'المنشأ', 'Origen')}</th><td className="value">KSA</td></tr>
               </tbody>
             </table>
             {standards.length > 0 && <>
-              <div className="eyebrow" style={{ color: 'var(--bci-steel)', margin: '28px 0 12px' }}>{t(lang, 'Properties & Standards', 'الخصائص والمعايير')}</div>
+              <div className="eyebrow" style={{ color: 'var(--bci-steel)', margin: '28px 0 12px' }}>{t(lang, 'Properties & Standards', 'الخصائص والمعايير', 'Propiedades y Normas')}</div>
               <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', justifyContent: isAr ? 'flex-end' : 'flex-start' }}>
                 {standards.map(tag => (
                   <span key={tag} style={{ fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500, padding: '5px 9px', borderRadius: 2, background: 'var(--bci-navy-50)', color: 'var(--bci-navy)', border: '1px solid var(--bci-navy-100)' }}>{tag}</span>
@@ -68,7 +68,7 @@ function SolutionDetailPage() {
               </div>
             </>}
             <a href="Resources.html" className="link-arrow" style={{ marginTop: 28 }}>
-              <Icon name="download" size={14} /> {t(lang, 'All datasheets', 'كل النشرات')}
+              <Icon name="download" size={14} /> {t(lang, 'All datasheets', 'كل النشرات', 'Todas las fichas técnicas')}
             </a>
           </aside>
 
@@ -76,9 +76,9 @@ function SolutionDetailPage() {
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 28, flexDirection: isAr ? 'row-reverse' : 'row' }}>
               <h2 style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 700, fontSize: 28, color: 'var(--bci-navy)', margin: 0 }}>
-                {t(lang, 'Products in this line', 'منتجات هذا الخط')}
+                {t(lang, 'Products in this line', 'منتجات هذا الخط', 'Productos de esta línea')}
               </h2>
-              <span className="sec-num" style={{ color: 'var(--bci-steel)' }}>{String(s.products.length).padStart(2, '0')} {t(lang, 'items', 'عنصر')}</span>
+              <span className="sec-num" style={{ color: 'var(--bci-steel)' }}>{String(s.products.length).padStart(2, '0')} {t(lang, 'items', 'عنصر', 'artículos')}</span>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
               {s.products.map(p => <DetailCard key={p.code} p={p} />)}
@@ -106,7 +106,7 @@ function DetailCard({ p }) {
       <image-slot
         id={`prod-${p.code.replace(/[^a-z0-9]/gi, '-')}`}
         shape="rounded" radius="2" fit="cover"
-        placeholder={t(lang, 'Drop product photo', 'أضف صورة المنتج')}
+        placeholder={t(lang, 'Drop product photo', 'أضف صورة المنتج', 'Añade foto del producto')}
         style={{ display: 'block', width: '100%', height: 168, marginBottom: 22, background: 'var(--bci-concrete)', border: '1px solid var(--bci-hairline-light)' }}
       ></image-slot>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 14, flexDirection: isAr ? 'row-reverse' : 'row' }}>
@@ -119,7 +119,7 @@ function DetailCard({ p }) {
       {p.size && (
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18, padding: '11px 13px', background: 'var(--bci-concrete)', border: '1px solid var(--bci-hairline-light)', borderRadius: 2, flexDirection: isAr ? 'row-reverse' : 'row' }}>
           <Icon name="package" size={15} stroke="var(--bci-steel)" />
-          <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--bci-steel)' }}>{t(lang, 'Pack size', 'حجم العبوة')}</span>
+          <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--bci-steel)' }}>{t(lang, 'Pack size', 'حجم العبوة', 'Tamaño de envase')}</span>
           <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 13, letterSpacing: '0.02em', color: 'var(--bci-navy)', fontWeight: 600, marginInlineStart: 'auto' }}>{p.size}</span>
         </div>
       )}
@@ -135,7 +135,7 @@ function DetailCard({ p }) {
           <Icon name="download" size={13} /> TDS
         </a>
         <a href="Contact.html" style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500, color: 'var(--bci-green-700)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 7 }}>
-          {t(lang, 'Quote', 'عرض سعر')} <Arrow size={12} />
+          {t(lang, 'Quote', 'عرض سعر', 'Cotización')} <Arrow size={12} />
         </a>
       </div>
     </article>
@@ -149,8 +149,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <CtaBand
       title="Specify this system on your project"
       titleAr="اعتمد هذا النظام في مشروعك"
+      titleEs="Especifica este sistema en tu proyecto"
       body="Request technical data sheets, a method statement and a project-specific submittal package."
-      bodyAr="اطلب النشرات الفنية وبيان الطريقة وحزمة وثائق خاصة بمشروعك." />
+      bodyAr="اطلب النشرات الفنية وبيان الطريقة وحزمة وثائق خاصة بمشروعك."
+      bodyEs="Solicita las fichas técnicas, un procedimiento de aplicación y un paquete de documentación específico para tu proyecto." />
     <Footer />
   </LangProvider>
 );

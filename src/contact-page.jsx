@@ -7,9 +7,9 @@ function Departments() {
   return (
     <section style={{ background: 'var(--bci-paper)', padding: '110px 0' }}>
       <div className="container">
-        <div className="sec-num" style={{ color: 'var(--bci-steel)', marginBottom: 22, textAlign: isAr ? 'right' : 'left' }}>{t(lang, 'Departments', 'الأقسام')}</div>
+        <div className="sec-num" style={{ color: 'var(--bci-steel)', marginBottom: 22, textAlign: isAr ? 'right' : 'left' }}>{t(lang, 'Departments', 'الأقسام', 'Departamentos')}</div>
         <h2 className="display" style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 700, fontSize: 'clamp(30px,3.2vw,44px)', color: 'var(--bci-navy)', margin: '0 0 48px', textAlign: isAr ? 'right' : 'left' }}>
-          {t(lang, 'Reach the right team.', 'تواصل مع الفريق المناسب.')}
+          {t(lang, 'Reach the right team.', 'تواصل مع الفريق المناسب.', 'Contacta con el equipo adecuado.')}
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
           {DEPARTMENTS.map((d, i) => (
@@ -56,19 +56,20 @@ function StoreNetwork() {
       <div className="hatch" style={{ position: 'absolute', inset: 0, opacity: 0.4, pointerEvents: 'none' }} />
       <div className="container" style={{ position: 'relative' }}>
         <div className="sec-num" style={{ color: 'var(--bci-green-400)', marginBottom: 22, textAlign: isAr ? 'right' : 'left' }}>
-          {t(lang, 'Our Network', 'شبكتنا')}
+          {t(lang, 'Our Network', 'شبكتنا', 'Nuestra Red')}
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '380px 1fr', gap: 56, alignItems: 'start' }}>
 
           {/* ---- left: heading + store list ---- */}
           <div style={{ textAlign: isAr ? 'right' : 'left' }}>
             <h2 className="display" style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 700, fontSize: 'clamp(30px,3.2vw,44px)', color: '#fff', margin: '0 0 18px' }}>
-              {t(lang, 'BCI stores across the Kingdom.', 'متاجر BCI في أنحاء المملكة.')}
+              {t(lang, 'BCI stores across the Kingdom.', 'متاجر BCI في أنحاء المملكة.', 'Tiendas BCI en todo el Reino.')}
             </h2>
             <p style={{ fontSize: 15, color: 'var(--bci-navy-200)', margin: '0 0 36px', maxWidth: 360, marginInline: isAr ? '0 0' : undefined }}>
               {t(lang,
                 'Five locations stocking the full BCI range — with technical support close to every project in Saudi Arabia.',
-                'خمسة مواقع تضم تشكيلة BCI الكاملة — مع دعم فني قريب من كل مشروع في المملكة العربية السعودية.')}
+                'خمسة مواقع تضم تشكيلة BCI الكاملة — مع دعم فني قريب من كل مشروع في المملكة العربية السعودية.',
+                'Cinco ubicaciones con la gama completa de BCI — con soporte técnico cerca de cada proyecto en Arabia Saudí.')}
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -96,7 +97,7 @@ function StoreNetwork() {
                     <span style={{ gridColumn: isAr ? 1 : 2 }}>
                       <span style={{ display: 'flex', alignItems: 'baseline', gap: 8, justifyContent: isAr ? 'flex-end' : 'flex-start' }}>
                         <span style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 600, fontSize: 18, color: '#fff' }}>{s[lang].city}</span>
-                        {s.hq && <span className="eyebrow" style={{ fontSize: 9, color: 'var(--bci-green-400)', border: '1px solid var(--bci-green-700)', padding: '2px 6px', letterSpacing: '0.1em' }}>{t(lang, 'HQ', 'المقر')}</span>}
+                        {s.hq && <span className="eyebrow" style={{ fontSize: 9, color: 'var(--bci-green-400)', border: '1px solid var(--bci-green-700)', padding: '2px 6px', letterSpacing: '0.1em' }}>{t(lang, 'HQ', 'المقر', 'Sede')}</span>}
                       </span>
                       <span style={{ display: 'block', fontFamily: 'var(--ff-mono)', fontSize: 11, color: 'var(--bci-navy-200)', marginTop: 4, letterSpacing: '0.03em' }}>{s[lang].role}</span>
                     </span>
@@ -106,7 +107,7 @@ function StoreNetwork() {
             </div>
 
             <a href="https://maps.app.goo.gl/8bW3DdJSLY2A4PKFA" target="_blank" rel="noopener" className="link-arrow on-dark" style={{ marginTop: 28 }}>
-              {t(lang, 'Open head office in Maps', 'افتح المقر في الخرائط')} <Icon name="external-link" size={13} />
+              {t(lang, 'Open head office in Maps', 'افتح المقر في الخرائط', 'Abrir la sede en Maps')} <Icon name="external-link" size={13} />
             </a>
           </div>
 
@@ -169,13 +170,15 @@ function ContactPage() {
   return (
     <main>
       <PageHero
-        eyebrow={t(lang, 'Contact', 'تواصل')}
-        crumb={t(lang, 'Contact', 'تواصل')}
+        eyebrow={t(lang, 'Contact', 'تواصل', 'Contacto')}
+        crumb={t(lang, 'Contact', 'تواصل', 'Contacto')}
         title="Talk to our team."
         titleAr="تحدث إلى فريقنا."
+        titleEs="Habla con nuestro equipo."
         subtitle={t(lang,
           'Speak to our technical and sales team about specifications, submittals, samples or supply. We reply within 24 hours.',
-          'تحدث إلى فريقنا الفني والتجاري حول المواصفات والوثائق والعينات والتوريد. نرد خلال 24 ساعة.')} />
+          'تحدث إلى فريقنا الفني والتجاري حول المواصفات والوثائق والعينات والتوريد. نرد خلال 24 ساعة.',
+          'Habla con nuestro equipo técnico y comercial sobre especificaciones, documentación, muestras o suministro. Respondemos en 24 horas.')} />
       <Contact />
       <Departments />
       <StoreNetwork />

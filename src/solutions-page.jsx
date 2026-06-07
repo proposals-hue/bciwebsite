@@ -7,13 +7,15 @@ function SolutionsPage() {
   return (
     <main>
       <PageHero
-        eyebrow={t(lang, 'Solutions', 'الحلول')}
-        crumb={t(lang, 'Solutions', 'الحلول')}
+        eyebrow={t(lang, 'Solutions', 'الحلول', 'Soluciones')}
+        crumb={t(lang, 'Solutions', 'الحلول', 'Soluciones')}
         title="Construction chemistry, end to end."
         titleAr="كيمياء البناء، من الألف إلى الياء."
+        titleEs="Química de la construcción, de principio a fin."
         subtitle={t(lang,
           'Engineered solution lines — over 120 products spanning waterproofing, flooring, coatings, repair, sealing and concrete technology for the Saudi and GCC market.',
-          'خطوط حلول هندسية — أكثر من 120 منتجاً تشمل العزل والأرضيات والطلاءات والإصلاح والمواد المانعة وتقنية الخرسانة للسوق السعودي والخليجي.')}
+          'خطوط حلول هندسية — أكثر من 120 منتجاً تشمل العزل والأرضيات والطلاءات والإصلاح والمواد المانعة وتقنية الخرسانة للسوق السعودي والخليجي.',
+          'Líneas de solución de ingeniería — más de 120 productos que abarcan impermeabilización, pavimentos, recubrimientos, reparación, sellado y tecnología del hormigón para el mercado saudí y del CCG.')}
       />
 
       {/* Quick index */}
@@ -54,7 +56,7 @@ function SolutionBlock({ s, alt }) {
               <div style={{ width: 56, height: 56, border: '1px solid var(--bci-navy)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--bci-navy)' }}>
                 <Icon name={s.icon} size={26} />
               </div>
-              <div className="sec-num" style={{ color: 'var(--bci-steel)' }}>{t(lang, 'Solution Line', 'خط حلول')}</div>
+              <div className="sec-num" style={{ color: 'var(--bci-steel)' }}>{t(lang, 'Solution Line', 'خط حلول', 'Línea de Solución')}</div>
             </div>
             <h2 className="display" style={{
               fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 700,
@@ -64,7 +66,7 @@ function SolutionBlock({ s, alt }) {
             <p style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--bci-graphite)', margin: 0 }}>{s[lang].tagline}</p>
           </div>
           <a href={`Solution Detail.html?cat=${s.slug}`} className="btn btn-ghost-navy" style={{ whiteSpace: 'nowrap' }}>
-            {t(lang, 'View line', 'عرض الخط')} <Arrow size={14} />
+            {t(lang, 'View line', 'عرض الخط', 'Ver línea')} <Arrow size={14} />
           </a>
         </div>
 
@@ -113,8 +115,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <CtaBand
       title="Need help specifying a system?"
       titleAr="تحتاج مساعدة في اختيار النظام المناسب؟"
+      titleEs="¿Necesitas ayuda para elegir un sistema?"
       body="Our technical team will match the right BCI products to your project and provide full submittal documentation."
-      bodyAr="يساعدك فريقنا الفني على اختيار منتجات BCI المناسبة لمشروعك مع توفير وثائق المواصفات كاملة." />
+      bodyAr="يساعدك فريقنا الفني على اختيار منتجات BCI المناسبة لمشروعك مع توفير وثائق المواصفات كاملة."
+      bodyEs="Nuestro equipo técnico seleccionará los productos BCI adecuados para tu proyecto y te proporcionará la documentación de especificación completa." />
     <Footer />
   </LangProvider>
 );

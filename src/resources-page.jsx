@@ -20,13 +20,15 @@ function ResourcesPage() {
   return (
     <main>
       <PageHero
-        eyebrow={t(lang, 'Resources', 'الموارد')}
-        crumb={t(lang, 'Resources', 'الموارد')}
+        eyebrow={t(lang, 'Resources', 'الموارد', 'Recursos')}
+        crumb={t(lang, 'Resources', 'الموارد', 'Recursos')}
         title="Documentation library."
         titleAr="مكتبة الوثائق."
+        titleEs="Biblioteca de documentación."
         subtitle={t(lang,
           'Technical data sheets, safety data sheets, catalogs, method statements and certifications — everything you need to specify and apply BCI systems.',
-          'النشرات الفنية ونشرات السلامة والكتالوجات وبيانات الطريقة والشهادات — كل ما تحتاجه لمواصفة وتطبيق أنظمة BCI.')}
+          'النشرات الفنية ونشرات السلامة والكتالوجات وبيانات الطريقة والشهادات — كل ما تحتاجه لمواصفة وتطبيق أنظمة BCI.',
+          'Fichas técnicas, fichas de seguridad, catálogos, procedimientos de aplicación y certificaciones — todo lo que necesitas para especificar y aplicar los sistemas BCI.')}
       />
 
       {/* Featured catalog */}
@@ -42,12 +44,12 @@ function ResourcesPage() {
                 <Icon name="book" size={26} />
               </div>
               <div style={{ textAlign: isAr ? 'right' : 'left' }}>
-                <div className="eyebrow" style={{ color: 'var(--bci-green-400)', marginBottom: 8 }}>{t(lang, 'Featured', 'مميّز')}</div>
+                <div className="eyebrow" style={{ color: 'var(--bci-green-400)', marginBottom: 8 }}>{t(lang, 'Featured', 'مميّز', 'Destacado')}</div>
                 <div style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 700, fontSize: 24, color: '#fff' }}>{catalog[lang]}</div>
                 <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 6 }}>{catalog.fmt} · {catalog.size}</div>
               </div>
             </div>
-            <span className="btn btn-accent"><Icon name="download" size={14} /> {t(lang, 'Download', 'تحميل')}</span>
+            <span className="btn btn-accent"><Icon name="download" size={14} /> {t(lang, 'Download', 'تحميل', 'Descargar')}</span>
           </a>
         </div>
       </section>
@@ -60,7 +62,7 @@ function ResourcesPage() {
             <div style={{ position: 'relative', flex: 1 }}>
               <span style={{ position: 'absolute', top: '50%', transform: 'translateY(-50%)', [isAr ? 'right' : 'left']: 14, color: 'var(--bci-steel)' }}><Icon name="search" size={16} /></span>
               <input value={q} onChange={e => setQ(e.target.value)}
-                placeholder={t(lang, 'Search documents…', 'ابحث في الوثائق…')}
+                placeholder={t(lang, 'Search documents…', 'ابحث في الوثائق…', 'Buscar documentos…')}
                 style={{
                   width: '100%', padding: isAr ? '13px 44px 13px 14px' : '13px 14px 13px 44px',
                   fontFamily: 'var(--ff-sans)', fontSize: 15, color: 'var(--bci-ink)', background: '#fff',
@@ -72,7 +74,7 @@ function ResourcesPage() {
 
           {/* Type tabs */}
           <div style={{ display: 'flex', gap: 8, marginBottom: 8, flexWrap: 'wrap', flexDirection: isAr ? 'row-reverse' : 'row' }}>
-            {[{ id: 'all', en: 'All', ar: 'الكل', icon: 'layout-grid' }, ...RESOURCE_TYPES].map(rt => {
+            {[{ id: 'all', en: 'All', ar: 'الكل', es: 'Todos', icon: 'layout-grid' }, ...RESOURCE_TYPES].map(rt => {
               const on = type === rt.id;
               return (
                 <button key={rt.id} onClick={() => setType(rt.id)} style={{
@@ -81,7 +83,7 @@ function ResourcesPage() {
                   border: `1px solid ${on ? 'var(--bci-navy)' : 'var(--bci-hairline-light)'}`,
                   background: on ? 'var(--bci-navy)' : 'transparent', color: on ? '#fff' : 'var(--bci-navy)',
                 }}>
-                  <Icon name={rt.icon} size={14} /> {t(lang, rt.en, rt.ar)}
+                  <Icon name={rt.icon} size={14} /> {t(lang, rt.en, rt.ar, rt.es)}
                 </button>
               );
             })}
@@ -91,13 +93,13 @@ function ResourcesPage() {
           <div style={{ background: '#fff', border: '1px solid var(--bci-hairline-light)', borderRadius: 2, marginTop: 24 }}>
             {filtered.length === 0 && (
               <div style={{ padding: 48, textAlign: 'center', color: 'var(--bci-steel)', fontFamily: 'var(--ff-mono)', fontSize: 13 }}>
-                {t(lang, 'No documents match your search.', 'لا توجد وثائق مطابقة لبحثك.')}
+                {t(lang, 'No documents match your search.', 'لا توجد وثائق مطابقة لبحثك.', 'Ningún documento coincide con tu búsqueda.')}
               </div>
             )}
             {filtered.map((r, i) => <DocRow key={i} r={r} last={i === filtered.length - 1} />)}
           </div>
           <div style={{ marginTop: 16, fontFamily: 'var(--ff-mono)', fontSize: 11, color: 'var(--bci-steel)', textAlign: isAr ? 'right' : 'left' }}>
-            {filtered.length} {t(lang, 'documents', 'وثيقة')}
+            {filtered.length} {t(lang, 'documents', 'وثيقة', 'documentos')}
           </div>
         </div>
       </section>
@@ -124,7 +126,7 @@ function DocRow({ r, last }) {
       <div style={{ flex: 1, textAlign: isAr ? 'right' : 'left' }}>
         <div style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-sans)', fontSize: 15, fontWeight: 600, color: 'var(--bci-navy)' }}>{r[lang]}</div>
         <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.06em', color: 'var(--bci-steel)', marginTop: 4, textTransform: 'uppercase' }}>
-          {t(lang, meta.en, meta.ar)} · {r.fmt} · {r.size}
+          {t(lang, meta.en, meta.ar, meta.es)} · {r.fmt} · {r.size}
         </div>
       </div>
       <span style={{ color: hover ? 'var(--bci-green-600)' : 'var(--bci-steel)', display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500 }}>
@@ -141,8 +143,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <CtaBand
       title="Can’t find a document?"
       titleAr="لم تجد الوثيقة المطلوبة؟"
+      titleEs="¿No encuentras un documento?"
       body="Request a specific data sheet, method statement or project submittal from our technical team."
-      bodyAr="اطلب نشرة فنية أو بيان طريقة أو وثائق مشروع محددة من فريقنا الفني." />
+      bodyAr="اطلب نشرة فنية أو بيان طريقة أو وثائق مشروع محددة من فريقنا الفني."
+      bodyEs="Solicita una ficha técnica, un procedimiento de aplicación o la documentación de un proyecto a nuestro equipo técnico." />
     <Footer />
   </LangProvider>
 );
