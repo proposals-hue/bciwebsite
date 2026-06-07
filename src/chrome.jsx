@@ -260,7 +260,7 @@ function MegaHeader({ active }) {
           height: mBarH, display: 'flex', alignItems: 'center', gap: 36,
           flexDirection: isAr ? 'row-reverse' : 'row'
         }} data-comment-anchor="c42846d29e-div-259-9">
-          <a href="BCI Homepage.html" aria-label="BCI — home" style={{
+          <a href="index.html" aria-label="BCI — home" style={{
             display: 'flex', alignItems: 'center', gap: 13, textDecoration: 'none',
             transform: `scale(${mLogoScale})`,
             transformOrigin: isAr ? 'right center' : 'left center',
@@ -374,7 +374,7 @@ function MobileMenu({ open, onClose, active }) {
           position: 'sticky', top: 0, background: 'var(--bci-paper-pure)', zIndex: 2,
           flexDirection: isAr ? 'row-reverse' : 'row'
         }}>
-          <a href="BCI Homepage.html" style={{ display: 'flex', alignItems: 'center', gap: 11, textDecoration: 'none', flexDirection: isAr ? 'row-reverse' : 'row' }}>
+          <a href="index.html" style={{ display: 'flex', alignItems: 'center', gap: 11, textDecoration: 'none', flexDirection: isAr ? 'row-reverse' : 'row' }}>
             <img src="assets/BCI-lockup-color.png" alt="BCI" style={{ height: 36, width: 'auto', display: 'block' }} />
           </a>
           <button onClick={onClose}
@@ -594,7 +594,7 @@ function PageHero({ eyebrow, title, titleAr, titleEs, subtitle, crumb }) {
           flexDirection: isAr ? 'row-reverse' : 'row',
           fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase'
         }}>
-          <a href="BCI Homepage.html" style={{ color: 'rgba(255,255,255,0.6)', textDecoration: 'none' }}>
+          <a href="index.html" style={{ color: 'rgba(255,255,255,0.6)', textDecoration: 'none' }}>
             {t(lang, 'Home', 'الرئيسية', 'Inicio')}
           </a>
           <span className="flip-rtl" style={{ color: 'rgba(255,255,255,0.35)' }}><Chev size={11} /></span>

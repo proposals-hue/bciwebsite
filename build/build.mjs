@@ -23,7 +23,7 @@ const STATIC = ['assets', 'ds', 'styles.css', 'image-slot.js'];
 
 // HTML pages to rewrite
 const PAGES = [
-  'BCI Homepage.html', 'About.html', 'Solutions.html', 'Solution Detail.html',
+  'index.html', 'About.html', 'Solutions.html', 'Solution Detail.html',
   'Projects.html', 'Resources.html', 'Career.html', 'Contact.html', '404.html'
 ];
 

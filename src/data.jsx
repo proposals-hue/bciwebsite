@@ -480,7 +480,7 @@ const SOCIALS = [
 
 /* Top navigation (multi-page) */
 const NAV = [
-  { en: 'Home', ar: 'الرئيسية', es: 'Inicio', href: 'BCI Homepage.html' },
+  { en: 'Home', ar: 'الرئيسية', es: 'Inicio', href: 'index.html' },
   { en: 'About', ar: 'عن BCI', es: 'Nosotros', href: 'About.html' },
   { en: 'Solutions', ar: 'الحلول', es: 'Soluciones', href: 'Solutions.html', mega: true },
   { en: 'Projects', ar: 'المشاريع', es: 'Proyectos', href: 'Projects.html' },
