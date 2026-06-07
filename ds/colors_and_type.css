@@ -1,0 +1,289 @@
+/* =============================================================
+   BCI — Building Chemistry Industry
+   Design tokens: color, type, spacing, radii, motion, shadows.
+   Industrial / technical aesthetic — square, measured, mechanical.
+   ============================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
+/* ---------- 1 · Color tokens ---------- */
+:root {
+  /* Brand */
+  --bci-navy:        #0B3752;
+  --bci-navy-50:     #E7EEF2;
+  --bci-navy-100:    #CDDCE4;
+  --bci-navy-200:    #9BB9C9;
+  --bci-navy-300:    #6895AE;
+  --bci-navy-400:    #357293;
+  --bci-navy-500:    #0B3752;  /* base */
+  --bci-navy-600:    #093047;
+  --bci-navy-700:    #07273A;
+  --bci-navy-800:    #051D2C;
+  --bci-navy-900:    #03141F;
+
+  --bci-green:       #31B469;       /* brand — same value as --bci-green-500 */
+  --bci-green-50:    #F3FBF7;       /* new lightest tint */
+  --bci-green-100:   #E8F7EF;
+  --bci-green-200:   #C9ECD8;
+  --bci-green-300:   #93D9B1;
+  --bci-green-400:   #5DC58A;       /* ⚠ decorative only — 200–400 not brand-meaningful */
+  --bci-green-500:   #31B469;       /* base — brand-meaningful (matches Navy 500 convention) */
+  --bci-green-600:   #279858;
+  --bci-green-700:   #1E7C47;
+  --bci-green-800:   #176039;
+  --bci-green-900:   #0F432A;
+
+  /* Safety yellow — PPE / hazard tape only. Never marketing. */
+  --bci-hi-vis:      #F0B62B;
+  --bci-hi-vis-50:   #FBF1D2;
+  --bci-hi-vis-600:  #B8881A;
+
+  /* Info teal — semantic state, intentionally OUTSIDE the brand bichrome.
+     Keeps info messages from being mistaken for brand chrome. */
+  --bci-info:        #0E5E6F;
+  --bci-info-50:     #E6F0F2;
+  --bci-info-700:    #084553;
+
+  /* Neutrals — slightly cool, engineering grey */
+  --bci-steel-50:    #F7F8F9;
+  --bci-steel-100:   #EEF0F2;
+  --bci-steel-200:   #DDE1E5;
+  --bci-steel-300:   #C2C8CF;
+  --bci-steel-400:   #97A0AA;
+  --bci-steel-500:   #6C7682;
+  --bci-steel-600:   #4E5762;
+  --bci-steel-700:   #3A4149;
+  --bci-steel-800:   #262B31;
+  --bci-steel-900:   #14181C;
+
+  /* Special — warm paper system (drafting / blueprint margin feel) */
+  --bci-concrete:    #F4F2EE;  /* LIGHTEST neutral — card / surface */
+  --bci-paper:       #E8E4DB;  /* warm page background */
+  --bci-paper-pure:  #FFFFFF;  /* utility only — product photography backdrops */
+  --bci-sand:        #D9CFB8;  /* desert accent for KSA-context callouts */
+  --bci-ink:         #13110D;  /* warm near-black — proper ink-on-paper */
+
+  /* Extended functional neutrals (post-review additions) */
+  --bci-navy-deep:     #062338;  /* hover/pressed on navy primary */
+  --bci-navy-tint:     #1E4D6E;  /* secondary surfaces, hairlines on dark */
+  --bci-green-deep:    #1F8E4F;  /* hover/pressed on green */
+  --bci-steel:         #5A6671;  /* secondary text & icon grey */
+  --bci-graphite:      #2A2E33;  /* dense data-table headers */
+  --bci-hairline-light:#CDC6B6;  /* 1 px rule on paper surfaces */
+  --bci-hairline-dark: #1E4D6E;  /* 1 px rule on navy surfaces */
+
+  /* Semantic — light surface (paper page + concrete cards) */
+  --fg-1:            var(--bci-ink);
+  --fg-2:            var(--bci-graphite);   /* warmer than steel-700 */
+  --fg-3:            var(--bci-steel);      /* secondary / icon grey */
+  --fg-on-brand:     #FFFFFF;
+  --fg-link:         var(--bci-navy);
+  --fg-link-hover:   var(--bci-green-deep);
+
+  --bg-page:         var(--bci-paper);      /* warm base */
+  --bg-surface:      var(--bci-concrete);   /* cards sit LIGHTER than page */
+  --bg-surface-alt:  var(--bci-steel-50);
+  --bg-brand:        var(--bci-navy);
+  --bg-brand-soft:   var(--bci-navy-50);
+
+  --border-1:        var(--bci-hairline-light); /* warm hairline on paper */
+  --border-2:        var(--bci-steel-300);
+  --border-strong:   var(--bci-navy);
+  --border-hairline: rgba(11, 55, 82, .12);
+  --border-on-dark:  var(--bci-hairline-dark);
+
+  /* State */
+  --state-success:   var(--bci-green-600);
+  --state-warning:   var(--bci-hi-vis);
+  --state-danger:    #C8312A;
+  --state-info:      var(--bci-info);
+
+  /* ---------- 2 · Typography tokens ---------- */
+  --ff-display:      'IBM Plex Sans Condensed', 'Helvetica Neue', Arial, sans-serif;
+  --ff-sans:         'IBM Plex Sans', 'Helvetica Neue', Arial, sans-serif;
+  --ff-mono:         'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --ff-arabic:       'IBM Plex Sans Arabic', 'IBM Plex Sans', sans-serif;
+
+  --fw-light:        300;
+  --fw-regular:      400;
+  --fw-medium:       500;
+  --fw-semibold:     600;
+  --fw-bold:         700;
+
+  /* Fluid sizes (clamp(min, pref, max)) */
+  --fs-display:      clamp(3.5rem, 1.6rem + 5vw, 6rem);   /* 56–96 */
+  --fs-h1:           clamp(2.25rem, 1.4rem + 2.6vw, 3.5rem); /* 36–56 */
+  --fs-h2:           clamp(1.625rem, 1.2rem + 1.4vw, 2.25rem); /* 26–36 */
+  --fs-h3:           clamp(1.25rem, 1.05rem + 0.6vw, 1.5rem);  /* 20–24 */
+  --fs-h4:           1.125rem;   /* 18 */
+  --fs-body:         1rem;       /* 16 */
+  --fs-small:        0.8125rem;  /* 13 */
+  --fs-spec:         0.75rem;    /* 12 — eng labels */
+  --fs-micro:        0.6875rem;  /* 11 — disclosures */
+
+  --lh-tight:        1.05;
+  --lh-snug:         1.2;
+  --lh-normal:       1.5;
+  --lh-relaxed:      1.65;
+
+  --ls-display:      -0.015em;
+  --ls-tight:        -0.005em;
+  --ls-normal:       0;
+  --ls-spec:         0.12em;
+  --ls-arabic:       0;
+
+  /* ---------- 3 · Spacing (4px base) ---------- */
+  --space-0: 0;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* ---------- 4 · Radii ---------- */
+  --radius-0:   0;
+  --radius-sm:  2px;
+  --radius-md:  4px;
+  --radius-lg:  6px;   /* maximum — brand is square */
+  --radius-pill: 999px; /* reserved for status dots only */
+
+  /* ---------- 5 · Borders ---------- */
+  --bw-hairline: 1px;
+  --bw-strong:   2px;
+
+  /* ---------- 6 · Shadows / elevation ---------- */
+  /* Elevation = border, not blur. Use shadows ONLY for floating layers. */
+  --shadow-sm:   0 1px 0 rgba(11, 55, 82, .08);
+  --shadow-md:   0 2px 0 rgba(11, 55, 82, .06), 0 8px 24px -12px rgba(11, 55, 82, .18);
+  --shadow-lg:   0 4px 0 rgba(11, 55, 82, .05), 0 18px 48px -18px rgba(11, 55, 82, .25);
+  --shadow-inset-press: inset 0 2px 0 rgba(0,0,0,.18);
+  --focus-ring:  0 0 0 2px var(--bci-green-500);
+
+  /* ---------- 7 · Motion ---------- */
+  --ease-mech:   cubic-bezier(.2, .8, .2, 1);
+  --ease-linear: linear;
+  --dur-hover:   100ms;
+  --dur-base:    180ms;
+  --dur-page:    240ms;
+
+  /* ---------- 8 · Layout ---------- */
+  --container:   1280px;
+  --gutter:      72px;
+  --header-h:    64px;
+}
+
+/* ---------- 9 · Semantic element styles ---------- */
+html {
+  background: var(--bg-page);
+  color: var(--fg-1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  color: var(--fg-1);
+}
+
+[dir="rtl"], :lang(ar) {
+  font-family: var(--ff-arabic);
+  letter-spacing: var(--ls-arabic);
+}
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
+  font-family: var(--ff-display);
+  font-weight: var(--fw-semibold);
+  color: var(--fg-1);
+  margin: 0 0 var(--space-4);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+}
+
+.display, h1.display {
+  font-family: var(--ff-display);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-display);
+}
+
+h1, .h1 { font-size: var(--fs-h1); }
+h2, .h2 { font-size: var(--fs-h2); }
+h3, .h3 { font-size: var(--fs-h3); }
+h4, .h4 { font-size: var(--fs-h4); font-weight: var(--fw-semibold); }
+
+p { margin: 0 0 var(--space-4); max-width: 68ch; }
+
+a {
+  color: var(--fg-link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--dur-hover) var(--ease-linear);
+}
+a:hover { color: var(--fg-link-hover); }
+a:focus-visible { outline: 2px solid var(--bci-green-500); outline-offset: 2px; }
+
+/* Focus ring contrast: green ring vanishes on green Accent buttons — flip to navy. */
+.btn-accent:focus-visible,
+[data-variant="accent"]:focus-visible { outline: 2px solid var(--bci-navy); outline-offset: 2px; }
+
+small, .small { font-size: var(--fs-small); color: var(--fg-2); }
+
+.spec, .eyebrow {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-spec);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-spec);
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+.mono, code, pre, kbd, samp {
+  font-family: var(--ff-mono);
+  font-size: 0.95em;
+}
+
+/* Tables — engineering datasheet style */
+table.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--ff-sans);
+  font-size: var(--fs-small);
+}
+table.spec-table th,
+table.spec-table td {
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-1);
+}
+table.spec-table th {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-spec);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-spec);
+  text-transform: uppercase;
+  color: var(--fg-2);
+  background: var(--bci-steel-50);
+}
+table.spec-table td.value { font-family: var(--ff-mono); color: var(--fg-1); }
+
+/* Selection */
+::selection { background: var(--bci-green-200); color: var(--bci-navy-900); }
+
+/* Reduce-motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

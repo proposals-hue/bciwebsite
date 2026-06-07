@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+build/node_modules/
+
+# Build output (generated from src/*.jsx via `cd build && npm run build`)
+dist/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Local env
+.env
+.env.local

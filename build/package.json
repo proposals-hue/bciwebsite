@@ -1,0 +1,14 @@
+{
+  "name": "bci-website-build",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production build for the BCI website — precompiles JSX to plain JS so the deployed site needs no in-browser Babel.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.0",
+    "@babel/preset-react": "^7.24.0"
+  }
+}
