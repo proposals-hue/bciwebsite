@@ -1,4 +1,4 @@
-/* global React, useLang, t, Icon, Mark, Badge, Arrow */
+/* global React, useLang, t, Icon, Mark, Badge, Arrow, useInView, submitErpWebForm */
 const { useState: useState_c } = React;
 
 // ---------- 05 · Contact ----------
@@ -162,13 +162,30 @@ function SocialBox({ name, href }) {
 function ContactForm() {
   const { lang } = useLang();
   const [form, setForm] = useState_c({ name: '', company: '', email: '', phone: '', message: '' });
-  const [submitted, setSubmitted] = useState_c(false);
+  const [status, setStatus] = useState_c('idle'); // idle | sending | sent | error
+  const submitted = status === 'sent';
 
   const onChange = (k) => (e) => setForm({ ...form, [k]: e.target.value });
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
+    if (status === 'sending') return;
+    setStatus('sending');
+    try {
+      // → ERPNext 'contact-bci' guest web form → creates a CRM Lead (keyless).
+      await submitErpWebForm('contact-bci', {
+        doctype: 'Lead',
+        lead_name: form.name,
+        company_name: form.company,
+        email_id: form.email,
+        mobile_no: form.phone,
+        custom_message: form.message,
+      });
+      setStatus('sent');
+      setForm({ name: '', company: '', email: '', phone: '', message: '' });
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (err) {
+      setStatus('error');
+    }
   };
 
   return (
@@ -218,21 +235,37 @@ function ContactForm() {
         placeholder={t(lang, 'Project, scope, square metres, target start date…', 'المشروع، النطاق، الأمتار المربعة، تاريخ البدء…', 'Proyecto, alcance, metros cuadrados, fecha de inicio…')} />
       </div>
 
-      <button type="submit" className="btn btn-accent" style={{
+      <button type="submit" disabled={status === 'sending'} className="btn btn-accent" style={{
         width: '100%', justifyContent: 'center', padding: '16px 22px',
-        marginTop: 4
+        marginTop: 4, opacity: status === 'sending' ? 0.7 : 1,
+        cursor: status === 'sending' ? 'wait' : 'pointer'
       }}>
         {submitted ?
         <>
             <Icon name="check" size={14} stroke="#fff" />
             {t(lang, 'Sent', 'تم الإرسال', 'Enviado')}
           </> :
+        status === 'sending' ?
+        <>{t(lang, 'Sending…', 'جارٍ الإرسال…', 'Enviando…')}</> :
 
         <>
             {t(lang, 'Send Message', 'إرسال الرسالة', 'Enviar mensaje')} <Arrow size={14} />
           </>
         }
       </button>
+
+      {status === 'error' &&
+        <div role="alert" style={{
+          fontSize: 13, color: '#b42318', background: '#fef3f2',
+          border: '1px solid #fda29b', borderRadius: 2, padding: '12px 14px',
+          textAlign: lang === 'ar' ? 'right' : 'left'
+        }}>
+          {t(lang,
+            'Something went wrong sending your message. Please try again, or email us directly at info@bcisaudi.com.',
+            'حدث خطأ أثناء إرسال رسالتك. يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة على info@bcisaudi.com.',
+            'Hubo un problema al enviar tu mensaje. Inténtalo de nuevo o escríbenos a info@bcisaudi.com.')}
+        </div>
+      }
 
       <div style={{
         fontFamily: 'var(--ff-mono)', fontSize: 10,

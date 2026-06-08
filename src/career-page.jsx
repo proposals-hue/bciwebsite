@@ -1,5 +1,5 @@
 /* global React, ReactDOM, LangProvider, useLang, t, Icon, Arrow,
-   MegaHeader, PageHero, CtaBand, Footer, JOBS, BENEFITS, VALUES */
+   MegaHeader, PageHero, CtaBand, Footer, JOBS, BENEFITS, VALUES, submitErpWebForm */
 const { useState: useState_cr } = React;
 
 /* striped image placeholder (user drops real photography later) */
@@ -24,12 +24,44 @@ function CareerPage() {
   const { lang } = useLang();
   const isAr = lang === 'ar';
   const [role, setRole] = useState_cr('');
-  const [sent, setSent] = useState_cr(false);
+  const [status, setStatus] = useState_cr('idle'); // idle | sending | sent | error
+  const [errorMsg, setErrorMsg] = useState_cr('');
+  const sent = status === 'sent';
 
   const apply = (jobTitle) => {
     setRole(jobTitle);
     const el = document.getElementById('apply');
     if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
+  };
+
+  const submitApplication = async (e) => {
+    e.preventDefault();
+    if (status === 'sending') return;
+    const fd = new FormData(e.target);
+    setStatus('sending');
+    setErrorMsg('');
+    try {
+      // → ERPNext 'job-application' guest web form → creates a Job Applicant (keyless).
+      await submitErpWebForm('job-application', {
+        doctype: 'Job Applicant',
+        applicant_name: fd.get('name') || '',
+        email_id: fd.get('email') || '',
+        phone_number: fd.get('phone') || '',
+        job_title: role || 'Open application',
+        cover_letter: fd.get('cover_letter') || '',
+        resume_link: fd.get('resume_link') || '',
+      });
+      setStatus('sent');
+      e.target.reset();
+      setRole('');
+      setTimeout(() => setStatus('idle'), 6000);
+    } catch (err) {
+      setErrorMsg(t(lang,
+        'Something went wrong sending your application. Please try again, or email it to info@bcisaudi.com.',
+        'حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى أو إرساله إلى info@bcisaudi.com.',
+        'Hubo un problema al enviar tu solicitud. Inténtalo de nuevo o envíala a info@bcisaudi.com.'));
+      setStatus('error');
+    }
   };
 
   return (
@@ -103,12 +135,12 @@ function CareerPage() {
           <h2 className="display" style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 700, fontSize: 'clamp(32px,3.4vw,48px)', color: 'var(--bci-navy)', margin: '0 0 32px', textAlign: isAr ? 'right' : 'left' }}>
             {t(lang, 'Send your application', 'أرسل طلبك', 'Envía tu solicitud')}
           </h2>
-          <form onSubmit={e => { e.preventDefault(); setSent(true); setTimeout(() => setSent(false), 4000); }}
+          <form onSubmit={submitApplication}
             style={{ background: '#fff', border: '1px solid var(--bci-hairline-light)', borderRadius: 2, padding: 36, display: 'flex', flexDirection: 'column', gap: 20, direction: isAr ? 'rtl' : 'ltr' }}>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
-              <div className="field"><label>{t(lang, 'Full name', 'الاسم الكامل', 'Nombre completo')}</label><input required type="text" /></div>
-              <div className="field"><label>{t(lang, 'Email', 'البريد', 'Correo')}</label><input required type="email" placeholder="name@email.com" /></div>
-              <div className="field"><label>{t(lang, 'Phone', 'الهاتف', 'Teléfono')}</label><input type="tel" placeholder="+966" /></div>
+              <div className="field"><label>{t(lang, 'Full name', 'الاسم الكامل', 'Nombre completo')}</label><input required name="name" type="text" /></div>
+              <div className="field"><label>{t(lang, 'Email', 'البريد', 'Correo')}</label><input required name="email" type="email" placeholder="name@email.com" /></div>
+              <div className="field"><label>{t(lang, 'Phone', 'الهاتف', 'Teléfono')}</label><input name="phone" type="tel" placeholder="+966" /></div>
               <div className="field"><label>{t(lang, 'Position', 'الوظيفة', 'Puesto')}</label>
                 <select value={role} onChange={e => setRole(e.target.value)}>
                   <option value="">{t(lang, 'Select a role…', 'اختر وظيفة…', 'Selecciona un puesto…')}</option>
@@ -117,11 +149,23 @@ function CareerPage() {
                 </select>
               </div>
             </div>
-            <div className="field"><label>{t(lang, 'Cover note', 'نبذة تعريفية', 'Carta de presentación')}</label><textarea placeholder={t(lang, 'Tell us about your experience…', 'حدثنا عن خبرتك…', 'Cuéntanos sobre tu experiencia…')}></textarea></div>
-            <div className="field"><label>{t(lang, 'CV / Resume (PDF)', 'السيرة الذاتية (PDF)', 'CV / Currículum (PDF)')}</label><input type="file" accept=".pdf,.doc,.docx" /></div>
-            <button type="submit" className="btn btn-accent" style={{ width: '100%', justifyContent: 'center', padding: '16px' }}>
-              {sent ? <><Icon name="check" size={14} stroke="#fff" /> {t(lang, 'Application sent', 'تم الإرسال', 'Solicitud enviada')}</> : <>{t(lang, 'Submit application', 'إرسال الطلب', 'Enviar solicitud')} <Arrow size={14} /></>}
+            <div className="field"><label>{t(lang, 'Cover note', 'نبذة تعريفية', 'Carta de presentación')}</label><textarea name="cover_letter" placeholder={t(lang, 'Tell us about your experience…', 'حدثنا عن خبرتك…', 'Cuéntanos sobre tu experiencia…')}></textarea></div>
+            <div className="field"><label>{t(lang, 'Link to your CV (Google Drive, Dropbox, LinkedIn…)', 'رابط سيرتك الذاتية (جوجل درايف، دروب بوكس، لينكدإن…)', 'Enlace a tu CV (Google Drive, Dropbox, LinkedIn…)')}</label><input name="resume_link" type="url" placeholder="https://" /></div>
+            <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '0.06em', color: 'var(--bci-steel)', marginTop: -8, textAlign: isAr ? 'right' : 'left' }}>
+              {t(lang,
+                'Paste a shareable link to your CV, or email the file to info@bcisaudi.com.',
+                'الصق رابطًا قابلاً للمشاركة لسيرتك الذاتية، أو أرسل الملف إلى info@bcisaudi.com.',
+                'Pega un enlace a tu CV, o envía el archivo a info@bcisaudi.com.')}
+            </div>
+            <button type="submit" disabled={status === 'sending'} className="btn btn-accent" style={{ width: '100%', justifyContent: 'center', padding: '16px', opacity: status === 'sending' ? 0.7 : 1, cursor: status === 'sending' ? 'wait' : 'pointer' }}>
+              {sent ? <><Icon name="check" size={14} stroke="#fff" /> {t(lang, 'Application sent', 'تم الإرسال', 'Solicitud enviada')}</>
+                : status === 'sending' ? <>{t(lang, 'Sending…', 'جارٍ الإرسال…', 'Enviando…')}</>
+                : <>{t(lang, 'Submit application', 'إرسال الطلب', 'Enviar solicitud')} <Arrow size={14} /></>}
             </button>
+            {status === 'error' &&
+              <div role="alert" style={{ fontSize: 13, color: '#b42318', background: '#fef3f2', border: '1px solid #fda29b', borderRadius: 2, padding: '12px 14px', textAlign: isAr ? 'right' : 'left' }}>
+                {errorMsg}
+              </div>}
           </form>
         </div>
       </section>

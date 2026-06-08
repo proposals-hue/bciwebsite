@@ -206,6 +206,29 @@ function Badge({ variant = 'outline', children, icon }) {
   return <span style={styles[variant]}>{icon}{children}</span>;
 }
 
+// ---------------- ERP form submit ----------------
+// The Contact/Career forms feed ERPNext's built-in *guest* web forms — no API
+// key lives anywhere, and nothing is hosted in between. The ERP sends no CORS
+// headers, but a `no-cors` urlencoded POST is a "simple request" the browser
+// still delivers (we just can't read the response — so success is optimistic
+// and we rely on the form's client-side `required` validation). Override the
+// ERP origin with window.BCI_ERP_BASE if it ever changes.
+const ERP_BASE = (typeof window !== 'undefined' && window.BCI_ERP_BASE) || 'https://apcv14.lynx.sa';
+
+// webForm: the ERP Web Form *name* (e.g. 'contact-bci', 'job-application').
+// data: { doctype, ...fields } keyed by the web form's field names.
+async function submitErpWebForm(webForm, data) {
+  const body = new URLSearchParams({ web_form: webForm, data: JSON.stringify(data) });
+  await fetch(`${ERP_BASE}/api/method/frappe.website.doctype.web_form.web_form.accept`, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body,
+  });
+}
+
+if (typeof window !== 'undefined') window.submitErpWebForm = submitErpWebForm;
+
 // ---------------- Arrow that flips in RTL ----------------
 function Arrow({ size = 16 }) {
   return <span className="flip-rtl" style={{ display: 'inline-flex' }}><Icon name="arrow-right" size={size} /></span>;
