@@ -1163,10 +1163,10 @@ const KSA_BORDER = [
 ];
 
 const DEPARTMENTS = [
-  { en: { t: 'Sales & Specification', d: 'sales@bcisaudi.com' }, ar: { t: 'المبيعات والمواصفات', d: 'sales@bcisaudi.com' }, es: { t: 'Ventas y Especificación', d: 'sales@bcisaudi.com' }, icon: 'briefcase' },
-  { en: { t: 'Technical Support', d: 'technical@bcisaudi.com' }, ar: { t: 'الدعم الفني', d: 'technical@bcisaudi.com' }, es: { t: 'Soporte Técnico', d: 'technical@bcisaudi.com' }, icon: 'flask' },
-  { en: { t: 'Careers / HR', d: 'careers@bcisaudi.com' }, ar: { t: 'التوظيف', d: 'careers@bcisaudi.com' }, es: { t: 'Empleo / RR. HH.', d: 'careers@bcisaudi.com' }, icon: 'users' },
-  { en: { t: 'Procurement', d: 'procurement@bcisaudi.com' }, ar: { t: 'المشتريات', d: 'procurement@bcisaudi.com' }, es: { t: 'Compras', d: 'procurement@bcisaudi.com' }, icon: 'package' },
+  { en: { t: 'Sales & Specification', d: 'info@bcisaudi.com' }, ar: { t: 'المبيعات والمواصفات', d: 'info@bcisaudi.com' }, es: { t: 'Ventas y Especificación', d: 'info@bcisaudi.com' }, icon: 'briefcase' },
+  { en: { t: 'Technical Support', d: 'info@bcisaudi.com' }, ar: { t: 'الدعم الفني', d: 'info@bcisaudi.com' }, es: { t: 'Soporte Técnico', d: 'info@bcisaudi.com' }, icon: 'flask' },
+  { en: { t: 'Careers / HR', d: 'info@bcisaudi.com' }, ar: { t: 'التوظيف', d: 'info@bcisaudi.com' }, es: { t: 'Empleo / RR. HH.', d: 'info@bcisaudi.com' }, icon: 'users' },
+  { en: { t: 'Procurement', d: 'info@bcisaudi.com' }, ar: { t: 'المشتريات', d: 'info@bcisaudi.com' }, es: { t: 'Compras', d: 'info@bcisaudi.com' }, icon: 'package' },
 ];
 
 const SOCIALS = [
