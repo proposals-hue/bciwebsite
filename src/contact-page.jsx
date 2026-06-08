@@ -67,9 +67,9 @@ function StoreNetwork() {
             </h2>
             <p style={{ fontSize: 15, color: 'var(--bci-navy-200)', margin: '0 0 36px', maxWidth: 360, marginInline: isAr ? '0 0' : undefined }}>
               {t(lang,
-                'Five locations stocking the full BCI range — with technical support close to every project in Saudi Arabia.',
-                'خمسة مواقع تضم تشكيلة BCI الكاملة — مع دعم فني قريب من كل مشروع في المملكة العربية السعودية.',
-                'Cinco ubicaciones con la gama completa de BCI — con soporte técnico cerca de cada proyecto en Arabia Saudí.')}
+                'Six locations stocking the full BCI range — with technical support close to every project in Saudi Arabia.',
+                'ستة مواقع تضم تشكيلة BCI الكاملة — مع دعم فني قريب من كل مشروع في المملكة العربية السعودية.',
+                'Seis ubicaciones con la gama completa de BCI — con soporte técnico cerca de cada proyecto en Arabia Saudí.')}
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -120,7 +120,7 @@ function StoreNetwork() {
           }}>
             {/* corner ticks for a technical / drafted feel */}
             <span className="mono" style={{ position: 'absolute', top: 12, left: 14, fontSize: 10, color: 'var(--bci-navy-300)', letterSpacing: '0.12em' }}>KSA · KINGDOM OF SAUDI ARABIA</span>
-            <span className="mono" style={{ position: 'absolute', bottom: 12, right: 14, fontSize: 10, color: 'var(--bci-navy-300)', letterSpacing: '0.12em' }}>5 LOCATIONS</span>
+            <span className="mono" style={{ position: 'absolute', bottom: 12, right: 14, fontSize: 10, color: 'var(--bci-navy-300)', letterSpacing: '0.12em' }}>6 LOCATIONS</span>
 
             <svg viewBox={`0 0 ${KSA_VBW} ${KSA_VBH}`} preserveAspectRatio="none" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }} aria-label="Map of Saudi Arabia">
               <path d={KSA_PATH} fill="rgba(11,55,82,0.55)" stroke="var(--bci-green-400)" strokeWidth="1.4" strokeLinejoin="round" vectorEffect="non-scaling-stroke" />
