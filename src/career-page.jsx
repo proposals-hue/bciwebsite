@@ -42,13 +42,16 @@ function CareerPage() {
     setErrorMsg('');
     try {
       // → ERPNext 'job-application' guest web form → creates a Job Applicant (keyless).
+      // Note: the Job Applicant `job_title` is a Link to Job Opening, so we can't
+      // send the free-text position there — fold it into the cover letter instead.
+      const position = role || 'Open application';
+      const note = fd.get('cover_letter') || '';
       await submitErpWebForm('job-application', {
         doctype: 'Job Applicant',
         applicant_name: fd.get('name') || '',
         email_id: fd.get('email') || '',
         phone_number: fd.get('phone') || '',
-        job_title: role || 'Open application',
-        cover_letter: fd.get('cover_letter') || '',
+        cover_letter: `Position applied for: ${position}\n\n${note}`.trim(),
         resume_link: fd.get('resume_link') || '',
       });
       setStatus('sent');
