@@ -341,7 +341,7 @@ function Hero({ overlayOpacity = 0.55, bgStyle = 'skyline', videoSpeed = 0.6 }) 
 
           {/* CTAs */}
           <div className={rise} style={{ display: 'flex', gap: isPhone ? 12 : 14, flexWrap: 'wrap', flexDirection: isPhone ? 'column' : 'row', transitionDelay: '440ms' }}>
-            <a href="#products" className="btn btn-accent" style={{ width: isPhone ? '100%' : 'auto', justifyContent: 'center' }}>
+            <a href="#solutions" className="btn btn-accent" style={{ width: isPhone ? '100%' : 'auto', justifyContent: 'center' }}>
               {t(lang, 'Explore Products', 'استكشف المنتجات', 'Explorar Productos')}
             </a>
             <a href="#contact" className="btn btn-ghost-light" style={{ width: isPhone ? '100%' : 'auto', justifyContent: 'center' }}>
