@@ -69,7 +69,7 @@ function SolutionsOverview() {
         </div>
 
         <div ref={gridRef} style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
-          {SOLUTIONS.map((s, i) => (
+          {SOLUTIONS.slice(0, 8).map((s, i) => (
             <div key={s.slug} style={{
               opacity: inView ? 1 : 0,
               transform: inView ? 'none' : 'translateY(22px)',
@@ -79,6 +79,14 @@ function SolutionsOverview() {
               <SolutionCard s={s} />
             </div>
           ))}
+          <div style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? 'none' : 'translateY(22px)',
+            transition: `opacity 560ms cubic-bezier(.2,.7,.2,1) ${8 * 80}ms, transform 560ms cubic-bezier(.2,.7,.2,1) ${8 * 80}ms`,
+            display: 'flex', flexDirection: 'column'
+          }}>
+            <ViewAllSolutionsCard />
+          </div>
         </div>
       </div>
     </section>);
@@ -102,11 +110,10 @@ function SolutionCard({ s }) {
     }}>
       {/* top accent rule that grows on hover */}
       <span style={{ position: 'absolute', top: 0, insetInlineStart: 0, height: 3, width: hover ? '100%' : 0, background: 'var(--bci-green-500)', transition: 'width 280ms cubic-bezier(.2,.7,.2,1)' }} />
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 26, flexDirection: isAr ? 'row-reverse' : 'row' }}>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: 26, flexDirection: isAr ? 'row-reverse' : 'row' }}>
         <div style={{ width: 52, height: 52, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: '#fff', background: hover ? 'var(--bci-green-500)' : 'var(--bci-navy)', transition: 'background 160ms ease' }}>
           <Icon name={s.icon} size={24} />
         </div>
-        <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 34, fontWeight: 700, lineHeight: 1, letterSpacing: '-0.02em', color: hover ? 'var(--bci-navy)' : 'var(--bci-hairline-light)', transition: 'color 160ms ease' }}>{s.num}</span>
       </div>
       <h3 style={{
         fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 600, fontSize: 23,
@@ -116,6 +123,45 @@ function SolutionCard({ s }) {
       <div style={{ paddingTop: 18, marginTop: 18, borderTop: '1px solid var(--bci-hairline-light)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexDirection: isAr ? 'row-reverse' : 'row' }}>
         <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600, color: hover ? 'var(--bci-green-600)' : 'var(--bci-steel)', transition: 'color 160ms ease' }}>{t(lang, 'Explore', 'استكشف', 'Explorar')}</span>
         <span className="flip-rtl" style={{ color: hover ? 'var(--bci-green-500)' : 'var(--bci-navy)', display: 'inline-flex', transform: hover ? (isAr ? 'translateX(-4px)' : 'translateX(4px)') : 'none', transition: 'transform 160ms ease, color 160ms ease' }}><Arrow size={15} /></span>
+      </div>
+    </a>);
+
+}
+
+// A CTA card that sits at the end of the solutions grid so the set never
+// reads as a closed list — it points to the full Solutions page.
+function ViewAllSolutionsCard() {
+  const { lang } = useLang();
+  const isAr = lang === 'ar';
+  const [hover, setHover] = useState_p(false);
+  return (
+    <a href="Solutions.html"
+    onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
+    style={{
+      position: 'relative', overflow: 'hidden',
+      background: 'var(--bci-navy)', border: '1px solid var(--bci-navy)',
+      borderRadius: 2, padding: 28, transition: 'box-shadow 200ms ease, transform 200ms ease',
+      boxShadow: hover ? 'var(--shadow-md)' : 'none', transform: hover ? 'translateY(-3px)' : 'translateY(0)',
+      display: 'flex', flexDirection: 'column', minHeight: 268, textDecoration: 'none',
+      textAlign: isAr ? 'right' : 'left'
+    }}>
+      <span style={{ position: 'absolute', top: 0, insetInlineStart: 0, height: 3, width: hover ? '100%' : 0, background: 'var(--bci-green-500)', transition: 'width 280ms cubic-bezier(.2,.7,.2,1)' }} />
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: 26, flexDirection: isAr ? 'row-reverse' : 'row' }}>
+        <div style={{ width: 52, height: 52, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--bci-navy)', background: hover ? 'var(--bci-green-500)' : '#fff', transition: 'background 160ms ease' }}>
+          <Icon name="grid" size={24} />
+        </div>
+      </div>
+      <h3 style={{
+        fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 600, fontSize: 23,
+        lineHeight: 1.15, letterSpacing: isAr ? 0 : '-0.01em', color: '#fff', margin: '0 0 12px'
+      }}>{t(lang, 'The Full Range', 'النطاق الكامل', 'La Gama Completa')}</h3>
+      <p style={{ fontSize: 14, lineHeight: 1.55, color: 'rgba(255,255,255,0.72)', margin: 0, flex: 1 }}>{t(lang,
+        '320+ products across our complete line of construction-chemical systems.',
+        '+320 منتجاً عبر مجموعتنا الكاملة من أنظمة كيمياء البناء.',
+        'Más de 320 productos en nuestra línea completa de sistemas químicos para la construcción.')}</p>
+      <div style={{ paddingTop: 18, marginTop: 18, borderTop: '1px solid rgba(255,255,255,0.16)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexDirection: isAr ? 'row-reverse' : 'row' }}>
+        <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600, color: hover ? 'var(--bci-green-400)' : '#fff', transition: 'color 160ms ease' }}>{t(lang, 'View all solutions', 'كل الحلول', 'Ver todo')}</span>
+        <span className="flip-rtl" style={{ color: hover ? 'var(--bci-green-400)' : '#fff', display: 'inline-flex', transform: hover ? (isAr ? 'translateX(-4px)' : 'translateX(4px)') : 'none', transition: 'transform 160ms ease, color 160ms ease' }}><Arrow size={15} /></span>
       </div>
     </a>);
 
@@ -188,4 +234,4 @@ function ProjectCard({ p }) {
 
 }
 
-Object.assign(window, { SolutionsOverview, SolutionCard, Projects, ProjectCard });
+Object.assign(window, { SolutionsOverview, SolutionCard, ViewAllSolutionsCard, Projects, ProjectCard });
