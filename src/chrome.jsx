@@ -661,7 +661,7 @@ function CtaBand({ title, titleAr, titleEs, body, bodyAr, bodyEs }) {
           <a href="Contact.html" className="btn btn-navy">
             {t(lang, 'Request Submittal', 'طلب الوثائق', 'Solicitar Documentación')}
           </a>
-          <a href="Resources.html" className="btn btn-ghost-light">
+          <a href="assets/BCI-Company-Profile.pdf" target="_blank" rel="noopener" download className="btn btn-ghost-light">
             <Icon name="download" size={14} />
             {t(lang, 'Download Catalog', 'تحميل الدليل', 'Descargar Catálogo')}
           </a>
