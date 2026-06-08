@@ -1,0 +1,892 @@
+# Grouped product families (221)
+
+
+## Waterproofing & Roofing (47)
+
+- **BC Tar Coat** [2 skus]
+  - sizes: 14.3 kg set, 28 kg set
+  - colors: Black
+  - desc: BC Tar Coat Two-component, solvent-free, high-build coal tar epoxy coating with excellent adhesion to concrete and steel, providing durable protection against m
+- **BC 715 Injection Grout** [2 skus]
+  - sizes: 30 kg set, 5 kg set
+  - colors: Yellow
+  - desc: BC 715 Injection Grout is a two-component, low-viscosity polyurethane resin system designed for elastic sealing of cracks and voids in both wet and dry conditio
+- **BC Faced Flexible Flashing** [1 skus]
+  - sizes: Pcs
+  - colors: Aluminum
+  - desc: BC Aluminum-Faced Flexible Flashing is a self-adhesive, multi-layer waterproofing tape reinforced with an aluminum surface for superior weather and UV resistanc
+- **BC Bitu Classic 160** [2 skus]
+  - sizes: Roll
+  - colors: Black, Slated
+  - desc: BC Bitu Classic 160 Slated APP (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent hea
+- **BC Bitu Classic 200** [2 skus]
+  - sizes: Roll
+  - colors: Black, Slated
+  - desc: BC Bitu Classic (200 APP) (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat res
+- **BC Bitu Classic 250** [2 skus]
+  - sizes: Roll
+  - colors: Black, Slated
+  - desc: BC Bitu-Classic 250 slated is a high-performance, torch-applied APP modified bituminous waterproofing membrane reinforced with 250 gsm non-woven polyester mat. 
+- **BC Bitu Classic Fiber** [2 skus]
+  - sizes: Roll
+  - colors: Black, Slated
+  - desc: BC Bitu-Classic Fiber is a high-quality, torch-applied, APP-modified bituminous waterproofing membrane manufactured using a blend of premium bitumen and Atactic
+- **BC Bitu Classic 180** [2 skus]
+  - sizes: Roll
+  - colors: Black, Slated
+  - desc: BC Bitu Classic 180 Slated APP (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent hea
+- **BC Bitu Gold 160** [2 skus]
+  - sizes: Roll
+  - colors: Black, Slated
+  - desc: BC Bitu-Gold 160 slated is a high-performance, pre-fabricated, torch-applied waterproofing membrane made from premium-grade bitumen modified with Styrene-Butadi
+- **BC Bitu Gold 180** [2 skus]
+  - sizes: Roll
+  - colors: Black, Slated
+  - desc: BC Bitu-Gold 180 slated is a high-performance, pre-fabricated, torch-applied waterproofing membrane made from premium-grade bitumen modified with Styrene-Butadi
+- **BC Bitu Gold 200** [2 skus]
+  - sizes: Roll
+  - colors: Black, Slated
+  - desc: BC Bitu-Gold 200 slated is a high-performance, pre-fabricated, torch-applied waterproofing membrane made from premium-grade bitumen modified with Styrene-Butadi
+- **BC Bitu Gold Fiber** [2 skus]
+  - sizes: Roll
+  - colors: Black, Slated
+  - desc: BC Bitu-Gold Fiber slated is a high-performance, prefabricated, torch-applied waterproofing membrane made from high-grade bitumen modified with Styrene-Butadien
+- **BC Bitumen Primer** [1 skus]
+  - sizes: 15 kg pail
+  - colors: Black
+  - desc: BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting a
+- **BC Crysto Proof** [1 skus] ⚠ NO-TDS
+  - sizes: 20 kg bag
+  - colors: Grey
+  - desc: BC Crysto Proof High-performance powdered crystalline admixture for integral concrete waterproofing; reacts with moisture to form needle-shaped crystals that se
+- **BC Damp Proof** [3 skus]
+  - sizes: 10 kg pail, 20 kg pail, 200 kg drum
+  - colors: Black
+  - desc: BC Damp Proof Low-viscosity, high-penetration, cold-applied bituminous primer, 200 Kg Drum, 3.5–12 m²/L coverage depending on substrate, for sealing porous surf
+- **BC Geo Textile** [2 skus]
+  - sizes: Roll
+  - desc: BC Geotextile 100 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works.It 
+- **BC Geo Textile 200** [1 skus]
+  - sizes: Roll
+  - desc: BC Geotextile 200 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works.It 
+- **BC Geotex Tile** [1 skus] ⚠ NO-TDS
+  - sizes: Roll
+  - colors: White
+  - desc: BC Geotextile 120 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works.It 
+- **BC Geotextile** [2 skus]
+  - sizes: Roll
+  - desc: BC Geotextile 120 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works.It 
+- **BC Guard** [3 skus]
+  - sizes: 10 kg pail, 20 kg pail
+  - colors: Black, White
+  - desc: BC Guard Black -FG Single-component, heavy-duty, water-based acrylic waterproofing coating, 20 kg pail, 0.55 m²/L at 1 mm, approx. 3.5 SAR/m², for flexible, lon
+- **BC Guard Fl 100** [2 skus]
+  - sizes: 20 kg pail
+  - colors: Black, White
+  - desc: BC Guard FL 100 is a high-performance, cold-applied, water-based acrylic elastomeric waterproofing coating. It cures to form a seamless, flexible, and UV resist
+- **BC Guard LC 500** [1 skus]
+  - sizes: 20 kg pail
+  - colors: White
+  - desc: BC GUARD LC 500 WHITE 20 KG - FG
+- **BC Lastic 1K** [1 skus]
+  - sizes: 20 kg bag
+  - colors: Grey
+  - desc: BC Lastic-1K is a one-component, crack-bridging, fibre-reinforced cementitious mortar, modified with alkali-resistant polymers. It provides flexible waterproofi
+- **BC Polythelene Sheet** [1 skus]
+  - sizes: 29.4 kg
+  - desc: BC Polyethylene Sheet is a durable, flexible plastic sheet used as a moisture barrier, protection layer, and vapor retardant in construction applications.
+- **BC Proof 100** [1 skus]
+  - sizes: 30 kg set
+  - colors: Grey
+  - desc: BC Proof 100 is a two-component, acrylic-modified cementitious waterproof coating composed of a polymeric liquid (Part B) and a specially formulated cementitiou
+- **BC Proof 330** [1 skus]
+  - sizes: 20 kg set
+  - colors: White
+  - desc: BC Proof 330 is a high-performance, two-component, 100% solids, fast-curing aliphatic pure polyurea waterproofing membrane designed for exposed roofing, terrace
+- **BC Proof PU** [1 skus]
+  - sizes: 20 kg pail
+  - colors: Black
+  - desc: BC Proof PU FG single component moisture curing tar extended polyurethane liquid applied elastomeric membrane for waterproofing and protection of a wide range o
+- **BC Proof PU WB** [1 skus]
+  - sizes: 20 kg pail
+  - colors: Black
+  - desc: BC Proof PU WB is a one-component, cold-applied, water-based polyurethane waterproofing membrane designed to provide a seamless, flexible, and durable protectiv
+- **BC Proof RBC 100** [1 skus]
+  - sizes: 20 kg pail
+  - colors: Black
+  - desc: BC Proof RBC 100 is a high-performance, water-based, cold-applied rubber reinforced bituminous compound. Formulated with hard bitumen, mineral stabilizers, synt
+- **BC Protect** [3 skus] ⚠ NO-TDS
+  - sizes: 3.85 kg board, 5.5 kg board, 7.65 kg board
+  - colors: Black
+  - desc: BC Protect P is a torch-applied semi-rigid bituminous protection board reinforced with double layers of non-woven polyester. It is designed to protect waterproo
+- **BC PUR Injection** [1 skus]
+  - sizes: 30 kg set
+  - colors: Black
+  - desc: BC PUR Injection is a two-component, very low-viscosity, solvent-free polyurethane injection resin. Upon contact with water, it reacts to form a uniform, closed
+- **BC PVC Mambran** [1 skus]
+  - sizes: 83 kg roll
+  - desc: BC PVC 1500-UV is a high-performance, calendared and extruded single-ply PVC waterproofing membrane, 1.5 mm thick, internally reinforced with high-tenacity poly
+- **BC PVC Membrane** [1 skus]
+  - sizes: 66 kg roll
+  - desc: BC PVC 1200 is a high-performance, calendared and extruded polyvinyl chloride (PVC) waterproofing membrane with a nominal thickness of 1.20 mm. The membrane is 
+- **BC Roof 420** [1 skus] ⚠ NO-IMG,NO-TDS
+  - sizes: 20 kg pail
+  - colors: White
+  - desc: BC Roof 420 is a high-performance, single-component, elastomeric waterproofing coating based on advanced polymeric compounds. It cures to form a flexible, seaml
+- **BC Roof Coat LC** [1 skus]
+  - sizes: 20 kg pail
+  - desc: BC Roof Coat LC Single-component, heavy-duty, water-based acrylic waterproofing system; forms a flexible, UV-resistant barrier with excellent puncture resistanc
+- **BC Roof Coat** [1 skus] ⚠ NO-TDS
+  - sizes: 20 kg pail
+  - colors: White
+  - desc: BC Roof Coat Single-component, heavy-duty, water-based acrylic waterproofing system; forms a flexible, UV-resistant barrier with excellent puncture resistance a
+- **BC Roof Guard** [1 skus]
+  - sizes: 20 kg pail
+  - colors: White
+  - desc: BC Roof Guard Single-component, heavy-duty, water-based acrylic waterproofing coating, 20 kg pail, 0.55 m²/L at 1 mm, approx. 3.5 SAR/m², for flexible, long-las
+- **BC Seal 105** [1 skus]
+  - sizes: 20 kg set
+  - colors: Grey
+  - desc: BC Seal 105 Two-component, acrylic-modified cementitious waterproofing coating, 20 kg set, 2 kg/m² at 1 mm, for flexible, durable protection against water and c
+- **BC Seal 107** [1 skus]
+  - sizes: 30 kg set
+  - colors: Grey
+  - desc: BC Seal 107 Two-component, acrylic-modified cementitious waterproofing coating, 30 kg set, 2 kg/m² at 1 mm, approx. 4.0 SAR/m², for flexible, durable protection
+- **BC Seal 109** [1 skus]
+  - sizes: 25 kg set
+  - colors: Grey
+  - desc: BC Seal 109 Two-component, acrylic-modified cementitious waterproofing coating, 25 kg set, 2 kg/m² at 1 mm, for flexible, durable protection against water and c
+- **BC Seal** [1 skus]
+  - sizes: 30 kg set
+  - colors: Grey
+  - desc: BC Seal Two-component, acrylic-modified cementitious waterproofing coating, 30 kg set, 2 kg/m² at 1 mm, approx. 4.0 SAR/m², for flexible, durable protection aga
+- **BC Shield** [3 skus]
+  - sizes: 10 kg pail, 20 kg pail
+  - colors: Black, White
+  - desc: BC Shield One-component, cold-applied, moisture-triggered modified polyurethane waterproofing membrane, 20 kg pail, 19.0 m² at 500 µm, approx. 7.9 SAR/m², for s
+- **BC Tar Coat LC** [1 skus]
+  - sizes: 28 kg set
+  - colors: Black
+  - desc: BC Tar coat LC is a two-component, high-build coal tar modified epoxy coating, formulated to provide long-term protection to concrete and steel surfaces exposed
+- **BC Water Plug** [2 skus]
+  - sizes: 20 kg bag, 5 kg bag
+  - colors: Grey
+  - desc: BC Water Plug Fast-setting hydraulic cement for stopping leaks in concrete and masonry; ready-to-use, requiring only water for application. 20 kg bag.
+- **BC Wet Proof FD** [1 skus]
+  - sizes: 25 kg pail
+  - colors: Green
+  - desc: BC Wet Proof FD — Fast-drying, latex polymer-based waterproofing and crack isolation membrane, 20 kg and 25 kg packing, for use as underlayment or crack isolati
+- **BC Wet Proof** [1 skus] ⚠ NO-IMG,NO-TDS
+  - sizes: 20 kg pail
+  - colors: Green
+  - desc: BC Wet Proof FD — Fast-drying, latex polymer-based waterproofing and crack isolation membrane, 20 kg and 25 kg packing, for use as underlayment or crack isolati
+- **Geotextile** [1 skus]
+  - sizes: Roll
+  - desc: BC Geotextile 180 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works. It
+
+## Polyurea & Elastomeric Membranes (7)
+
+- **BC 237** [2 skus]
+  - sizes: 196 kg drum, 420 kg set
+  - colors: Clear
+  - desc: BC 237 Pure Polyurea Two-component, solvent-free, 100% solid, spray-applied polyurea waterproofing coating, 1 kg/m² at 1 mm, 420 kg kit (196 kg Polyol + 220 kg 
+- **BC 238 AL** [2 skus]
+  - sizes: 420 kg set
+  - colors: Clear
+  - desc: BC 238 AL Polyurea is 100% solids, fast-curing, two-component, UV-stable, aliphatic pure polyurea system. It is specially formulated to provide excellent color 
+- **BC 690 H** [2 skus]
+  - sizes: 196 kg drum, 420 kg set
+  - colors: Clear
+  - desc: BC 690H Hybrid Polyurea Two-component, solvent-free, high-build, elastomeric hybrid polyurea membrane, 1 kg/m² at 1 mm, 420 kg kit (196 kg Polyol + 220 kg Isocy
+- **BC 914 CA** [3 skus]
+  - sizes: 10 kg pail, 20 kg set
+  - colors: Clear, Grey
+  - desc: BC 914 CA Polyurea Two-component, pure aliphatic, brushable polyurea waterproofing coating, 20 kg set, 0.79 m²/kg at 1 mm thickness, approx. 45.5 SAR/m², provid
+- **BC AR** [2 skus]
+  - sizes: 196 kg drum, 420 kg set
+  - colors: Yellow
+  - desc: BC AR Polyurea is a fast-curing, 100% solid, two-component spray-applied polyurea coating engineered for advanced abrasion and impact resistance. It forms a sea
+- **BC WH Cold** [1 skus]
+  - sizes: 20 kg set
+  - colors: Clear
+  - desc: BC WH Cold Polyurea is a two-component, pure-grade, brush able polyurea waterproofing coating specially developed for concrete and metallic substrates requiring
+- **BC X5** [1 skus]
+  - sizes: 420 kg set
+  - colors: Clear
+  - desc: BC X5 Polyurea Hot-applied polyurea system that expands 4–5× after spraying, providing simultaneous surface preparation and waterproofing; applied with high-pre
+
+## Polyurethane Foam & Insulation (24)
+
+- **BC 601** [1 skus]
+  - sizes: 470 kg set
+  - colors: Yellow
+  - desc: BC 601 Foam System is a two-component flexible polyurethane foam system composed of BC 601 Polyol FG and BC 768 Isocyanate.
+- **BC 700** [1 skus]
+  - sizes: 470 kg set
+  - colors: Yellow
+  - desc: BC 700 Polyol & BC 768 Isocyanate together form a two-component polyurethane spray foam system designed to produce rigid foam with a density of 42–45 kg/m³. The
+- **BC 702 45** [2 skus]
+  - sizes: 220 kg drum, 470 kg set
+  - colors: Yellow
+  - desc: BC 702 Spray 45 Polyol Two-component spray foam system, 45 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with 
+- **BC 702 40 FR** [1 skus]
+  - sizes: 470 kg set
+  - colors: Yellow
+  - desc: BC 702 Spray 40 FR Polyol Two-component spray foam system, 40 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam wi
+- **BC 703 SWP** [2 skus]
+  - sizes: 220 kg drum, 470 kg set
+  - colors: Yellow
+  - desc: BC 703 Polyol Two-component, 141 B-based sandwich panel system, 42–45 kg/m³ density; reacts with BC 768 Isocyanate, 470 kg kit (220 kg Polyol + 250 kg Isocyanat
+- **BC 706 Continuous Line** [3 skus]
+  - sizes: 220 kg drum, 470 kg set
+  - colors: Yellow
+  - desc: BC 706 Polyol Three-component, cyclopentane-based continuous line sandwich panel system, 42–46 kg/m³ density; reacts with BC 768 Isocyanate (100+10/160 ratio), 
+- **BC 708** [2 skus]
+  - sizes: 220 kg drum, 470 kg set
+  - colors: Yellow
+  - desc: BC 708 Polyol & BC 768 Isocyanate form a two-component, 141B-blown polyurethane foam system designed for insulated water heaters and ice boxes. The system produ
+- **BC 709** [2 skus]
+  - sizes: 220 kg drum, 470 kg set
+  - colors: Yellow
+  - desc: It is a two component high density polyurethane system is typically designed for the production of wood made parts and other rigid systems. The resulted foam ha
+- **BC 710** [2 skus]
+  - sizes: 220 kg drum, 470 kg set
+  - colors: Yellow
+  - desc: It is a two component 141 B based polyisocyanurate (PIR) system which is typically designed to produce sandwich panel by discontinuous method. The resulted foam
+- **BC 711** [1 skus]
+  - sizes: 470 kg set
+  - colors: Yellow
+  - desc: BC 711 Polyol & BC 768 Isocyanate is a two-component, 141B-based polyurethane system formulated for discontinuous production of rigid PU foam. It delivers stron
+- **BC 713** [2 skus]
+  - sizes: 220 kg drum, 470 kg set
+  - colors: Yellow
+  - desc: BC 713 Foam System is a two-component flexible polyurethane foam system composed of BC 713 Polyol FG and BC 768 Isocyanate.
+- **BC 714** [2 skus]
+  - sizes: 220 kg drum, 470 kg set
+  - colors: Yellow
+  - desc: It is a two component,141 B based polyurethane system developed for manufacturing of rigid polyurethane foam when reacted with BC 768.It has been designed to pr
+- **BC 715** [2 skus]
+  - sizes: 220 kg drum, 470 kg set
+  - colors: Yellow
+  - desc: BC 715 Spray Polyol & BC 768 Isocyanate is a two-component, 141B-based spray polyurethane foam system designed to achieve a density of 48–50 kg/m³. It produces 
+- **BC 717 SWP** [2 skus]
+  - sizes: 220 kg drum, 470 kg set
+  - colors: Yellow
+  - desc: BC 717 Polyol Two-component, 141 B-based polyurethane system for sandwich panels, designed for 42–46 kg/m³ density; reacts with BC 768 Isocyanate (100/120 ratio
+- **BC 718** [2 skus]
+  - sizes: 220 kg drum, 470 kg set
+  - colors: Brown, Yellow
+  - desc: BC 718 Spray Polyol is designed for the production of sprayed foams for cavity filling, with an applied density of 45 kg/m3. The reaction of BC 718 Polyol and B
+- **BC 721 Continuous Line** [1 skus]
+  - sizes: 220 kg set
+  - colors: Yellow
+  - desc: BC721 Polyol Two-component, HCFC 141B-based continuous line sandwich panel system, 42–46 kg/m³ density; reacts with BC 768 Isocyanate (100/130 ratio), 470 kg ki
+- **BC 801** [2 skus]
+  - sizes: 6 kg carton, Pcs
+  - desc: BC 801P Single-component, moisture-curing polyurethane foam for thermal insulation, soundproofing, and gap filling; 500 ml cartridge, ready-to-use, self-expandi
+- **BC 805** [1 skus]
+  - sizes: Pcs
+  - desc: BC 805P is a single-component, moisture-curing polyurethane foam supplied in pre-pressurized aerosol cans. Upon dispensing, the foam reacts with atmospheric moi
+- **BC 808** [2 skus]
+  - sizes: 9 kg carton, Pcs
+  - desc: BC 808 P is a single-component, B2 class fire rated moisture-curing polyurethane foam supplied in pre-pressurized aerosol cans. Upon dispensing, the foam reacts
+- **BC Foam Concrete** [1 skus]
+  - sizes: 200 kg drum
+  - colors: White
+  - desc: BC Foam Concrete Engineered fill material with uniformly distributed air voids for geotechnical construction and mining; combines cement slurry with stable foam
+- **BC PIR Mm** [3 skus]
+  - sizes: 10.08 kg board, 2.01 kg board, 5.04 kg board
+  - colors: Yellow
+  - desc: BC PIR Board YELLOW 2cm (2400x1200x20 mm-FG) is a rigid, high-performance polyisocyanurate (PIR) insulation board with excellent thermal resistance. It is suita
+- **BC XPS 32 10cmx60cmx125cm** [1 skus]
+  - sizes: 2.5 kg board
+  - desc: XPS Board 32–35 kg/m³ (10 cm × 60 cm × 125 cm) is an extruded polystyrene insulation board designed for high compressive strength and low water absorption.It pr
+- **BC XPS 32 5cmx60cmx125cm** [1 skus] ⚠ NO-TDS
+  - sizes: 1.3 kg board
+  - desc: XPS Board 32–35 kg/m³ (5 cm × 60 cm × 125 cm) is an extruded polystyrene insulation board designed for high compressive strength and low water absorption.It pro
+- **BC XPS 32 7cmx60cmx125cm** [1 skus]
+  - sizes: 1.3 kg board
+  - desc: XPS Board 32–35 kg/m³ (7 cm × 60 cm × 125 cm) is an extruded polystyrene insulation board designed for high compressive strength and low water absorption.It pro
+
+## Flooring Systems (33)
+
+- **BC Poxy FC 145** [9 skus]
+  - sizes: 16 kg pail, 20 kg set, 4 kg can
+  - colors: Blue, Clear, Green, Grey, Traffic Blue
+  - desc: BC Epoxy FC 145 Two-component, solvent-free epoxy floor coating, 20 kg set, 0.28 kg/m² at 200 µm, one coat, approx. 4.9 SAR/m², for durable, chemical-resistant,
+- **BC Poxy Terrazo Topcoat** [1 skus]
+  - sizes: 4 kg set
+  - colors: Clear
+  - desc: BC Poxy Terrazzo Topcoat is a two-component, solvent-free, high-build epoxy finishing coat designed specifically for terrazzo flooring systems. It provides a du
+- **BC Epoxy SL 140** [1 skus]
+  - sizes: 20 kg set
+  - colors: Dark Grey, Grey
+  - desc: BC Epoxy SL 140 Dark Grey FG a 100% solids, high performance coating designed for concrete .BC EPOXY SL 140 is a self levelling coating which may be applied as 
+- **BC Floor 1000 SL** [1 skus]
+  - sizes: 15 kg set
+  - colors: Grey
+  - desc: BC Floor 1000 SL Two-component, solvent-free, pigmented epoxy self-smoothing floor system, 15 kg set, 0.8 kg/m² at 500 µm, one coat, approx. 21.3 SAR/m², for se
+- **BC Floor 2000 SL** [1 skus]
+  - sizes: 16 kg set
+  - colors: Grey
+  - desc: BC Floor 2000 SL System Two-component, solvent-free, pigmented epoxy self-smoothing floor topping, 16 kg set, 3.2 kg/m² at 2 mm, one coat, approx. 100 SAR/m², f
+- **BC Floor 3000 SL** [1 skus]
+  - sizes: 15 kg set
+  - colors: Grey
+  - desc: BC Floor 3000 SL GREY 15 KG SYSTEM - FG
+- **BC Floor 4000 SL** [2 skus]
+  - sizes: 27 kg set
+  - colors: Creamy, Grey
+  - desc: BC Floor 4000 SL Two-component, solvent-free, high-build, self-smoothing epoxy floor system, 27 kg set, 7.2 kg/m² at 4 mm, one coat, approx. 114 SAR/m², for sea
+- **BC Floor EPU 100** [1 skus]
+  - sizes: 20 kg set
+  - colors: White
+  - desc: BC Floor EPU 100 Two-component hybrid epoxy–polyurethane coating, 20 kg kit, providing excellent chemical, abrasion, and UV resistance for durable protection of
+- **BC Floor Premix** [1 skus]
+  - sizes: 25 kg bag
+  - colors: Grey
+  - desc: BC Floor Premix — Abrasion- and impact-resistant floor premix for heavy-duty surfaces such as warehouses, car parks, loading areas, and machine shops, providing
+- **BC Floor Traffic 520** [2 skus]
+  - sizes: 16 kg pail, 20 kg set
+  - colors: Grey
+  - desc: BC Floor Traffic 520 is a two-component, high-build, solvent-free epoxy coating formulated for heavy-duty traffic areas. It provides excellent abrasion, impact,
+- **BC Floor Traffic Matt** [1 skus]
+  - sizes: 20 kg set
+  - colors: Grey
+  - desc: BC Floor traffic Matt is a two-component, high-build, solvent-free epoxy coating formulated for heavy-duty traffic areas. It provides excellent abrasion, impact
+- **BC Novolac Mortar** [1 skus]
+  - sizes: 14.25 kg set
+  - colors: Grey
+  - desc: BC Novolac Mortar is a three component 100% solids, trowel-applied epoxy novolac system offering exceptional chemical and thermal resistance for concrete and ma
+- **BC Novoline 321** [1 skus] ⚠ NO-TDS
+  - sizes: 20 kg set
+  - colors: Grey
+  - desc: BCI Novoline 321 is a two-component, solvent-free, high-build epoxy novolac lining coat, designed for superior chemical resistance in aggressive environments. 2
+- **BC Poly SL** [1 skus]
+  - sizes: 15 kg set
+  - colors: Clear
+  - desc: BC POLY SL polyurethane based flooring system, which possess high tensile strength with excellent balance of elongation, abrasion resistance, hardness and sound
+- **BC Polyaspartic** [1 skus] ⚠ NO-TDS
+  - sizes: 20 kg set
+  - colors: Clear
+  - desc: BC POLYASPARTIC is a two-component, 100% solids polyaspartic polyurea coating formulated for high-performance concrete surfaces. It provides excellent gloss, su
+- **BC Poxy 250** [3 skus]
+  - sizes: 10.8 kg pail, 13.25 kg set
+  - colors: Green, Grey
+  - desc: BC Epoxy 250 Two-component, solvent-free, high-build epoxy protective coating, 13.25 kg set, 0.27 kg/m² at 200 µm, one coat, approx. 6.1 SAR/m², for durable, ch
+- **BC Poxy 254** [1 skus]
+  - sizes: 20 kg set
+  - colors: Clear
+  - desc: BC Poxy Clear 254 is a two-component, transparent, UV-resistant epoxy resin seal coat designed for smooth or broadcasted finishes. Suitable for hot and tropical
+- **BC Poxy 300 AS** [1 skus] ⚠ NO-TDS
+  - sizes: 20 kg set
+  - colors: Grey
+  - desc: BC Poxy 300 AS Two-component, self-smoothing, electrostatically conductive epoxy flooring system with excellent chemical and mechanical resistance; 20 kg set co
+- **BC Poxy 4500 S** [1 skus]
+  - sizes: 20 kg set
+  - colors: Grey
+  - desc: BC Epoxy 4500 S 100% solids, flake-filled premium epoxy coating for internal steel and concrete tanks, pipe linings, and marine structures in immersion and spla
+- **BC Poxy FC 140** [14 skus]
+  - sizes: 16 kg pail, 20 kg pail, 20 kg set, 4 kg can, Pail
+  - colors: Clear, Green, Grey, Orange, Pink
+  - desc: BC Epoxy FC 140 — Two-part, solvent-free, pigmented epoxy floor coating for durable and chemical-resistant surfaces, Coverage: 0.50–0.80 kg/m², Packing: 20 kg s
+- **BC Poxy FC 140 Screed** [1 skus]
+  - sizes: 27 kg set
+  - colors: Grey
+  - desc: BC Poxy FC 140 Screed is a high-performance, three-component system consisting of Epoxy Resin (Part A), Hardener (Part B), and Quartz Filler (Part C). The syste
+- **BC Poxy FC 140 SF** [1 skus] ⚠ NO-IMG,NO-TDS
+  - sizes: 20 kg set
+  - colors: Grey
+  - desc: BC Epoxy FC 140 SF — Two-part, solvent-free, pigmented epoxy floor coating for durable and chemical-resistant surfaces, Coverage: 0.50–0.80 kg/m², Packing: 20 k
+- **BC Poxy FC 145 Matt** [2 skus]
+  - sizes: 16 kg pail, 20 kg set
+  - colors: Grey
+  - desc: BC Epoxy FC 145 Two-component, solvent-free epoxy floor coating, 20 kg set, 0.28 kg/m² at 200 µm, one coat, approx. 4.9 SAR/m², for durable, chemical-resistant,
+- **BC Poxy FC 145 Screed** [3 skus]
+  - sizes: 2.41 kg can, 27.91 kg kit, Can
+  - colors: Clear, Creamy
+  - desc: BC Poxy FC 145 Screed is a three-component, solvent-free epoxy resin floor screed formulated with high-performance epoxy resins and specially graded aggregates.
+- **BC Poxy FC WB** [1 skus]
+  - sizes: 18.65 kg set
+  - colors: Grey
+  - desc: BC Poxy FC WB is a high-performance, two-component, water-based epoxy floor coating designed to provide a smooth, durable, and chemically resistant finish. It o
+- **BC Poxy Terazzo 1000 LV** [1 skus]
+  - sizes: 33.5 kg set
+  - colors: Clear
+  - desc: BC Poxy Mortar 1000 Three-component, solvent-free epoxy system (resin, hardener, quartz silica) for tough, resilient floor repairs and resurfacing; 100% solids,
+- **BC Poxy Terrazo 253** [1 skus]
+  - sizes: 30 kg set
+  - colors: Clear
+  - desc: BC Poxy Terrazo 253 (System) – FG Two-component, pigmented, solvent-free epoxy resin system (aggregates exclusive) designed for combining with selected mineral 
+- **BC PU Mortar** [1 skus]
+  - sizes: 30 kg set
+  - colors: Creamy
+  - desc: BC PU Mortar is a three-component, heavy-duty polyurethane mortar flooring system formulated for industrial environments requiring excellent chemical resistance
+- **BC Pucrete SF** [1 skus]
+  - sizes: 20.28 kg set
+  - colors: Grey
+  - desc: BC PUCRETE SF is a smooth, heavy-duty polyurethane-cement floor screed that provides excellent resistance to aggressive chemicals, heavy mechanical abrasion, an
+- **BC Pucrete TF** [1 skus]
+  - sizes: 28.58 kg set
+  - colors: Grey
+  - desc: BC PUcrete TF is a 6 mm flow-applied, lightly textured, heavy-duty polyurethane resin floor screed designed for rapid installation in fast-track construction an
+- **BC Terrazo Aggregates Colored** [1 skus]
+  - sizes: 25 kg bag
+  - desc: BC Terrazo aggregates a crushed and graded igneous aggregate, recommended for use wherever a hard, long wearing, heavy duty, decorative floor is required
+- **BC Tramark 350** [1 skus]
+  - sizes: 25 kg set
+  - colors: Grey
+  - desc: BC Tramark 350 Two-component, 100% solids, low-viscosity epoxy resin system, moisture-insensitive and multipurpose, applicable neat or filled, for strong adhesi
+- **BCI Non Slip Aggregate** [1 skus] ⚠ NO-TDS
+  - sizes: 25 kg bag
+  - colors: Brown
+  - desc: BCI Non-Slip Aggregate Crushed and graded igneous aggregate, 25 kg bag, #30–#8 size range, providing a hard, long-wearing, acid-resistant, non-slip surface for 
+
+## Protective & Industrial Coatings (35)
+
+- **BC Anti Carbo Finish** [1 skus]
+  - sizes: 20 kg pail
+  - colors: White
+  - desc: BC Anti Carbo Finish Single-component, acrylic elastomeric anti-carbonation coating used with BC Anti Carbo Primer; provides deep concrete penetration, water re
+- **BC Anti Carbo Primer** [1 skus]
+  - sizes: 20 kg pail
+  - colors: Clear
+  - desc: BC Anti-Carbo Primer is a single-component, ready-to-use silane–siloxane penetrating primer designed to protect reinforced concrete, bridge decks, pavements, pa
+- **BC Coat EPU 400** [3 skus]
+  - sizes: 20 kg set, Can
+  - colors: Clear, White
+  - desc: BC Coat EPU-400 is a two-component, solvent-free epoxy coating system designed for lining and waterproofing potable water retaining structures. The system consi
+- **BC Coat EPU** [1 skus]
+  - sizes: 20 kg set
+  - colors: White
+  - desc: BC Coat EPU is a two-component, flexible protective coating based on hybrid epoxy–polyurethane resins, designed for long-term protection of concrete and masonry
+- **BC Coat Protect** [1 skus]
+  - sizes: 20 kg pail
+  - colors: Grey
+  - desc: BC Coat Protect
+- **BC Coat SHF** [1 skus]
+  - sizes: 20 kg pail
+  - colors: Clear
+  - desc: BC Coat SHF is a water-based, sodium silicate concrete surface hardener, dust proofer, and curing aid designed to penetrate deeply into cementitious substrates.
+- **BC ECR Eps** [6 skus]
+  - sizes: 15 kg set, 16 kg pail, 20 kg set, 4 kg can
+  - colors: Clear, Grey
+  - desc: BC ECR EPS PART B 3 KG - FG Two-component epoxy–polysulfide modified coating, 20 kg set, 0.3–0.4 kg/m² at 300 µm, two coats, approx. 5.5–7.0 SAR/m², for durable
+- **BC Epoxy Primer 349** [1 skus]
+  - sizes: 15 kg set
+  - colors: Brown
+  - desc: BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethan
+- **BC Epoxy Primer 349 30** [1 skus]
+  - sizes: 30 kg set
+  - colors: Brown
+  - desc: BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethan
+- **BC Finish Glossy** [1 skus]
+  - sizes: 20 kg set
+  - colors: Clear
+  - desc: BC Finish Glossy is a two-component, high gloss, aliphatic polyurethane coating that combines acrylic and aliphatic polyurethane properties. It provides durable
+- **BC Finish Matt** [1 skus]
+  - sizes: 31.72 kg set
+  - colors: Clear
+  - desc: BC Finish Matt is a two-component, aliphatic polyurethane coating with a durable matt finish. It combines acrylic and aliphatic polyurethane properties to provi
+- **BC Fire Proof 5 GP** [1 skus]
+  - sizes: 20 kg bag
+  - colors: White
+  - desc: BC Fire Proof 5 GP Gypsum-based, spray-applied fire resistive material for interior structural steel protection, compliant with IBC requirements for buildings u
+- **BC Fix Primer** [2 skus]
+  - sizes: 20 kg pail
+  - colors: White, Yellow
+  - desc: BC Fix Primer is a high-performance, film-forming and penetrating silane siloxane primer designed to stabilize porous concrete and masonry surfaces prior to the
+- **BC GRP Line Primer** [2 skus]
+  - sizes: 20.44 kg set
+  - colors: Clear
+  - desc: BC Line GRP Primer is a three-pack, vinyl ester–based primer with inert fillers and fiberglass reinforcement, offering excellent chemical resistance for steel a
+- **BC GRP Line** [2 skus]
+  - sizes: 20.44 kg set
+  - colors: White
+  - desc: BC Line GRP White is a three-pack, high chemical-resistant vinyl ester lining with fiberglass reinforcement, ideal for tank and pipe interiors requiring superio
+- **BC GRP Matt** [1 skus]
+  - sizes: 47 kg roll
+  - desc: BC GRP Matt is a high-quality, non-woven glass fiber reinforcement mat manufactured from randomly oriented chopped glass filaments (approx. 50 mm) bonded togeth
+- **BC GRP Resin** [2 skus]
+  - sizes: 20.44 kg set
+  - colors: Purple
+  - desc: BC Line GRP Resin is a three-pack, high chemical-resistant vinyl ester lining with inert fillers and fiberglass reinforcement for steel and concrete surfaces, i
+- **BC MC Urethane** [1 skus]
+  - sizes: 20 kg pail
+  - colors: Black
+  - desc: BC MC Urethane is a single-component, moisture-curing polyurethane coating that forms a seamless, elastic, and durable membrane. Ideal as a topcoat over BCI Pol
+- **BC Poxy Primer 1000 LV** [1 skus]
+  - sizes: 12 kg set
+  - colors: Clear
+  - desc: BC Poxy Clear Resin 1000 LV is a modified, ultra-clear, low-viscosity epoxy resin designed for high-clarity applications including castings, coatings, laminates
+- **BC Poxy Primer 349** [1 skus]
+  - sizes: 30 kg set
+  - colors: Creamy
+  - desc: BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethan
+- **BC Poxy Primer 350** [1 skus]
+  - sizes: 15 kg set
+  - colors: Clear
+  - desc: BC Epoxy Primer 350 is a two-component, solvent-free, low-viscosity epoxy primer designed to penetrate deeply into concrete substrates, improving adhesion and s
+- **BC Poxy Zinc Rich 859** [1 skus]
+  - sizes: 2 kg set
+  - colors: Grey
+  - desc: BC Poxy Zinc Rich 859-FG Two-component, metallic zinc-rich epoxy primer, 2 kg set, 8 m²/L at 50 µm, one coat, approx. 11.3 SAR/m², for durable corrosion protect
+- **BC Prime CB 100** [1 skus]
+  - sizes: 20 kg bag
+  - desc: BC Prime CB 100 is a cement-based primer concentrate designed to regulate substrate absorption and enhance bonding for thin-coat finishing renders and decorativ
+- **BC Primer 349** [1 skus]
+  - sizes: 30 kg set
+  - colors: Clear
+  - desc: BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethan
+- **BC PU** [1 skus]
+  - sizes: 20 kg set
+  - colors: Clear
+  - desc: BC PU Clear
+- **BC PU Primer 810** [1 skus]
+  - sizes: 13.5 kg set
+  - colors: Cream
+  - desc: BC PU Primer 810 is a two-component polyurethane-based adhesion promoting primer specially designed for use with BC liquid-applied membrane systems. It is used 
+- **BC PU TC** [1 skus]
+  - sizes: 20 kg pail
+  - colors: Black
+  - desc: BC PU TC is a high-performance, single-component liquid polyurethane tack coat designed to provide excellent adhesion, flexibility, and waterproofing support fo
+- **BC PU Topcoat** [8 skus]
+  - sizes: 16 kg pail, 20 kg set, 4 kg can
+  - colors: Aluminium, Clear, White
+  - desc: BC PU TOPCOAT RAL 9006 ALUMINIUM 20 KG SYSTEM - is a high-performance, aliphatic polyurethane topcoat designed to provide long-lasting UV, chemical, and abrasio
+- **BC Road Mark** [1 skus]
+  - sizes: 4 kg can
+  - desc: BC Road Mark High-performance, hot-applied road marking compound, for durable, skid-resistant, and retro-reflective markings on asphalt and primed concrete, pro
+- **BC Seal Primer 175** [1 skus]
+  - sizes: 30 kg set
+  - colors: Clear
+  - desc: BC Seal Primer Two-part epoxy primer/sealer with excellent adhesion to concrete and steel, providing a durable base for chemically resistant coatings and toppin
+- **BC Sealer Matt** [1 skus] ⚠ NO-TDS
+  - sizes: 20 kg pail
+  - colors: Clear
+  - desc: BC Sealer Matt — One-component, water-based acrylic sealer, 20 kg, offering fast-drying, stain-resistant, and water-blush-resistant protection without solvent o
+- **BC Stone Protection** [2 skus]
+  - sizes: 10 kg pail, 20 kg pail
+  - colors: Clear
+  - desc: BC Stone Protection High-performance, solvent-based acrylic polymer sealer, 6–10 m²/L per coat, for exterior architectural concrete, exposed aggregate, and deco
+- **BC Stone Protection WB** [1 skus] ⚠ NO-TDS
+  - sizes: 20 kg pail
+  - colors: Clear
+  - desc: BC Stone Protection High-performance, solvent-based acrylic polymer sealer, 6–10 m²/L per coat, for exterior architectural concrete, exposed aggregate, and deco
+- **BC Tec Acrylic** [1 skus]
+  - sizes: 20 kg pail
+  - colors: White
+  - desc: BC Tec Acrylic One-component, water-based acrylic sealer, for fast-setting, stain-resistant, and water-blush-resistant protection of concrete and masonry surfac
+- **BC Tec Sealer 201** [1 skus] ⚠ NO-TDS
+  - sizes: 20 kg pail
+  - colors: White
+  - desc: BC Tec Sealer 201 One-component, non-yellowing acrylic copolymer sealer, 20 L pack, coverage approx. 2.8 m²/L at 100 µm (two coats), for clear, fast-drying prot
+
+## Concrete Repair & Surface Preparation (28)
+
+- **BC Acry Profile** [1 skus]
+  - sizes: 20 kg pail
+  - colors: Grey
+  - desc: BC Acry Profile is a premium decorative acrylic interior wall coating designed to create an elegant textured finish with subtle reflective effects. The coating 
+- **BC Block Mortar** [2 skus]
+  - sizes: 20 kg bag, 25 kg bag
+  - colors: Grey, White
+  - desc: BC Block Mortar is a high-performance, pre-blended hydraulic adhesive for AAC blocks, panels, and other lightweight masonry units. Composed of cement, graded ag
+- **BC EPR Injection** [1 skus]
+  - sizes: 3.7 kg set
+  - colors: Yellow
+  - desc: BC EPR Injection is a 100% reactive, two-component epoxy resin system formulated for pressure injection and sealing of fine cracks in concrete. It is a high-mod
+- **BC Finish 20 Plus** [1 skus]
+  - sizes: 25 kg bag
+  - colors: Grey
+  - desc: BC Finish 20 Plus is a high-quality, premixed, sprayable finishing render designed to achieve smooth, even, decorative, or creative textured finishes. Suitable 
+- **BC Level Screed** [1 skus]
+  - sizes: 20 kg bag
+  - colors: Grey
+  - desc: BC Level Screed One-component, cementitious self-leveling underlayment, 20 kg bag, 1.84 m² at 6 mm, for rapid-setting, smooth, and durable substrates under fina
+- **BC Micro Base** [1 skus]
+  - sizes: 20 kg bag
+  - colors: White
+  - desc: BC Micro Cement Base Mineral micro mortar with polymers, aggregates, and waterproof additives for preparing substrates and covering tile joints before applying 
+- **BC Micro Cement** [1 skus]
+  - sizes: 20 kg bag
+  - colors: Grey
+  - desc: BC Micro Cement One-component, ready-to-use polymer-cement system for jointless finishing on floors, walls, ceilings, countertops, showers, and swimming pools; 
+- **BC Plaster HT 150** [1 skus] ⚠ NO-IMG,NO-TDS
+  - sizes: 50 kg bag
+  - colors: Grey
+  - desc: BC PLASTER HT 150 GREY 50 KG - FG
+- **BC Plaster M** [4 skus]
+  - sizes: 25 kg bag, 40 kg bag, 50 kg bag
+  - colors: Grey, White
+  - desc: BC Plaster M is a factory-blended, cement-based plaster composed of hydraulic binders, graded aggregates, and performance additives, supplied as a ready-to-use 
+- **BC Plaster M LC** [2 skus]
+  - sizes: 40 kg bag, 50 kg bag
+  - colors: White
+  - desc: BC Plaster M LC is a high-quality, factory-blended, cement-based plastering material composed of hydraulic binders, well-graded aggregates, and performance-enha
+- **BC Plaster SM** [2 skus]
+  - sizes: 50 kg bag
+  - colors: Grey, White
+  - desc: BC PLASTER SM WHITE 50 KG - FG
+- **BC Poxy Mort 1000** [1 skus] ⚠ NO-TDS
+  - sizes: 13.45 kg set
+  - colors: Creamy
+  - desc: BC Poxy Mort 1000 is a three-component, 100% solids, high-modulus epoxy resin system specially formulated as a structural adhesive, patching, and repair mortar 
+- **BC Poxy Mort 1000 LV** [1 skus]
+  - sizes: 4 kg set
+  - colors: Clear
+  - desc: BC Poxy Mortar 1000 LV is a 100% reactive, low-viscosity, two-component, moisture-insensitive epoxy adhesive and binder designed for structural bonding, priming
+- **BC Poxy Mortar 5000** [1 skus]
+  - sizes: 33 kg set
+  - colors: Creamy
+  - desc: BC Mortar 5000
+- **BC Poxy Putty 2000** [2 skus]
+  - sizes: 3 kg set, 9.7 kg set
+  - colors: Grey
+  - desc: BC Poxy Putty 2000 Two-component, high-strength epoxy putty, 3 kg set yielding 1.75 L, for durable bonding, bedding, and concrete repair applications.
+- **BC Poxy Putty 3000** [1 skus]
+  - sizes: 9.9 kg set
+  - colors: Grey
+  - desc: BC Putty 3000 Two-component, high-strength, non-slumping epoxy putty for use as a bedding, adhesive, or repair material; 10 kg kit provides a tough, resilient f
+- **BC Poxy Putty 4000** [1 skus]
+  - sizes: 3 kg set
+  - colors: Grey
+  - desc: BC Poxy Putty 4000 Two-component, high-strength epoxy putty, 3 kg set yielding 1.75 L, for durable bonding, bedding, and concrete repair applications.
+- **BC Profile Lora** [1 skus]
+  - sizes: 30 kg pail
+  - colors: Grey
+  - desc: BC Profile Lora is a premium-grade, ready-to-use decorative wall finish formulated with multiple homogeneous fillers that create a unique textured spectrum effe
+- **BC Repair 100** [1 skus]
+  - sizes: 20 kg bag
+  - colors: Grey
+  - desc: BC Repair 100 High-quality, water-resistant cementitious repair mortar, 20 kg bag, 1.10 m² at 10 mm, one coat, for durable crack and surface repair up to 4 mm w
+- **BC Repair 101** [1 skus]
+  - sizes: 20 kg bag
+  - colors: Grey
+  - desc: BC Repair 101 is a one-component, cement-based, micro silica and latex modified, non-sag repair mortar. It is specially designed for trowel-applied vertical and
+- **BC Repair 200** [1 skus]
+  - sizes: 20 kg bag
+  - colors: Grey
+  - desc: BC Repair 200 High-quality, water-resistant cementitious repair mortar, 20 kg bag, for durable patching and crack filling up to 4 mm width on concrete surfaces,
+- **BC Repair FC** [2 skus]
+  - sizes: 20 kg bag
+  - colors: Grey, White
+  - desc: BC Repair FC is a single-component, polymer-modified, water-resistant fine repair mortar formulated from high-quality Portland cement, precisely graded limeston
+- **BC Rock Plus Ultra** [1 skus]
+  - sizes: 20 kg bag
+  - colors: Grey
+  - desc: BC Rock Plus Ultra Ultra high-performance crystallizing waterproof coating with osmotic properties and zero water permeability; enhanced pozzolanic reaction ens
+- **BC Spatter Dash RF** [1 skus]
+  - sizes: 50 kg bag
+  - colors: Grey
+  - desc: BC Spatter Dash RF is a cementitious scratch coat formulated to provide a strong bonding key for plaster on smooth or dense substrates. It contains hydraulic bi
+- **BC Spatter Dash ZM** [1 skus] ⚠ NO-TDS
+  - sizes: 50 kg bag
+  - colors: Grey
+  - desc: BC Spatter Dash ZM GREY 50 KG - FG
+- **BC Straw Finish** [1 skus]
+  - sizes: 25 kg pail
+  - colors: Brown, Light Brown
+  - desc: BC Straw Finish is a two-component traditional decorative coating based on high-quality acrylic emulsion. It provides a natural clay-style appearance resembling
+- **BC Surfa Plast** [1 skus]
+  - sizes: 20 kg bag
+  - colors: Grey
+  - desc: BC Surfa Plast 100 — Fiber-reinforced, heavy-duty plaster for durable, crack-free surfaces; ideal for facades and high-strength, long-lasting plastering applica
+- **BCI HMP** [1 skus]
+  - sizes: 20 kg bag
+  - colors: White
+  - desc: BC HMP is a high-performance, modified ethyl-vinyl-acetate (EVA) copolymer hot-melt adhesive supplied in pellet form. It is designed to create a strong bond bet
+
+## Tile Adhesives, Grouts & Anchors (14)
+
+- **BC Fix HF 60** [1 skus]
+  - sizes: 20 kg bag
+  - colors: Grey
+  - desc: BC Fix HF 60 High-performance mortar for embedding reinforcement mesh and fixing insulation boards on EPS, XPS, mineral wool, and smooth low-absorbent surfaces 
+- **BC Fix TH 100** [1 skus]
+  - sizes: 20 kg bag
+  - colors: Grey
+  - desc: BC Fix TH 100 High-performance, cement-based bonding mortar for fixing thermal insulation boards on walls, offering excellent adhesion and long open time for ex
+- **BC Marbel Adhesive** [1 skus]
+  - sizes: 20 kg bag
+  - colors: White
+  - desc: BC Marble Adhesive is a high-strength, cement-based adhesive designed for bonding marble, granite, and natural stones. It provides excellent adhesion, durabilit
+- **BC PE Grout** [1 skus]
+  - sizes: 5 kg set
+  - colors: Grey
+  - desc: BC PE Grout Two-component, polyester resin-based anchoring grout, supplied as resin and catalyzed filler, mixed to form a pourable or pumpable dark grey grout f
+- **BC Pool Fix** [1 skus] ⚠ NO-TDS
+  - sizes: 20 kg bag
+  - colors: White
+  - desc: BC POOL Fix is a high-performance, polymer-modified, cementitious tile adhesive designed for permanent installation of ceramic, porcelain, mosaic, quarry, artif
+- **BC Poxy Grout 252** [1 skus]
+  - sizes: 27 kg set
+  - colors: Dark Grey, Grey
+  - desc: BC Poxy Grout 252 High-strength, three-component, solvent-free epoxy grouting system, 0.56 m² at 25 mm thickness per 27 kg kit, designed for precision grouting 
+- **BC Tec Cem Grout** [1 skus]
+  - sizes: 20 kg bag
+  - colors: Grey
+  - desc: BC TEC CEM GROUT is a high-strength, non-shrink, cementitious grout with natural aggregates and controlled expansion for durable, non-staining applications. Sup
+- **BC Tile Adhesive Pro L** [2 skus]
+  - sizes: 50 kg bag
+  - colors: Grey, White
+  - desc: BC Tile Adhesive Pro L is a high-performance, polymer-modified cementitious dry-set mortar for fixing ceramic, porcelain, mosaic, quarry, terrazzo, and artifici
+- **BC Tile Adhesive Pro Y** [1 skus]
+  - sizes: 20 kg bag
+  - colors: White
+  - desc: BC Tile Adhesive PRO WHITE 20 KG Y -FG
+- **BC Tile Adhesive Pro** [2 skus]
+  - sizes: 20 kg bag, 50 kg bag
+  - colors: White
+  - desc: BC Tile Adhesive Pro is a high-performance, polymer-modified cementitious dry-set mortar for fixing ceramic, porcelain, mosaic, quarry, terrazzo, and artificial
+- **BC Tile Fix Plus** [1 skus]
+  - sizes: 20 kg bag
+  - colors: Grey
+  - desc: BC Tile Fix Plus is an ultra-high-performance, rapid-curing, one-component, polymer-modified cementitious tile adhesive. It is formulated using premium-grade ce
+- **BC Tile Fix Prime** [3 skus]
+  - sizes: 20 kg bag, 50 kg bag
+  - colors: Grey, White
+  - desc: BC Tile Fix Prime Single-component, pre-packed, polymer-modified cementitious tile adhesive formulated with graded silica sand and special additives to provide 
+- **BC Tile Grout** [7 skus]
+  - sizes: 20 kg bag
+  - colors: Biege, Black, Brown, Cream, Dark Brown, Grey, White
+  - desc: BC Tile Grout One-component, cementitious, pre-packed grout with pigments and admixtures, for filling tile joints and providing durable, stable, and aesthetical
+- **BC Tile Poxy 252** [1 skus] ⚠ NO-TDS
+  - sizes: 20 kg set
+  - colors: Grey
+  - desc: BC Tile Poxy 252 Three-component, solvent-free, high-strength epoxy adhesive and grouting system, 20 kg set, 3.3 m² at 3 mm, one coat, approx. 90.9 SAR/m², for 
+
+## Sealants, Joints & Adhesives (13)
+
+- **BC 705 Adh** [1 skus]
+  - sizes: 220 kg drum
+  - colors: Yellow
+  - desc: BC PU Adhesive 70 Two-component, water-based polyurethane adhesive system formulated for bonding metal-to-metal or foam-to-metal sheets; produces 70 kg/m³ densi
+- **BC Backing Rods** [1 skus] ⚠ NO-IMG
+  - sizes: Roll
+  - desc: BC Backing Rods are flexible, closed-cell polyethylene foam rods used as a backing material to control sealant depth in joints. They provide uniform joint geome
+- **BC Bond Liquid** [1 skus]
+  - sizes: 20 kg pail
+  - colors: White
+  - desc: BC BOND Liquid-FG An admixture and bonding agent for cementitious materials
+- **BC Bond Super** [1 skus]
+  - sizes: 20 kg pail
+  - colors: White
+  - desc: BC Bond Super is a high-quality polyvinyl acetate (PVA) emulsion adhesive designed for use as a bonding agent, surface sealer, primer, and admixture for cement 
+- **BC Bond XP** [1 skus]
+  - sizes: 20 kg pail
+  - colors: White
+  - desc: BC Bond XP is a high-performance acrylic polymer emulsion designed for use as an adhesive and admixture in cementitious systems. It enhances the properties of c
+- **BC Mix SBR** [1 skus]
+  - sizes: 20 kg pail
+  - colors: White
+  - desc: BC Mix SBR is a carbonylated styrene–butadiene co-polymer latex admixture formulated to enhance the properties of cementitious mixes such as mortars, screeds, r
+- **BC PVA Bond** [1 skus] ⚠ NO-TDS
+  - sizes: 20 kg pail
+  - colors: White
+  - desc: BC PVA Bond Polyvinyl acetate-based polyvinyl alcohol suspension for surface sealing, bonding, and as a cement/mortar admixture. 20 kg pail.
+- **BC S900** [1 skus] ⚠ NO-TDS
+  - sizes: Pcs
+  - colors: Grey
+  - desc: BC Sili-900 — One-part, chemical-resistant silicone sealant for movement joints in aggressive chemical environments, providing excellent adhesion and long-term 
+- **BC Tec 30S** [3 skus]
+  - sizes: 600 kg pcs, Pcs, Sauge
+  - colors: Black, Grey, White
+  - desc: BCI TEC30 S One-component, moisture-curing, non-sag polyurethane joint sealant, for elastic, tough, and resilient sealing with excellent recovery, suitable for 
+- **BC Tec 80A** [1 skus]
+  - sizes: Sauge
+  - desc: BC TEC 80A is a one-part Water Based Acrylic Sealant primarily designed to seal internal low movement joints. It exhibits good adhesion to a wide variety of com
+- **BC Tec 90** [1 skus] ⚠ NO-IMG,NO-TDS
+  - sizes: 7.2 kg carton
+  - colors: White
+  - desc: BC TEC 90 A WHITE 600 ML CARTON - FG
+- **BC Tec PS PG** [1 skus]
+  - sizes: 4 kg set
+  - colors: White
+  - desc: BC Tec PSG Cross-linking, polysulphide-based elastic sealant for horizontal expansion joints, providing excellent flexibility, weather resistance, and durabilit
+- **BC Vinyl Adhesive** [1 skus]
+  - sizes: 20 kg pail
+  - colors: White
+  - desc: BC Vinyl Adhesive High-tack, very low VOC acrylic adhesive for vinyl flooring installation, 20 kg set, 5 m²/kg coverage, approx. 3.5 SAR/m², for strong, water-r
+
+## Admixtures, Curing & Construction Aids (20)
+
+- **BC Admix 31** [1 skus] ⚠ NO-IMG,NO-TDS
+  - sizes: 1170 kg ibc
+  - colors: Brown, Dark Brown
+  - desc: BC Admix 31 is a high-performance, ready-to-use, liquid admixture formulated from modified lignosulfonate compounds and organic salts. It acts as both a water-r
+- **BC Chem Sol 101** [1 skus]
+  - sizes: 20 kg pail
+  - colors: Clear
+  - desc: BC Chemsol 101 Thinner is a proprietary solvent blend formulated to optimize flow and viscosity in BCI waterproofing and coating systems. It also serves as an e
+- **BC Cure 311** [1 skus] ⚠ NO-TDS
+  - sizes: 200 kg drum
+  - colors: White
+  - desc: BC Cure 311 White, low-viscosity curing compound with alkali-reactive emulsion breaking system that forms a continuous film on cement surfaces to prevent water 
+- **BC Elastivator** [1 skus]
+  - sizes: 20 kg pail
+  - colors: Clear
+  - desc: BC Elastivator Highly reactive, fast-evaporating solvent with exceptional solvency, for softening synthetic elastomers and coatings, supplied as a pure liquid w
+- **BC Elasto Plus** [1 skus]
+  - sizes: 25 kg bag
+  - colors: Brown
+  - desc: BC Elasto Plus — Premixed cementitious blend for geothermal well filling, 25 kg, composed of blast furnace cement, bentonite, high-plasticity additives, and sel
+- **BC Methylene Chloride** [2 skus]
+  - sizes: 10 kg pail, 250 kg drum
+  - colors: Clear
+  - desc: BC Methylene Chloride-FG colorless, volatile liquid with a moderately sweet aroma. It is widely used as a solvent in industrial and laboratory settings, especia
+- **BC Pigment Paste** [5 skus] ⚠ NO-TDS
+  - sizes: 4 kg can
+  - colors: Grey, White
+  - desc: BC Pigment Paste is a concentrated pigment paste based on high-quality resin and selected color pigments. It is formulated for tinting polyurea, polyurethane (P
+- **BC Pipe Kleen** [1 skus]
+  - sizes: 20 kg pail
+  - colors: Pink
+  - desc: BC Pipe Kleen is a colored, inhibited liquid acid cleaner with a pleasant odor. It is specially formulated as a safe replacement for conventional muriatic acid,
+- **BC Plast 505** [1 skus]
+  - sizes: 200 kg drum
+  - colors: Brown, Dark Brown
+  - desc: BC Plast 505 High-range water-reducing concrete admixture, added at 0.6–1.5 L per 100 kg cement, for high water reduction, improved strength, and extended slump
+- **BC Sand Bond 2** [1 skus]
+  - sizes: 1000 kg ibc
+  - colors: White
+  - desc: BC Sand Bond 2 WHITE (1000 kg-FG) is a high-strength, polymer-modified sand stabilizer designed to bind and harden loose sand surfaces. It provides long-lasting
+- **BC Sand Bond EG** [1 skus]
+  - sizes: 1000 kg ibc
+  - colors: White
+  - desc: BC Sand Bond EG WHITE (1000 kg-FG) is an environmentally friendly, polymer-based sand binder that stabilizes loose sand and controls dust. It forms a flexible, 
+- **BC Sand Stabilizer SG** [1 skus]
+  - sizes: 1000 kg ibc
+  - colors: White
+  - desc: BC Sand Stabilizer SG WHITE (1000 kg-FG) is a high-performance, polymer-based binder designed to stabilize loose sand, reduce erosion, and control dust. It crea
+- **BC Gun** [1 skus] ⚠ NO-IMG,NO-TDS
+  - sizes: Pcs
+  - desc: BC Spray Gun
+- **BC Straw Fiber** [2 skus] ⚠ NO-TDS
+  - sizes: 5 kg bag, Bag
+  - colors: Yellow
+  - desc: BC Straw Fiber is a specially processed natural fiber additive used to create textured, rustic, and decorative finishes in acrylic coating systems.
+- **BC Tec 505 TP** [1 skus]
+  - sizes: 1200 kg ibc
+  - colors: Brown, Dark Brown
+  - desc: BC Tec 505 TP is a high-performance, high-range water-reducing, slump-retaining, and retarding super plasticizing admixture specially designed for long-distance
+- **BC Tec Cleaner** [1 skus]
+  - sizes: 20 kg pail
+  - colors: Pink
+  - desc: BC Tec Cleaner-1 is a specially inhibited, colored liquid acid cleaner with a pleasant odor. It is a safer replacement for traditional muriatic acid, producing 
+- **BC Tec Corrosion Inhibitor** [1 skus]
+  - sizes: 1290 kg ibc
+  - colors: Clear
+  - desc: BC Tec Corrosion Inhibitor is a chloride-free, ready-to-use aqueous solution of Calcium Nitrite, formulated to provide corrosion protection to reinforcing steel
+- **BC Tec Mar Release** [2 skus]
+  - sizes: 20 kg pail, 850 kg ibc
+  - colors: Brown
+  - desc: BC Tec Marlease Specially formulated blend of volatile hydrocarbons and fatty acids, providing superior Mould release performance, 60 m²/L on steel and 10 m²/L 
+- **BC Thinner 101** [1 skus] ⚠ NO-TDS
+  - sizes: 20 kg pail
+  - colors: Clear
+  - desc: BC Thinner 101 is a highly reactive, low-boiling, fast-evaporating solvent with exceptional solvency power. It softens many synthetic elastomers, coatings, and 
+- **BC Tool Cleaner** [2 skus]
+  - sizes: 20 kg pail, 200 kg drum
+  - colors: Clear
+  - desc: BC Tool Cleaner is a highly reactive, low-boiling, fast-evaporating solvent with excellent solvency power. It is designed for effective cleaning of tools, equip

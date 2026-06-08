@@ -534,13 +534,14 @@ function SolutionsDropdown({ cat, setCat, isAr, onNav }) {
         </a>
       </div>
 
-      {/* Product flyout */}
+      {/* Product flyout — a short, two-column teaser; the full list lives on the
+          detail page (43-item lines were running off the bottom of the screen). */}
       <div style={{
-        width: 300, alignSelf: 'stretch', background: 'var(--bci-paper-pure)',
+        width: 460, alignSelf: 'stretch', background: 'var(--bci-paper-pure)',
         borderTop: '2px solid var(--bci-green-500)', borderRight: '1px solid var(--bci-hairline-light)',
         borderBottom: '1px solid var(--bci-hairline-light)',
         borderLeft: isAr ? '1px solid var(--bci-hairline-light)' : 'none',
-        padding: '18px 22px'
+        padding: '18px 22px', display: 'flex', flexDirection: 'column'
       }}>
         <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 14 }}>
           <div className="eyebrow" style={{ color: 'var(--bci-green-600)', fontSize: 10 }}>
@@ -548,22 +549,32 @@ function SolutionsDropdown({ cat, setCat, isAr, onNav }) {
           </div>
           <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 10, color: 'var(--bci-steel)' }}>{active.products.length}</span>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          {active.products.map((p) =>
-          <a key={p.code} href={`Solution Detail.html?cat=${active.slug}`} onClick={onNav}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px 8px', flex: 1, alignContent: 'start' }}>
+          {active.products.slice(0, 12).map((p) =>
+          <a key={p.code} href={`Solution Detail.html?cat=${active.slug}`} onClick={onNav} title={(p[lang] || p.en).name}
           style={{
-            display: 'flex', alignItems: 'center', gap: 10, padding: '8px 10px', borderRadius: 2,
+            display: 'flex', alignItems: 'center', gap: 8, padding: '7px 9px', borderRadius: 2, minWidth: 0,
             textDecoration: 'none', color: 'var(--bci-navy)', transition: 'background 100ms linear'
           }}
           onMouseEnter={(e) => e.currentTarget.style.background = 'var(--bci-concrete)'}
           onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}>
-              <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 9.5, color: 'var(--bci-steel)', minWidth: 62, letterSpacing: '0.04em', flexShrink: 0 }}>{p.code}</span>
-              <span style={{ fontSize: 13, fontWeight: 500, fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-sans)', whiteSpace: 'nowrap' }}>
+              <span style={{ fontSize: 12.5, fontWeight: 500, fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-sans)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', minWidth: 0 }}>
                 {(p[lang] || p.en).name}
               </span>
             </a>
           )}
         </div>
+        <a href={`Solution Detail.html?cat=${active.slug}`} onClick={onNav} style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8,
+          marginTop: 12, paddingTop: 12, borderTop: '1px solid var(--bci-hairline-light)',
+          textDecoration: 'none', color: 'var(--bci-green-700)',
+          fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500
+        }}>
+          {active.products.length > 12
+            ? t(lang, `View all ${active.products.length} products`, `عرض كل ${active.products.length} منتجًا`, `Ver los ${active.products.length} productos`)
+            : t(lang, 'View line', 'عرض الخط', 'Ver línea')}
+          <span className="flip-rtl" style={{ display: 'inline-flex' }}><Arrow size={13} /></span>
+        </a>
       </div>
     </div>);
 
@@ -679,8 +690,7 @@ function Footer() {
     links: [
     { en: 'TDS Library', ar: 'مكتبة النشرات الفنية', es: 'Biblioteca Fichas Técnicas', href: 'Resources.html' },
     { en: 'SDS Library', ar: 'مكتبة نشرات السلامة', es: 'Biblioteca Fichas Seguridad', href: 'Resources.html' },
-    { en: 'Product Catalog', ar: 'دليل المنتجات', es: 'Catálogo de Productos', href: 'Resources.html' },
-    { en: 'Certifications', ar: 'الشهادات', es: 'Certificaciones', href: 'Resources.html' }]
+    { en: 'Method Statements', ar: 'بيانات الطريقة', es: 'Procedimientos de Aplicación', href: 'Resources.html' }]
 
   },
   {

@@ -1,5 +1,5 @@
 /* global React, ReactDOM, LangProvider, useLang, t, Icon, Arrow,
-   MegaHeader, PageHero, CtaBand, Footer, RESOURCES, RESOURCE_TYPES */
+   MegaHeader, PageHero, CtaBand, Footer, RESOURCES, RESOURCE_TYPES, DOC_BASE */
 const { useState: useState_r } = React;
 
 function ResourcesPage() {
@@ -15,8 +15,6 @@ function ResourcesPage() {
     return okType && okQ;
   });
 
-  const catalog = RESOURCES.find(r => r.code === 'BCI' && r.type === 'catalog');
-
   return (
     <main>
       <PageHero
@@ -26,33 +24,10 @@ function ResourcesPage() {
         titleAr="مكتبة الوثائق."
         titleEs="Biblioteca de documentación."
         subtitle={t(lang,
-          'Technical data sheets, safety data sheets, catalogs, method statements and certifications — everything you need to specify and apply BCI systems.',
-          'النشرات الفنية ونشرات السلامة والكتالوجات وبيانات الطريقة والشهادات — كل ما تحتاجه لمواصفة وتطبيق أنظمة BCI.',
-          'Fichas técnicas, fichas de seguridad, catálogos, procedimientos de aplicación y certificaciones — todo lo que necesitas para especificar y aplicar los sistemas BCI.')}
+          'Technical data sheets, safety data sheets and method statements — everything you need to specify and apply BCI systems.',
+          'النشرات الفنية ونشرات السلامة وبيانات الطريقة — كل ما تحتاجه لمواصفة وتطبيق أنظمة BCI.',
+          'Fichas técnicas, fichas de seguridad y procedimientos de aplicación — todo lo que necesitas para especificar y aplicar los sistemas BCI.')}
       />
-
-      {/* Featured catalog */}
-      <section style={{ background: 'var(--bci-navy-800)', padding: '40px 0' }}>
-        <div className="container">
-          <a href="#lib" style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 24,
-            background: 'var(--bci-navy)', border: '1px solid var(--bci-navy-tint)', borderRadius: 2,
-            padding: '28px 32px', textDecoration: 'none', flexDirection: isAr ? 'row-reverse' : 'row',
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 24, flexDirection: isAr ? 'row-reverse' : 'row' }}>
-              <div style={{ width: 56, height: 56, border: '1px solid var(--bci-green-500)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--bci-green-400)', flexShrink: 0 }}>
-                <Icon name="book" size={26} />
-              </div>
-              <div style={{ textAlign: isAr ? 'right' : 'left' }}>
-                <div className="eyebrow" style={{ color: 'var(--bci-green-400)', marginBottom: 8 }}>{t(lang, 'Featured', 'مميّز', 'Destacado')}</div>
-                <div style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 700, fontSize: 24, color: '#fff' }}>{catalog[lang]}</div>
-                <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, color: 'rgba(255,255,255,0.5)', marginTop: 6 }}>{catalog.fmt} · {catalog.size}</div>
-              </div>
-            </div>
-            <span className="btn btn-accent"><Icon name="download" size={14} /> {t(lang, 'Download', 'تحميل', 'Descargar')}</span>
-          </a>
-        </div>
-      </section>
 
       {/* Library */}
       <section id="lib" style={{ background: 'var(--bci-concrete)', padding: '72px 0 120px', scrollMarginTop: 72 }}>
@@ -112,8 +87,9 @@ function DocRow({ r, last }) {
   const isAr = lang === 'ar';
   const [hover, setHover] = useState_r(false);
   const meta = RESOURCE_TYPES.find(t2 => t2.id === r.type);
+  const href = (typeof DOC_BASE !== 'undefined' ? DOC_BASE : '') + r.url;
   return (
-    <a href="#download" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
+    <a href={href} target="_blank" rel="noopener" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
       style={{
         display: 'flex', alignItems: 'center', gap: 20, padding: '18px 24px', textDecoration: 'none',
         borderBottom: last ? 'none' : '1px solid var(--bci-hairline-light)',
@@ -126,7 +102,7 @@ function DocRow({ r, last }) {
       <div style={{ flex: 1, textAlign: isAr ? 'right' : 'left' }}>
         <div style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-sans)', fontSize: 15, fontWeight: 600, color: 'var(--bci-navy)' }}>{r[lang]}</div>
         <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.06em', color: 'var(--bci-steel)', marginTop: 4, textTransform: 'uppercase' }}>
-          {t(lang, meta.en, meta.ar, meta.es)} · {r.fmt} · {r.size}
+          {t(lang, meta.en, meta.ar, meta.es)} · {r.fmt}{r.size ? ' · ' + r.size : ''}
         </div>
       </div>
       <span style={{ color: hover ? 'var(--bci-green-600)' : 'var(--bci-steel)', display: 'inline-flex', alignItems: 'center', gap: 8, fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500 }}>

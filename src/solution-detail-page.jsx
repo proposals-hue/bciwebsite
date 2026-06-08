@@ -2,6 +2,27 @@
    MegaHeader, PageHero, CtaBand, Footer, SOLUTIONS */
 const { useState: useState_d } = React;
 
+/* Real product photo (lazy-loaded, compressed local asset) with a graceful
+   icon fallback for the few products that have no image in the ERP. */
+function ProductImg({ src, alt, icon }) {
+  const [err, setErr] = useState_d(false);
+  // Square frame so the full product (tall drums, pails, rolls) is shown
+  // uncropped — images are centred and contained, never clipped.
+  const box = {
+    width: '100%', aspectRatio: '1 / 1', marginBottom: 22,
+    background: '#fff', border: '1px solid var(--bci-hairline-light)', borderRadius: 2,
+  };
+  if (!src || err) {
+    return (
+      <div style={{ ...box, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--bci-steel-300)' }}>
+        <Icon name={icon || 'flask'} size={34} />
+      </div>
+    );
+  }
+  return <img src={src} alt={alt} loading="lazy" onError={() => setErr(true)}
+    style={{ ...box, display: 'block', objectFit: 'contain', padding: 12 }} />;
+}
+
 function getCat() {
   try {
     const slug = new URLSearchParams(location.search).get('cat');
@@ -81,7 +102,7 @@ function SolutionDetailPage() {
               <span className="sec-num" style={{ color: 'var(--bci-steel)' }}>{String(s.products.length).padStart(2, '0')} {t(lang, 'items', 'عنصر', 'artículos')}</span>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
-              {s.products.map(p => <DetailCard key={p.code} p={p} />)}
+              {s.products.map(p => <DetailCard key={p.code} p={p} icon={s.icon} />)}
             </div>
           </div>
         </div>
@@ -90,10 +111,11 @@ function SolutionDetailPage() {
   );
 }
 
-function DetailCard({ p }) {
+function DetailCard({ p, icon }) {
   const { lang } = useLang();
   const isAr = lang === 'ar';
   const [hover, setHover] = useState_d(false);
+  const sizes = p.sizes || (p.size ? [p.size] : []);
   return (
     <article onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
       style={{
@@ -101,40 +123,41 @@ function DetailCard({ p }) {
         borderRadius: 2, padding: 26, display: 'flex', flexDirection: 'column',
         transition: 'border-color 120ms linear', textAlign: isAr ? 'right' : 'left',
       }}>
-      {/* Product picture — user-fillable. Keyed by product code so the same
-          photo shows wherever the product appears. */}
-      <image-slot
-        id={`prod-${p.code.replace(/[^a-z0-9]/gi, '-')}`}
-        shape="rounded" radius="2" fit="cover"
-        placeholder={t(lang, 'Drop product photo', 'أضف صورة المنتج', 'Añade foto del producto')}
-        style={{ display: 'block', width: '100%', height: 168, marginBottom: 22, background: 'var(--bci-concrete)', border: '1px solid var(--bci-hairline-light)' }}
-      ></image-slot>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 14, flexDirection: isAr ? 'row-reverse' : 'row' }}>
-        <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--bci-navy-400)', fontWeight: 500 }}>{p.code}</span>
-        <Icon name="flask" size={16} stroke="var(--bci-steel-300)" />
-      </div>
+      <ProductImg src={p.img} alt={p[lang].name} icon={icon} />
       <h3 style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 600, fontSize: 22, color: 'var(--bci-navy)', margin: '0 0 10px', lineHeight: 1.15 }}>{p[lang].name}</h3>
       <p style={{ fontSize: 14, lineHeight: 1.55, color: 'var(--bci-steel)', margin: '0 0 18px', flex: 1 }}>{p[lang].desc}</p>
-      {/* Pack size */}
-      {p.size && (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 18, padding: '11px 13px', background: 'var(--bci-concrete)', border: '1px solid var(--bci-hairline-light)', borderRadius: 2, flexDirection: isAr ? 'row-reverse' : 'row' }}>
-          <Icon name="package" size={15} stroke="var(--bci-steel)" />
-          <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--bci-steel)' }}>{t(lang, 'Pack size', 'حجم العبوة', 'Tamaño de envase')}</span>
-          <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 13, letterSpacing: '0.02em', color: 'var(--bci-navy)', fontWeight: 600, marginInlineStart: 'auto' }}>{p.size}</span>
+      {/* Pack sizes (one row per available size from the ERP) */}
+      {sizes.length > 0 && (
+        <div style={{ marginBottom: 16, padding: '11px 13px', background: 'var(--bci-concrete)', border: '1px solid var(--bci-hairline-light)', borderRadius: 2 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: sizes.length ? 8 : 0, flexDirection: isAr ? 'row-reverse' : 'row' }}>
+            <Icon name="package" size={14} stroke="var(--bci-steel)" />
+            <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--bci-steel)' }}>{t(lang, 'Pack sizes', 'أحجام العبوات', 'Tamaños de envase')}</span>
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, justifyContent: isAr ? 'flex-end' : 'flex-start' }}>
+            {sizes.map(sz => (
+              <span key={sz} style={{ fontFamily: 'var(--ff-mono)', fontSize: 12, letterSpacing: '0.02em', color: 'var(--bci-navy)', fontWeight: 600, background: '#fff', border: '1px solid var(--bci-hairline-light)', borderRadius: 2, padding: '3px 8px' }}>{sz}</span>
+            ))}
+          </div>
         </div>
       )}
-      {p.tags.length > 0 && (
-        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 18, justifyContent: isAr ? 'flex-end' : 'flex-start' }}>
-          {p.tags.map(tag => (
-            <span key={tag} style={{ fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500, padding: '4px 8px', borderRadius: 2, background: 'var(--bci-green-50)', color: 'var(--bci-green-700)', border: '1px solid var(--bci-green-200)' }}>{tag}</span>
-          ))}
+      {/* Colours available */}
+      {p.colors && p.colors.length > 0 && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16, flexWrap: 'wrap', flexDirection: isAr ? 'row-reverse' : 'row' }}>
+          <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--bci-steel)' }}>{t(lang, 'Colours', 'الألوان', 'Colores')}</span>
+          <span style={{ fontSize: 13, color: 'var(--bci-navy)' }}>{p.colors.join(' · ')}</span>
         </div>
       )}
-      <div style={{ paddingTop: 16, borderTop: '1px solid var(--bci-hairline-light)', display: 'flex', gap: 18, flexDirection: isAr ? 'row-reverse' : 'row' }}>
-        <a href="Resources.html" style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500, color: 'var(--bci-navy)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 7 }}>
-          <Icon name="download" size={13} /> TDS
-        </a>
-        <a href="Contact.html" style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500, color: 'var(--bci-green-700)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 7 }}>
+      <div style={{ paddingTop: 16, borderTop: '1px solid var(--bci-hairline-light)', display: 'flex', gap: 18, alignItems: 'center', flexDirection: isAr ? 'row-reverse' : 'row' }}>
+        {p.tds ? (
+          <a href={p.tds} target="_blank" rel="noopener" style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500, color: 'var(--bci-navy)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 7 }}>
+            <Icon name="download" size={13} /> {t(lang, 'TDS', 'النشرة الفنية', 'Ficha técnica')}
+          </a>
+        ) : (
+          <a href="Contact.html" style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500, color: 'var(--bci-steel)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 7 }}>
+            <Icon name="file-text" size={13} /> {t(lang, 'Request TDS', 'اطلب النشرة', 'Solicitar ficha')}
+          </a>
+        )}
+        <a href="Contact.html" style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500, color: 'var(--bci-green-700)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 7, marginInlineStart: 'auto' }}>
           {t(lang, 'Quote', 'عرض سعر', 'Cotización')} <Arrow size={12} />
         </a>
       </div>

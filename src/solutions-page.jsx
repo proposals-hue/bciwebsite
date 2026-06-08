@@ -13,9 +13,9 @@ function SolutionsPage() {
         titleAr="كيمياء البناء، من الألف إلى الياء."
         titleEs="Química de la construcción, de principio a fin."
         subtitle={t(lang,
-          'Engineered solution lines — over 120 products spanning waterproofing, flooring, coatings, repair, sealing and concrete technology for the Saudi and GCC market.',
-          'خطوط حلول هندسية — أكثر من 120 منتجاً تشمل العزل والأرضيات والطلاءات والإصلاح والمواد المانعة وتقنية الخرسانة للسوق السعودي والخليجي.',
-          'Líneas de solución de ingeniería — más de 120 productos que abarcan impermeabilización, pavimentos, recubrimientos, reparación, sellado y tecnología del hormigón para el mercado saudí y del CCG.')}
+          'Engineered solution lines — over 200 products spanning waterproofing, flooring, coatings, repair, sealing and concrete technology for the Saudi and GCC market.',
+          'خطوط حلول هندسية — أكثر من 200 منتج تشمل العزل والأرضيات والطلاءات والإصلاح والمواد المانعة وتقنية الخرسانة للسوق السعودي والخليجي.',
+          'Líneas de solución de ingeniería — más de 200 productos que abarcan impermeabilización, pavimentos, recubrimientos, reparación, sellado y tecnología del hormigón para el mercado saudí y del CCG.')}
       />
 
       {/* Quick index */}
@@ -66,20 +66,51 @@ function SolutionBlock({ s, alt }) {
             <p style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--bci-graphite)', margin: 0 }}>{s[lang].tagline}</p>
           </div>
           <a href={`Solution Detail.html?cat=${s.slug}`} className="btn btn-ghost-navy" style={{ whiteSpace: 'nowrap' }}>
-            {t(lang, 'View line', 'عرض الخط', 'Ver línea')} <Arrow size={14} />
+            {t(lang, 'View line', 'عرض الخط', 'Ver línea')} · {s.products.length} <Arrow size={14} />
           </a>
         </div>
 
-        {/* Products grid */}
+        {/* Products grid — teaser on the overview; full list on the detail page */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
-          {s.products.map(p => <ProductChip key={p.code} p={p} slug={s.slug} />)}
+          {s.products.slice(0, 8).map(p => <ProductChip key={p.code} p={p} slug={s.slug} icon={s.icon} />)}
+          {s.products.length > 8 && (
+            <a href={`Solution Detail.html?cat=${s.slug}`} style={{
+              background: 'var(--bci-navy)', border: '1px solid var(--bci-navy)', borderRadius: 2,
+              padding: 20, textDecoration: 'none', display: 'flex', flexDirection: 'column',
+              justifyContent: 'center', alignItems: 'center', gap: 8, minHeight: 168, textAlign: 'center',
+            }}>
+              <span style={{ fontFamily: 'var(--ff-display)', fontWeight: 700, fontSize: 26, color: '#fff' }}>+{s.products.length - 8}</span>
+              <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--bci-green-400)', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                {t(lang, 'View all', 'عرض الكل', 'Ver todo')} <Arrow size={12} />
+              </span>
+            </a>
+          )}
         </div>
       </div>
     </section>
   );
 }
 
-function ProductChip({ p, slug }) {
+/* Square product thumbnail with a graceful icon fallback (same treatment as
+   the detail page) — keeps tall drums/pails/rolls uncropped. */
+function ChipImg({ src, alt, icon }) {
+  const [err, setErr] = React.useState(false);
+  const box = {
+    width: '100%', aspectRatio: '1 / 1', marginBottom: 14,
+    background: '#fff', border: '1px solid var(--bci-hairline-light)', borderRadius: 2,
+  };
+  if (!src || err) {
+    return (
+      <div style={{ ...box, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--bci-steel-300)' }}>
+        <Icon name={icon || 'flask'} size={30} />
+      </div>
+    );
+  }
+  return <img src={src} alt={alt} loading="lazy" onError={() => setErr(true)}
+    style={{ ...box, display: 'block', objectFit: 'contain', padding: 10 }} />;
+}
+
+function ProductChip({ p, slug, icon }) {
   const { lang } = useLang();
   const isAr = lang === 'ar';
   const [hover, setHover] = React.useState(false);
@@ -89,21 +120,10 @@ function ProductChip({ p, slug }) {
       style={{
         background: '#fff', border: `1px solid ${hover ? 'var(--bci-green-500)' : 'var(--bci-hairline-light)'}`,
         borderRadius: 2, padding: 20, textDecoration: 'none', display: 'flex', flexDirection: 'column',
-        minHeight: 168, textAlign: isAr ? 'right' : 'left', transition: 'border-color 120ms linear',
+        textAlign: isAr ? 'right' : 'left', transition: 'border-color 120ms linear',
       }}>
-      <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '0.1em', color: 'var(--bci-steel)', marginBottom: 12 }}>{p.code}</span>
-      <h3 style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 600, fontSize: 18, color: 'var(--bci-navy)', margin: '0 0 8px', lineHeight: 1.2 }}>{p[lang].name}</h3>
-      <p style={{ fontSize: 13, lineHeight: 1.5, color: 'var(--bci-steel)', margin: 0, flex: 1 }}>{p[lang].desc}</p>
-      {p.tags.length > 0 && (
-        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginTop: 14 }}>
-          {p.tags.slice(0, 2).map(tag => (
-            <span key={tag} style={{
-              fontFamily: 'var(--ff-mono)', fontSize: 9, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500,
-              padding: '3px 7px', borderRadius: 2, background: 'var(--bci-green-50)', color: 'var(--bci-green-700)', border: '1px solid var(--bci-green-200)',
-            }}>{tag}</span>
-          ))}
-        </div>
-      )}
+      <ChipImg src={p.img} alt={p[lang].name} icon={icon} />
+      <h3 style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 600, fontSize: 16, color: 'var(--bci-navy)', margin: 0, lineHeight: 1.2 }}>{p[lang].name}</h3>
     </a>
   );
 }
