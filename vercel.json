@@ -43,7 +43,17 @@
     { "source": "/subcustomer/:path*", "destination": "/Projects.html", "permanent": true },
     { "source": "/customer", "destination": "/Projects.html", "permanent": true },
     { "source": "/customer/:path*", "destination": "/Projects.html", "permanent": true },
+    { "source": "/project/:path*", "destination": "/Projects.html", "permanent": true },
+    { "source": "/allservices", "destination": "/Solutions.html", "permanent": true },
+    { "source": "/allservices/:path*", "destination": "/Solutions.html", "permanent": true },
+    { "source": "/files", "destination": "/Resources.html", "permanent": true },
     { "source": "/files/:path*", "destination": "/Resources.html", "permanent": true },
+    { "source": "/img1", "destination": "/Resources.html", "permanent": true },
+    { "source": "/img1/:path*", "destination": "/Resources.html", "permanent": true },
+    { "source": "/submittal", "destination": "/Contact.html", "permanent": true },
+    { "source": "/submittal/:path*", "destination": "/Contact.html", "permanent": true },
+    { "source": "/shop", "destination": "/", "permanent": true },
+    { "source": "/shop/:path*", "destination": "/", "permanent": true },
     { "source": "/bc-guard", "destination": "/Solutions.html", "permanent": true }
   ]
 }
