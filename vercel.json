@@ -1,0 +1,30 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/index", "destination": "/", "permanent": true },
+    { "source": "/about", "destination": "/About.html", "permanent": true },
+    { "source": "/about-us", "destination": "/About.html", "permanent": true },
+    { "source": "/aboutus", "destination": "/About.html", "permanent": true },
+    { "source": "/contact", "destination": "/Contact.html", "permanent": true },
+    { "source": "/contact-us", "destination": "/Contact.html", "permanent": true },
+    { "source": "/contactus", "destination": "/Contact.html", "permanent": true },
+    { "source": "/products", "destination": "/Solutions.html", "permanent": true },
+    { "source": "/product", "destination": "/Solutions.html", "permanent": true },
+    { "source": "/solutions", "destination": "/Solutions.html", "permanent": true },
+    { "source": "/services", "destination": "/Solutions.html", "permanent": true },
+    { "source": "/projects", "destination": "/Projects.html", "permanent": true },
+    { "source": "/project", "destination": "/Projects.html", "permanent": true },
+    { "source": "/careers", "destination": "/Career.html", "permanent": true },
+    { "source": "/career", "destination": "/Career.html", "permanent": true },
+    { "source": "/jobs", "destination": "/Career.html", "permanent": true },
+    { "source": "/resources", "destination": "/Resources.html", "permanent": true },
+    { "source": "/downloads", "destination": "/Resources.html", "permanent": true },
+    { "source": "/blog", "destination": "/", "permanent": true },
+    { "source": "/blogs", "destination": "/", "permanent": true },
+    { "source": "/blog/:path*", "destination": "/", "permanent": true },
+    { "source": "/bc-guard", "destination": "/Solutions.html", "permanent": true }
+  ]
+}

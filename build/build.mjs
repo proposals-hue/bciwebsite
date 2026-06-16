@@ -19,7 +19,7 @@ const ROOT = path.resolve(here, '..');     // project root
 const DIST = path.join(ROOT, 'dist');
 
 // Static files/folders copied verbatim into dist/
-const STATIC = ['assets', 'ds', 'styles.css', 'image-slot.js'];
+const STATIC = ['assets', 'ds', 'styles.css', 'image-slot.js', 'favicon.ico', 'robots.txt', 'sitemap.xml', 'vercel.json'];
 
 // HTML pages to rewrite
 const PAGES = [
