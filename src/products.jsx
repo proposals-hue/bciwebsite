@@ -5,7 +5,7 @@ const { useState: useState_p, useRef: useRef_p, useEffect: useEffect_p } = React
 // Uses a scroll/rect check (robust everywhere) with IntersectionObserver as an enhancement.
 function useInView(margin) {
   const ref = useRef_p(null);
-  const [inView, setInView] = useState_p(false);
+  const [inView, setInView] = useState_p(typeof window !== 'undefined' && window.__PRERENDER === true);
   useEffect_p(() => {
     const el = ref.current;
     if (!el) return;
@@ -63,7 +63,7 @@ function SolutionsOverview() {
               letterSpacing: isAr ? 0 : '-0.018em', color: 'var(--bci-navy)', margin: 0, maxWidth: 760
             }}>{t(lang, <>Engineered Solutions For<br />Demanding Projects</>, <>تسعة خطوط حلول.<br />معيار واحد.</>, <>Soluciones de Ingeniería Para<br />Proyectos Exigentes</>)}</h2>
           </div>
-          <a href="Solutions.html" className="link-arrow" style={{ whiteSpace: 'nowrap' }}>
+          <a href={siteHref('Solutions.html')} className="link-arrow" style={{ whiteSpace: 'nowrap' }}>
             {t(lang, 'All solutions', 'كل الحلول', 'Todas las soluciones')} <Arrow size={14} />
           </a>
         </div>
@@ -98,7 +98,7 @@ function SolutionCard({ s }) {
   const isAr = lang === 'ar';
   const [hover, setHover] = useState_p(false);
   return (
-    <a href={`Solution Detail.html?cat=${s.slug}`}
+    <a href={solutionHref(s.slug)}
     onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
     style={{
       position: 'relative', overflow: 'hidden',
@@ -135,7 +135,7 @@ function ViewAllSolutionsCard() {
   const isAr = lang === 'ar';
   const [hover, setHover] = useState_p(false);
   return (
-    <a href="Solutions.html"
+    <a href={siteHref('Solutions.html')}
     onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
     style={{
       position: 'relative', overflow: 'hidden',
@@ -186,7 +186,7 @@ function Projects({ limit }) {
               letterSpacing: isAr ? 0 : '-0.018em', color: 'var(--bci-navy)', margin: 0
             }}>{t(lang, 'Where BCI Solutions Perform', 'حيث تثبت حلول BCI جدارتها', 'Donde Rinden las Soluciones BCI')}</h2>
           </div>
-          <a href="Projects.html" className="link-arrow" style={{ whiteSpace: 'nowrap' }}>{t(lang, 'View all projects', 'كل المشاريع', 'Ver todos los proyectos')} <Arrow size={14} /></a>
+          <a href={siteHref('Projects.html')} className="link-arrow" style={{ whiteSpace: 'nowrap' }}>{t(lang, 'View all projects', 'كل المشاريع', 'Ver todos los proyectos')} <Arrow size={14} /></a>
         </div>
         <div ref={gridRef} style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
           {list.map((p, i) => <div key={i} style={revealStyle(gridIn, i * 110)}><ProjectCard p={p} /></div>)}
@@ -205,7 +205,7 @@ function ProjectCard({ p }) {
   const system = parts.length >= 2 ? parts.slice(0, -1).join(' · ') : p.sys[lang] || p.sys.en;
   const scale = parts.length >= 2 ? parts[parts.length - 1] : null;
   return (
-    <a href="Projects.html" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
+    <a href={siteHref('Projects.html')} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
     style={{ textDecoration: 'none', display: 'block', position: 'relative', aspectRatio: '3 / 2',
       background: p.swatch, borderRadius: 2, overflow: 'hidden', border: '1px solid var(--bci-hairline-light)',
       boxShadow: hover ? 'var(--shadow-md)' : 'none', transform: hover ? 'translateY(-3px)' : 'translateY(0)',

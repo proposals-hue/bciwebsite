@@ -65,7 +65,7 @@ function SolutionBlock({ s, alt }) {
             }}>{s[lang].name}</h2>
             <p style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--bci-graphite)', margin: 0 }}>{s[lang].tagline}</p>
           </div>
-          <a href={`Solution Detail.html?cat=${s.slug}`} className="btn btn-ghost-navy" style={{ whiteSpace: 'nowrap' }}>
+          <a href={solutionHref(s.slug)} className="btn btn-ghost-navy" style={{ whiteSpace: 'nowrap' }}>
             {t(lang, 'View line', 'عرض الخط', 'Ver línea')} · {s.products.length} <Arrow size={14} />
           </a>
         </div>
@@ -74,7 +74,7 @@ function SolutionBlock({ s, alt }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
           {s.products.slice(0, 8).map(p => <ProductChip key={p.code} p={p} slug={s.slug} icon={s.icon} />)}
           {s.products.length > 8 && (
-            <a href={`Solution Detail.html?cat=${s.slug}`} style={{
+            <a href={solutionHref(s.slug)} style={{
               background: 'var(--bci-navy)', border: '1px solid var(--bci-navy)', borderRadius: 2,
               padding: 20, textDecoration: 'none', display: 'flex', flexDirection: 'column',
               justifyContent: 'center', alignItems: 'center', gap: 8, minHeight: 168, textAlign: 'center',
@@ -115,7 +115,7 @@ function ProductChip({ p, slug, icon }) {
   const isAr = lang === 'ar';
   const [hover, setHover] = React.useState(false);
   return (
-    <a href={`Solution Detail.html?cat=${slug}`}
+    <a href={solutionHref(slug)}
       onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
       style={{
         background: '#fff', border: `1px solid ${hover ? 'var(--bci-green-500)' : 'var(--bci-hairline-light)'}`,

@@ -1191,8 +1191,108 @@ const NAV = [
   { en: 'Contact', ar: 'تواصل', es: 'Contacto', href: 'Contact.html' },
 ];
 
+/* ---------------------------------------------------------------
+   6 · SEO  ·  per-page <title> + meta description (EN / AR / ES)
+   The static build (build/build.mjs) reads this to generate each
+   page's <head>, canonical and hreflang tags. Keep titles ≤ ~60
+   chars and descriptions ≤ ~160 where possible.
+   --------------------------------------------------------------- */
+const SEO_META = {
+  home: {
+    en: { title: 'BCI — Building Chemistry Industry | Construction Chemicals, Saudi Arabia',
+          description: 'BCI (Building Chemistry Industry) is a Saudi manufacturer of construction chemicals — waterproofing, epoxy flooring, polyurea, protective coatings, concrete repair, sealants, grouts and PU foam systems for the KSA and GCC market.' },
+    ar: { title: 'BCI — صناعة كيمياء البناء | كيماويات إنشائية، السعودية',
+          description: 'BCI (صناعة كيمياء البناء) مصنع سعودي للكيماويات الإنشائية — العزل المائي، أرضيات الإيبوكسي، البولي يوريا، الدهانات الواقية، إصلاح الخرسانة، المواد المانعة للتسرب والجراوت لأسواق السعودية والخليج.' },
+    es: { title: 'BCI — Building Chemistry Industry | Químicos para Construcción, Arabia Saudita',
+          description: 'BCI (Building Chemistry Industry) es un fabricante saudí de químicos para la construcción — impermeabilización, pavimentos epóxicos, poliurea, recubrimientos protectores, reparación de concreto, sellantes y morteros para el mercado de KSA y el CCG.' },
+  },
+  about: {
+    en: { title: 'About BCI — Saudi Construction Chemicals Manufacturer | Dammam',
+          description: 'BCI is a Saudi national manufacturer of construction chemicals founded in Dammam in 2021 — polyurethane, epoxy and polyurea systems certified to ISO 9001 and EN 1504, made for Saudi Arabia and the GCC.' },
+    ar: { title: 'عن BCI — مصنع سعودي للكيماويات الإنشائية | الدمام',
+          description: 'BCI مصنع وطني سعودي للكيماويات الإنشائية تأسس في الدمام عام 2021 — أنظمة بولي يوريثان وإيبوكسي وبولي يوريا معتمدة وفق ISO 9001 وEN 1504، صُنعت للسعودية والخليج.' },
+    es: { title: 'Acerca de BCI — Fabricante Saudí de Químicos para Construcción | Dammam',
+          description: 'BCI es un fabricante nacional saudí de químicos para construcción fundado en Dammam en 2021 — sistemas de poliuretano, epoxi y poliurea certificados ISO 9001 y EN 1504, hechos para Arabia Saudita y el CCG.' },
+  },
+  solutions: {
+    en: { title: 'Solutions — Construction Chemicals & Coatings | BCI Saudi Arabia',
+          description: "Explore BCI's nine construction-chemical solution lines: waterproofing & roofing, polyurea membranes, PU foam & insulation, flooring systems, protective coatings, concrete repair, tile adhesives & grouts, sealants & joints, and admixtures." },
+    ar: { title: 'الحلول — كيماويات إنشائية ودهانات | BCI السعودية',
+          description: 'اكتشف خطوط حلول BCI التسعة للكيماويات الإنشائية: العزل المائي والأسطح، أغشية البولي يوريا، رغوة الـ PU والعزل، أنظمة الأرضيات، الدهانات الواقية، إصلاح الخرسانة، الجراوت واللاصقات، المواد المانعة للتسرب، والإضافات.' },
+    es: { title: 'Soluciones — Químicos y Recubrimientos para Construcción | BCI',
+          description: 'Explora las nueve líneas de soluciones de BCI: impermeabilización y cubiertas, membranas de poliurea, espuma PU y aislamiento, pavimentos, recubrimientos protectores, reparación de concreto, morteros y adhesivos, sellantes y juntas, y aditivos.' },
+  },
+  projects: {
+    en: { title: 'Projects — Reference Work Across Saudi Arabia | BCI',
+          description: 'BCI construction-chemical systems specified on metro tunnels, water reservoirs, bridges, industrial plants and residential developments across Saudi Arabia and the GCC.' },
+    ar: { title: 'المشاريع — أعمال مرجعية في أنحاء السعودية | BCI',
+          description: 'أنظمة BCI من الكيماويات الإنشائية معتمدة في أنفاق المترو وخزانات المياه والجسور والمنشآت الصناعية والمشاريع السكنية في أنحاء السعودية والخليج.' },
+    es: { title: 'Proyectos — Obras de Referencia en Arabia Saudita | BCI',
+          description: 'Los sistemas de BCI, especificados en túneles de metro, reservorios de agua, puentes, plantas industriales y desarrollos residenciales en Arabia Saudita y el CCG.' },
+  },
+  resources: {
+    en: { title: 'Resources — TDS, SDS, Catalogs & Certifications | BCI Saudi Arabia',
+          description: 'Download BCI technical data sheets (TDS), safety data sheets (SDS), product catalogs, application method statements and ISO / EN 1504 certifications for construction chemicals.' },
+    ar: { title: 'الموارد — النشرات الفنية ونشرات السلامة والكتالوجات والشهادات | BCI',
+          description: 'حمّل النشرات الفنية (TDS) ونشرات السلامة (SDS) وكتالوجات المنتجات وبيانات طرق التطبيق وشهادات ISO / EN 1504 للكيماويات الإنشائية من BCI.' },
+    es: { title: 'Recursos — Fichas Técnicas, SDS, Catálogos y Certificaciones | BCI',
+          description: 'Descarga las fichas técnicas (TDS), fichas de seguridad (SDS), catálogos, procedimientos de aplicación y certificaciones ISO / EN 1504 de los químicos para construcción de BCI.' },
+  },
+  career: {
+    en: { title: 'Careers — Jobs at BCI | Building Chemistry Industry, Saudi Arabia',
+          description: 'Join BCI, a Saudi construction-chemicals manufacturer. Open roles in sales, R&D chemistry, operations, quality and supply chain in Dammam. Apply online.' },
+    ar: { title: 'الوظائف — فرص عمل في BCI | صناعة كيمياء البناء، السعودية',
+          description: 'انضم إلى BCI، المصنع السعودي للكيماويات الإنشائية. وظائف شاغرة في المبيعات والبحث والتطوير والعمليات والجودة وسلسلة الإمداد في الدمام. قدّم عبر الإنترنت.' },
+    es: { title: 'Empleo — Trabaja en BCI | Building Chemistry Industry, Arabia Saudita',
+          description: 'Únete a BCI, fabricante saudí de químicos para construcción. Vacantes en ventas, I+D, operaciones, calidad y cadena de suministro en Dammam. Postula en línea.' },
+  },
+  contact: {
+    en: { title: 'Contact BCI — Sales, Technical Support & Quotes | Dammam, Saudi Arabia',
+          description: 'Contact Building Chemistry Industry (BCI) in Dammam for construction-chemical specifications, submittals, samples and supply. Phone +966 59 312 0221, info@bcisaudi.com.' },
+    ar: { title: 'تواصل مع BCI — المبيعات والدعم الفني وعروض الأسعار | الدمام',
+          description: 'تواصل مع صناعة كيمياء البناء (BCI) في الدمام لمواصفات الكيماويات الإنشائية والوثائق والعينات والتوريد. هاتف ‎+966 59 312 0221، info@bcisaudi.com.' },
+    es: { title: 'Contacto BCI — Ventas, Soporte Técnico y Cotizaciones | Dammam',
+          description: 'Contacta a Building Chemistry Industry (BCI) en Dammam para especificaciones, documentación, muestras y suministro. Tel +966 59 312 0221, info@bcisaudi.com.' },
+  },
+};
+
+/* Common buyer/AI questions — drives the FAQ section + FAQPage schema.
+   Strong for featured snippets and citations in AI answers. */
+const FAQS = [
+  { q: { en: 'Is BCI a Saudi manufacturer of construction chemicals?',
+         ar: 'هل BCI مصنع سعودي للكيماويات الإنشائية؟',
+         es: '¿BCI es un fabricante saudí de químicos para construcción?' },
+    a: { en: 'Yes. BCI (Building Chemistry Industry) is a Saudi national manufacturer founded in Dammam in 2021, producing construction chemicals and protective coatings at its plant in the 3rd Industrial City, Dammam, for the Saudi and GCC market.',
+         ar: 'نعم. BCI (صناعة كيمياء البناء) مصنع وطني سعودي تأسس في الدمام عام 2021، وينتج الكيماويات الإنشائية والدهانات الواقية في مصنعه بالمدينة الصناعية الثالثة بالدمام لأسواق السعودية والخليج.',
+         es: 'Sí. BCI (Building Chemistry Industry) es un fabricante nacional saudí fundado en Dammam en 2021, que produce químicos para construcción y recubrimientos protectores en su planta de la 3.ª Ciudad Industrial de Dammam para el mercado de KSA y el CCG.' } },
+  { q: { en: 'What products does BCI make?',
+         ar: 'ما المنتجات التي تصنعها BCI؟',
+         es: '¿Qué productos fabrica BCI?' },
+    a: { en: 'BCI manufactures over 200 products across nine solution lines: waterproofing & roofing, polyurea membranes, PU foam & insulation, flooring systems, protective coatings, concrete repair, tile adhesives & grouts, sealants & joints, and concrete admixtures.',
+         ar: 'تصنع BCI أكثر من 200 منتج عبر تسعة خطوط حلول: العزل المائي والأسطح، أغشية البولي يوريا، رغوة الـ PU والعزل، أنظمة الأرضيات، الدهانات الواقية، إصلاح الخرسانة، الجراوت واللاصقات، المواد المانعة للتسرب، وإضافات الخرسانة.',
+         es: 'BCI fabrica más de 200 productos en nueve líneas: impermeabilización y cubiertas, membranas de poliurea, espuma PU y aislamiento, pavimentos, recubrimientos protectores, reparación de concreto, morteros y adhesivos, sellantes y juntas, y aditivos para concreto.' } },
+  { q: { en: 'Are BCI products certified?',
+         ar: 'هل منتجات BCI معتمدة؟',
+         es: '¿Los productos de BCI están certificados?' },
+    a: { en: "BCI's quality system is certified to ISO 9001 and its repair and protection systems are aligned to the European EN 1504 standards. Products are Saudi-made and support SASO / SABER requirements.",
+         ar: 'نظام الجودة في BCI معتمد وفق ISO 9001، وأنظمة الإصلاح والحماية متوافقة مع المعايير الأوروبية EN 1504. المنتجات سعودية الصنع وتدعم متطلبات SASO / SABER.',
+         es: 'El sistema de calidad de BCI está certificado según ISO 9001 y sus sistemas de reparación y protección se alinean con las normas europeas EN 1504. Los productos son de fabricación saudí y cumplen los requisitos SASO / SABER.' } },
+  { q: { en: 'Does BCI supply across Saudi Arabia and the GCC?',
+         ar: 'هل توّرد BCI في أنحاء السعودية والخليج؟',
+         es: '¿BCI suministra en toda Arabia Saudita y el CCG?' },
+    a: { en: 'Yes. BCI supplies from its Dammam head office and plant, with sales offices and branch stores in Riyadh, Jeddah, Qassim, Jizan and Tabuk, and delivers to projects across the Kingdom and the wider GCC.',
+         ar: 'نعم. توّرد BCI من مقرها ومصنعها في الدمام، مع مكاتب مبيعات وفروع في الرياض وجدة والقصيم وجازان وتبوك، وتسلّم للمشاريع في أنحاء المملكة والخليج.',
+         es: 'Sí. BCI suministra desde su sede y planta en Dammam, con oficinas de ventas y tiendas en Riad, Yeda, Al-Qassim, Jizán y Tabuk, y entrega a proyectos en todo el Reino y el CCG.' } },
+  { q: { en: 'How can I get a technical data sheet (TDS) or a quote?',
+         ar: 'كيف أحصل على نشرة فنية (TDS) أو عرض سعر؟',
+         es: '¿Cómo obtengo una ficha técnica (TDS) o una cotización?' },
+    a: { en: 'Technical data sheets are available on each product in the Solutions section and on the Resources page. For a quote or a project-specific submittal, contact BCI at info@bcisaudi.com or +966 59 312 0221.',
+         ar: 'تتوفر النشرات الفنية لكل منتج في قسم الحلول وصفحة الموارد. للحصول على عرض سعر أو حزمة وثائق خاصة بمشروع، تواصل مع BCI عبر info@bcisaudi.com أو ‎+966 59 312 0221.',
+         es: 'Las fichas técnicas están disponibles en cada producto en la sección Soluciones y en la página de Recursos. Para una cotización o documentación específica de proyecto, contacta a BCI en info@bcisaudi.com o +966 59 312 0221.' } },
+];
+
 Object.assign(window, {
   SOLUTIONS, PROJECTS, PROJECT_SECTORS, RESOURCE_TYPES, RESOURCES,
   JOBS, BENEFITS, VALUES, STATS, TIMELINE, CONTACT_DETAILS, DEPARTMENTS, SOCIALS, NAV,
-  STORES, KSA_BORDER, DOC_BASE,
+  STORES, KSA_BORDER, DOC_BASE, SEO_META, FAQS,
 });

@@ -25,7 +25,10 @@ function ProductImg({ src, alt, icon }) {
 
 function getCat() {
   try {
-    const slug = new URLSearchParams(location.search).get('cat');
+    // Clean URL first (/solutions/<slug>.html, incl. /ar/ and /es/), then the
+    // legacy ?cat=<slug> query the dev build and old links still use.
+    const fromPath = (location.pathname.match(/\/solutions\/([^/]+?)\.html$/) || [])[1];
+    const slug = fromPath || new URLSearchParams(location.search).get('cat');
     return SOLUTIONS.find(s => s.slug === slug) || SOLUTIONS[0];
   } catch (e) { return SOLUTIONS[0]; }
 }
@@ -53,7 +56,7 @@ function SolutionDetailPage() {
           {SOLUTIONS.map(c => {
             const on = c.slug === s.slug;
             return (
-              <a key={c.slug} href={`Solution Detail.html?cat=${c.slug}`} style={{
+              <a key={c.slug} href={solutionHref(c.slug)} style={{
                 fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.06em', textTransform: 'uppercase',
                 padding: '8px 12px', borderRadius: 2, textDecoration: 'none',
                 border: `1px solid ${on ? 'var(--bci-green-500)' : 'rgba(255,255,255,0.14)'}`,
@@ -88,7 +91,7 @@ function SolutionDetailPage() {
                 ))}
               </div>
             </>}
-            <a href="Resources.html" className="link-arrow" style={{ marginTop: 28 }}>
+            <a href={siteHref('Resources.html')} className="link-arrow" style={{ marginTop: 28 }}>
               <Icon name="download" size={14} /> {t(lang, 'All datasheets', 'كل النشرات', 'Todas las fichas técnicas')}
             </a>
           </aside>
@@ -153,11 +156,11 @@ function DetailCard({ p, icon }) {
             <Icon name="download" size={13} /> {t(lang, 'TDS', 'النشرة الفنية', 'Ficha técnica')}
           </a>
         ) : (
-          <a href="Contact.html" style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500, color: 'var(--bci-steel)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 7 }}>
+          <a href={siteHref('Contact.html')} style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500, color: 'var(--bci-steel)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 7 }}>
             <Icon name="file-text" size={13} /> {t(lang, 'Request TDS', 'اطلب النشرة', 'Solicitar ficha')}
           </a>
         )}
-        <a href="Contact.html" style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500, color: 'var(--bci-green-700)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 7, marginInlineStart: 'auto' }}>
+        <a href={siteHref('Contact.html')} style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500, color: 'var(--bci-green-700)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 7, marginInlineStart: 'auto' }}>
           {t(lang, 'Quote', 'عرض سعر', 'Cotización')} <Arrow size={12} />
         </a>
       </div>

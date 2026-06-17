@@ -134,7 +134,7 @@ function MoreCard() {
   const isAr = lang === 'ar';
   const [hover, setHover] = useState_pr(false);
   return (
-    <a href="Contact.html" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
+    <a href={siteHref('Contact.html')} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
       style={{ position: 'relative', aspectRatio: '3 / 2', overflow: 'hidden', display: 'flex',
         flexDirection: 'column', justifyContent: 'space-between', textDecoration: 'none',
         background: 'var(--bci-navy)', borderRadius: 2, border: '1px solid var(--bci-navy)',

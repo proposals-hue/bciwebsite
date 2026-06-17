@@ -10,6 +10,48 @@ const t = (lang, en, ar, es) => {
   return en;
 };
 
+// ---------------- Language-aware URLs ----------------
+// The site is published per language: English at the root, Arabic under
+// /ar/ and Spanish under /es/. Internal links are emitted as absolute,
+// language-correct paths so they resolve from any depth (incl. /solutions/…)
+// and keep the visitor inside their language. `pageLang()` reads the current
+// language from the URL path (the build pre-renders each page at its language
+// path, so this also drives server-side rendering).
+const LANGS = ['en', 'ar', 'es'];
+function pageLang() {
+  if (typeof location === 'undefined') return 'en';
+  const m = location.pathname.match(/^\/(ar|es)(?:\/|$)/);
+  return m ? m[1] : 'en';
+}
+// Strip any leading language segment from a path → "bare" path (leading '/').
+function barePath(pathname) {
+  return pathname.replace(/^\/(ar|es)(?=\/|$)/, '') || '/';
+}
+// Absolute, language-correct href for an internal target. External/special
+// links (http, mailto, tel, #fragment, //) pass through untouched.
+function siteHref(path, lang) {
+  if (path == null) return path;
+  const s = String(path);
+  if (/^(https?:|mailto:|tel:|#|\/\/|data:)/.test(s)) return path;   // external/special
+  if (s[0] === '/') return path;                                     // already absolute/resolved
+  // The dev browser only serves the root (no /ar/ or /es/ files), so links stay
+  // root-relative there even when the language is toggled in place. The static
+  // build sets window.__CLEAN_URLS and publishes each language to its own path.
+  const built = typeof window !== 'undefined' && window.__CLEAN_URLS;
+  const l = built ? (lang || pageLang()) : 'en';
+  const prefix = l === 'en' ? '/' : `/${l}/`;
+  const clean = s.replace(/^\.\//, '');
+  if (clean === '' || clean === 'index.html') return prefix;
+  return prefix + clean;
+}
+// Canonical URL for a solution-line (product category). The static build emits
+// clean /solutions/<slug>.html files and sets window.__CLEAN_URLS; in the plain
+// dev browser there is only Solution Detail.html?cat=<slug>, so fall back to it.
+function solutionHref(slug, lang) {
+  const clean = typeof window !== 'undefined' && window.__CLEAN_URLS;
+  return siteHref(clean ? `solutions/${slug}.html` : `Solution Detail.html?cat=${slug}`, lang);
+}
+
 // ---------------- Viewport hook ----------------
 // Re-renders the calling component on resize. Breakpoints:
 //   phone  < 640    tablet 640–1023    desktop ≥ 1024
@@ -37,7 +79,9 @@ function useViewport() {
 function useInView(opts) {
   const o = opts || {};
   const ref = useRef(null);
-  const [inView, setInView] = useState(false);
+  // During the static build (window.__PRERENDER) reveal content immediately so
+  // the pre-rendered HTML crawlers/AI bots read is fully visible, not opacity:0.
+  const [inView, setInView] = useState(typeof window !== 'undefined' && window.__PRERENDER === true);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -85,9 +129,11 @@ function revealStyle(inView, delay, y, dur) {
   const d = delay || 0;
   const dist = y != null ? y : 26;
   const ms = dur || 680;
+  // Static build emits the revealed state so pre-rendered HTML is fully visible.
+  const shown = inView || (typeof window !== 'undefined' && window.__PRERENDER === true);
   return {
-    opacity: inView ? 1 : 0,
-    transform: inView ? 'none' : `translateY(${dist}px)`,
+    opacity: shown ? 1 : 0,
+    transform: shown ? 'none' : `translateY(${dist}px)`,
     transition: `opacity ${ms}ms cubic-bezier(.16,.84,.34,1) ${d}ms, transform ${ms}ms cubic-bezier(.16,.84,.34,1) ${d}ms`,
     willChange: 'opacity, transform'
   };
@@ -97,6 +143,8 @@ function revealStyle(inView, delay, y, dur) {
 // Animates an integer from `start` to `value` once it (or its trigger) is active.
 function CountUp({ value, start = 0, suffix = '', prefix = '', duration = 1300, active = true, group = true, style }) {
   const [n, setN] = useState(() => {
+    // Pre-render shows the final value so the static HTML carries real numbers.
+    if (typeof window !== 'undefined' && window.__PRERENDER === true) return value;
     const reduced = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     return reduced ? value : start;
   });
@@ -237,4 +285,4 @@ function Chev({ size = 14 }) {
   return <span className="flip-rtl" style={{ display: 'inline-flex' }}><Icon name="chevron-right" size={size} /></span>;
 }
 
-Object.assign(window, { LangContext, useLang, useViewport, useInView, revealStyle, CountUp, t, Mark, Icon, Badge, Arrow, Chev });
+Object.assign(window, { LangContext, useLang, useViewport, useInView, revealStyle, CountUp, t, Mark, Icon, Badge, Arrow, Chev, LANGS, pageLang, barePath, siteHref, solutionHref });

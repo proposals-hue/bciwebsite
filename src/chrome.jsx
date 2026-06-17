@@ -2,11 +2,27 @@
    NAV, SOLUTIONS, SOCIALS */
 const { useState: useStateC, useEffect: useEffectC, useRef: useRefC } = React;
 
+// Switching language on the published site navigates to the same page under the
+// target language's URL (/, /ar/, /es/); in the dev browser it toggles in place.
+function switchLang(code, setLang) {
+  try { localStorage.setItem('bci-lang', code); } catch (e) {}
+  if (typeof window !== 'undefined' && window.__CLEAN_URLS) {
+    const dest = (code === 'en' ? '' : '/' + code) + barePath(location.pathname);
+    location.assign(dest + location.search + location.hash);
+  } else {
+    setLang(code);
+  }
+}
+
 /* =============================================================
    LangProvider — persists EN / ES / AR across pages
    ============================================================= */
 function LangProvider({ children }) {
   const [lang, setLangState] = useStateC(() => {
+    // On the published site each language has its own URL (/, /ar/, /es/) so the
+    // path is authoritative. In the plain dev browser there is only the root, so
+    // fall back to the stored preference and let the dropdown toggle in place.
+    if (typeof window !== 'undefined' && window.__CLEAN_URLS) return pageLang();
     try {return localStorage.getItem('bci-lang') || 'en';} catch (e) {return 'en';}
   });
   const setLang = (l) => {
@@ -119,7 +135,7 @@ function LanguageSelectorDropdown({ dark }) {
             return (
               <button
                 key={l.code}
-                onClick={() => {setLang(l.code);setOpen(false);}}
+                onClick={() => {switchLang(l.code, setLang);setOpen(false);}}
                 style={{
                   display: 'flex', alignItems: 'center', gap: 10,
                   width: '100%', padding: '9px 14px',
@@ -260,7 +276,7 @@ function MegaHeader({ active }) {
           height: mBarH, display: 'flex', alignItems: 'center', gap: 36,
           flexDirection: isAr ? 'row-reverse' : 'row'
         }} data-comment-anchor="c42846d29e-div-259-9">
-          <a href="index.html" aria-label="BCI — home" style={{
+          <a href={siteHref('index.html', lang)} aria-label="BCI — home" style={{
             display: 'flex', alignItems: 'center', gap: 13, textDecoration: 'none',
             transform: `scale(${mLogoScale})`,
             transformOrigin: isAr ? 'right center' : 'left center',
@@ -291,7 +307,7 @@ function MegaHeader({ active }) {
                 return <SolutionsNavItem key={n.en} n={n} fg={fg} barH={barH} isActive={isActive} open={mega} setOpen={setMega} />;
               }
               return (
-                <a key={n.en} href={n.href}
+                <a key={n.en} href={siteHref(n.href, lang)}
                 onMouseEnter={() => setMega(false)}
                 style={common}
                 onMouseOver={(e) => {if (!isActive) e.currentTarget.style.color = 'var(--bci-green-600)';}}
@@ -305,7 +321,7 @@ function MegaHeader({ active }) {
 
           {!isMobile ?
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexShrink: 0, flexDirection: isAr ? 'row-reverse' : 'row' }}>
-              <a href="Contact.html" className="btn btn-accent" style={{ padding: '12px 20px' }}>
+              <a href={siteHref('Contact.html', lang)} className="btn btn-accent" style={{ padding: '12px 20px' }}>
                 {t(lang, 'Get a Quote', 'اطلب عرض سعر', 'Solicitar Cotización')}
               </a>
             </div> :
@@ -374,7 +390,7 @@ function MobileMenu({ open, onClose, active }) {
           position: 'sticky', top: 0, background: 'var(--bci-paper-pure)', zIndex: 2,
           flexDirection: isAr ? 'row-reverse' : 'row'
         }}>
-          <a href="index.html" style={{ display: 'flex', alignItems: 'center', gap: 11, textDecoration: 'none', flexDirection: isAr ? 'row-reverse' : 'row' }}>
+          <a href={siteHref('index.html', lang)} style={{ display: 'flex', alignItems: 'center', gap: 11, textDecoration: 'none', flexDirection: isAr ? 'row-reverse' : 'row' }}>
             <img src="assets/BCI-lockup-color.png" alt="BCI" style={{ height: 36, width: 'auto', display: 'block' }} />
           </a>
           <button onClick={onClose}
@@ -409,7 +425,7 @@ function MobileMenu({ open, onClose, active }) {
                   {solOpen &&
                   <div style={{ paddingBottom: 12, display: 'flex', flexDirection: 'column' }}>
                       {SOLUTIONS.map((s) =>
-                    <a key={s.slug} href={`Solution Detail.html?cat=${s.slug}`} onClick={onClose} style={{
+                    <a key={s.slug} href={solutionHref(s.slug, lang)} onClick={onClose} style={{
                       display: 'flex', alignItems: 'center', gap: 12, padding: '11px 6px', textDecoration: 'none',
                       color: 'var(--bci-navy)', fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-sans)', fontSize: 15, fontWeight: 500,
                       flexDirection: isAr ? 'row-reverse' : 'row'
@@ -418,7 +434,7 @@ function MobileMenu({ open, onClose, active }) {
                           <span style={{ flex: 1 }}>{(s[lang] || s.en).name}</span>
                         </a>
                     )}
-                      <a href="Solutions.html" onClick={onClose} style={{
+                      <a href={siteHref('Solutions.html', lang)} onClick={onClose} style={{
                       padding: '12px 6px 4px', textDecoration: 'none', color: 'var(--bci-green-700)',
                       fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500
                     }}>{t(lang, 'View all solutions →', 'كل الحلول ←', 'Ver todas las soluciones →')}</a>
@@ -428,7 +444,7 @@ function MobileMenu({ open, onClose, active }) {
 
             }
             return (
-              <a key={n.en} href={n.href} onClick={onClose} style={{ ...linkBase, color }}>
+              <a key={n.en} href={siteHref(n.href, lang)} onClick={onClose} style={{ ...linkBase, color }}>
                 <span>{label}</span>
                 {isActive && <span style={{ width: 7, height: 7, background: 'var(--bci-green-500)', flexShrink: 0 }} />}
               </a>);
@@ -438,7 +454,7 @@ function MobileMenu({ open, onClose, active }) {
 
         {/* CTA + utilities */}
         <div style={{ padding: '20px 22px 28px', marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: 18 }}>
-          <a href="Contact.html" className="btn btn-accent" style={{ justifyContent: 'center', padding: '15px 22px' }}>
+          <a href={siteHref('Contact.html', lang)} className="btn btn-accent" style={{ justifyContent: 'center', padding: '15px 22px' }}>
             {t(lang, 'Get a Quote', 'اطلب عرض سعر', 'Solicitar Cotización')}
           </a>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -470,7 +486,7 @@ function SolutionsNavItem({ n, fg, barH = 72, isActive, open, setOpen }) {
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       style={{ position: 'relative', height: barH, display: 'flex', alignItems: 'center' }}>
-      <a href={n.href} style={{
+      <a href={siteHref(n.href, lang)} style={{
         fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-sans)', fontSize: 17, fontWeight: 500,
         color: isActive || open ? 'var(--bci-green-600)' : fg, textDecoration: 'none', whiteSpace: 'nowrap',
         display: 'inline-flex', alignItems: 'center', gap: 5, cursor: 'pointer', paddingBottom: 2,
@@ -507,7 +523,7 @@ function SolutionsDropdown({ cat, setCat, isAr, onNav }) {
           const on = i === cat;
           const sName = (s[lang] || s.en).name;
           return (
-            <a key={s.slug} href={`Solution Detail.html?cat=${s.slug}`}
+            <a key={s.slug} href={solutionHref(s.slug, lang)}
             onMouseEnter={() => setCat(i)} onClick={onNav}
             style={{
               display: 'flex', alignItems: 'center', gap: 12, padding: '10px 18px', textDecoration: 'none',
@@ -523,7 +539,7 @@ function SolutionsDropdown({ cat, setCat, isAr, onNav }) {
             </a>);
 
         })}
-        <a href="Solutions.html" onClick={onNav} style={{
+        <a href={siteHref('Solutions.html', lang)} onClick={onNav} style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8,
           margin: '8px 0 0', padding: '12px 18px', borderTop: '1px solid var(--bci-hairline-light)',
           textDecoration: 'none', color: 'var(--bci-navy)',
@@ -551,7 +567,7 @@ function SolutionsDropdown({ cat, setCat, isAr, onNav }) {
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2px 8px', flex: 1, alignContent: 'start' }}>
           {active.products.slice(0, 12).map((p) =>
-          <a key={p.code} href={`Solution Detail.html?cat=${active.slug}`} onClick={onNav} title={(p[lang] || p.en).name}
+          <a key={p.code} href={solutionHref(active.slug, lang)} onClick={onNav} title={(p[lang] || p.en).name}
           style={{
             display: 'flex', alignItems: 'center', gap: 8, padding: '7px 9px', borderRadius: 2, minWidth: 0,
             textDecoration: 'none', color: 'var(--bci-navy)', transition: 'background 100ms linear'
@@ -564,7 +580,7 @@ function SolutionsDropdown({ cat, setCat, isAr, onNav }) {
             </a>
           )}
         </div>
-        <a href={`Solution Detail.html?cat=${active.slug}`} onClick={onNav} style={{
+        <a href={solutionHref(active.slug, lang)} onClick={onNav} style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8,
           marginTop: 12, paddingTop: 12, borderTop: '1px solid var(--bci-hairline-light)',
           textDecoration: 'none', color: 'var(--bci-green-700)',
@@ -605,7 +621,7 @@ function PageHero({ eyebrow, title, titleAr, titleEs, subtitle, crumb }) {
           flexDirection: isAr ? 'row-reverse' : 'row',
           fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase'
         }}>
-          <a href="index.html" style={{ color: 'rgba(255,255,255,0.6)', textDecoration: 'none' }}>
+          <a href={siteHref('index.html', lang)} style={{ color: 'rgba(255,255,255,0.6)', textDecoration: 'none' }}>
             {t(lang, 'Home', 'الرئيسية', 'Inicio')}
           </a>
           <span className="flip-rtl" style={{ color: 'rgba(255,255,255,0.35)' }}><Chev size={11} /></span>
@@ -658,7 +674,7 @@ function CtaBand({ title, titleAr, titleEs, body, bodyAr, bodyEs }) {
           {ctaBody}
         </p>
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center', ...revealStyle(inView, 250) }}>
-          <a href="Contact.html" className="btn btn-navy">
+          <a href={siteHref('Contact.html', lang)} className="btn btn-navy">
             {t(lang, 'Request Submittal', 'طلب الوثائق', 'Solicitar Documentación')}
           </a>
           <a href="assets/BCI-Company-Profile.pdf" target="_blank" rel="noopener" download className="btn btn-ghost-light">
@@ -682,7 +698,7 @@ function Footer() {
     title: { en: 'Solutions', ar: 'الحلول', es: 'Soluciones' },
     links: SOLUTIONS.slice(0, 6).map((s) => ({
       en: s.en.name, ar: s.ar.name, es: (s.es || s.en).name,
-      href: `Solution Detail.html?cat=${s.slug}`
+      href: solutionHref(s.slug, lang)
     }))
   },
   {
@@ -743,7 +759,7 @@ function Footer() {
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
                 {col.links.map((l, i) =>
               <li key={i}>
-                    <a href={l.href} style={{
+                    <a href={siteHref(l.href, lang)} style={{
                   fontFamily: l.mono ? 'var(--ff-mono)' : isAr ? 'var(--ff-arabic)' : 'var(--ff-sans)',
                   fontSize: l.mono ? 13 : 14, color: 'rgba(255,255,255,0.75)', textDecoration: 'none',
                   transition: 'color 100ms linear', letterSpacing: l.mono ? '0.02em' : 0
