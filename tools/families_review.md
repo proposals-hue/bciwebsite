@@ -60,7 +60,7 @@
   - desc: BC Aluminum-Faced Flexible Flashing is a self-adhesive, multi-layer waterproofing tape reinforced with an aluminum surface for superior weather and UV resistanc
 - **BC Geo Textile** [2 skus]
   - sizes: 7.5188 L roll, 8 L roll
-  - desc: BC Geotextile 100 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works.It 
+  - desc: BC Geotextile 80 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works. It 
 - **BC Geo Textile 200** [1 skus]
   - sizes: 6.99301 L roll
   - desc: BC Geotextile 200 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works.It 
