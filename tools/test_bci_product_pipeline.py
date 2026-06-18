@@ -82,6 +82,28 @@ class ProductPipelineTests(unittest.TestCase):
         self.assertIn("15 kg pail", families[0]["sizes"])
         self.assertEqual(families[0]["n_tds"], 1)
 
+    def test_equal_length_family_descriptions_are_deterministic(self):
+        rows = [
+            {
+                "item_code": "FG-5A",
+                "item_name": "BC Stable 100 KG",
+                "item_group": p.FG_GROUP,
+                "custom_bci_website_sync": "Yes",
+                "custom_bci_website_category": "Waterproofing & Roofing",
+                "description": "ZZZZ",
+            },
+            {
+                "item_code": "FG-5B",
+                "item_name": "BC Stable 200 KG",
+                "item_group": p.FG_GROUP,
+                "custom_bci_website_sync": "Yes",
+                "custom_bci_website_category": "Waterproofing & Roofing",
+                "description": "AAAA",
+            },
+        ]
+        families, _summary = p.group_items(rows)
+        self.assertEqual(families[0]["desc"], "AAAA")
+
     def test_explicit_color_field_takes_precedence(self):
         row = {
             "item_name": "BC Coating WHITE BLACK",

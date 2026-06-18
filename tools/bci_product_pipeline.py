@@ -365,7 +365,7 @@ def group_items(records: Iterable[Dict]) -> Tuple[List[Dict], Dict]:
 
     out = []
     for fam in families.values():
-        descs = sorted(set(fam["descs"]), key=len, reverse=True)
+        descs = sorted(set(fam["descs"]), key=lambda text: (-len(text), text.casefold()))
         imgs = sorted(set(fam["imgs"]))
         tds = sorted(set(fam["tds"]))
         out.append(
