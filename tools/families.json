@@ -50,28 +50,6 @@
     "component_only": false
   },
   {
-    "slug": "pu-foam-insulation",
-    "key": "BC 702 40 FR",
-    "name": "BC 702 40 FR",
-    "n_skus": 1,
-    "members": [
-      "BC 702 Spray 40 FR YELLOW 470 KG -FG"
-    ],
-    "desc": "BC 702 Spray 40 FR Polyol Two-component spray foam system, 40 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with good mechanical strength, dimensional stability, and substrate adhesion, compatible with high- and low-pressure machines, containing 141B blowing agent.",
-    "n_desc": 1,
-    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
-    "n_img": 1,
-    "tds": "/private/files/BC 702 Spray 40 FR.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "470 kg set"
-    ],
-    "colors": [
-      "Yellow"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "flooring-systems",
     "key": "BC POXY FC 145",
     "name": "BC Poxy FC 145",
@@ -768,7 +746,7 @@
       "BC Geo textile 100 g/m2",
       "BC Geo textile 80 g/m2"
     ],
-    "desc": "BC Geotextile 80 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works. It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications.",
+    "desc": "BC Geotextile 100 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works.It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications.",
     "n_desc": 2,
     "img": "/files/WhatsApp Image 2025-05-28 at 4.45.02 PMd4792b.jpeg",
     "n_img": 1,
@@ -1064,7 +1042,7 @@
       "BC Plaster M LC WHITE 40 KG -  FG",
       "BC Plaster M LC WHITE 50 KG -  FG"
     ],
-    "desc": "BC Plaster M LC is a high-quality, factory-blended, cement-based plastering material composed of hydraulic binders, well-graded aggregates, and performance-enhancing additives. The product is supplied as a dry powder in pre-weighed 50 kg bags ready for on-site use—requiring only the addition of clean water to produce a cohesive and workable mortar.",
+    "desc": "BC Plaster M LC is a high-quality, factory-blended, cement-based plastering material composed of hydraulic binders, well-graded aggregates, and performance-enhancing additives. The product is supplied as a dry powder in pre-weighed 40 kg bags ready for on-site use—requiring only the addition of clean water to produce a cohesive and workable mortar.",
     "n_desc": 2,
     "img": "/private/files/bc plaster-m.jpg",
     "n_img": 1,
@@ -2806,30 +2784,6 @@
   },
   {
     "slug": "tile-grouts-anchors",
-    "key": "BC TILE ADHESIVE PRO",
-    "name": "BC Tile Adhesive Pro",
-    "n_skus": 2,
-    "members": [
-      "BC Tile Adhesive PRO WHITE 20 KG -FG",
-      "BC Tile Adhesive Pro White 50 KG - FG"
-    ],
-    "desc": "BC Tile Adhesive Pro is a high-performance, polymer-modified cementitious dry-set mortar for fixing ceramic, porcelain, mosaic, quarry, terrazzo, and artificial granite tiles. Offers excellent adhesion, flexibility, and water resistance for interior and exterior applications. Available in grey and white, 20 kg bag.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-10-20 at 6.13.49 PM (2).jpeg",
-    "n_img": 2,
-    "tds": "/private/files/BC Tile Adhesive Pro.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "20 kg bag",
-      "50 kg bag"
-    ],
-    "colors": [
-      "White"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "tile-grouts-anchors",
     "key": "BC TILE ADHESIVE PRO Y",
     "name": "BC Tile Adhesive Pro Y",
     "n_skus": 1,
@@ -4115,6 +4069,30 @@
   },
   {
     "slug": "tile-grouts-anchors",
+    "key": "BC TILE ADHESIVE PRO",
+    "name": "BC Tile Adhesive Pro",
+    "n_skus": 2,
+    "members": [
+      "BC Tile Adhesive PRO WHITE 20 KG -FG",
+      "BC Tile Adhesive Pro White 50 KG - FG"
+    ],
+    "desc": "BC Tile Adhesive Pro is a high-performance, polymer-modified cementitious dry-set mortar for fixing ceramic, porcelain, mosaic, quarry, terrazzo, and artificial granite tiles. Offers excellent adhesion, flexibility, and water resistance for interior and exterior applications. Available in grey and white, 20 kg bag.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-10-20 at 6.13.49 PM (2).jpeg",
+    "n_img": 2,
+    "tds": "/private/files/BC Tile Adhesive Pro.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "20 kg bag",
+      "50 kg bag"
+    ],
+    "colors": [
+      "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "tile-grouts-anchors",
     "key": "BC TILE FIX PLUS",
     "name": "BC Tile Fix Plus",
     "n_skus": 1,
@@ -4558,28 +4536,6 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "BC SEAL",
-    "name": "BC Seal",
-    "n_skus": 1,
-    "members": [
-      "BC Seal GREY 30 KG SYSTEM - FG"
-    ],
-    "desc": "BC Seal Two-component, acrylic-modified cementitious waterproofing coating, 30 kg set, 2 kg/m² at 1 mm, approx. 4.0 SAR/m², for flexible, durable protection against water and chemical ingress on concrete and masonry surfaces.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.09 PM.jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Seale5e739.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "concrete-repair",
     "key": "BC REPAIR 100",
     "name": "BC Repair 100",
@@ -4620,54 +4576,6 @@
     ],
     "colors": [
       "Black"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "pu-foam-insulation",
-    "key": "BC 702 45",
-    "name": "BC 702 45",
-    "n_skus": 2,
-    "members": [
-      "BC 702 Spary 45 FOAM YELLOW 470 KG -FG",
-      "BC 702 Spary 45 Polyol YELLOW 220 KG -FG"
-    ],
-    "desc": "BC 702 Spray 45 Polyol Two-component spray foam system, 45 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with good mechanical strength, dimensional stability, and substrate adhesion, compatible with high- and low-pressure machines, containing 141B blowing agent.",
-    "n_desc": 1,
-    "img": "/files/Foam Drums9799e3.webp",
-    "n_img": 2,
-    "tds": "/files/BC 702spray Foam.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "220 kg drum",
-      "470 kg set"
-    ],
-    "colors": [
-      "Yellow"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "pu-foam-insulation",
-    "key": "BC 703 SWP",
-    "name": "BC 703 SWP",
-    "n_skus": 2,
-    "members": [
-      "BC 703 SWP FOAM YELLOW 470 KG -FG",
-      "BC 703 SWP Polyol YELLOW 220 KG -FG"
-    ],
-    "desc": "BC 703 Polyol Two-component, 141 B-based sandwich panel system, 42–45 kg/m³ density; reacts with BC 768 Isocyanate, 470 kg kit (220 kg Polyol + 250 kg Isocyanate) to form highly crosslinked, rigid, dimensionally stable foam with good metal adhesion, B2-grade per DIN 4102.",
-    "n_desc": 1,
-    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
-    "n_img": 2,
-    "tds": "/files/BC 703 SWP.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "220 kg drum",
-      "470 kg set"
-    ],
-    "colors": [
-      "Yellow"
     ],
     "component_only": false
   },
@@ -5049,6 +4957,98 @@
     ],
     "colors": [
       "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 702 40 FR",
+    "name": "BC 702 40 FR",
+    "n_skus": 1,
+    "members": [
+      "BC 702 Spray 40 FR YELLOW 470 KG -FG"
+    ],
+    "desc": "BC 702 Spray 40 FR Polyol Two-component spray foam system, 40 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with good mechanical strength, dimensional stability, and substrate adhesion, compatible with high- and low-pressure machines, containing 141B blowing agent.",
+    "n_desc": 1,
+    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
+    "n_img": 1,
+    "tds": "/private/files/BC 702 Spray 40 FR.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 702 45",
+    "name": "BC 702 45",
+    "n_skus": 2,
+    "members": [
+      "BC 702 Spary 45 FOAM YELLOW 470 KG -FG",
+      "BC 702 Spary 45 Polyol YELLOW 220 KG -FG"
+    ],
+    "desc": "BC 702 Spray 45 Polyol Two-component spray foam system, 45 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with good mechanical strength, dimensional stability, and substrate adhesion, compatible with high- and low-pressure machines, containing 141B blowing agent.",
+    "n_desc": 1,
+    "img": "/files/Foam Drums9799e3.webp",
+    "n_img": 2,
+    "tds": "/files/BC 702spray Foam.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "220 kg drum",
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 703 SWP",
+    "name": "BC 703 SWP",
+    "n_skus": 2,
+    "members": [
+      "BC 703 SWP FOAM YELLOW 470 KG -FG",
+      "BC 703 SWP Polyol YELLOW 220 KG -FG"
+    ],
+    "desc": "BC 703 Polyol Two-component, 141 B-based sandwich panel system, 42–45 kg/m³ density; reacts with BC 768 Isocyanate, 470 kg kit (220 kg Polyol + 250 kg Isocyanate) to form highly crosslinked, rigid, dimensionally stable foam with good metal adhesion, B2-grade per DIN 4102.",
+    "n_desc": 1,
+    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
+    "n_img": 2,
+    "tds": "/files/BC 703 SWP.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "220 kg drum",
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC SEAL",
+    "name": "BC Seal",
+    "n_skus": 1,
+    "members": [
+      "BC Seal GREY 30 KG SYSTEM - FG"
+    ],
+    "desc": "BC Seal Two-component, acrylic-modified cementitious waterproofing coating, 30 kg set, 2 kg/m² at 1 mm, approx. 4.0 SAR/m², for flexible, durable protection against water and chemical ingress on concrete and masonry surfaces.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.09 PM.jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC Seale5e739.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Grey"
     ],
     "component_only": false
   }
