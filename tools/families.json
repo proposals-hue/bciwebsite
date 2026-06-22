@@ -4267,26 +4267,6 @@
   },
   {
     "slug": "waterproofing-roofing",
-    "key": "GEOTEXTILE",
-    "name": "Geotextile",
-    "n_skus": 1,
-    "members": [
-      "Geotextile 180g/m2"
-    ],
-    "desc": "BC Geotextile 180 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works. It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications",
-    "n_desc": 1,
-    "img": "/files/Geotextile.jpg",
-    "n_img": 1,
-    "tds": "/files/BC Geotextile -180.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "6.94444 L roll"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
     "key": "BC POLYTHELENE SHEET",
     "name": "BC Polythelene Sheet",
     "n_skus": 1,
@@ -5050,6 +5030,26 @@
     "colors": [
       "Black"
     ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "GEOTEXTILE",
+    "name": "Geotextile",
+    "n_skus": 1,
+    "members": [
+      "Geotextile 180g/m2"
+    ],
+    "desc": "BC Geotextile 180 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works. It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications",
+    "n_desc": 1,
+    "img": "/files/Geotextile.jpg",
+    "n_img": 1,
+    "tds": "/files/BC Geotextile -180.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "6.94444 L roll"
+    ],
+    "colors": [],
     "component_only": false
   }
 ]
