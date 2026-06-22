@@ -4985,28 +4985,6 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "BC BITUMEN PRIMER",
-    "name": "BC Bitumen Primer",
-    "n_skus": 1,
-    "members": [
-      "BC Bitumen Primer BLACK 15 KG -FG"
-    ],
-    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
-    "n_desc": 1,
-    "img": "/files/solvent Can.png",
-    "n_img": 1,
-    "tds": "/private/files/BC Bitumen Primer New.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "15 kg pail"
-    ],
-    "colors": [
-      "Black"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "pu-foam-insulation",
     "key": "BC FOAMCONCRETE",
     "name": "BC Foam Concrete",
@@ -5049,6 +5027,28 @@
     ],
     "colors": [
       "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITUMEN PRIMER",
+    "name": "BC Bitumen Primer",
+    "n_skus": 1,
+    "members": [
+      "BC Bitumen Primer BLACK 15 KG -FG"
+    ],
+    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
+    "n_desc": 1,
+    "img": "/files/solvent Can.png",
+    "n_img": 1,
+    "tds": "/private/files/BC Bitumen Primer New.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "15 kg pail"
+    ],
+    "colors": [
+      "Black"
     ],
     "component_only": false
   }
