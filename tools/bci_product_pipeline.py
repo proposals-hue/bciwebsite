@@ -318,7 +318,7 @@ def group_items(records: Iterable[Dict]) -> Tuple[List[Dict], Dict]:
     """Collapse ERP item rows into website product families.
 
     Publish gate:
-      - only FG rows with custom_bci_website_sync == Yes create public families
+      - only FG rows with custom_bci_website_sync ticked (1; legacy "Yes") create public families
       - component rows only enrich already-published matching families
     """
     records = list(records)
@@ -333,7 +333,8 @@ def group_items(records: Iterable[Dict]) -> Tuple[List[Dict], Dict]:
             if group == COMPONENT_GROUP:
                 support_rows.append(rec)
             continue
-        if str(rec.get("custom_bci_website_sync") or "").strip().lower() != "yes":
+        # Checkbox is stored as 1/0; accept legacy "Yes" too so the switch is race-proof.
+        if str(rec.get("custom_bci_website_sync") or "").strip().lower() not in ("1", "yes", "true"):
             skipped["not_yes"] += 1
             continue
         slug = category_to_slug(rec.get("custom_bci_website_category"))
