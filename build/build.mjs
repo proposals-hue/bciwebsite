@@ -55,6 +55,7 @@ const CONTENT_PAGES = [
 const FAVICONS = [
   '<link rel="icon" href="/favicon.ico?v=2" sizes="any" />',
   '<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png?v=2" />',
+  '<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png?v=2" />',
   '<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?v=2" />',
   '<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2" />',
 ].join('\n');
