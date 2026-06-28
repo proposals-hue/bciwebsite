@@ -42,14 +42,16 @@ const TODAY = new Date().toISOString().slice(0, 10);
 const STATIC = ['assets', 'ds', 'styles.css', 'image-slot.js', 'favicon.ico', 'vercel.json'];
 
 // Content pages: source file → SEO key + nav "active" id.
+// `path` is the clean, extensionless, lowercase public URL (Vercel cleanUrls
+// serves <path>.html on disk at /<path>). `file` is the source to read.
 const CONTENT_PAGES = [
   { file: 'index.html', key: 'home', active: 'Home', path: '' },
-  { file: 'About.html', key: 'about', active: 'About', path: 'About.html' },
-  { file: 'Solutions.html', key: 'solutions', active: 'Solutions', path: 'Solutions.html' },
-  { file: 'Projects.html', key: 'projects', active: 'Projects', path: 'Projects.html' },
-  { file: 'Resources.html', key: 'resources', active: 'Resources', path: 'Resources.html' },
-  { file: 'Career.html', key: 'career', active: 'Career', path: 'Career.html' },
-  { file: 'Contact.html', key: 'contact', active: 'Contact', path: 'Contact.html' },
+  { file: 'About.html', key: 'about', active: 'About', path: 'about' },
+  { file: 'Solutions.html', key: 'solutions', active: 'Solutions', path: 'solutions' },
+  { file: 'Projects.html', key: 'projects', active: 'Projects', path: 'projects' },
+  { file: 'Resources.html', key: 'resources', active: 'Resources', path: 'resources' },
+  { file: 'Career.html', key: 'career', active: 'Career', path: 'career' },
+  { file: 'Contact.html', key: 'contact', active: 'Contact', path: 'contact' },
 ];
 
 const FAVICONS = [
@@ -58,6 +60,14 @@ const FAVICONS = [
   '<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png?v=2" />',
   '<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png?v=2" />',
   '<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=2" />',
+].join('\n');
+
+// Fonts loaded directly in <head> with preconnect — de-chained from the CSS
+// @import (which was render-blocking). Keep in sync with the dev-page heads.
+const FONTS = [
+  '<link rel="preconnect" href="https://fonts.googleapis.com" />',
+  '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />',
+  '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" />',
 ].join('\n');
 
 const ANALYTICS =
@@ -154,10 +164,14 @@ function prerender(code, url, label) {
 async function loadData() {
   const ui = await fs.readFile(path.join(DIST, 'src/ui.js'), 'utf8');
   const data = await fs.readFile(path.join(DIST, 'src/data.js'), 'utf8');
+  // product-i18n overlay re-localises product descriptions (EN/AR/ES) onto
+  // SOLUTIONS by code, so schema, meta and pre-rendered pages all use it.
+  let i18n = '';
+  try { i18n = await fs.readFile(path.join(DIST, 'src/product-i18n.js'), 'utf8'); } catch {}
   const dom = new JSDOM('<!doctype html><html><head></head><body></body></html>',
     { url: ORIGIN + '/', runScripts: 'outside-only' });
   dom.window.React = React;
-  vm.runInContext(ui + '\n;\n' + data, dom.getInternalVMContext(), { filename: 'data-load' });
+  vm.runInContext(ui + '\n;\n' + data + '\n;\n' + i18n, dom.getInternalVMContext(), { filename: 'data-load' });
   const w = dom.window;
   const keys = ['SOLUTIONS', 'PROJECTS', 'JOBS', 'STATS', 'SOCIALS', 'CONTACT_DETAILS', 'STORES', 'SEO_META', 'FAQS', 'NAV'];
   const out = {};
@@ -217,7 +231,9 @@ function categoryItemListLd(cat, lang, pageUrl) {
       item: {
         '@type': 'Product', name: (p[lang] || p.en).name,
         description: (p[lang] || p.en).desc,
+        sku: p.code, mpn: p.code,
         category: (cat[lang] || cat.en).name,
+        url: abs(lang, `solutions/${cat.slug}/${productSlug(p.code)}`),
         brand: { '@type': 'Brand', name: 'BCI' },
         manufacturer: { '@type': 'Organization', name: 'Building Chemistry Industry (BCI)' },
         ...(p.img ? { image: ORIGIN + '/' + p.img.replace(/^\//, '') } : {}),
@@ -227,24 +243,67 @@ function categoryItemListLd(cat, lang, pageUrl) {
   };
 }
 
+// URL slug for a product, derived from its ERP code. MUST match productSlug()
+// in src/ui.jsx so dev links and built pages resolve to the same file.
+const productSlug = (code) => String(code == null ? '' : code)
+  .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+
+// schema.org Product for a single product page.
+function productLd(cat, prod, lang, url) {
+  const p = prod[lang] || prod.en;
+  return {
+    '@context': 'https://schema.org', '@type': 'Product',
+    name: p.name, description: p.desc,
+    sku: prod.code, mpn: prod.code,
+    category: (cat[lang] || cat.en).name,
+    brand: { '@type': 'Brand', name: 'BCI' },
+    manufacturer: { '@type': 'Organization', name: 'Building Chemistry Industry (BCI)', url: ORIGIN + '/' },
+    url, inLanguage: lang, countryOfOrigin: 'SA',
+    ...(prod.img ? { image: ORIGIN + '/' + prod.img.replace(/^\//, '') } : {}),
+    ...(prod.colors && prod.colors.length ? { color: prod.colors.join(', ') } : {}),
+    ...(prod.tds ? { additionalProperty: { '@type': 'PropertyValue', name: 'Technical Data Sheet', value: prod.tds } } : {}),
+  };
+}
+
+// One schema.org LocalBusiness per branch/store (drives local-pack visibility).
+function localBusinessLd(D, lang) {
+  const cityName = (s) => (s[lang] || s.en).city;
+  return (D.STORES || []).map((s) => {
+    const en = s.en || {};
+    const node = {
+      '@context': 'https://schema.org', '@type': 'LocalBusiness',
+      '@id': `${ORIGIN}/#branch-${s.key}`,
+      name: `BCI — ${en.city}`, image: ORIGIN + '/assets/og-image.png?v=3', url: ORIGIN + '/',
+      telephone: '+966593120221', email: 'info@bcisaudi.com', priceRange: '$$',
+      parentOrganization: { '@type': 'Organization', name: 'Building Chemistry Industry (BCI)', url: ORIGIN + '/' },
+      address: { '@type': 'PostalAddress', addressLocality: cityName(s), addressRegion: (en.region || ''), addressCountry: 'SA' },
+      areaServed: (s[lang] || s.en).region || en.region,
+      ...(s.lat != null && s.lon != null ? { geo: { '@type': 'GeoCoordinates', latitude: s.lat, longitude: s.lon } } : {}),
+      ...(s.map ? { hasMap: s.map } : {}),
+    };
+    if (s.hq) node.description = tr(lang, 'Head office, manufacturing plant and store of Building Chemistry Industry (BCI).', 'المقر الرئيسي والمصنع والمعرض لشركة صناعة كيمياء البناء (BCI).', 'Sede, planta de fabricación y tienda de Building Chemistry Industry (BCI).');
+    return ld(node);
+  }).join('\n');
+}
+
 // Schema set for a content page.
 function pageSchema(key, lang, D) {
   const crumbHome = { name: tr(lang, 'Home', 'الرئيسية', 'Inicio'), url: abs(lang, '') };
   const here = (file, name) => ({ name, url: abs(lang, file) });
   const scripts = [ld(websiteLd(lang))];
   if (key === 'home') { scripts.unshift(ld(orgLd(D))); scripts.push(ld(faqLd(D, lang))); }
-  if (key === 'about') scripts.push(ld(breadcrumbLd([crumbHome, here('About.html', tr(lang, 'About', 'عن BCI', 'Nosotros'))])));
+  if (key === 'about') scripts.push(ld(breadcrumbLd([crumbHome, here('about', tr(lang, 'About', 'عن BCI', 'Nosotros'))])));
   if (key === 'solutions') {
-    scripts.push(ld(breadcrumbLd([crumbHome, here('Solutions.html', tr(lang, 'Solutions', 'الحلول', 'Soluciones'))])));
+    scripts.push(ld(breadcrumbLd([crumbHome, here('solutions', tr(lang, 'Solutions', 'الحلول', 'Soluciones'))])));
     scripts.push(ld({
       '@context': 'https://schema.org', '@type': 'ItemList', name: tr(lang, 'BCI Solution Lines', 'خطوط حلول BCI', 'Líneas de Soluciones BCI'),
-      itemListElement: (D.SOLUTIONS || []).map((s, i) => ({ '@type': 'ListItem', position: i + 1, name: (s[lang] || s.en).name, url: abs(lang, `solutions/${s.slug}.html`) })),
+      itemListElement: (D.SOLUTIONS || []).map((s, i) => ({ '@type': 'ListItem', position: i + 1, name: (s[lang] || s.en).name, url: abs(lang, `solutions/${s.slug}`) })),
     }));
   }
-  if (key === 'projects') scripts.push(ld(breadcrumbLd([crumbHome, here('Projects.html', tr(lang, 'Projects', 'المشاريع', 'Proyectos'))])));
-  if (key === 'resources') scripts.push(ld(breadcrumbLd([crumbHome, here('Resources.html', tr(lang, 'Resources', 'الموارد', 'Recursos'))])));
-  if (key === 'career') { scripts.push(ld(breadcrumbLd([crumbHome, here('Career.html', tr(lang, 'Careers', 'الوظائف', 'Empleo'))]))); scripts.push(jobPostingsLd(D, lang)); }
-  if (key === 'contact') { scripts.push(ld(breadcrumbLd([crumbHome, here('Contact.html', tr(lang, 'Contact', 'تواصل', 'Contacto'))]))); scripts.push(ld(orgLd(D))); }
+  if (key === 'projects') scripts.push(ld(breadcrumbLd([crumbHome, here('projects', tr(lang, 'Projects', 'المشاريع', 'Proyectos'))])));
+  if (key === 'resources') scripts.push(ld(breadcrumbLd([crumbHome, here('resources', tr(lang, 'Resources', 'الموارد', 'Recursos'))])));
+  if (key === 'career') { scripts.push(ld(breadcrumbLd([crumbHome, here('career', tr(lang, 'Careers', 'الوظائف', 'Empleo'))]))); scripts.push(jobPostingsLd(D, lang)); }
+  if (key === 'contact') { scripts.push(ld(breadcrumbLd([crumbHome, here('contact', tr(lang, 'Contact', 'تواصل', 'Contacto'))]))); scripts.push(ld(orgLd(D))); scripts.push(localBusinessLd(D, lang)); }
   return scripts.join('\n');
 }
 
@@ -278,6 +337,7 @@ ${hreflang}
 <meta name="twitter:description" content="${esc(description)}" />
 <meta name="twitter:image" content="${ORIGIN}/assets/og-image.png?v=3" />
 ${FAVICONS}
+${FONTS}
 <link rel="stylesheet" href="/styles.css?v=${ASSET_V}" />
 ${schema}
 ${ANALYTICS}
@@ -293,14 +353,16 @@ ${scriptTags}
 }
 
 // ---------- generators: sitemap / robots / llms ----------
-function sitemap(paths) {
+function sitemap(paths, images = {}) {
   const alts = (p) => LANGS.map((L) => `    <xhtml:link rel="alternate" hreflang="${L}" href="${abs(L, p)}" />`).join('\n')
     + `\n    <xhtml:link rel="alternate" hreflang="x-default" href="${abs('en', p)}" />`;
+  const imgTags = (p) => (images[p] || []).map((u) => `    <image:image><image:loc>${esc(u)}</image:loc></image:image>`).join('\n');
   const urls = [];
   for (const p of paths) for (const L of LANGS) {
-    urls.push(`  <url>\n    <loc>${abs(L, p)}</loc>\n${alts(p)}\n    <lastmod>${TODAY}</lastmod>\n    <changefreq>monthly</changefreq>\n  </url>`);
+    const imgs = imgTags(p);
+    urls.push(`  <url>\n    <loc>${abs(L, p)}</loc>\n${alts(p)}\n${imgs ? imgs + '\n' : ''}    <lastmod>${TODAY}</lastmod>\n    <changefreq>monthly</changefreq>\n  </url>`);
   }
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n${urls.join('\n')}\n</urlset>\n`;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${urls.join('\n')}\n</urlset>\n`;
 }
 const robotsTxt =
 `# BCI — robots.txt
@@ -330,7 +392,7 @@ Allow: /
 Sitemap: ${ORIGIN}/sitemap.xml
 `;
 function llmsTxt(D) {
-  const cats = (D.SOLUTIONS || []).map((s) => `- [${s.en.name}](${ORIGIN}/solutions/${s.slug}.html): ${s.en.tagline} (${s.products.length} products)`).join('\n');
+  const cats = (D.SOLUTIONS || []).map((s) => `- [${s.en.name}](${ORIGIN}/solutions/${s.slug}): ${s.en.tagline} (${s.products.length} products)`).join('\n');
   return `# BCI — Building Chemistry Industry
 
 > BCI (Building Chemistry Industry) is a Saudi national manufacturer of construction chemicals and protective coatings, founded in Dammam in 2021. It produces 200+ products across nine solution lines for the Saudi Arabian and GCC construction market. Quality is certified to ISO 9001 and systems are aligned to EN 1504. Saudi-made, supporting Vision 2030.
@@ -348,12 +410,12 @@ function llmsTxt(D) {
 ${cats}
 
 ## Key pages
-- [About](${ORIGIN}/About.html): company, milestones and certifications
-- [Solutions](${ORIGIN}/Solutions.html): all nine construction-chemical lines and products
-- [Projects](${ORIGIN}/Projects.html): reference projects across Saudi Arabia and the GCC
-- [Resources](${ORIGIN}/Resources.html): technical data sheets (TDS), safety data sheets (SDS), certifications
-- [Careers](${ORIGIN}/Career.html): open roles in Dammam
-- [Contact](${ORIGIN}/Contact.html): sales, technical support and quotes
+- [About](${ORIGIN}/about): company, milestones and certifications
+- [Solutions](${ORIGIN}/solutions): all nine construction-chemical lines and products
+- [Projects](${ORIGIN}/projects): reference projects across Saudi Arabia and the GCC
+- [Resources](${ORIGIN}/resources): technical data sheets (TDS), safety data sheets (SDS), certifications
+- [Careers](${ORIGIN}/career): open roles in Dammam
+- [Contact](${ORIGIN}/contact): sales, technical support and quotes
 
 ## Languages
 English (${ORIGIN}/), Arabic (${ORIGIN}/ar/), Spanish (${ORIGIN}/es/).
@@ -400,6 +462,7 @@ async function main() {
   // 4 · pre-render + assemble every page in every language
   let pages = 0;
   const sitemapPaths = [''];
+  const sitemapImages = {};   // path → [absolute image URLs] for the image sitemap
   for (const pg of CONTENT_PAGES) {
     if (pg.path) sitemapPaths.push(pg.path);
     const srcHtml = await fs.readFile(path.join(ROOT, pg.file), 'utf8');
@@ -412,7 +475,7 @@ async function main() {
         lang, title: meta.title, description: meta.description, p: pg.path,
         schema: pageSchema(pg.key, lang, D), prerendered: inner, scripts,
       });
-      const outRel = path.join(langPrefix(lang).slice(1), pg.path || 'index.html');
+      const outRel = path.join(langPrefix(lang).slice(1), pg.path ? pg.path + '.html' : 'index.html');
       await writeFile(outRel, doc);
       pages++;
     }
@@ -433,8 +496,9 @@ async function main() {
   }
   let detailPages = 0;
   for (const cat of D.SOLUTIONS) {
-    const p = `solutions/${cat.slug}.html`;
+    const p = `solutions/${cat.slug}`;
     sitemapPaths.push(p);
+    sitemapImages[p] = cat.products.filter((x) => x.img).map((x) => ORIGIN + '/' + x.img.replace(/^\//, '')).slice(0, 40);
     for (const lang of LANGS) {
       const url = abs(lang, p);
       const name = (cat[lang] || cat.en).name;
@@ -444,30 +508,66 @@ async function main() {
       const inner = prerender(detailCode, url, `${p} [${lang}]`);
       const crumbs = breadcrumbLd([
         { name: tr(lang, 'Home', 'الرئيسية', 'Inicio'), url: abs(lang, '') },
-        { name: tr(lang, 'Solutions', 'الحلول', 'Soluciones'), url: abs(lang, 'Solutions.html') },
+        { name: tr(lang, 'Solutions', 'الحلول', 'Soluciones'), url: abs(lang, 'solutions') },
         { name, url },
       ]);
       const schema = [ld(crumbs), ld(categoryItemListLd(cat, lang, url))].join('\n');
       const doc = buildDoc({ lang, title, description, p, schema, prerendered: inner, scripts: detailScripts });
-      await writeFile(path.join(langPrefix(lang).slice(1), p), doc);
+      await writeFile(path.join(langPrefix(lang).slice(1), p + '.html'), doc);
       detailPages++;
     }
   }
 
-  // 6 · 404 (root, noindex) — compile + absolutize, no pre-render
+  // 6 · individual product pages: /solutions/<cat>/<product>.html (+ /ar, /es)
+  const productSrc = await fs.readFile(path.join(ROOT, 'Product Detail.html'), 'utf8');
+  const productScripts = appScriptPaths(productSrc);
+  const productCode = await readScripts(productScripts);
+  let productPages = 0;
+  for (const cat of D.SOLUTIONS) {
+    const seen = new Set();
+    for (const prod of cat.products) {
+      let slug = productSlug(prod.code);
+      while (seen.has(slug)) slug += '-x';      // guard against rare slug collisions
+      seen.add(slug);
+      const p = `solutions/${cat.slug}/${slug}`;
+      sitemapPaths.push(p);
+      if (prod.img) sitemapImages[p] = [ORIGIN + '/' + prod.img.replace(/^\//, '')];
+      for (const lang of LANGS) {
+        const url = abs(lang, p);
+        const pn = prod[lang] || prod.en;
+        const catName = (cat[lang] || cat.en).name;
+        const title = `${pn.name} — ${catName} | BCI`;
+        const description = String(pn.desc || '').replace(/\s+/g, ' ').trim().slice(0, 158);
+        const inner = prerender(productCode, url, `${p} [${lang}]`);
+        const crumbs = breadcrumbLd([
+          { name: tr(lang, 'Home', 'الرئيسية', 'Inicio'), url: abs(lang, '') },
+          { name: tr(lang, 'Solutions', 'الحلول', 'Soluciones'), url: abs(lang, 'solutions') },
+          { name: catName, url: abs(lang, `solutions/${cat.slug}`) },
+          { name: pn.name, url },
+        ]);
+        const schema = [ld(crumbs), ld(productLd(cat, prod, lang, url))].join('\n');
+        const doc = buildDoc({ lang, title, description, p, schema, prerendered: inner, scripts: productScripts });
+        await writeFile(path.join(langPrefix(lang).slice(1), p + '.html'), doc);
+        productPages++;
+      }
+    }
+  }
+
+  // 7 · 404 (root, noindex) — compile + absolutize, no pre-render
   try {
     const html404 = await fs.readFile(path.join(ROOT, '404.html'), 'utf8');
     await writeFile('404.html', absolutize404(html404));
   } catch {}
 
-  // 7 · sitemap, robots, llms
-  await writeFile('sitemap.xml', sitemap(sitemapPaths));
+  // 8 · sitemap, robots, llms
+  await writeFile('sitemap.xml', sitemap(sitemapPaths, sitemapImages));
   await writeFile('robots.txt', robotsTxt);
   await writeFile('llms.txt', llmsTxt(D));
 
   console.log(`✓ Compiled ${compiled} JSX files (assets → absolute)`);
-  console.log(`✓ Built ${pages} content pages + ${detailPages} product pages across ${LANGS.length} languages`);
-  console.log(`✓ Generated sitemap.xml (${sitemapPaths.length * LANGS.length} URLs), robots.txt, llms.txt`);
+  console.log(`✓ Built ${pages} content pages + ${detailPages} category pages across ${LANGS.length} languages`);
+  console.log(`✓ Built ${productPages} product pages across ${LANGS.length} languages`);
+  console.log(`✓ Generated sitemap.xml (${sitemapPaths.length * LANGS.length} URLs, with image entries), robots.txt, llms.txt`);
   console.log(`✓ Output: ${path.relative(process.cwd(), DIST)}/  — deploy this folder.`);
 }
 

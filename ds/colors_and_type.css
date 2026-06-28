@@ -4,7 +4,9 @@
    Industrial / technical aesthetic — square, measured, mechanical.
    ============================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+/* Fonts are loaded via <link rel="preconnect"> + <link rel="stylesheet"> in each
+   page <head> (see FONTS in build/build.mjs and the dev .html heads). The old
+   chained @import here was render-blocking, so it has been removed. */
 
 /* ---------- 1 · Color tokens ---------- */
 :root {

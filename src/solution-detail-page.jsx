@@ -1,5 +1,6 @@
 /* global React, ReactDOM, LangProvider, useLang, t, Icon, Arrow, Chev, Badge,
-   MegaHeader, PageHero, CtaBand, Footer, SOLUTIONS */
+   MegaHeader, PageHero, CtaBand, Footer, SOLUTIONS, productHref, solutionHref,
+   siteHref */
 const { useState: useState_d } = React;
 
 /* Real product photo (lazy-loaded, compressed local asset) with a graceful
@@ -27,7 +28,7 @@ function getCat() {
   try {
     // Clean URL first (/solutions/<slug>.html, incl. /ar/ and /es/), then the
     // legacy ?cat=<slug> query the dev build and old links still use.
-    const fromPath = (location.pathname.match(/\/solutions\/([^/]+?)\.html$/) || [])[1];
+    const fromPath = (location.pathname.match(/\/solutions\/([^/]+?)(?:\.html)?$/) || [])[1];
     const slug = fromPath || new URLSearchParams(location.search).get('cat');
     return SOLUTIONS.find(s => s.slug === slug) || SOLUTIONS[0];
   } catch (e) { return SOLUTIONS[0]; }
@@ -105,7 +106,7 @@ function SolutionDetailPage() {
               <span className="sec-num" style={{ color: 'var(--bci-steel)' }}>{String(s.products.length).padStart(2, '0')} {t(lang, 'items', 'عنصر', 'artículos')}</span>
             </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
-              {s.products.map(p => <DetailCard key={p.code} p={p} icon={s.icon} />)}
+              {s.products.map(p => <DetailCard key={p.code} p={p} icon={s.icon} catSlug={s.slug} />)}
             </div>
           </div>
         </div>
@@ -114,11 +115,12 @@ function SolutionDetailPage() {
   );
 }
 
-function DetailCard({ p, icon }) {
+function DetailCard({ p, icon, catSlug }) {
   const { lang } = useLang();
   const isAr = lang === 'ar';
   const [hover, setHover] = useState_d(false);
   const sizes = p.sizes || (p.size ? [p.size] : []);
+  const href = productHref(catSlug, p.code);
   return (
     <article onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
       style={{
@@ -126,8 +128,10 @@ function DetailCard({ p, icon }) {
         borderRadius: 2, padding: 26, display: 'flex', flexDirection: 'column',
         transition: 'border-color 120ms linear', textAlign: isAr ? 'right' : 'left',
       }}>
-      <ProductImg src={p.img} alt={p[lang].name} icon={icon} />
-      <h3 style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 600, fontSize: 22, color: 'var(--bci-navy)', margin: '0 0 10px', lineHeight: 1.15 }}>{p[lang].name}</h3>
+      <a href={href} aria-label={p[lang].name}><ProductImg src={p.img} alt={p[lang].name} icon={icon} /></a>
+      <h3 style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 600, fontSize: 22, margin: '0 0 10px', lineHeight: 1.15 }}>
+        <a href={href} style={{ color: 'var(--bci-navy)', textDecoration: 'none' }}>{p[lang].name}</a>
+      </h3>
       <p style={{ fontSize: 14, lineHeight: 1.55, color: 'var(--bci-steel)', margin: '0 0 18px', flex: 1 }}>{p[lang].desc}</p>
       {/* Pack sizes (one row per available size from the ERP) */}
       {sizes.length > 0 && (

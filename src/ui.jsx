@@ -40,8 +40,14 @@ function siteHref(path, lang) {
   const built = typeof window !== 'undefined' && window.__CLEAN_URLS;
   const l = built ? (lang || pageLang()) : 'en';
   const prefix = l === 'en' ? '/' : `/${l}/`;
-  const clean = s.replace(/^\.\//, '');
+  let clean = s.replace(/^\.\//, '');
   if (clean === '' || clean === 'index.html') return prefix;
+  // Built site uses clean, extensionless, lowercase URLs (Vercel cleanUrls).
+  // Dev serves the raw capitalised .html files, so links keep the extension there.
+  if (built) {
+    clean = clean.replace(/\.html$/i, '');
+    if (!clean.includes('/')) clean = clean.toLowerCase();   // top-level page → lowercase
+  }
   return prefix + clean;
 }
 // Canonical URL for a solution-line (product category). The static build emits
@@ -49,7 +55,19 @@ function siteHref(path, lang) {
 // dev browser there is only Solution Detail.html?cat=<slug>, so fall back to it.
 function solutionHref(slug, lang) {
   const clean = typeof window !== 'undefined' && window.__CLEAN_URLS;
-  return siteHref(clean ? `solutions/${slug}.html` : `Solution Detail.html?cat=${slug}`, lang);
+  return siteHref(clean ? `solutions/${slug}` : `Solution Detail.html?cat=${slug}`, lang);
+}
+// Stable URL slug for a product, derived from its ERP code ("BC Proof 330" →
+// "bc-proof-330"). MUST match productSlug() in build/build.mjs.
+function productSlug(code) {
+  return String(code == null ? '' : code).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+// Canonical URL for a single product page: /solutions/<cat>/<product>.html. In
+// the plain dev browser there is only Product Detail.html?cat=&product=.
+function productHref(catSlug, code, lang) {
+  const clean = typeof window !== 'undefined' && window.__CLEAN_URLS;
+  const ps = productSlug(code);
+  return siteHref(clean ? `solutions/${catSlug}/${ps}` : `Product Detail.html?cat=${catSlug}&product=${ps}`, lang);
 }
 
 // ---------------- Viewport hook ----------------
