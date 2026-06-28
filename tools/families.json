@@ -2273,30 +2273,6 @@
     "component_only": false
   },
   {
-    "slug": "pu-foam-insulation",
-    "key": "BC 717 SWP",
-    "name": "BC 717 SWP",
-    "n_skus": 2,
-    "members": [
-      "BC 717 SWP FOAM YELLOW 470 KG - FG",
-      "BC 717 SWP POLYOL YELLOW 220 KG - FG"
-    ],
-    "desc": "BC 717 Polyol Two-component, 141 B-based polyurethane system for sandwich panels, designed for 42–46 kg/m³ density; reacts with BC 768 Isocyanate (100/120 ratio) to form highly crosslinked, rigid, dimensionally stable foam with good metal adhesion, B2-grade per DIN 4102.",
-    "n_desc": 1,
-    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x916464af9.webp",
-    "n_img": 2,
-    "tds": "/files/BC 717 SWP.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "220 kg drum",
-      "470 kg set"
-    ],
-    "colors": [
-      "Yellow"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "tile-grouts-anchors",
     "key": "BC TILE FIX PRIME",
     "name": "BC Tile Fix Prime",
@@ -5049,6 +5025,30 @@
     ],
     "colors": [
       "Black"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 717 SWP",
+    "name": "BC 717 SWP",
+    "n_skus": 2,
+    "members": [
+      "BC 717 SWP FOAM YELLOW 470 KG - FG",
+      "BC 717 SWP POLYOL YELLOW 220 KG - FG"
+    ],
+    "desc": "BC 717 Polyol Two-component, 141 B-based polyurethane system for sandwich panels, designed for 42–46 kg/m³ density; reacts with BC 768 Isocyanate (100/120 ratio) to form highly crosslinked, rigid, dimensionally stable foam with good metal adhesion, B2-grade per DIN 4102.",
+    "n_desc": 1,
+    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x916464af9.webp",
+    "n_img": 2,
+    "tds": "/files/BC 717 SWP.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "220 kg drum",
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
     ],
     "component_only": false
   }
