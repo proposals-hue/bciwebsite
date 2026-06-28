@@ -16,7 +16,7 @@
     "tds": "/private/files/BC Tec 30 TDS.pdf",
     "n_tds": 1,
     "sizes": [
-      "0.428571 L sauge",
+      "0.714286 L sauge",
       "461.538 L pcs",
       "600 kg pcs"
     ],
@@ -46,41 +46,6 @@
     ],
     "colors": [
       "Black"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "flooring-systems",
-    "key": "BC POXY FC 145",
-    "name": "BC Poxy FC 145",
-    "n_skus": 9,
-    "members": [
-      "BC Poxy FC 145  Green RAL 6018 16 KG PART - A - FG",
-      "BC Poxy FC 145  Green RAL 6018 20 KG SYSTEM - FG",
-      "BC Poxy FC 145 Clear 20 KG System -FG",
-      "BC Poxy FC 145 Clear 4 KG Part-B -FG",
-      "BC Poxy FC 145 Grey 16 KG Part-A -FG",
-      "BC Poxy FC 145 Grey 20 KG System -FG",
-      "BC Poxy FC 145 RAL 1003 16 KG Part-A FG",
-      "BC Poxy FC 145 RAL 1003 20 KG System -FG",
-      "BC Poxy FC 145 RAL 5017  Traffic Blue 20 Kg system FG"
-    ],
-    "desc": "BC Epoxy FC 145 Two-component, solvent-free epoxy floor coating, 20 kg set, 0.28 kg/m² at 200 µm, one coat, approx. 4.9 SAR/m², for durable, chemical-resistant, high-gloss flooring.",
-    "n_desc": 1,
-    "img": "/files/Epoxy Primer.jpeg",
-    "n_img": 7,
-    "tds": "/files/BC Epoxy FC 145 New (1).pdf",
-    "n_tds": 3,
-    "sizes": [
-      "16 kg pail",
-      "20 kg set",
-      "4 kg can"
-    ],
-    "colors": [
-      "Clear",
-      "Green",
-      "Grey",
-      "Traffic Blue"
     ],
     "component_only": false
   },
@@ -265,29 +230,6 @@
     ],
     "colors": [
       "Grey"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "admixtures-aids",
-    "key": "BC ADMIX 31",
-    "name": "BC Admix 31",
-    "n_skus": 1,
-    "members": [
-      "BC Admix 31 DARK BROWN 1170 KG - FG"
-    ],
-    "desc": "BC Admix 31 is a high-performance, ready-to-use, liquid admixture formulated from modified lignosulfonate compounds and organic salts. It acts as both a water-reducing and set-retarding agent conforming to ASTM C494 Type B and D",
-    "n_desc": 1,
-    "img": null,
-    "n_img": 0,
-    "tds": null,
-    "n_tds": 0,
-    "sizes": [
-      "1170 kg ibc"
-    ],
-    "colors": [
-      "Brown",
-      "Dark Brown"
     ],
     "component_only": false
   },
@@ -1244,6 +1186,41 @@
   },
   {
     "slug": "flooring-systems",
+    "key": "BC POXY FC 145",
+    "name": "BC Poxy FC 145",
+    "n_skus": 9,
+    "members": [
+      "BC Poxy FC 145  Green RAL 6018 16 KG PART - A - FG",
+      "BC Poxy FC 145  Green RAL 6018 20 KG SYSTEM - FG",
+      "BC Poxy FC 145 Clear 20 KG System -FG",
+      "BC Poxy FC 145 Clear 4 KG Part-B -FG",
+      "BC Poxy FC 145 Grey 16 KG Part-A -FG",
+      "BC Poxy FC 145 Grey 20 KG System -FG",
+      "BC Poxy FC 145 RAL 1003 16 KG Part-A FG",
+      "BC Poxy FC 145 RAL 1003 20 KG System -FG",
+      "BC Poxy FC 145 RAL 5017  Traffic Blue 20 Kg system FG"
+    ],
+    "desc": "BC Epoxy FC 145 Two-component, solvent-free epoxy floor coating, 20 kg set, 0.28 kg/m² at 200 µm, one coat, approx. 4.9 SAR/m², for durable, chemical-resistant, high-gloss flooring.",
+    "n_desc": 1,
+    "img": "/files/Epoxy Primer.jpeg",
+    "n_img": 7,
+    "tds": "/files/BC Epoxy FC 145 New (1).pdf",
+    "n_tds": 3,
+    "sizes": [
+      "16 kg pail",
+      "20 kg set",
+      "4 kg can"
+    ],
+    "colors": [
+      "Clear",
+      "Green",
+      "Grey",
+      "Traffic Blue"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "flooring-systems",
     "key": "BC POXY FC 145 MATT",
     "name": "BC Poxy FC 145 Matt",
     "n_skus": 2,
@@ -1997,29 +1974,6 @@
   },
   {
     "slug": "admixtures-aids",
-    "key": "BC TEC 505 TP",
-    "name": "BC Tec 505 TP",
-    "n_skus": 1,
-    "members": [
-      "BC Tec 505 TP DARK BROWN 1200 KG - FG"
-    ],
-    "desc": "BC Tec 505 TP is a high-performance, high-range water-reducing, slump-retaining, and retarding super plasticizing admixture specially designed for long-distance concrete transportation and self-leveling ready-mix concrete applications. It enables the production of highly workable, flowable concrete with excellent slump retention and minimal water demand, without segregation or bleeding.",
-    "n_desc": 1,
-    "img": "/files/Ibc tank044779.jpg",
-    "n_img": 1,
-    "tds": "/private/files/BC Tec 505 TP093907.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "1200 kg ibc"
-    ],
-    "colors": [
-      "Brown",
-      "Dark Brown"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "admixtures-aids",
     "key": "BC TEC CORROSION INHIBITOR",
     "name": "BC Tec Corrosion Inhibitor",
     "n_skus": 1,
@@ -2575,28 +2529,6 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "BC GEOTEXTILE",
-    "name": "BC Geotextile",
-    "n_skus": 2,
-    "members": [
-      "BC Geotextile 120g/m2",
-      "BC Geotextile 140g/m2"
-    ],
-    "desc": "BC Geotextile 120 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works.It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications.",
-    "n_desc": 2,
-    "img": "/files/Geotextile.jpg",
-    "n_img": 2,
-    "tds": "/files/BC Geotextile.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "6.06061 L roll",
-      "7.0922 L roll"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
     "slug": "pu-foam-insulation",
     "key": "BC 721 CONTINUOUS LINE",
     "name": "BC 721 Continuous Line",
@@ -3040,28 +2972,6 @@
     ],
     "colors": [
       "White"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "tile-grouts-anchors",
-    "key": "BC TEC CEM GROUT",
-    "name": "BC Tec Cem Grout",
-    "n_skus": 1,
-    "members": [
-      "BC Tec Cem Grout GREY 20 KG -FG"
-    ],
-    "desc": "BC TEC CEM GROUT is a high-strength, non-shrink, cementitious grout with natural aggregates and controlled expansion for durable, non-staining applications. Supplied in 20 kg bag.",
-    "n_desc": 1,
-    "img": "/files/ddcea77e-77b8-4e40-ac57-f9703160bad9-751.webp",
-    "n_img": 1,
-    "tds": "/private/files/BC Tec Cem Grout].pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20 kg bag"
-    ],
-    "colors": [
-      "Grey"
     ],
     "component_only": false
   },
@@ -4224,26 +4134,6 @@
   },
   {
     "slug": "protective-coatings",
-    "key": "BC GRP MATT",
-    "name": "BC GRP Matt",
-    "n_skus": 1,
-    "members": [
-      "BC GRP Matt"
-    ],
-    "desc": "BC GRP Matt is a high-quality, non-woven glass fiber reinforcement mat manufactured from randomly oriented chopped glass filaments (approx. 50 mm) bonded together with either powder or emulsion binder.",
-    "n_desc": 1,
-    "img": "/files/grp matt.webp",
-    "n_img": 1,
-    "tds": "/private/files/BC GRP Matt  TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "47 kg roll"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
-    "slug": "protective-coatings",
     "key": "BC GRP LINE",
     "name": "BC GRP Line",
     "n_skus": 2,
@@ -4263,46 +4153,6 @@
     "colors": [
       "White"
     ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
-    "key": "BC POLYTHELENE SHEET",
-    "name": "BC Polythelene Sheet",
-    "n_skus": 1,
-    "members": [
-      "BC Polythelene Sheet"
-    ],
-    "desc": "BC Polyethylene Sheet is a durable, flexible plastic sheet used as a moisture barrier, protection layer, and vapor retardant in construction applications.",
-    "n_desc": 1,
-    "img": "/files/polyethlene.jpg",
-    "n_img": 1,
-    "tds": "/files/BC Thene TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "29.4 kg"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
-    "slug": "pu-foam-insulation",
-    "key": "BC XPS 32 10CMX60CMX125CM",
-    "name": "BC XPS 32 10cmx60cmx125cm",
-    "n_skus": 1,
-    "members": [
-      "BC XPS BOARD 32-35KG/M3 (10CMX60CMX125CM)"
-    ],
-    "desc": "XPS Board 32–35 kg/m³ (10 cm × 60 cm × 125 cm) is an extruded polystyrene insulation board designed for high compressive strength and low water absorption.It provides durable, long-lasting thermal insulation for foundations, roofs, walls, and below-grade applications",
-    "n_desc": 1,
-    "img": "/files/XPS-Extruded-Polystyrene-Board..jpg",
-    "n_img": 1,
-    "tds": "/private/files/BC XPS Board.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "2.5 kg board"
-    ],
-    "colors": [],
     "component_only": false
   },
   {
@@ -4830,30 +4680,6 @@
   },
   {
     "slug": "waterproofing-roofing",
-    "key": "BC BITU CLASSIC 160",
-    "name": "BC Bitu Classic 160",
-    "n_skus": 2,
-    "members": [
-      "BC Bitu Classic 160 BLACK ROLL - FG",
-      "BC Bitu Classic 160 Slated   ROLL - FG"
-    ],
-    "desc": "BC Bitu Classic 160 Slated APP (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1).jpeg",
-    "n_img": 1,
-    "tds": "/files/TDS BC Bitu-Classic.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "0.909091 L roll"
-    ],
-    "colors": [
-      "Black",
-      "Slated"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
     "key": "BC BITU CLASSIC 200",
     "name": "BC Bitu Classic 200",
     "n_skus": 2,
@@ -4873,72 +4699,6 @@
     "colors": [
       "Black",
       "Slated"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "protective-coatings",
-    "key": "BC PRIMER 349",
-    "name": "BC Primer 349",
-    "n_skus": 1,
-    "members": [
-      "BC PRIMER 349 CLEAR 30 KG SYSTEM - FG"
-    ],
-    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Epoxy Primer 349.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "concrete-repair",
-    "key": "BC REPAIR 100",
-    "name": "BC Repair 100",
-    "n_skus": 1,
-    "members": [
-      "BC Repair 100 GREY 20 KG -FG"
-    ],
-    "desc": "BC Repair 100 High-quality, water-resistant cementitious repair mortar, 20 kg bag, 1.10 m² at 10 mm, one coat, for durable crack and surface repair up to 4 mm width on concrete.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-08-12 at 4.07.52 PM (1).jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Repair 100c7d943.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20 kg bag"
-    ],
-    "colors": [
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
-    "key": "BC SEAL",
-    "name": "BC Seal",
-    "n_skus": 1,
-    "members": [
-      "BC Seal GREY 30 KG SYSTEM - FG"
-    ],
-    "desc": "BC Seal Two-component, acrylic-modified cementitious waterproofing coating, 30 kg set, 2 kg/m² at 1 mm, approx. 4.0 SAR/m², for flexible, durable protection against water and chemical ingress on concrete and masonry surfaces.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.09 PM.jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Seale5e739.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Grey"
     ],
     "component_only": false
   },
@@ -4990,6 +4750,244 @@
   },
   {
     "slug": "waterproofing-roofing",
+    "key": "GEOTEXTILE",
+    "name": "Geotextile",
+    "n_skus": 1,
+    "members": [
+      "Geotextile 180g/m2"
+    ],
+    "desc": "BC Geotextile 180 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works. It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications",
+    "n_desc": 1,
+    "img": "/files/Geotextile.jpg",
+    "n_img": 1,
+    "tds": "/files/BC Geotextile -180.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "6.94444 L roll"
+    ],
+    "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "tile-grouts-anchors",
+    "key": "BC TEC CEM GROUT",
+    "name": "BC Tec Cem Grout",
+    "n_skus": 1,
+    "members": [
+      "BC Tec Cem Grout GREY 20 KG -FG"
+    ],
+    "desc": "BC TEC CEM GROUT is a high-strength, non-shrink, cementitious grout with natural aggregates and controlled expansion for durable, non-staining applications. Supplied in 20 kg bag.",
+    "n_desc": 1,
+    "img": "/files/ddcea77e-77b8-4e40-ac57-f9703160bad9-751.webp",
+    "n_img": 1,
+    "tds": "/private/files/BC Tec Cem Grout].pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20 kg bag"
+    ],
+    "colors": [
+      "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC XPS 32 10CMX60CMX125CM",
+    "name": "BC XPS 32 10cmx60cmx125cm",
+    "n_skus": 1,
+    "members": [
+      "BC XPS BOARD 32-35KG/M3 (10CMX60CMX125CM)"
+    ],
+    "desc": "XPS Board 32–35 kg/m³ (10 cm × 60 cm × 125 cm) is an extruded polystyrene insulation board designed for high compressive strength and low water absorption.It provides durable, long-lasting thermal insulation for foundations, roofs, walls, and below-grade applications",
+    "n_desc": 1,
+    "img": "/files/XPS-Extruded-Polystyrene-Board..jpg",
+    "n_img": 1,
+    "tds": "/private/files/BC XPS Board.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "2.5 kg board"
+    ],
+    "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC GEOTEXTILE",
+    "name": "BC Geotextile",
+    "n_skus": 2,
+    "members": [
+      "BC Geotextile 120g/m2",
+      "BC Geotextile 140g/m2"
+    ],
+    "desc": "BC Geotextile 120 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works.It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications.",
+    "n_desc": 2,
+    "img": "/files/Geotextile.jpg",
+    "n_img": 2,
+    "tds": "/files/BC Geotextile.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "6.06061 L roll",
+      "7.0922 L roll"
+    ],
+    "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "concrete-repair",
+    "key": "BC REPAIR 100",
+    "name": "BC Repair 100",
+    "n_skus": 1,
+    "members": [
+      "BC Repair 100 GREY 20 KG -FG"
+    ],
+    "desc": "BC Repair 100 High-quality, water-resistant cementitious repair mortar, 20 kg bag, 1.10 m² at 10 mm, one coat, for durable crack and surface repair up to 4 mm width on concrete.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-08-12 at 4.07.52 PM (1).jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC Repair 100c7d943.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20 kg bag"
+    ],
+    "colors": [
+      "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITU CLASSIC 160",
+    "name": "BC Bitu Classic 160",
+    "n_skus": 2,
+    "members": [
+      "BC Bitu Classic 160 BLACK ROLL - FG",
+      "BC Bitu Classic 160 Slated   ROLL - FG"
+    ],
+    "desc": "BC Bitu Classic 160 Slated APP (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1).jpeg",
+    "n_img": 1,
+    "tds": "/files/TDS BC Bitu-Classic.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "0.909091 L roll"
+    ],
+    "colors": [
+      "Black",
+      "Slated"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC PRIMER 349",
+    "name": "BC Primer 349",
+    "n_skus": 1,
+    "members": [
+      "BC PRIMER 349 CLEAR 30 KG SYSTEM - FG"
+    ],
+    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Epoxy Primer 349.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "admixtures-aids",
+    "key": "BC TEC 505 TP",
+    "name": "BC Tec 505 TP",
+    "n_skus": 1,
+    "members": [
+      "BC Tec 505 TP DARK BROWN 1200 KG - FG"
+    ],
+    "desc": "BC Tec 505 TP is a high-performance, high-range water-reducing, slump-retaining, and retarding super plasticizing admixture specially designed for long-distance concrete transportation and self-leveling ready-mix concrete applications. It enables the production of highly workable, flowable concrete with excellent slump retention and minimal water demand, without segregation or bleeding.",
+    "n_desc": 1,
+    "img": "/files/Ibc tank044779.jpg",
+    "n_img": 1,
+    "tds": "/private/files/BC Tec 505 TP093907.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "1200 kg ibc"
+    ],
+    "colors": [
+      "Brown",
+      "Dark Brown"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "admixtures-aids",
+    "key": "BC ADMIX 31",
+    "name": "BC Admix 31",
+    "n_skus": 1,
+    "members": [
+      "BC Admix 31 DARK BROWN 1170 KG - FG"
+    ],
+    "desc": "BC Admix 31 is a high-performance, ready-to-use, liquid admixture formulated from modified lignosulfonate compounds and organic salts. It acts as both a water-reducing and set-retarding agent conforming to ASTM C494 Type B and D",
+    "n_desc": 1,
+    "img": null,
+    "n_img": 0,
+    "tds": null,
+    "n_tds": 0,
+    "sizes": [
+      "1170 kg ibc"
+    ],
+    "colors": [
+      "Brown",
+      "Dark Brown"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC POLYTHELENE SHEET",
+    "name": "BC Polythelene Sheet",
+    "n_skus": 1,
+    "members": [
+      "BC Polythelene Sheet"
+    ],
+    "desc": "BC Polyethylene Sheet is a durable, flexible plastic sheet used as a moisture barrier, protection layer, and vapor retardant in construction applications.",
+    "n_desc": 1,
+    "img": "/files/polyethlene.jpg",
+    "n_img": 1,
+    "tds": "/files/BC Thene TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "29.4 kg"
+    ],
+    "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC GRP MATT",
+    "name": "BC GRP Matt",
+    "n_skus": 1,
+    "members": [
+      "BC GRP Matt"
+    ],
+    "desc": "BC GRP Matt is a high-quality, non-woven glass fiber reinforcement mat manufactured from randomly oriented chopped glass filaments (approx. 50 mm) bonded together with either powder or emulsion binder.",
+    "n_desc": 1,
+    "img": "/files/grp matt.webp",
+    "n_img": 1,
+    "tds": "/private/files/BC GRP Matt  TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "47 kg roll"
+    ],
+    "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
     "key": "BC BITUMEN PRIMER",
     "name": "BC Bitumen Primer",
     "n_skus": 1,
@@ -5011,26 +5009,6 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "GEOTEXTILE",
-    "name": "Geotextile",
-    "n_skus": 1,
-    "members": [
-      "Geotextile 180g/m2"
-    ],
-    "desc": "BC Geotextile 180 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works. It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications",
-    "n_desc": 1,
-    "img": "/files/Geotextile.jpg",
-    "n_img": 1,
-    "tds": "/files/BC Geotextile -180.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "6.94444 L roll"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
     "slug": "pu-foam-insulation",
     "key": "BC FOAMCONCRETE",
     "name": "BC Foam Concrete",
@@ -5049,6 +5027,28 @@
     ],
     "colors": [
       "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC SEAL",
+    "name": "BC Seal",
+    "n_skus": 1,
+    "members": [
+      "BC Seal GREY 30 KG SYSTEM - FG"
+    ],
+    "desc": "BC Seal Two-component, acrylic-modified cementitious waterproofing coating, 30 kg set, 2 kg/m² at 1 mm, approx. 4.0 SAR/m², for flexible, durable protection against water and chemical ingress on concrete and masonry surfaces.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.09 PM.jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC Seale5e739.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Grey"
     ],
     "component_only": false
   }
