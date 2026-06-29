@@ -2733,30 +2733,6 @@
     "component_only": false
   },
   {
-    "slug": "pu-foam-insulation",
-    "key": "BC 708",
-    "name": "BC 708",
-    "n_skus": 2,
-    "members": [
-      "BC 708 FOAM YELLOW 470 KG - FG",
-      "BC 708 Polyol YELLOW 220 KG -FG"
-    ],
-    "desc": "BC 708 Polyol & BC 768 Isocyanate form a two-component, 141B-blown polyurethane foam system designed for insulated water heaters and ice boxes. The system produces foam with excellent adhesion and superior thermal insulation performance.",
-    "n_desc": 2,
-    "img": "/files/Foam Drums66bb38.webp",
-    "n_img": 2,
-    "tds": "/files/BC 708 Polyol and BC 768 Isocyanated3ee76.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "220 kg drum",
-      "470 kg set"
-    ],
-    "colors": [
-      "Yellow"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "protective-coatings",
     "key": "BC EPOXY PRIMER 349 30",
     "name": "BC Epoxy Primer 349 30",
@@ -5049,6 +5025,30 @@
     ],
     "colors": [
       "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 708",
+    "name": "BC 708",
+    "n_skus": 2,
+    "members": [
+      "BC 708 FOAM YELLOW 470 KG - FG",
+      "BC 708 Polyol YELLOW 220 KG -FG"
+    ],
+    "desc": "BC 708 Polyol & BC 768 Isocyanate form a two-component, 141B-blown polyurethane foam system designed for insulated water heaters and ice boxes. The system produces foam with excellent adhesion and superior thermal insulation performance.",
+    "n_desc": 2,
+    "img": "/files/Foam Drums66bb38.webp",
+    "n_img": 2,
+    "tds": "/files/BC 708 Polyol and BC 768 Isocyanated3ee76.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "220 kg drum",
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
     ],
     "component_only": false
   }
