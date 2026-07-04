@@ -20,3 +20,9 @@ __pycache__/
 
 # Vercel
 .vercel
+
+# Google Ads tooling (contains OAuth client secret)
+google-ads/
+
+# Local browser smoke-test tooling
+tools/browser/

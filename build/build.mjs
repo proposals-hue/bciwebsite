@@ -12,7 +12,7 @@
 //     with clean product URLs /solutions/<slug>.html.
 //  4. Generates per-page <head> SEO: title, description, canonical, hreflang,
 //     Open Graph / Twitter, and schema.org JSON-LD (Organization, WebSite,
-//     BreadcrumbList, ItemList/Product, JobPosting, FAQPage).
+//     BreadcrumbList, ItemList/Product, CollectionPage and JobPosting).
 //  5. Generates sitemap.xml (with hreflang alternates), robots.txt (AI-bot
 //     friendly) and llms.txt for AI assistants.
 //
@@ -173,7 +173,7 @@ async function loadData() {
   dom.window.React = React;
   vm.runInContext(ui + '\n;\n' + data + '\n;\n' + i18n, dom.getInternalVMContext(), { filename: 'data-load' });
   const w = dom.window;
-  const keys = ['SOLUTIONS', 'PROJECTS', 'JOBS', 'STATS', 'SOCIALS', 'CONTACT_DETAILS', 'STORES', 'SEO_META', 'FAQS', 'NAV'];
+  const keys = ['SOLUTIONS', 'PROJECTS', 'JOBS', 'STATS', 'SOCIALS', 'CONTACT_DETAILS', 'STORES', 'SEO_META', 'FAQS', 'NAV', 'SEO_LANDING_PAGES'];
   const out = {};
   for (const k of keys) out[k] = w[k];
   return out;
@@ -202,13 +202,6 @@ const breadcrumbLd = (items) => ({
   '@context': 'https://schema.org', '@type': 'BreadcrumbList',
   itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: it.url })),
 });
-const faqLd = (D, lang) => ({
-  '@context': 'https://schema.org', '@type': 'FAQPage',
-  mainEntity: (D.FAQS || []).map((f) => ({
-    '@type': 'Question', name: tr(lang, f.q.en, f.q.ar, f.q.es),
-    acceptedAnswer: { '@type': 'Answer', text: tr(lang, f.a.en, f.a.ar, f.a.es) },
-  })),
-});
 function jobPostingsLd(D, lang) {
   const through = new Date(Date.now() + 90 * 864e5).toISOString().slice(0, 10);
   return (D.JOBS || []).map((j) => ld({
@@ -222,9 +215,11 @@ function jobPostingsLd(D, lang) {
   })).join('\n');
 }
 function categoryItemListLd(cat, lang, pageUrl) {
+  const seo = cat.seo && (cat.seo[lang] || cat.seo.en);
   return {
     '@context': 'https://schema.org', '@type': 'ItemList',
     name: (cat[lang] || cat.en).name, url: pageUrl,
+    ...(seo ? { description: seo.description } : {}),
     numberOfItems: cat.products.length,
     itemListElement: cat.products.map((p, i) => ({
       '@type': 'ListItem', position: i + 1,
@@ -240,6 +235,49 @@ function categoryItemListLd(cat, lang, pageUrl) {
         ...(p.tds ? { additionalProperty: { '@type': 'PropertyValue', name: 'TDS', value: p.tds } } : {}),
       },
     })),
+  };
+}
+function landingPageLd(page, D, lang, pageUrl) {
+  const copy = (page[lang] || page.en);
+  const cats = (page.categorySlugs || [])
+    .map((slug) => (D.SOLUTIONS || []).find((s) => s.slug === slug))
+    .filter(Boolean);
+  const products = cats.flatMap((cat) => cat.products.slice(0, cats.length > 1 ? 2 : 8).map((prod) => ({ cat, prod }))).slice(0, 10);
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: copy.h1 || copy.title,
+    headline: copy.h1 || copy.title,
+    description: copy.description,
+    url: pageUrl,
+    inLanguage: lang,
+    isPartOf: websiteLd(lang),
+    publisher: { '@type': 'Organization', name: 'Building Chemistry Industry (BCI)', url: ORIGIN + '/' },
+    about: cats.map((cat) => ({
+      '@type': 'Thing',
+      name: (cat[lang] || cat.en).name,
+      url: abs(lang, `solutions/${cat.slug}`),
+    })),
+    keywords: (page.keywords || []).join(', '),
+    mainEntity: {
+      '@type': 'ItemList',
+      name: tr(lang, 'Relevant BCI products', 'منتجات BCI المناسبة', 'Productos BCI relacionados'),
+      itemListElement: products.map(({ cat, prod }, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        item: {
+          '@type': 'Product',
+          name: (prod[lang] || prod.en).name,
+          description: (prod[lang] || prod.en).desc,
+          sku: prod.code,
+          category: (cat[lang] || cat.en).name,
+          url: abs(lang, `solutions/${cat.slug}/${productSlug(prod.code)}`),
+          brand: { '@type': 'Brand', name: 'BCI' },
+          manufacturer: { '@type': 'Organization', name: 'Building Chemistry Industry (BCI)' },
+          ...(prod.img ? { image: ORIGIN + '/' + prod.img.replace(/^\//, '') } : {}),
+        },
+      })),
+    },
   };
 }
 
@@ -291,7 +329,7 @@ function pageSchema(key, lang, D) {
   const crumbHome = { name: tr(lang, 'Home', 'الرئيسية', 'Inicio'), url: abs(lang, '') };
   const here = (file, name) => ({ name, url: abs(lang, file) });
   const scripts = [ld(websiteLd(lang))];
-  if (key === 'home') { scripts.unshift(ld(orgLd(D))); scripts.push(ld(faqLd(D, lang))); }
+  if (key === 'home') scripts.unshift(ld(orgLd(D)));
   if (key === 'about') scripts.push(ld(breadcrumbLd([crumbHome, here('about', tr(lang, 'About', 'عن BCI', 'Nosotros'))])));
   if (key === 'solutions') {
     scripts.push(ld(breadcrumbLd([crumbHome, here('solutions', tr(lang, 'Solutions', 'الحلول', 'Soluciones'))])));
@@ -393,6 +431,9 @@ Sitemap: ${ORIGIN}/sitemap.xml
 `;
 function llmsTxt(D) {
   const cats = (D.SOLUTIONS || []).map((s) => `- [${s.en.name}](${ORIGIN}/solutions/${s.slug}): ${s.en.tagline} (${s.products.length} products)`).join('\n');
+  const landingPages = (D.SEO_LANDING_PAGES || [])
+    .map((p) => `- [${p.en.h1}](${ORIGIN}/${p.path}): ${p.en.description}`)
+    .join('\n');
   return `# BCI — Building Chemistry Industry
 
 > BCI (Building Chemistry Industry) is a Saudi national manufacturer of construction chemicals and protective coatings, founded in Dammam in 2021. It produces 200+ products across nine solution lines for the Saudi Arabian and GCC construction market. Quality is certified to ISO 9001 and systems are aligned to EN 1504. Saudi-made, supporting Vision 2030.
@@ -408,6 +449,9 @@ function llmsTxt(D) {
 
 ## Solution lines
 ${cats}
+
+## Search-intent pages
+${landingPages}
 
 ## Key pages
 - [About](${ORIGIN}/about): company, milestones and certifications
@@ -481,7 +525,35 @@ async function main() {
     }
   }
 
-  // 5 · clean product pages: /solutions/<slug>.html  (+ /ar, /es)
+  // 5 · buyer-intent landing pages: /saudi-arabia/<topic>.html (+ /ar, /es)
+  let landingPages = 0;
+  if (D.SEO_LANDING_PAGES && D.SEO_LANDING_PAGES.length) {
+    const landingSrc = await fs.readFile(path.join(ROOT, 'SEO Landing.html'), 'utf8');
+    const landingScripts = appScriptPaths(landingSrc);
+    const landingCode = await readScripts(landingScripts);
+    for (const landing of D.SEO_LANDING_PAGES) {
+      sitemapPaths.push(landing.path);
+      for (const lang of LANGS) {
+        const copy = (landing[lang] || landing.en);
+        const url = abs(lang, landing.path);
+        const inner = prerender(landingCode, url, `${landing.path} [${lang}]`);
+        const crumbs = breadcrumbLd([
+          { name: tr(lang, 'Home', 'الرئيسية', 'Inicio'), url: abs(lang, '') },
+          { name: tr(lang, 'Solutions', 'الحلول', 'Soluciones'), url: abs(lang, 'solutions') },
+          { name: copy.h1 || copy.title, url },
+        ]);
+        const schema = [ld(crumbs), ld(landingPageLd(landing, D, lang, url))].join('\n');
+        const doc = buildDoc({
+          lang, title: copy.title, description: copy.description, p: landing.path,
+          schema, prerendered: inner, scripts: landingScripts,
+        });
+        await writeFile(path.join(langPrefix(lang).slice(1), landing.path + '.html'), doc);
+        landingPages++;
+      }
+    }
+  }
+
+  // 6 · clean product pages: /solutions/<slug>.html  (+ /ar, /es)
   const detailSrc = await fs.readFile(path.join(ROOT, 'Solution Detail.html'), 'utf8');
   const detailScripts = appScriptPaths(detailSrc);
   const detailCode = await readScripts(detailScripts);
@@ -501,10 +573,11 @@ async function main() {
     sitemapImages[p] = cat.products.filter((x) => x.img).map((x) => ORIGIN + '/' + x.img.replace(/^\//, '')).slice(0, 40);
     for (const lang of LANGS) {
       const url = abs(lang, p);
+      const seo = cat.seo && (cat.seo[lang] || cat.seo.en);
       const name = (cat[lang] || cat.en).name;
       const tagline = (cat[lang] || cat.en).tagline;
-      const title = `${name} — BCI Construction Chemicals | Saudi Arabia`;
-      const description = `${tagline} ${cat.products.length} BCI products, Saudi-made. Technical data sheets available.`;
+      const title = seo?.title || `${name} — BCI Construction Chemicals | Saudi Arabia`;
+      const description = seo?.description || `${tagline} ${cat.products.length} BCI products, Saudi-made. Technical data sheets available.`;
       const inner = prerender(detailCode, url, `${p} [${lang}]`);
       const crumbs = breadcrumbLd([
         { name: tr(lang, 'Home', 'الرئيسية', 'Inicio'), url: abs(lang, '') },
@@ -518,7 +591,7 @@ async function main() {
     }
   }
 
-  // 6 · individual product pages: /solutions/<cat>/<product>.html (+ /ar, /es)
+  // 7 · individual product pages: /solutions/<cat>/<product>.html (+ /ar, /es)
   const productSrc = await fs.readFile(path.join(ROOT, 'Product Detail.html'), 'utf8');
   const productScripts = appScriptPaths(productSrc);
   const productCode = await readScripts(productScripts);
@@ -553,19 +626,19 @@ async function main() {
     }
   }
 
-  // 7 · 404 (root, noindex) — compile + absolutize, no pre-render
+  // 8 · 404 (root, noindex) — compile + absolutize, no pre-render
   try {
     const html404 = await fs.readFile(path.join(ROOT, '404.html'), 'utf8');
     await writeFile('404.html', absolutize404(html404));
   } catch {}
 
-  // 8 · sitemap, robots, llms
+  // 9 · sitemap, robots, llms
   await writeFile('sitemap.xml', sitemap(sitemapPaths, sitemapImages));
   await writeFile('robots.txt', robotsTxt);
   await writeFile('llms.txt', llmsTxt(D));
 
   console.log(`✓ Compiled ${compiled} JSX files (assets → absolute)`);
-  console.log(`✓ Built ${pages} content pages + ${detailPages} category pages across ${LANGS.length} languages`);
+  console.log(`✓ Built ${pages} content pages + ${landingPages} landing pages + ${detailPages} category pages across ${LANGS.length} languages`);
   console.log(`✓ Built ${productPages} product pages across ${LANGS.length} languages`);
   console.log(`✓ Generated sitemap.xml (${sitemapPaths.length * LANGS.length} URLs, with image entries), robots.txt, llms.txt`);
   console.log(`✓ Output: ${path.relative(process.cwd(), DIST)}/  — deploy this folder.`);
