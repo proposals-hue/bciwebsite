@@ -33,7 +33,7 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(here, '..');
 const DIST = path.join(ROOT, 'dist');
 const ORIGIN = 'https://www.bcisaudi.com';
-const ASSET_V = '1.2';
+const ASSET_V = '1.3';
 const LANGS = ['en', 'ar', 'es'];
 const OG_LOCALE = { en: 'en_US', ar: 'ar_SA', es: 'es_ES' };
 const TODAY = new Date().toISOString().slice(0, 10);
@@ -72,7 +72,7 @@ const FONTS = [
 
 const ANALYTICS =
 `<script>
-(function(){var ID='G-497CB9HQBE';if(!ID||/X{5,}/.test(ID))return;var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id='+ID;document.head.appendChild(s);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config',ID);})();
+(function(){var ID='G-497CB9HQBE',AW='AW-18169293494';window.BCI_ADS_CONV=AW+'/NV1hCI_GlcscELbV5ddD';if(!ID||/X{5,}/.test(ID))return;var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id='+ID;document.head.appendChild(s);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config',ID);gtag('config',AW);})();
 </script>`;
 
 // ---------- small utils ----------

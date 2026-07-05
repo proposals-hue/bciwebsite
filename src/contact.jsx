@@ -1,4 +1,4 @@
-/* global React, useLang, t, Icon, Mark, Badge, Arrow, useInView, submitErpWebForm */
+/* global React, useLang, t, Icon, Mark, Badge, Arrow, useInView, submitErpWebForm, trackAdsLeadConversion */
 const { useState: useState_c } = React;
 
 // ---------- 05 · Contact ----------
@@ -182,6 +182,7 @@ function ContactForm() {
       });
       setStatus('sent');
       setForm({ name: '', company: '', email: '', phone: '', message: '' });
+      if (window.trackAdsLeadConversion) window.trackAdsLeadConversion();
       setTimeout(() => setStatus('idle'), 5000);
     } catch (err) {
       setStatus('error');

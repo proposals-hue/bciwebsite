@@ -295,6 +295,17 @@ async function submitErpWebForm(webForm, data) {
 
 if (typeof window !== 'undefined') window.submitErpWebForm = submitErpWebForm;
 
+// Google Ads lead conversion — fires only where the built pages' head snippet
+// defined gtag + window.BCI_ADS_CONV (dev pages without it are a silent no-op).
+function trackAdsLeadConversion() {
+  try {
+    if (typeof window.gtag === 'function' && window.BCI_ADS_CONV) {
+      window.gtag('event', 'conversion', { send_to: window.BCI_ADS_CONV });
+    }
+  } catch (e) { /* analytics must never break the form */ }
+}
+if (typeof window !== 'undefined') window.trackAdsLeadConversion = trackAdsLeadConversion;
+
 // ---------------- Arrow that flips in RTL ----------------
 function Arrow({ size = 16 }) {
   return <span className="flip-rtl" style={{ display: 'inline-flex' }}><Icon name="arrow-right" size={size} /></span>;
@@ -303,4 +314,4 @@ function Chev({ size = 14 }) {
   return <span className="flip-rtl" style={{ display: 'inline-flex' }}><Icon name="chevron-right" size={size} /></span>;
 }
 
-Object.assign(window, { LangContext, useLang, useViewport, useInView, revealStyle, CountUp, t, Mark, Icon, Badge, Arrow, Chev, LANGS, pageLang, barePath, siteHref, solutionHref });
+Object.assign(window, { LangContext, useLang, useViewport, useInView, revealStyle, CountUp, t, Mark, Icon, Badge, Arrow, Chev, LANGS, pageLang, barePath, siteHref, solutionHref, trackAdsLeadConversion });

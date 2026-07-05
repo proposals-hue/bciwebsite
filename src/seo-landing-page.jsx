@@ -1,6 +1,7 @@
 /* global React, ReactDOM, LangProvider, useLang, t, Icon, Arrow,
    MegaHeader, PageHero, CtaBand, Footer, SOLUTIONS, SEO_LANDING_PAGES,
-   productHref, solutionHref, siteHref */
+   productHref, solutionHref, siteHref, submitErpWebForm, trackAdsLeadConversion */
+const { useState: useState_lp } = React;
 
 function getLandingPage() {
   try {
@@ -33,6 +34,126 @@ function landingProducts(categories) {
   return products.slice(0, 10);
 }
 
+function LandingLeadForm({ page }) {
+  const { lang } = useLang();
+  const isAr = lang === 'ar';
+  const [form, setForm] = useState_lp({ name: '', phone: '', email: '', message: '' });
+  const [status, setStatus] = useState_lp('idle'); // idle | sending | sent | error
+  const submitted = status === 'sent';
+
+  const onChange = (k) => (e) => setForm({ ...form, [k]: e.target.value });
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (status === 'sending') return;
+    setStatus('sending');
+    try {
+      // → ERPNext 'contact-bci' guest web form → creates a CRM Lead (keyless).
+      // The [LP: …] prefix tells sales the lead came from this landing page.
+      await submitErpWebForm('contact-bci', {
+        doctype: 'Lead',
+        lead_name: form.name,
+        email_id: form.email,
+        mobile_no: form.phone,
+        custom_message: `[LP: ${page.path} | lang: ${lang}]${form.message ? ' ' + form.message : ''}`,
+      });
+      setStatus('sent');
+      setForm({ name: '', phone: '', email: '', message: '' });
+      if (window.trackAdsLeadConversion) window.trackAdsLeadConversion();
+      setTimeout(() => setStatus('idle'), 5000);
+    } catch (err) {
+      setStatus('error');
+    }
+  };
+
+  return (
+    <form onSubmit={onSubmit} style={{
+      background: '#fff',
+      border: '1px solid var(--bci-hairline-light)',
+      borderRadius: 2,
+      padding: 36,
+      maxWidth: 560, margin: '0 auto',
+      display: 'flex', flexDirection: 'column', gap: 20,
+      direction: isAr ? 'rtl' : 'ltr',
+      textAlign: isAr ? 'right' : 'left'
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+        <h3 style={{
+          fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)',
+          fontWeight: 600, fontSize: 28,
+          color: 'var(--bci-navy)', margin: 0,
+          letterSpacing: isAr ? 0 : '-0.01em'
+        }}>
+          {t(lang, 'Request a quote', 'اطلب عرض سعر', 'Solicitar cotización')}
+        </h3>
+        <span className="eyebrow" style={{ color: 'var(--bci-steel)' }}>
+          {t(lang, 'Reply within 24 h', 'رد خلال 24 ساعة', 'Respuesta en 24 h')}
+        </span>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+        <div className="field">
+          <label>{t(lang, 'Name', 'الاسم', 'Nombre')}</label>
+          <input type="text" required value={form.name} onChange={onChange('name')} placeholder={t(lang, 'Full name', 'الاسم الكامل', 'Nombre completo')} />
+        </div>
+        <div className="field">
+          <label>{t(lang, 'Phone', 'الهاتف', 'Teléfono')}</label>
+          <input type="tel" required value={form.phone} onChange={onChange('phone')} placeholder="+966" />
+        </div>
+      </div>
+
+      <div className="field">
+        <label>{t(lang, 'Email (optional)', 'البريد الإلكتروني (اختياري)', 'Correo (opcional)')}</label>
+        <input type="email" value={form.email} onChange={onChange('email')} placeholder="name@firm.com" />
+      </div>
+
+      <div className="field">
+        <label>{t(lang, 'Message (optional)', 'الرسالة (اختياري)', 'Mensaje (opcional)')}</label>
+        <textarea value={form.message} onChange={onChange('message')}
+        placeholder={t(lang, 'Project, scope, square metres…', 'المشروع، النطاق، الأمتار المربعة…', 'Proyecto, alcance, metros cuadrados…')} />
+      </div>
+
+      <button type="submit" disabled={status === 'sending'} className="btn btn-accent" style={{
+        width: '100%', justifyContent: 'center', padding: '16px 22px',
+        marginTop: 4, opacity: status === 'sending' ? 0.7 : 1,
+        cursor: status === 'sending' ? 'wait' : 'pointer'
+      }}>
+        {submitted ?
+        <>
+            <Icon name="check" size={14} stroke="#fff" />
+            {t(lang, 'Sent', 'تم الإرسال', 'Enviado')}
+          </> :
+        status === 'sending' ?
+        <>{t(lang, 'Sending…', 'جارٍ الإرسال…', 'Enviando…')}</> :
+
+        <>
+            {t(lang, 'Send request', 'إرسال الطلب', 'Enviar solicitud')} <Arrow size={14} />
+          </>
+        }
+      </button>
+
+      {status === 'error' &&
+        <div role="alert" style={{
+          fontSize: 13, color: '#b42318', background: '#fef3f2',
+          border: '1px solid #fda29b', borderRadius: 2, padding: '12px 14px',
+          textAlign: isAr ? 'right' : 'left'
+        }}>
+          {t(lang,
+            'Something went wrong sending your message. Please try again, or email us directly at info@bcisaudi.com.',
+            'حدث خطأ أثناء إرسال رسالتك. يرجى المحاولة مرة أخرى أو مراسلتنا مباشرة على info@bcisaudi.com.',
+            'Hubo un problema al enviar tu mensaje. Inténtalo de nuevo o escríbenos a info@bcisaudi.com.')}
+        </div>
+      }
+
+      <div style={{
+        fontFamily: 'var(--ff-mono)', fontSize: 12, textAlign: 'center',
+        color: 'var(--bci-steel)'
+      }}>
+        {t(lang, 'or call', 'أو اتصل على', 'o llama al')}{' '}
+        <a href="tel:+966593120221" style={{ color: 'var(--bci-navy)', fontWeight: 600 }} dir="ltr">+966 59 312 0221</a>
+      </div>
+    </form>);
+}
+
 function SeoLandingPage() {
   const { lang } = useLang();
   const isAr = lang === 'ar';
@@ -56,6 +177,9 @@ function SeoLandingPage() {
       <section style={{ background: 'var(--bci-concrete)', padding: '82px 0' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: 'minmax(260px, 360px) 1fr', gap: 48, alignItems: 'start', direction: isAr ? 'rtl' : 'ltr' }}>
           <aside style={{ position: 'sticky', top: 96, textAlign: isAr ? 'right' : 'left' }}>
+            <a href="#quote" className="btn btn-accent" style={{ marginBottom: 28 }}>
+              {t(lang, 'Request a quote', 'اطلب عرض سعر', 'Solicitar cotización')} <Arrow size={14} />
+            </a>
             <div className="eyebrow" style={{ color: 'var(--bci-green-700)', marginBottom: 14 }}>
               {t(lang, 'Popular searches', 'عمليات بحث شائعة', 'Búsquedas populares')}
             </div>
@@ -139,6 +263,12 @@ function SeoLandingPage() {
               </section>
             )}
           </article>
+        </div>
+      </section>
+
+      <section id="quote" style={{ background: '#fff', padding: '82px 0' }}>
+        <div className="container">
+          <LandingLeadForm page={page} />
         </div>
       </section>
     </main>
