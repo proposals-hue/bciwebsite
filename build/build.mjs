@@ -383,8 +383,8 @@ ${ANALYTICS}
 <body>
 <div id="root">${prerendered}</div>
 <script>window.__CLEAN_URLS=1;</script>
-<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+<script src="/assets/vendor/react.production.min.js?v=18.3.1"></script>
+<script src="/assets/vendor/react-dom.production.min.js?v=18.3.1"></script>
 ${scriptTags}
 </body>
 </html>`;
@@ -482,6 +482,21 @@ async function main() {
   // 1 · copy static assets
   for (const s of STATIC) {
     try { await copyRec(path.join(ROOT, s), path.join(DIST, s)); } catch { /* optional */ }
+  }
+
+  // 1b · self-host React: serve the pinned UMD builds from our own domain
+  // instead of unpkg.com (third-party CDN scripts got the ads flagged as
+  // "compromised site" by Google's ad review).
+  const vendorDir = path.join(DIST, 'assets', 'vendor');
+  await fs.mkdir(vendorDir, { recursive: true });
+  for (const [pkg, file] of [
+    ['react', 'react.production.min.js'],
+    ['react-dom', 'react-dom.production.min.js'],
+  ]) {
+    await fs.copyFile(
+      path.join(here, 'node_modules', pkg, 'umd', file),
+      path.join(vendorDir, file),
+    );
   }
 
   // 2 · compile JSX → JS, absolutizing in-component asset paths
