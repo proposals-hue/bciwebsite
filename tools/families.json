@@ -2414,30 +2414,6 @@
     "component_only": false
   },
   {
-    "slug": "tile-grouts-anchors",
-    "key": "BC TILE ADHESIVE PRO L",
-    "name": "BC Tile Adhesive Pro L",
-    "n_skus": 2,
-    "members": [
-      "BC Tile Adhesive Pro L Grey 50 Kg system FG",
-      "BC Tile Adhesive Pro L White 50 KG - FG"
-    ],
-    "desc": "BC Tile Adhesive Pro L is a high-performance, polymer-modified cementitious dry-set mortar for fixing ceramic, porcelain, mosaic, quarry, terrazzo, and artificial granite tiles. Offers excellent adhesion, flexibility, and water resistance for interior and exterior applications. Available in white, 50 kg bag.",
-    "n_desc": 1,
-    "img": "/private/files/prt 50 kg.jpg",
-    "n_img": 1,
-    "tds": "/private/files/BC Tile Adhesive Pro.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "50 kg bag"
-    ],
-    "colors": [
-      "Grey",
-      "White"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "polyurea-membranes",
     "key": "BC 238 AL",
     "name": "BC 238 AL",
@@ -2662,26 +2638,6 @@
     "colors": [
       "White"
     ],
-    "component_only": false
-  },
-  {
-    "slug": "pu-foam-insulation",
-    "key": "BC XPS 32 5CMX60CMX125CM",
-    "name": "BC XPS 32 5cmx60cmx125cm",
-    "n_skus": 1,
-    "members": [
-      "BC XPS BOARD 32-35KG/M3 (5CMX60CMX125CM)"
-    ],
-    "desc": "XPS Board 32–35 kg/m³ (5 cm × 60 cm × 125 cm) is an extruded polystyrene insulation board designed for high compressive strength and low water absorption.It provides durable, long-lasting thermal insulation for foundations, roofs, walls, and below-grade applications",
-    "n_desc": 1,
-    "img": "/files/XPS insulated.png",
-    "n_img": 1,
-    "tds": null,
-    "n_tds": 0,
-    "sizes": [
-      "1.3 kg board"
-    ],
-    "colors": [],
     "component_only": false
   },
   {
@@ -3191,28 +3147,6 @@
       "6.99301 L roll"
     ],
     "colors": [],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
-    "key": "BC GEOTEX TILE",
-    "name": "BC Geotex Tile",
-    "n_skus": 1,
-    "members": [
-      "BC Geotex Tile 120 gsm WHITE ROLL - FG"
-    ],
-    "desc": "BC Geotextile 120 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works.It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications.",
-    "n_desc": 1,
-    "img": "/files/Geotextile4562c1.jpg",
-    "n_img": 1,
-    "tds": null,
-    "n_tds": 0,
-    "sizes": [
-      "6.66667 L roll"
-    ],
-    "colors": [
-      "White"
-    ],
     "component_only": false
   },
   {
@@ -3808,30 +3742,6 @@
     ],
     "colors": [
       "Clear"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "tile-grouts-anchors",
-    "key": "BC TILE ADHESIVE PRO",
-    "name": "BC Tile Adhesive Pro",
-    "n_skus": 2,
-    "members": [
-      "BC Tile Adhesive PRO WHITE 20 KG -FG",
-      "BC Tile Adhesive Pro White 50 KG - FG"
-    ],
-    "desc": "BC Tile Adhesive Pro is a high-performance, polymer-modified cementitious dry-set mortar for fixing ceramic, porcelain, mosaic, quarry, terrazzo, and artificial granite tiles. Offers excellent adhesion, flexibility, and water resistance for interior and exterior applications. Available in grey and white, 20 kg bag.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-10-20 at 6.13.49 PM (2).jpeg",
-    "n_img": 2,
-    "tds": "/private/files/BC Tile Adhesive Pro.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "20 kg bag",
-      "50 kg bag"
-    ],
-    "colors": [
-      "White"
     ],
     "component_only": false
   },
@@ -4512,30 +4422,6 @@
   },
   {
     "slug": "pu-foam-insulation",
-    "key": "BC 702 45",
-    "name": "BC 702 45",
-    "n_skus": 2,
-    "members": [
-      "BC 702 Spary 45 FOAM YELLOW 470 KG -FG",
-      "BC 702 Spary 45 Polyol YELLOW 220 KG -FG"
-    ],
-    "desc": "BC 702 Spray 45 Polyol Two-component spray foam system, 45 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with good mechanical strength, dimensional stability, and substrate adhesion, compatible with high- and low-pressure machines, containing 141B blowing agent.",
-    "n_desc": 1,
-    "img": "/files/Foam Drums9799e3.webp",
-    "n_img": 2,
-    "tds": "/files/BC 702spray Foam.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "220 kg drum",
-      "470 kg set"
-    ],
-    "colors": [
-      "Yellow"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "pu-foam-insulation",
     "key": "BC 703 SWP",
     "name": "BC 703 SWP",
     "n_skus": 2,
@@ -4632,76 +4518,6 @@
   },
   {
     "slug": "waterproofing-roofing",
-    "key": "BC BITU CLASSIC 200",
-    "name": "BC Bitu Classic 200",
-    "n_skus": 2,
-    "members": [
-      "BC Bitu Classic 200 BLACK ROLL - FG",
-      "BC Bitu Classic 200 Slated   ROLL - FG"
-    ],
-    "desc": "BC Bitu Classic (200 APP) (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1)b8a6d8.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Bitu-Classic 200.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "0.909091 L roll"
-    ],
-    "colors": [
-      "Black",
-      "Slated"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "protective-coatings",
-    "key": "BC POXY PRIMER 349",
-    "name": "BC Poxy Primer 349",
-    "n_skus": 1,
-    "members": [
-      "BC Poxy primer 349 CREAMY 30 KG SYSTEM - FG"
-    ],
-    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Epoxy Primer 349.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Creamy"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "polyurea-membranes",
-    "key": "BC 237",
-    "name": "BC 237",
-    "n_skus": 2,
-    "members": [
-      "BC 237 POLYUREA CLEAR 420 KG - FG",
-      "BC 237 Polyol CLEAR 196 KG -FG"
-    ],
-    "desc": "BC 237 Pure Polyurea Two-component, solvent-free, 100% solid, spray-applied polyurea waterproofing coating, 1 kg/m² at 1 mm, 420 kg kit (196 kg Polyol + 220 kg Isocyanate + 4 kg Pigment), for seamless, permanently elastic, crack-bridging protection on concrete and metal substrates with excellent chemical and abrasion resistance.",
-    "n_desc": 1,
-    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x916.webp",
-    "n_img": 2,
-    "tds": "/private/files/BC 237 Polyurea TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "196 kg drum",
-      "Standard Industrial Size Drum"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
     "key": "GEOTEXTILE",
     "name": "Geotextile",
     "n_skus": 1,
@@ -4782,30 +4598,6 @@
       "7.0922 L roll"
     ],
     "colors": [],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
-    "key": "BC BITU CLASSIC 160",
-    "name": "BC Bitu Classic 160",
-    "n_skus": 2,
-    "members": [
-      "BC Bitu Classic 160 BLACK ROLL - FG",
-      "BC Bitu Classic 160 Slated   ROLL - FG"
-    ],
-    "desc": "BC Bitu Classic 160 Slated APP (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1).jpeg",
-    "n_img": 1,
-    "tds": "/files/TDS BC Bitu-Classic.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "0.909091 L roll"
-    ],
-    "colors": [
-      "Black",
-      "Slated"
-    ],
     "component_only": false
   },
   {
@@ -4897,26 +4689,6 @@
     "component_only": false
   },
   {
-    "slug": "protective-coatings",
-    "key": "BC GRP MATT",
-    "name": "BC GRP Matt",
-    "n_skus": 1,
-    "members": [
-      "BC GRP Matt"
-    ],
-    "desc": "BC GRP Matt is a high-quality, non-woven glass fiber reinforcement mat manufactured from randomly oriented chopped glass filaments (approx. 50 mm) bonded together with either powder or emulsion binder.",
-    "n_desc": 1,
-    "img": "/files/grp matt.webp",
-    "n_img": 1,
-    "tds": "/private/files/BC GRP Matt  TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "47 kg roll"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
     "slug": "waterproofing-roofing",
     "key": "BC SEAL",
     "name": "BC Seal",
@@ -4935,28 +4707,6 @@
     ],
     "colors": [
       "Grey"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
-    "key": "BC BITUMEN PRIMER",
-    "name": "BC Bitumen Primer",
-    "n_skus": 1,
-    "members": [
-      "BC Bitumen Primer BLACK 15 KG -FG"
-    ],
-    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
-    "n_desc": 1,
-    "img": "/files/solvent Can.png",
-    "n_img": 1,
-    "tds": "/private/files/BC Bitumen Primer New.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "15 kg pail"
-    ],
-    "colors": [
-      "Black"
     ],
     "component_only": false
   },
@@ -4985,24 +4735,94 @@
     "component_only": false
   },
   {
-    "slug": "pu-foam-insulation",
-    "key": "BC FOAMCONCRETE",
-    "name": "BC Foam Concrete",
-    "n_skus": 1,
+    "slug": "polyurea-membranes",
+    "key": "BC 237",
+    "name": "BC 237",
+    "n_skus": 2,
     "members": [
-      "BC Foam Concrete WHITE 200 KG -FG"
+      "BC 237 POLYUREA CLEAR 420 KG - FG",
+      "BC 237 Polyol CLEAR 196 KG -FG"
     ],
-    "desc": "BC Foam Concrete Engineered fill material with uniformly distributed air voids for geotechnical construction and mining; combines cement slurry with stable foam to create lightweight, rigid concrete. 200 kg drum.",
+    "desc": "BC 237 Pure Polyurea Two-component, solvent-free, 100% solid, spray-applied polyurea waterproofing coating, 1 kg/m² at 1 mm, 420 kg kit (196 kg Polyol + 220 kg Isocyanate + 4 kg Pigment), for seamless, permanently elastic, crack-bridging protection on concrete and metal substrates with excellent chemical and abrasion resistance.",
     "n_desc": 1,
-    "img": "/files/Foam conc.png",
-    "n_img": 1,
-    "tds": "/private/files/BC Foam Concrete TDS.pdf",
+    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x916.webp",
+    "n_img": 2,
+    "tds": "/private/files/BC 237 Polyurea TDS.pdf",
     "n_tds": 1,
     "sizes": [
-      "200 kg drum"
+      "196 kg drum",
+      "Standard Industrial Size Drum"
     ],
     "colors": [
-      "White"
+      "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITUMEN PRIMER",
+    "name": "BC Bitumen Primer",
+    "n_skus": 1,
+    "members": [
+      "BC Bitumen Primer BLACK 15 KG -FG"
+    ],
+    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
+    "n_desc": 1,
+    "img": "/files/solvent Can.png",
+    "n_img": 1,
+    "tds": "/private/files/BC Bitumen Primer New.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "15 kg pail"
+    ],
+    "colors": [
+      "Black"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITU CLASSIC 200",
+    "name": "BC Bitu Classic 200",
+    "n_skus": 2,
+    "members": [
+      "BC Bitu Classic 200 BLACK ROLL - FG",
+      "BC Bitu Classic 200 Slated   ROLL - FG"
+    ],
+    "desc": "BC Bitu Classic (200 APP) (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1)b8a6d8.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Bitu-Classic 200.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "0.909091 L roll"
+    ],
+    "colors": [
+      "Black",
+      "Slated"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC POXY PRIMER 349",
+    "name": "BC Poxy Primer 349",
+    "n_skus": 1,
+    "members": [
+      "BC Poxy primer 349 CREAMY 30 KG SYSTEM - FG"
+    ],
+    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Epoxy Primer 349.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Creamy"
     ],
     "component_only": false
   },
@@ -5031,6 +4851,162 @@
     "component_only": false
   },
   {
+    "slug": "tile-grouts-anchors",
+    "key": "BC TILE ADHESIVE PRO",
+    "name": "BC Tile Adhesive Pro",
+    "n_skus": 2,
+    "members": [
+      "BC Tile Adhesive PRO WHITE 20 KG -FG",
+      "BC Tile Adhesive Pro White 50 KG - FG"
+    ],
+    "desc": "BC Tile Adhesive Pro is a high-performance, polymer-modified cementitious dry-set mortar for fixing ceramic, porcelain, mosaic, quarry, terrazzo, and artificial granite tiles. Offers excellent adhesion, flexibility, and water resistance for interior and exterior applications. Available in grey and white, 20 kg bag.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-10-20 at 6.13.49 PM (2).jpeg",
+    "n_img": 2,
+    "tds": "/private/files/BC Tile Adhesive Pro.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "20 kg bag",
+      "50 kg bag"
+    ],
+    "colors": [
+      "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC FOAMCONCRETE",
+    "name": "BC Foam Concrete",
+    "n_skus": 1,
+    "members": [
+      "BC Foam Concrete WHITE 200 KG -FG"
+    ],
+    "desc": "BC Foam Concrete Engineered fill material with uniformly distributed air voids for geotechnical construction and mining; combines cement slurry with stable foam to create lightweight, rigid concrete. 200 kg drum.",
+    "n_desc": 1,
+    "img": "/files/Foam conc.png",
+    "n_img": 1,
+    "tds": "/private/files/BC Foam Concrete TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "200 kg drum"
+    ],
+    "colors": [
+      "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC GRP MATT",
+    "name": "BC GRP Matt",
+    "n_skus": 1,
+    "members": [
+      "BC GRP Matt"
+    ],
+    "desc": "BC GRP Matt is a high-quality, non-woven glass fiber reinforcement mat manufactured from randomly oriented chopped glass filaments (approx. 50 mm) bonded together with either powder or emulsion binder.",
+    "n_desc": 1,
+    "img": "/files/grp matt.webp",
+    "n_img": 1,
+    "tds": "/private/files/BC GRP Matt  TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "47 kg roll"
+    ],
+    "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC XPS 32 5CMX60CMX125CM",
+    "name": "BC XPS 32 5cmx60cmx125cm",
+    "n_skus": 1,
+    "members": [
+      "BC XPS BOARD 32-35KG/M3 (5CMX60CMX125CM)"
+    ],
+    "desc": "XPS Board 32–35 kg/m³ (5 cm × 60 cm × 125 cm) is an extruded polystyrene insulation board designed for high compressive strength and low water absorption.It provides durable, long-lasting thermal insulation for foundations, roofs, walls, and below-grade applications",
+    "n_desc": 1,
+    "img": "/files/XPS insulated.png",
+    "n_img": 1,
+    "tds": null,
+    "n_tds": 0,
+    "sizes": [
+      "1.3 kg board"
+    ],
+    "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 702 45",
+    "name": "BC 702 45",
+    "n_skus": 2,
+    "members": [
+      "BC 702 Spary 45 FOAM YELLOW 470 KG -FG",
+      "BC 702 Spary 45 Polyol YELLOW 220 KG -FG"
+    ],
+    "desc": "BC 702 Spray 45 Polyol Two-component spray foam system, 45 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with good mechanical strength, dimensional stability, and substrate adhesion, compatible with high- and low-pressure machines, containing 141B blowing agent.",
+    "n_desc": 1,
+    "img": "/files/Foam Drums9799e3.webp",
+    "n_img": 2,
+    "tds": "/files/BC 702spray Foam.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "220 kg drum",
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC GEOTEX TILE",
+    "name": "BC Geotex Tile",
+    "n_skus": 1,
+    "members": [
+      "BC Geotex Tile 120 gsm WHITE ROLL - FG"
+    ],
+    "desc": "BC Geotextile 120 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works.It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications.",
+    "n_desc": 1,
+    "img": "/files/Geotextile4562c1.jpg",
+    "n_img": 1,
+    "tds": null,
+    "n_tds": 0,
+    "sizes": [
+      "6.66667 L roll"
+    ],
+    "colors": [
+      "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITU CLASSIC 160",
+    "name": "BC Bitu Classic 160",
+    "n_skus": 2,
+    "members": [
+      "BC Bitu Classic 160 BLACK ROLL - FG",
+      "BC Bitu Classic 160 Slated   ROLL - FG"
+    ],
+    "desc": "BC Bitu Classic 160 Slated APP (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1).jpeg",
+    "n_img": 1,
+    "tds": "/files/TDS BC Bitu-Classic.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "0.909091 L roll"
+    ],
+    "colors": [
+      "Black",
+      "Slated"
+    ],
+    "component_only": false
+  },
+  {
     "slug": "concrete-repair",
     "key": "BC REPAIR 100",
     "name": "BC Repair 100",
@@ -5049,6 +5025,30 @@
     ],
     "colors": [
       "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "tile-grouts-anchors",
+    "key": "BC TILE ADHESIVE PRO L",
+    "name": "BC Tile Adhesive Pro L",
+    "n_skus": 2,
+    "members": [
+      "BC Tile Adhesive Pro L Grey 50 Kg system FG",
+      "BC Tile Adhesive Pro L White 50 KG - FG"
+    ],
+    "desc": "BC Tile Adhesive Pro L is a high-performance, polymer-modified cementitious dry-set mortar for fixing ceramic, porcelain, mosaic, quarry, terrazzo, and artificial granite tiles. Offers excellent adhesion, flexibility, and water resistance for interior and exterior applications. Available in white, 50 kg bag.",
+    "n_desc": 1,
+    "img": "/private/files/prt 50 kg.jpg",
+    "n_img": 1,
+    "tds": "/private/files/BC Tile Adhesive Pro.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "50 kg bag"
+    ],
+    "colors": [
+      "Grey",
+      "White"
     ],
     "component_only": false
   }
