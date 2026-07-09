@@ -4745,30 +4745,6 @@
     "component_only": false
   },
   {
-    "slug": "tile-grouts-anchors",
-    "key": "BC TILE ADHESIVE PRO",
-    "name": "BC Tile Adhesive Pro",
-    "n_skus": 2,
-    "members": [
-      "BC Tile Adhesive PRO WHITE 20 KG -FG",
-      "BC Tile Adhesive Pro White 50 KG - FG"
-    ],
-    "desc": "BC Tile Adhesive Pro is a high-performance, polymer-modified cementitious dry-set mortar for fixing ceramic, porcelain, mosaic, quarry, terrazzo, and artificial granite tiles. Offers excellent adhesion, flexibility, and water resistance for interior and exterior applications. Available in grey and white, 20 kg bag.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-10-20 at 6.13.49 PM (2).jpeg",
-    "n_img": 2,
-    "tds": "/private/files/BC Tile Adhesive Pro.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "20 kg bag",
-      "50 kg bag"
-    ],
-    "colors": [
-      "White"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "protective-coatings",
     "key": "BC GRP MATT",
     "name": "BC GRP Matt",
@@ -4898,6 +4874,30 @@
     ],
     "colors": [
       "Grey",
+      "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "tile-grouts-anchors",
+    "key": "BC TILE ADHESIVE PRO",
+    "name": "BC Tile Adhesive Pro",
+    "n_skus": 2,
+    "members": [
+      "BC Tile Adhesive PRO WHITE 20 KG -FG",
+      "BC Tile Adhesive Pro White 50 KG - FG"
+    ],
+    "desc": "BC Tile Adhesive Pro is a high-performance, polymer-modified cementitious dry-set mortar for fixing ceramic, porcelain, mosaic, quarry, terrazzo, and artificial granite tiles. Offers excellent adhesion, flexibility, and water resistance for interior and exterior applications. Available in grey and white, 20 kg bag.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-10-20 at 6.13.49 PM (2).jpeg",
+    "n_img": 2,
+    "tds": "/private/files/BC Tile Adhesive Pro.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "20 kg bag",
+      "50 kg bag"
+    ],
+    "colors": [
       "White"
     ],
     "component_only": false
