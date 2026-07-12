@@ -3286,28 +3286,6 @@
     "component_only": false
   },
   {
-    "slug": "flooring-systems",
-    "key": "BC POXY TERRAZO 253",
-    "name": "BC Poxy Terrazo 253",
-    "n_skus": 1,
-    "members": [
-      "BC POXY TERRAZO 253 CLEAR 13.25KG SYSTEM - FG"
-    ],
-    "desc": "BC Poxy Terrazo 253 (System) – FG Two-component, pigmented, solvent-free epoxy resin system (aggregates exclusive) designed for combining with selected mineral or decorative aggregates to produce durable, customizable terrazzo screeds with superior aesthetic and mechanical properties.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-12-14 at 2.34.04 PM (3)249876.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Epoxy Terrazo 253.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "waterproofing-roofing",
     "key": "BC PROOF PU",
     "name": "BC Proof PU",
@@ -5050,6 +5028,28 @@
       "1.3 kg board"
     ],
     "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "flooring-systems",
+    "key": "BC POXY TERRAZO 253",
+    "name": "BC Poxy Terrazo 253",
+    "n_skus": 1,
+    "members": [
+      "BC POXY TERRAZO 253 CLEAR 13.25KG SYSTEM - FG"
+    ],
+    "desc": "BC Poxy Terrazo 253 (System) – FG Two-component, pigmented, solvent-free epoxy resin system (aggregates exclusive) designed for combining with selected mineral or decorative aggregates to produce durable, customizable terrazzo screeds with superior aesthetic and mechanical properties.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-12-14 at 2.34.04 PM (3)249876.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Epoxy Terrazo 253.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Clear"
+    ],
     "component_only": false
   }
 ]
