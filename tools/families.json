@@ -1406,28 +1406,6 @@
   },
   {
     "slug": "flooring-systems",
-    "key": "BC POXY TERAZZO 1000 LV",
-    "name": "BC Poxy Terazzo 1000 LV",
-    "n_skus": 1,
-    "members": [
-      "BC POXY TERAZZO 1000 LV CLEAR"
-    ],
-    "desc": "BC Poxy Mortar 1000 Three-component, solvent-free epoxy system (resin, hardener, quartz silica) for tough, resilient floor repairs and resurfacing; 100% solids, applied at 5 mm or greater. 13.45 kg set.",
-    "n_desc": 1,
-    "img": "/files/Epoxy Primer.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC EPOXY TERRAZZO 1000 LV.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "33.5 kg set"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "flooring-systems",
     "key": "BC POXY TERRAZO TOPCOAT",
     "name": "BC Poxy Terrazo Topcoat",
     "n_skus": 1,
@@ -5049,6 +5027,28 @@
     ],
     "colors": [
       "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "flooring-systems",
+    "key": "BC POXY TERAZZO 1000 LV",
+    "name": "BC Poxy Terazzo 1000 LV",
+    "n_skus": 1,
+    "members": [
+      "BC POXY TERAZZO 1000 LV CLEAR"
+    ],
+    "desc": "BC Poxy Mortar 1000 Three-component, solvent-free epoxy system (resin, hardener, quartz silica) for tough, resilient floor repairs and resurfacing; 100% solids, applied at 5 mm or greater. 13.45 kg set.",
+    "n_desc": 1,
+    "img": "/files/Epoxy Primer.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC EPOXY TERRAZZO 1000 LV.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "33.5 kg set"
+    ],
+    "colors": [
+      "Clear"
     ],
     "component_only": false
   }
