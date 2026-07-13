@@ -4948,28 +4948,6 @@
   },
   {
     "slug": "pu-foam-insulation",
-    "key": "BC FOAMCONCRETE",
-    "name": "BC Foam Concrete",
-    "n_skus": 1,
-    "members": [
-      "BC Foam Concrete WHITE 200 KG -FG"
-    ],
-    "desc": "BC Foam Concrete Engineered fill material with uniformly distributed air voids for geotechnical construction and mining; combines cement slurry with stable foam to create lightweight, rigid concrete. 200 kg drum.",
-    "n_desc": 1,
-    "img": "/files/Foam conc.png",
-    "n_img": 1,
-    "tds": "/private/files/BC Foam Concrete TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "200 kg drum"
-    ],
-    "colors": [
-      "White"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "pu-foam-insulation",
     "key": "BC XPS 32 10CMX60CMX125CM",
     "name": "BC XPS 32 10cmx60cmx125cm",
     "n_skus": 1,
@@ -5049,6 +5027,28 @@
     ],
     "colors": [
       "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC FOAMCONCRETE",
+    "name": "BC Foam Concrete",
+    "n_skus": 1,
+    "members": [
+      "BC Foam Concrete WHITE 200 KG -FG"
+    ],
+    "desc": "BC Foam Concrete Engineered fill material with uniformly distributed air voids for geotechnical construction and mining; combines cement slurry with stable foam to create lightweight, rigid concrete. 200 kg drum.",
+    "n_desc": 1,
+    "img": "/files/Foam conc.png",
+    "n_img": 1,
+    "tds": "/private/files/BC Foam Concrete TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "200 kg drum"
+    ],
+    "colors": [
+      "White"
     ],
     "component_only": false
   }
