@@ -195,7 +195,7 @@ function orgLd(D) {
 }
 const websiteLd = (lang) => ({
   '@context': 'https://schema.org', '@type': 'WebSite',
-  name: 'BCI — Building Chemistry Industry', url: ORIGIN + '/', inLanguage: lang,
+  name: 'BCI', url: ORIGIN + '/', inLanguage: lang,
   publisher: { '@type': 'Organization', name: 'Building Chemistry Industry (BCI)' },
 });
 const breadcrumbLd = (items) => ({
@@ -361,7 +361,7 @@ function buildDoc({ lang, title, description, p, schema, prerendered, scripts, r
 ${robots ? `<meta name="robots" content="${robots}" />\n` : ''}<link rel="canonical" href="${canonical}" />
 ${hreflang}
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="BCI — Building Chemistry Industry" />
+<meta property="og:site_name" content="BCI" />
 <meta property="og:locale" content="${OG_LOCALE[lang]}" />
 <meta property="og:title" content="${esc(title)}" />
 <meta property="og:description" content="${esc(description)}" />
