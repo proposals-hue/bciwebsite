@@ -3330,46 +3330,6 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "BC PVC MEMBRANE",
-    "name": "BC PVC Membrane",
-    "n_skus": 1,
-    "members": [
-      "BC PVC Membrane 1.2 mm"
-    ],
-    "desc": "BC PVC 1200 is a high-performance, calendared and extruded polyvinyl chloride (PVC) waterproofing membrane with a nominal thickness of 1.20 mm. The membrane is engineered to deliver long-term watertight integrity, excellent mechanical strength, and superior dimensional stability.",
-    "n_desc": 1,
-    "img": "/files/PVC Membrane.jpg",
-    "n_img": 1,
-    "tds": "/files/BC PVC 1200.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "66 kg roll"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
-    "key": "BC PVC MAMBRAN",
-    "name": "BC PVC Mambran",
-    "n_skus": 1,
-    "members": [
-      "BC PVC mambran 1.5 mm"
-    ],
-    "desc": "BC PVC 1500-UV is a high-performance, calendared and extruded single-ply PVC waterproofing membrane, 1.5 mm thick, internally reinforced with high-tenacity polyester mesh. It is specially formulated to resist ultraviolet (UV) radiation and harsh weathering, providing long-term durability and dimensional stability.",
-    "n_desc": 1,
-    "img": "/files/pvc membrane .png",
-    "n_img": 1,
-    "tds": "/files/BC PVC 1500 UV.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "83 kg roll"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
     "slug": "concrete-repair",
     "key": "BC REPAIR 200",
     "name": "BC Repair 200",
@@ -4927,28 +4887,6 @@
     "component_only": false
   },
   {
-    "slug": "flooring-systems",
-    "key": "BC POXY TERAZZO 1000 LV",
-    "name": "BC Poxy Terazzo 1000 LV",
-    "n_skus": 1,
-    "members": [
-      "BC POXY TERAZZO 1000 LV CLEAR"
-    ],
-    "desc": "BC Poxy Mortar 1000 Three-component, solvent-free epoxy system (resin, hardener, quartz silica) for tough, resilient floor repairs and resurfacing; 100% solids, applied at 5 mm or greater.",
-    "n_desc": 1,
-    "img": "/files/Epoxy Primer.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC EPOXY TERRAZZO 1000 LV.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "33.5 kg set"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "pu-foam-insulation",
     "key": "BC FOAMCONCRETE",
     "name": "BC Foam Concrete",
@@ -5048,6 +4986,68 @@
     "n_tds": 1,
     "sizes": [
       "6.94444 L roll"
+    ],
+    "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "flooring-systems",
+    "key": "BC POXY TERAZZO 1000 LV",
+    "name": "BC Poxy Terazzo 1000 LV",
+    "n_skus": 1,
+    "members": [
+      "BC POXY TERAZZO 1000 LV CLEAR"
+    ],
+    "desc": "BC Poxy Mortar 1000 Three-component, solvent-free epoxy system (resin, hardener, quartz silica) for tough, resilient floor repairs and resurfacing; 100% solids, applied at 5 mm or greater.",
+    "n_desc": 1,
+    "img": "/files/Epoxy Primer.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC EPOXY TERRAZZO 1000 LV.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "33.5 kg set"
+    ],
+    "colors": [
+      "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC PVC MEMBRANE",
+    "name": "BC PVC Membrane",
+    "n_skus": 1,
+    "members": [
+      "BC PVC Membrane 1.2 mm"
+    ],
+    "desc": "BC PVC 1200 is a high-performance, calendared and extruded polyvinyl chloride (PVC) waterproofing membrane with a nominal thickness of 1.20 mm. The membrane is engineered to deliver long-term watertight integrity, excellent mechanical strength, and superior dimensional stability.",
+    "n_desc": 1,
+    "img": "/files/PVC Membrane.jpg",
+    "n_img": 1,
+    "tds": "/files/BC PVC 1200.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "66 kg roll"
+    ],
+    "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC PVC MAMBRAN",
+    "name": "BC PVC Mambran",
+    "n_skus": 1,
+    "members": [
+      "BC PVC mambran 1.5 mm"
+    ],
+    "desc": "BC PVC 1500-UV is a high-performance, calendared and extruded single-ply PVC waterproofing membrane, 1.5 mm thick, internally reinforced with high-tenacity polyester mesh. It is specially formulated to resist ultraviolet (UV) radiation and harsh weathering, providing long-term durability and dimensional stability.",
+    "n_desc": 1,
+    "img": "/files/pvc membrane .png",
+    "n_img": 1,
+    "tds": "/files/BC PVC 1500 UV.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "83 kg roll"
     ],
     "colors": [],
     "component_only": false
