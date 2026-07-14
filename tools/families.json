@@ -1814,26 +1814,6 @@
     "component_only": false
   },
   {
-    "slug": "admixtures-aids",
-    "key": "BC GUN",
-    "name": "BC Gun",
-    "n_skus": 1,
-    "members": [
-      "BC Spray Gun"
-    ],
-    "desc": "BC Spray Gun",
-    "n_desc": 1,
-    "img": null,
-    "n_img": 0,
-    "tds": null,
-    "n_tds": 0,
-    "sizes": [
-      "0.185185 L pcs"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
     "slug": "protective-coatings",
     "key": "BC STONE PROTECTION",
     "name": "BC Stone Protection",
@@ -5048,6 +5028,26 @@
     "n_tds": 1,
     "sizes": [
       "83 kg roll"
+    ],
+    "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "admixtures-aids",
+    "key": "BC GUN",
+    "name": "BC Gun",
+    "n_skus": 1,
+    "members": [
+      "BC Spray Gun"
+    ],
+    "desc": "BC Spray Gun",
+    "n_desc": 1,
+    "img": null,
+    "n_img": 0,
+    "tds": null,
+    "n_tds": 0,
+    "sizes": [
+      "0.185185 L pcs"
     ],
     "colors": [],
     "component_only": false
