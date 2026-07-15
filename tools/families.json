@@ -4391,6 +4391,28 @@
     "component_only": false
   },
   {
+    "slug": "tile-grouts-anchors",
+    "key": "BC TEC CEM GROUT",
+    "name": "BC Tec Cem Grout",
+    "n_skus": 1,
+    "members": [
+      "BC Tec Cem Grout GREY 20 KG -FG"
+    ],
+    "desc": "BC TEC CEM GROUT is a high-strength, non-shrink, cementitious grout with natural aggregates and controlled expansion for durable, non-staining applications. Supplied in 20 kg bag.",
+    "n_desc": 1,
+    "img": "/files/ddcea77e-77b8-4e40-ac57-f9703160bad9-751.webp",
+    "n_img": 1,
+    "tds": "/private/files/BC Tec Cem Grout].pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20 kg bag"
+    ],
+    "colors": [
+      "Grey"
+    ],
+    "component_only": false
+  },
+  {
     "slug": "waterproofing-roofing",
     "key": "BC GEOTEXTILE",
     "name": "BC Geotextile",
@@ -4549,6 +4571,28 @@
     "colors": [
       "Black",
       "Slated"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC POXY PRIMER 349",
+    "name": "BC Poxy Primer 349",
+    "n_skus": 1,
+    "members": [
+      "BC Poxy primer 349 CREAMY 30 KG SYSTEM - FG"
+    ],
+    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Epoxy Primer 349.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Creamy"
     ],
     "component_only": false
   },
@@ -5006,50 +5050,6 @@
       "0.185185 L pcs"
     ],
     "colors": [],
-    "component_only": false
-  },
-  {
-    "slug": "tile-grouts-anchors",
-    "key": "BC TEC CEM GROUT",
-    "name": "BC Tec Cem Grout",
-    "n_skus": 1,
-    "members": [
-      "BC Tec Cem Grout GREY 20 KG -FG"
-    ],
-    "desc": "BC TEC CEM GROUT is a high-strength, non-shrink, cementitious grout with natural aggregates and controlled expansion for durable, non-staining applications. Supplied in 20 kg bag.",
-    "n_desc": 1,
-    "img": "/files/ddcea77e-77b8-4e40-ac57-f9703160bad9-751.webp",
-    "n_img": 1,
-    "tds": "/private/files/BC Tec Cem Grout].pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20 kg bag"
-    ],
-    "colors": [
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "protective-coatings",
-    "key": "BC POXY PRIMER 349",
-    "name": "BC Poxy Primer 349",
-    "n_skus": 1,
-    "members": [
-      "BC Poxy primer 349 CREAMY 30 KG SYSTEM - FG"
-    ],
-    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Epoxy Primer 349.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Creamy"
-    ],
     "component_only": false
   }
 ]
