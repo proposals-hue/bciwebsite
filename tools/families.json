@@ -4666,28 +4666,6 @@
   },
   {
     "slug": "waterproofing-roofing",
-    "key": "BC GEOTEX TILE",
-    "name": "BC Geotex Tile",
-    "n_skus": 1,
-    "members": [
-      "BC Geotex Tile 120 gsm WHITE ROLL - FG"
-    ],
-    "desc": "BC Geotextile 120 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works.It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications.",
-    "n_desc": 1,
-    "img": "/files/Geotextile4562c1.jpg",
-    "n_img": 1,
-    "tds": null,
-    "n_tds": 0,
-    "sizes": [
-      "6.66667 L roll"
-    ],
-    "colors": [
-      "White"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
     "key": "BC BITU CLASSIC 160",
     "name": "BC Bitu Classic 160",
     "n_skus": 2,
@@ -5050,6 +5028,28 @@
       "0.185185 L pcs"
     ],
     "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC GEOTEX TILE",
+    "name": "BC Geotex Tile",
+    "n_skus": 1,
+    "members": [
+      "BC Geotex Tile 120 gsm WHITE ROLL - FG"
+    ],
+    "desc": "BC Geotextile 120 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works.It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications.",
+    "n_desc": 1,
+    "img": "/files/Geotextile4562c1.jpg",
+    "n_img": 1,
+    "tds": null,
+    "n_tds": 0,
+    "sizes": [
+      "6.66667 L roll"
+    ],
+    "colors": [
+      "White"
+    ],
     "component_only": false
   }
 ]
