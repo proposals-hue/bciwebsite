@@ -2185,30 +2185,6 @@
     "component_only": false
   },
   {
-    "slug": "concrete-repair",
-    "key": "BC REPAIR FC",
-    "name": "BC Repair FC",
-    "n_skus": 2,
-    "members": [
-      "BC Repair FC GREY 20 KG -FG",
-      "BC Repair FC WHITE 20 KG - FG"
-    ],
-    "desc": "BC Repair FC is a single-component, polymer-modified, water-resistant fine repair mortar formulated from high-quality Portland cement, precisely graded limestone fillers, and special performance additives. It provides a smooth, durable finish for concrete surfaces and is ideal for fine crack filling",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-08-12 at 4.07.54 PM.jpeg",
-    "n_img": 2,
-    "tds": "/files/BC Repair FC88a76f.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "20 kg bag"
-    ],
-    "colors": [
-      "Grey",
-      "White"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "waterproofing-roofing",
     "key": "BC SEAL 107",
     "name": "BC Seal 107",
@@ -5049,6 +5025,30 @@
     ],
     "colors": [
       "Yellow"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "concrete-repair",
+    "key": "BC REPAIR FC",
+    "name": "BC Repair FC",
+    "n_skus": 2,
+    "members": [
+      "BC Repair FC GREY 20 KG -FG",
+      "BC Repair FC WHITE 20 KG - FG"
+    ],
+    "desc": "BC Repair FC is a single-component, polymer-modified, water-resistant fine repair mortar formulated from high-quality Portland cement, precisely graded limestone fillers, and special performance additives. It provides a smooth, durable finish for concrete surfaces and is ideal for fine crack filling",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-08-12 at 4.07.54 PM.jpeg",
+    "n_img": 2,
+    "tds": "/files/BC Repair FC88a76f.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "20 kg bag"
+    ],
+    "colors": [
+      "Grey",
+      "White"
     ],
     "component_only": false
   }
