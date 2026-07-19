@@ -4597,26 +4597,6 @@
     "component_only": false
   },
   {
-    "slug": "protective-coatings",
-    "key": "BC GRP MATT",
-    "name": "BC GRP Matt",
-    "n_skus": 1,
-    "members": [
-      "BC GRP Matt"
-    ],
-    "desc": "BC GRP Matt is a high-quality, non-woven glass fiber reinforcement mat manufactured from randomly oriented chopped glass filaments (approx. 50 mm) bonded together with either powder or emulsion binder.",
-    "n_desc": 1,
-    "img": "/files/grp matt.webp",
-    "n_img": 1,
-    "tds": "/private/files/BC GRP Matt  TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "47 kg roll"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
     "slug": "waterproofing-roofing",
     "key": "BC BITU CLASSIC 160",
     "name": "BC Bitu Classic 160",
@@ -5050,6 +5030,26 @@
     "colors": [
       "Black"
     ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC GRP MATT",
+    "name": "BC GRP Matt",
+    "n_skus": 1,
+    "members": [
+      "BC GRP Matt"
+    ],
+    "desc": "BC GRP Matt is a high-quality, non-woven glass fiber reinforcement mat manufactured from randomly oriented chopped glass filaments (approx. 50 mm) bonded together with either powder or emulsion binder.",
+    "n_desc": 1,
+    "img": "/files/grp matt.webp",
+    "n_img": 1,
+    "tds": "/private/files/BC GRP Matt  TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "47 kg roll"
+    ],
+    "colors": [],
     "component_only": false
   }
 ]
