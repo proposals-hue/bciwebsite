@@ -4688,90 +4688,6 @@
     "component_only": false
   },
   {
-    "slug": "pu-foam-insulation",
-    "key": "BC XPS 32 10CMX60CMX125CM",
-    "name": "BC XPS 32 10cmx60cmx125cm",
-    "n_skus": 1,
-    "members": [
-      "BC XPS BOARD 32-35KG/M3 (10CMX60CMX125CM)"
-    ],
-    "desc": "XPS Board 32–35 kg/m³ (10 cm × 60 cm × 125 cm) is an extruded polystyrene insulation board designed for high compressive strength and low water absorption.It provides durable, long-lasting thermal insulation for foundations, roofs, walls, and below-grade applications",
-    "n_desc": 1,
-    "img": "/files/XPS-Extruded-Polystyrene-Board..jpg",
-    "n_img": 1,
-    "tds": "/private/files/BC XPS Board.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "2.5 kg board"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
-    "slug": "protective-coatings",
-    "key": "BC EPOXY PRIMER 349 30",
-    "name": "BC Epoxy Primer 349 30",
-    "n_skus": 1,
-    "members": [
-      "BC Epoxy Primer 349 brown 30 system -FG"
-    ],
-    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM0a0909.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Epoxy Primer 349.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Brown"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "flooring-systems",
-    "key": "BC POXY TERRAZO 253",
-    "name": "BC Poxy Terrazo 253",
-    "n_skus": 1,
-    "members": [
-      "BC POXY TERRAZO 253 CLEAR 13.25KG SYSTEM - FG"
-    ],
-    "desc": "BC Poxy Terrazo 253 (System) – FG Two-component, pigmented, solvent-free epoxy resin system (aggregates exclusive) designed for combining with selected mineral or decorative aggregates to produce durable, customizable terrazzo screeds with superior aesthetic and mechanical properties.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-12-14 at 2.34.04 PM (3)249876.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Epoxy Terrazo 253.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
-    "key": "BC POLYTHELENE SHEET",
-    "name": "BC Polythelene Sheet",
-    "n_skus": 1,
-    "members": [
-      "BC Polythelene Sheet"
-    ],
-    "desc": "BC Polyethylene Sheet is a durable, flexible plastic sheet used as a moisture barrier, protection layer, and vapor retardant in construction applications.",
-    "n_desc": 1,
-    "img": "/files/polyethlene.jpg",
-    "n_img": 1,
-    "tds": "/files/BC Thene TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "29.4 kg"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
     "slug": "waterproofing-roofing",
     "key": "GEOTEXTILE",
     "name": "Geotextile",
@@ -5047,6 +4963,88 @@
     "n_tds": 0,
     "sizes": [
       "1.3 kg board"
+    ],
+    "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC POLYTHELENE SHEET",
+    "name": "BC Polythelene Sheet",
+    "n_skus": 1,
+    "members": [
+      "BC Polythelene Sheet"
+    ],
+    "desc": "BC Polyethylene Sheet is a durable, flexible plastic sheet used as a moisture barrier, protection layer, and vapor retardant in construction applications.",
+    "n_desc": 1,
+    "img": "/files/polyethlene.jpg",
+    "n_img": 1,
+    "tds": "/files/BC Thene TDS.pdf",
+    "n_tds": 1,
+    "sizes": [],
+    "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "flooring-systems",
+    "key": "BC POXY TERRAZO 253",
+    "name": "BC Poxy Terrazo 253",
+    "n_skus": 1,
+    "members": [
+      "BC POXY TERRAZO 253 CLEAR 13.25KG SYSTEM - FG"
+    ],
+    "desc": "BC Poxy Terrazo 253 (System) – FG Two-component, pigmented, solvent-free epoxy resin system (aggregates exclusive) designed for combining with selected mineral or decorative aggregates to produce durable, customizable terrazzo screeds with superior aesthetic and mechanical properties.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-12-14 at 2.34.04 PM (3)249876.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Epoxy Terrazo 253.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC EPOXY PRIMER 349 30",
+    "name": "BC Epoxy Primer 349 30",
+    "n_skus": 1,
+    "members": [
+      "BC Epoxy Primer 349 brown 30 system -FG"
+    ],
+    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM0a0909.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Epoxy Primer 349.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Brown"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC XPS 32 10CMX60CMX125CM",
+    "name": "BC XPS 32 10cmx60cmx125cm",
+    "n_skus": 1,
+    "members": [
+      "BC XPS BOARD 32-35KG/M3 (10CMX60CMX125CM)"
+    ],
+    "desc": "XPS Board 32–35 kg/m³ (10 cm × 60 cm × 125 cm) is an extruded polystyrene insulation board designed for high compressive strength and low water absorption.It provides durable, long-lasting thermal insulation for foundations, roofs, walls, and below-grade applications",
+    "n_desc": 1,
+    "img": "/files/XPS-Extruded-Polystyrene-Board..jpg",
+    "n_img": 1,
+    "tds": "/private/files/BC XPS Board.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "2.5 kg board"
     ],
     "colors": [],
     "component_only": false

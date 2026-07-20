@@ -88,7 +88,6 @@
   - colors: Grey
   - desc: BC Lastic-1K is a one-component, crack-bridging, fibre-reinforced cementitious mortar, modified with alkali-resistant polymers. It provides flexible waterproofi
 - **BC Polythelene Sheet** [1 skus]
-  - sizes: 29.4 kg
   - desc: BC Polyethylene Sheet is a durable, flexible plastic sheet used as a moisture barrier, protection layer, and vapor retardant in construction applications.
 - **BC Proof 100** [1 skus]
   - sizes: 30 kg set
