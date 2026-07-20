@@ -789,7 +789,7 @@
   - colors: Grey
   - desc: BC Sili-900 — One-part, chemical-resistant silicone sealant for movement joints in aggressive chemical environments, providing excellent adhesion and long-term 
 - **BC Tec 30S** [3 skus]
-  - sizes: 0.714286 L sauge, 461.538 L pcs, 600 kg pcs
+  - sizes: 0.714286 L sauge, 600 kg pcs
   - colors: Black, Grey, White
   - desc: BCI TEC30 S One-component, moisture-curing, non-sag polyurethane joint sealant, for elastic, tough, and resilient sealing with excellent recovery, suitable for 
 - **BC Tec 80A** [1 skus]
