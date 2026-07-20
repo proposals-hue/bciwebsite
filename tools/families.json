@@ -4249,28 +4249,6 @@
   },
   {
     "slug": "pu-foam-insulation",
-    "key": "BC 702 40 FR",
-    "name": "BC 702 40 FR",
-    "n_skus": 1,
-    "members": [
-      "BC 702 Spray 40 FR YELLOW 470 KG -FG"
-    ],
-    "desc": "BC 702 Spray 40 FR Polyol Two-component spray foam system, 40 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with good mechanical strength, dimensional stability, and substrate adhesion, compatible with high- and low-pressure machines, containing 141B blowing agent.",
-    "n_desc": 1,
-    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
-    "n_img": 1,
-    "tds": "/private/files/BC 702 Spray 40 FR.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "470 kg set"
-    ],
-    "colors": [
-      "Yellow"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "pu-foam-insulation",
     "key": "BC 703 SWP",
     "name": "BC 703 SWP",
     "n_skus": 2,
@@ -5047,6 +5025,28 @@
       "2.5 kg board"
     ],
     "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 702 40 FR",
+    "name": "BC 702 40 FR",
+    "n_skus": 1,
+    "members": [
+      "BC 702 Spray 40 FR YELLOW 470 KG -FG"
+    ],
+    "desc": "BC 702 Spray 40 FR Polyol Two-component spray foam system, 40 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with good mechanical strength, dimensional stability, and substrate adhesion, compatible with high- and low-pressure machines, containing 141B blowing agent.",
+    "n_desc": 1,
+    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
+    "n_img": 1,
+    "tds": "/private/files/BC 702 Spray 40 FR.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
+    ],
     "component_only": false
   }
 ]
