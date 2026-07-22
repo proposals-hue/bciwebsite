@@ -3895,29 +3895,6 @@
   },
   {
     "slug": "flooring-systems",
-    "key": "BC EPOXY SL 140",
-    "name": "BC Epoxy SL 140",
-    "n_skus": 1,
-    "members": [
-      "BC Epoxy SL 140 Dark Grey 20 KG SYSTEM - FG"
-    ],
-    "desc": "BC Epoxy SL 140 Dark Grey FG a 100% solids, high performance coating designed for concrete .BC EPOXY SL 140 is a self levelling coating which may be applied as a neat, aggregate filled system or It shall be applied over reinforced systems",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM0a0909.jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Epoxy 140 SL.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20 kg set"
-    ],
-    "colors": [
-      "Dark Grey",
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "flooring-systems",
     "key": "BC FLOOR TRAFFIC 520",
     "name": "BC Floor Traffic 520",
     "n_skus": 2,
@@ -3959,28 +3936,6 @@
     ],
     "colors": [
       "Grey"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "flooring-systems",
-    "key": "BC POLYASPARTIC",
-    "name": "BC Polyaspartic",
-    "n_skus": 1,
-    "members": [
-      "BC Polyaspartic Clear  20 KG  SYSTEM - FG"
-    ],
-    "desc": "BC POLYASPARTIC is a two-component, 100% solids polyaspartic polyurea coating formulated for high-performance concrete surfaces. It provides excellent gloss, superior abrasion and impact resistance, chemical splash and spill resistance, and fast curing for reduced downtime. Ideal for industrial and decorative floors.",
-    "n_desc": 1,
-    "img": "/files/Epoxy Primer.jpeg",
-    "n_img": 1,
-    "tds": null,
-    "n_tds": 0,
-    "sizes": [
-      "20 kg set"
-    ],
-    "colors": [
-      "Clear"
     ],
     "component_only": false
   },
@@ -5046,6 +5001,51 @@
     ],
     "colors": [
       "Brown"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "flooring-systems",
+    "key": "BC POLYASPARTIC",
+    "name": "BC Polyaspartic",
+    "n_skus": 1,
+    "members": [
+      "BC Polyaspartic Clear  20 KG  SYSTEM - FG"
+    ],
+    "desc": "BC POLYASPARTIC is a two-component, 100% solids polyaspartic polyurea coating formulated for high-performance concrete surfaces. It provides excellent gloss, superior abrasion and impact resistance, chemical splash and spill resistance, and fast curing for reduced downtime. Ideal for industrial and decorative floors.",
+    "n_desc": 1,
+    "img": "/files/Epoxy Primer.jpeg",
+    "n_img": 1,
+    "tds": null,
+    "n_tds": 0,
+    "sizes": [
+      "20 kg set"
+    ],
+    "colors": [
+      "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "flooring-systems",
+    "key": "BC EPOXY SL 140",
+    "name": "BC Epoxy SL 140",
+    "n_skus": 1,
+    "members": [
+      "BC Epoxy SL 140 Dark Grey 20 KG SYSTEM - FG"
+    ],
+    "desc": "BC Epoxy SL 140 Dark Grey FG a 100% solids, high performance coating designed for concrete .BC EPOXY SL 140 is a self levelling coating which may be applied as a neat, aggregate filled system or It shall be applied over reinforced systems",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM0a0909.jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC Epoxy 140 SL.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20 kg set"
+    ],
+    "colors": [
+      "Dark Grey",
+      "Grey"
     ],
     "component_only": false
   }
