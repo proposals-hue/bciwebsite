@@ -4961,28 +4961,6 @@
   },
   {
     "slug": "protective-coatings",
-    "key": "BC EPOXY PRIMER 349 30",
-    "name": "BC Epoxy Primer 349 30",
-    "n_skus": 1,
-    "members": [
-      "BC Epoxy Primer 349 brown 30 system -FG"
-    ],
-    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM0a0909.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Epoxy Primer 349.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Brown"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "protective-coatings",
     "key": "BC PRIMER 349",
     "name": "BC Primer 349",
     "n_skus": 1,
@@ -5046,6 +5024,28 @@
     ],
     "colors": [
       "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC EPOXY PRIMER 349 30",
+    "name": "BC Epoxy Primer 349 30",
+    "n_skus": 1,
+    "members": [
+      "BC Epoxy Primer 349 brown 30 system -FG"
+    ],
+    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM0a0909.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Epoxy Primer 349.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Brown"
     ],
     "component_only": false
   }
