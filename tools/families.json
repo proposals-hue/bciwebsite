@@ -1359,30 +1359,6 @@
   },
   {
     "slug": "concrete-repair",
-    "key": "BC POXY PUTTY 2000",
-    "name": "BC Poxy Putty 2000",
-    "n_skus": 2,
-    "members": [
-      "BC Poxy Putty 2000 GREY 3 kg System - FG",
-      "BC Poxy Putty 2000 GREY 9.7kg System - FG"
-    ],
-    "desc": "BC Poxy Putty 2000 Two-component, high-strength epoxy putty, 3 kg set yielding 1.75 L, for durable bonding, bedding, and concrete repair applications.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1).jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Epoxy Putty 2000 TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "3 kg set",
-      "9.7 kg set"
-    ],
-    "colors": [
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "concrete-repair",
     "key": "BC POXY PUTTY 3000",
     "name": "BC Poxy Putty 3000",
     "n_skus": 1,
@@ -3175,28 +3151,6 @@
     "component_only": false
   },
   {
-    "slug": "flooring-systems",
-    "key": "BC POXY FC 140 SF",
-    "name": "BC Poxy FC 140 SF",
-    "n_skus": 1,
-    "members": [
-      "BC POXY FC 140 SF GREY 20 KG SYSTEM  FG"
-    ],
-    "desc": "BC Epoxy FC 140 SF — Two-part, solvent-free, pigmented epoxy floor coating for durable and chemical-resistant surfaces, Coverage: 0.50–0.80 kg/m², Packing: 20 kg set.",
-    "n_desc": 1,
-    "img": null,
-    "n_img": 0,
-    "tds": null,
-    "n_tds": 0,
-    "sizes": [
-      "20 kg set"
-    ],
-    "colors": [
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "waterproofing-roofing",
     "key": "BC PROOF PU",
     "name": "BC Proof PU",
@@ -4600,28 +4554,6 @@
     "component_only": false
   },
   {
-    "slug": "protective-coatings",
-    "key": "BC PRIMER 349",
-    "name": "BC Primer 349",
-    "n_skus": 1,
-    "members": [
-      "BC PRIMER 349 CLEAR 30 KG SYSTEM - FG"
-    ],
-    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Epoxy Primer 349.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "concrete-repair",
     "key": "BC REPAIR 100",
     "name": "BC Repair 100",
@@ -4984,28 +4916,6 @@
     "component_only": false
   },
   {
-    "slug": "protective-coatings",
-    "key": "BC EPOXY PRIMER 349 30",
-    "name": "BC Epoxy Primer 349 30",
-    "n_skus": 1,
-    "members": [
-      "BC Epoxy Primer 349 brown 30 system -FG"
-    ],
-    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM0a0909.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Epoxy Primer 349.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Brown"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "sealants-joints",
     "key": "BC TEC PS PG",
     "name": "BC Tec PS PG",
@@ -5046,6 +4956,96 @@
     ],
     "colors": [
       "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC EPOXY PRIMER 349 30",
+    "name": "BC Epoxy Primer 349 30",
+    "n_skus": 1,
+    "members": [
+      "BC Epoxy Primer 349 brown 30 system -FG"
+    ],
+    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM0a0909.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Epoxy Primer 349.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Brown"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC PRIMER 349",
+    "name": "BC Primer 349",
+    "n_skus": 1,
+    "members": [
+      "BC PRIMER 349 CLEAR 30 KG SYSTEM - FG"
+    ],
+    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Epoxy Primer 349.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "concrete-repair",
+    "key": "BC POXY PUTTY 2000",
+    "name": "BC Poxy Putty 2000",
+    "n_skus": 2,
+    "members": [
+      "BC Poxy Putty 2000 GREY 3 kg System - FG",
+      "BC Poxy Putty 2000 GREY 9.7kg System - FG"
+    ],
+    "desc": "BC Poxy Putty 2000 Two-component, high-strength epoxy putty, 3 kg set yielding 1.75 L, for durable bonding, bedding, and concrete repair applications.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1).jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC Epoxy Putty 2000 TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "3 kg set",
+      "9.7 kg set"
+    ],
+    "colors": [
+      "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "flooring-systems",
+    "key": "BC POXY FC 140 SF",
+    "name": "BC Poxy FC 140 SF",
+    "n_skus": 1,
+    "members": [
+      "BC POXY FC 140 SF GREY 20 KG SYSTEM  FG"
+    ],
+    "desc": "BC Epoxy FC 140 SF — Two-part, solvent-free, pigmented epoxy floor coating for durable and chemical-resistant surfaces, Coverage: 0.50–0.80 kg/m², Packing: 20 kg set.",
+    "n_desc": 1,
+    "img": null,
+    "n_img": 0,
+    "tds": null,
+    "n_tds": 0,
+    "sizes": [
+      "20 kg set"
+    ],
+    "colors": [
+      "Grey"
     ],
     "component_only": false
   }
