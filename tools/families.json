@@ -351,31 +351,6 @@
     "component_only": false
   },
   {
-    "slug": "concrete-repair",
-    "key": "BC BLOCK MORTAR",
-    "name": "BC Block Mortar",
-    "n_skus": 2,
-    "members": [
-      "BC BLOCK MORTAR GREY 25 KG - FG",
-      "BC BLOCK MORTAR WHITE 20 KG - FG"
-    ],
-    "desc": "BC Block Mortar is a high-performance, pre-blended hydraulic adhesive for AAC blocks, panels, and other lightweight masonry units. Composed of cement, graded aggregates, bonding agents, and special polymers, it produces a thixotropic, water-resistant mortar with excellent open time, workability, and mechanical strength.",
-    "n_desc": 1,
-    "img": "/files/BC Block Mortar258a32a6.jpg",
-    "n_img": 2,
-    "tds": "/files/BC Block Mortar.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20 kg bag",
-      "25 kg bag"
-    ],
-    "colors": [
-      "Grey",
-      "White"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "protective-coatings",
     "key": "BC COAT EPU 400",
     "name": "BC Coat EPU 400",
@@ -4675,6 +4650,31 @@
     ],
     "colors": [
       "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "concrete-repair",
+    "key": "BC BLOCK MORTAR",
+    "name": "BC Block Mortar",
+    "n_skus": 2,
+    "members": [
+      "BC BLOCK MORTAR GREY 25 KG - FG",
+      "BC BLOCK MORTAR WHITE 20 KG - FG"
+    ],
+    "desc": "BC Block Mortar is a high-performance, pre-blended hydraulic adhesive for AAC blocks, panels, and other lightweight masonry units. Composed of cement, graded aggregates, bonding agents, and special polymers, it produces a thixotropic, water-resistant mortar with excellent open time, workability, and mechanical strength.",
+    "n_desc": 1,
+    "img": "/files/BC Block Mortar258a32a6.jpg",
+    "n_img": 2,
+    "tds": "/files/BC Block Mortar.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20 kg bag",
+      "25 kg bag"
+    ],
+    "colors": [
+      "Grey",
+      "White"
     ],
     "component_only": false
   },
