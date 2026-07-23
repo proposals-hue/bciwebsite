@@ -612,28 +612,6 @@
   },
   {
     "slug": "flooring-systems",
-    "key": "BC FLOOR 3000 SL",
-    "name": "BC Floor 3000 SL",
-    "n_skus": 1,
-    "members": [
-      "BC Floor 3000 SL GREY 15 KG SYSTEM - FG"
-    ],
-    "desc": "BC Floor 3000 SL GREY 15 KG SYSTEM - FG",
-    "n_desc": 1,
-    "img": "/private/files/WhatsApp Image 2025-12-14 at 2.34.04 PM (2).jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Floor 3000 SL TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "15 kg set"
-    ],
-    "colors": [
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "flooring-systems",
     "key": "BC FLOOR EPU 100",
     "name": "BC Floor EPU 100",
     "n_skus": 1,
@@ -1358,28 +1336,6 @@
     "component_only": false
   },
   {
-    "slug": "concrete-repair",
-    "key": "BC POXY PUTTY 3000",
-    "name": "BC Poxy Putty 3000",
-    "n_skus": 1,
-    "members": [
-      "BC Poxy Putty 3000 GREY 9.9 KG - FG"
-    ],
-    "desc": "BC Putty 3000 Two-component, high-strength, non-slumping epoxy putty for use as a bedding, adhesive, or repair material; 10 kg kit provides a tough, resilient finish suitable for concrete and structural repairs.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1)726a82.jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Epoxy Putty 3000 TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "9.9 kg set"
-    ],
-    "colors": [
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "flooring-systems",
     "key": "BC POXY TERRAZO TOPCOAT",
     "name": "BC Poxy Terrazo Topcoat",
@@ -1608,28 +1564,6 @@
     "n_tds": 1,
     "sizes": [
       "28.58 kg set"
-    ],
-    "colors": [
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "concrete-repair",
-    "key": "BC POXY PUTTY 4000",
-    "name": "BC Poxy Putty 4000",
-    "n_skus": 1,
-    "members": [
-      "BC POXY PUTTY 4000 GREY 3 KG SYSTEM  FG"
-    ],
-    "desc": "BC Poxy Putty 4000 Two-component, high-strength epoxy putty, 3 kg set yielding 1.75 L, for durable bonding, bedding, and concrete repair applications.",
-    "n_desc": 1,
-    "img": "/files/85964d7f7.png",
-    "n_img": 1,
-    "tds": "/files/BC Epoxy Putty 4000 TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "3 kg set"
     ],
     "colors": [
       "Grey"
@@ -2273,30 +2207,6 @@
     ],
     "colors": [
       "Clear"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "flooring-systems",
-    "key": "BC FLOOR 4000 SL",
-    "name": "BC Floor 4000 SL",
-    "n_skus": 2,
-    "members": [
-      "BC Floor 4000 SL  CREAMY 26.536 KG System - FG",
-      "BC Floor 4000 SL Grey 27 Kg system FG"
-    ],
-    "desc": "BC Floor 4000 SL Two-component, solvent-free, high-build, self-smoothing epoxy floor system, 27 kg set, 7.2 kg/m² at 4 mm, one coat, approx. 114 SAR/m², for seamless, chemical- and abrasion-resistant heavy-duty flooring.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM0a0909.jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Floor 4000 SL07e753.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "27 kg set"
-    ],
-    "colors": [
-      "Creamy",
-      "Grey"
     ],
     "component_only": false
   },
@@ -5046,6 +4956,96 @@
     ],
     "colors": [
       "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "flooring-systems",
+    "key": "BC FLOOR 3000 SL",
+    "name": "BC Floor 3000 SL",
+    "n_skus": 1,
+    "members": [
+      "BC Floor 3000 SL GREY 15 KG SYSTEM - FG"
+    ],
+    "desc": "BC Floor 3000 SL GREY 15 KG SYSTEM - FG",
+    "n_desc": 1,
+    "img": "/private/files/WhatsApp Image 2025-12-14 at 2.34.04 PM (2).jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC Floor 3000 SL TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "15 kg set"
+    ],
+    "colors": [
+      "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "concrete-repair",
+    "key": "BC POXY PUTTY 3000",
+    "name": "BC Poxy Putty 3000",
+    "n_skus": 1,
+    "members": [
+      "BC Poxy Putty 3000 GREY 9.9 KG - FG"
+    ],
+    "desc": "BC Putty 3000 Two-component, high-strength, non-slumping epoxy putty for use as a bedding, adhesive, or repair material; 10 kg kit provides a tough, resilient finish suitable for concrete and structural repairs.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1)726a82.jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC Epoxy Putty 3000 TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "9.9 kg set"
+    ],
+    "colors": [
+      "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "flooring-systems",
+    "key": "BC FLOOR 4000 SL",
+    "name": "BC Floor 4000 SL",
+    "n_skus": 2,
+    "members": [
+      "BC Floor 4000 SL  CREAMY 26.536 KG System - FG",
+      "BC Floor 4000 SL Grey 27 Kg system FG"
+    ],
+    "desc": "BC Floor 4000 SL Two-component, solvent-free, high-build, self-smoothing epoxy floor system, 27 kg set, 7.2 kg/m² at 4 mm, one coat, approx. 114 SAR/m², for seamless, chemical- and abrasion-resistant heavy-duty flooring.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM0a0909.jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC Floor 4000 SL07e753.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "27 kg set"
+    ],
+    "colors": [
+      "Creamy",
+      "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "concrete-repair",
+    "key": "BC POXY PUTTY 4000",
+    "name": "BC Poxy Putty 4000",
+    "n_skus": 1,
+    "members": [
+      "BC POXY PUTTY 4000 GREY 3 KG SYSTEM  FG"
+    ],
+    "desc": "BC Poxy Putty 4000 Two-component, high-strength epoxy putty, 3 kg set yielding 1.75 L, for durable bonding, bedding, and concrete repair applications.",
+    "n_desc": 1,
+    "img": "/files/85964d7f7.png",
+    "n_img": 1,
+    "tds": "/files/BC Epoxy Putty 4000 TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "3 kg set"
+    ],
+    "colors": [
+      "Grey"
     ],
     "component_only": false
   }
