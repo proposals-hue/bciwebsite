@@ -33,8 +33,6 @@
   "/files/P SM.jpg": "bc-plaster-sm.jpg",
   "/files/WhatsApp Image 2025-12-14 at 2.34.04 PM (3).jpeg": "bc-poly-sl.jpg",
   "/files/WhatsApp Image 2025-08-13 at 5.17.04 PM.jpeg": "bc-poxy-300-as.jpg",
-  "/files/3 - COMPONENTS.webp": "bc-poxy-fc-140-screed.jpg",
-  "/private/files/3 - COMPONENTS.webp": "bc-poxy-fc-145-screed.jpg",
   "/files/poxy mortar.png": "bc-poxy-mort-1000.jpg",
   "/files/859.png": "bc-poxy-zinc-rich-859.jpg",
   "/files/BCI Paild03804.jpeg": "bc-profile-lora.jpg",
@@ -137,5 +135,7 @@
   "/files/Foam conc.png": "bc-foam-concrete.jpg",
   "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x916.webp": "bc-237.jpg",
   "/files/WhatsApp Image 2025-08-12 at 4.07.52 PM (1).jpeg": "bc-repair-100.jpg",
-  "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x916464af9.webp": "bc-717-swp.jpg"
+  "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x916464af9.webp": "bc-717-swp.jpg",
+  "/files/3 - COMPONENTS.webp": "bc-poxy-fc-140-screed.jpg",
+  "/private/files/3 - COMPONENTS.webp": "bc-poxy-fc-145-screed.jpg"
 }
