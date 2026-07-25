@@ -4116,28 +4116,6 @@
     "component_only": false
   },
   {
-    "slug": "tile-grouts-anchors",
-    "key": "BC TEC CEM GROUT",
-    "name": "BC Tec Cem Grout",
-    "n_skus": 1,
-    "members": [
-      "BC Tec Cem Grout GREY 20 KG -FG"
-    ],
-    "desc": "BC TEC CEM GROUT is a high-strength, non-shrink, cementitious grout with natural aggregates and controlled expansion for durable, non-staining applications. Supplied in 20 kg bag.",
-    "n_desc": 1,
-    "img": "/files/ddcea77e-77b8-4e40-ac57-f9703160bad9-751.webp",
-    "n_img": 1,
-    "tds": "/private/files/BC Tec Cem Grout].pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20 kg bag"
-    ],
-    "colors": [
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "waterproofing-roofing",
     "key": "BC GEOTEXTILE",
     "name": "BC Geotextile",
@@ -4224,30 +4202,6 @@
     ],
     "colors": [
       "Grey"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "pu-foam-insulation",
-    "key": "BC 717 SWP",
-    "name": "BC 717 SWP",
-    "n_skus": 2,
-    "members": [
-      "BC 717 SWP FOAM YELLOW 470 KG - FG",
-      "BC 717 SWP POLYOL YELLOW 220 KG - FG"
-    ],
-    "desc": "BC 717 Polyol Two-component, 141 B-based polyurethane system for sandwich panels, designed for 42–46 kg/m³ density; reacts with BC 768 Isocyanate (100/120 ratio) to form highly crosslinked, rigid, dimensionally stable foam with good metal adhesion, B2-grade per DIN 4102.",
-    "n_desc": 1,
-    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x916464af9.webp",
-    "n_img": 2,
-    "tds": "/files/BC 717 SWP.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "220 kg drum",
-      "470 kg set"
-    ],
-    "colors": [
-      "Yellow"
     ],
     "component_only": false
   },
@@ -5040,6 +4994,52 @@
     "img": "/files/WhatsApp Image 2025-08-12 at 4.07.52 PM (1).jpeg",
     "n_img": 1,
     "tds": "/private/files/BC Repair 100c7d943.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20 kg bag"
+    ],
+    "colors": [
+      "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 717 SWP",
+    "name": "BC 717 SWP",
+    "n_skus": 2,
+    "members": [
+      "BC 717 SWP FOAM YELLOW 470 KG - FG",
+      "BC 717 SWP POLYOL YELLOW 220 KG - FG"
+    ],
+    "desc": "BC 717 Polyol Two-component, 141 B-based polyurethane system for sandwich panels, designed for 42–46 kg/m³ density; reacts with BC 768 Isocyanate (100/120 ratio) to form highly crosslinked, rigid, dimensionally stable foam with good metal adhesion, B2-grade per DIN 4102.",
+    "n_desc": 1,
+    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x916464af9.webp",
+    "n_img": 2,
+    "tds": "/files/BC 717 SWP.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "220 kg drum",
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "tile-grouts-anchors",
+    "key": "BC TEC CEM GROUT",
+    "name": "BC Tec Cem Grout",
+    "n_skus": 1,
+    "members": [
+      "BC Tec Cem Grout GREY 20 KG -FG"
+    ],
+    "desc": "BC TEC CEM GROUT is a high-strength, non-shrink, cementitious grout with natural aggregates and controlled expansion for durable, non-staining applications. Supplied in 20 kg bag.",
+    "n_desc": 1,
+    "img": "/files/ddcea77e-77b8-4e40-ac57-f9703160bad9-751.webp",
+    "n_img": 1,
+    "tds": "/private/files/BC Tec Cem Grout].pdf",
     "n_tds": 1,
     "sizes": [
       "20 kg bag"
