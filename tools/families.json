@@ -3779,30 +3779,6 @@
     "component_only": false
   },
   {
-    "slug": "polyurea-membranes",
-    "key": "BC 690 H",
-    "name": "BC 690 H",
-    "n_skus": 2,
-    "members": [
-      "BC 690 H POLYOL CLEAR 196 KG -FG",
-      "BC 690 H POLYUREA CLEAR 420 KG - FG"
-    ],
-    "desc": "BC 690H Hybrid Polyurea Two-component, solvent-free, high-build, elastomeric hybrid polyurea membrane, 1 kg/m² at 1 mm, 420 kg kit (196 kg Polyol + 220 kg Isocyanate + 4 kg Pigment), for seamless, flexible, and durable waterproofing with excellent tensile strength, elongation, tear resistance, and adhesion on commercial, industrial, and infrastructure substrates.",
-    "n_desc": 2,
-    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9168b5c74.webp",
-    "n_img": 2,
-    "tds": "/files/BC 690 H  TDS.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "196 kg drum",
-      "420 kg set"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "admixtures-aids",
     "key": "BC TEC MAR RELEASE",
     "name": "BC Tec Mar Release",
@@ -4205,30 +4181,6 @@
     "component_only": false
   },
   {
-    "slug": "pu-foam-insulation",
-    "key": "BC 702 45",
-    "name": "BC 702 45",
-    "n_skus": 2,
-    "members": [
-      "BC 702 Spary 45 FOAM YELLOW 470 KG -FG",
-      "BC 702 Spary 45 Polyol YELLOW 220 KG -FG"
-    ],
-    "desc": "BC 702 Spray 45 Polyol Two-component spray foam system, 45 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with good mechanical strength, dimensional stability, and substrate adhesion, compatible with high- and low-pressure machines, containing 141B blowing agent.",
-    "n_desc": 1,
-    "img": "/files/Foam Drums9799e3.webp",
-    "n_img": 2,
-    "tds": "/files/BC 702spray Foam.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "220 kg drum",
-      "470 kg set"
-    ],
-    "colors": [
-      "Yellow"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "waterproofing-roofing",
     "key": "BC GEOTEX TILE",
     "name": "BC Geotex Tile",
@@ -4356,28 +4308,6 @@
     ],
     "colors": [
       "Clear"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "pu-foam-insulation",
-    "key": "BC 702 40 FR",
-    "name": "BC 702 40 FR",
-    "n_skus": 1,
-    "members": [
-      "BC 702 Spray 40 FR YELLOW 470 KG -FG"
-    ],
-    "desc": "BC 702 Spray 40 FR Polyol Two-component spray foam system, 40 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with good mechanical strength, dimensional stability, and substrate adhesion, compatible with high- and low-pressure machines, containing 141B blowing agent.",
-    "n_desc": 1,
-    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
-    "n_img": 1,
-    "tds": "/private/files/BC 702 Spray 40 FR.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "470 kg set"
-    ],
-    "colors": [
-      "Yellow"
     ],
     "component_only": false
   },
@@ -5046,6 +4976,76 @@
     ],
     "colors": [
       "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "polyurea-membranes",
+    "key": "BC 690 H",
+    "name": "BC 690 H",
+    "n_skus": 2,
+    "members": [
+      "BC 690 H POLYOL CLEAR 196 KG -FG",
+      "BC 690 H POLYUREA CLEAR 420 KG - FG"
+    ],
+    "desc": "BC 690H Hybrid Polyurea Two-component, solvent-free, high-build, elastomeric hybrid polyurea membrane, 1 kg/m² at 1 mm, 420 kg kit (196 kg Polyol + 220 kg Isocyanate + 4 kg Pigment), for seamless, flexible, and durable waterproofing with excellent tensile strength, elongation, tear resistance, and adhesion on commercial, industrial, and infrastructure substrates.",
+    "n_desc": 2,
+    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9168b5c74.webp",
+    "n_img": 2,
+    "tds": "/files/BC 690 H  TDS.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "196 kg drum",
+      "420 kg set"
+    ],
+    "colors": [
+      "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 702 40 FR",
+    "name": "BC 702 40 FR",
+    "n_skus": 1,
+    "members": [
+      "BC 702 Spray 40 FR YELLOW 470 KG -FG"
+    ],
+    "desc": "BC 702 Spray 40 FR Polyol Two-component spray foam system, 40 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with good mechanical strength, dimensional stability, and substrate adhesion, compatible with high- and low-pressure machines, containing 141B blowing agent.",
+    "n_desc": 1,
+    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
+    "n_img": 1,
+    "tds": "/private/files/BC 702 Spray 40 FR.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 702 45",
+    "name": "BC 702 45",
+    "n_skus": 2,
+    "members": [
+      "BC 702 Spary 45 FOAM YELLOW 470 KG -FG",
+      "BC 702 Spary 45 Polyol YELLOW 220 KG -FG"
+    ],
+    "desc": "BC 702 Spray 45 Polyol Two-component spray foam system, 45 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with good mechanical strength, dimensional stability, and substrate adhesion, compatible with high- and low-pressure machines, containing 141B blowing agent.",
+    "n_desc": 1,
+    "img": "/files/Foam Drums9799e3.webp",
+    "n_img": 2,
+    "tds": "/files/BC 702spray Foam.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "220 kg drum",
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
     ],
     "component_only": false
   }
