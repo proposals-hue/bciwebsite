@@ -565,28 +565,6 @@
   },
   {
     "slug": "flooring-systems",
-    "key": "BC FLOOR 2000 SL",
-    "name": "BC Floor 2000 SL",
-    "n_skus": 1,
-    "members": [
-      "BC Floor 2000 SL  GREY 16.1 KG System - FG"
-    ],
-    "desc": "BC Floor 2000 SL System Two-component, solvent-free, pigmented epoxy self-smoothing floor topping, 16 kg set, 3.2 kg/m² at 2 mm, one coat, approx. 100 SAR/m², for seamless, hygienic, and durable flooring.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM0a0909.jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Floor 2000 SL TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "16 kg set"
-    ],
-    "colors": [
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "flooring-systems",
     "key": "BC FLOOR EPU 100",
     "name": "BC Floor EPU 100",
     "n_skus": 1,
@@ -998,32 +976,6 @@
     ],
     "colors": [
       "Clear"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "flooring-systems",
-    "key": "BC POXY 250",
-    "name": "BC Poxy 250",
-    "n_skus": 3,
-    "members": [
-      "BC Poxy 250 Green RAL 6018 10.8 KG Part-A-FG",
-      "BC Poxy 250 Green RAL 6018 13.25 KG SYSTEM - FG",
-      "BC Poxy 250 Grey 13.25 KG System -FG"
-    ],
-    "desc": "BC Epoxy 250 Two-component, solvent-free, high-build epoxy protective coating, 13.25 kg set, 0.27 kg/m² at 200 µm, one coat, approx. 6.1 SAR/m², for durable, chemical-resistant protection of concrete and steel.",
-    "n_desc": 1,
-    "img": "/files/Epoxy Primer.jpeg",
-    "n_img": 2,
-    "tds": "/files/BC Epoxy 250 TDS.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "10.8 kg pail",
-      "13.25 kg set"
-    ],
-    "colors": [
-      "Green",
-      "Grey"
     ],
     "component_only": false
   },
@@ -5046,6 +4998,54 @@
     ],
     "colors": [
       "Brown"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "flooring-systems",
+    "key": "BC POXY 250",
+    "name": "BC Poxy 250",
+    "n_skus": 3,
+    "members": [
+      "BC Poxy 250 Green RAL 6018 10.8 KG Part-A-FG",
+      "BC Poxy 250 Green RAL 6018 13.25 KG SYSTEM - FG",
+      "BC Poxy 250 Grey 13.25 KG System -FG"
+    ],
+    "desc": "BC Epoxy 250 Two-component, solvent-free, high-build epoxy protective coating, 13.25 kg set, 0.27 kg/m² at 200 µm, one coat, approx. 6.1 SAR/m², for durable, chemical-resistant protection of concrete and steel.",
+    "n_desc": 1,
+    "img": "/files/Epoxy Primer.jpeg",
+    "n_img": 2,
+    "tds": "/files/BC Epoxy 250 TDS.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "10.8 kg pail",
+      "13.25 kg set"
+    ],
+    "colors": [
+      "Green",
+      "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "flooring-systems",
+    "key": "BC FLOOR 2000 SL",
+    "name": "BC Floor 2000 SL",
+    "n_skus": 1,
+    "members": [
+      "BC Floor 2000 SL  GREY 16.1 KG System - FG"
+    ],
+    "desc": "BC Floor 2000 SL System Two-component, solvent-free, pigmented epoxy self-smoothing floor topping, 16 kg set, 3.2 kg/m² at 2 mm, one coat, approx. 100 SAR/m², for seamless, hygienic, and durable flooring.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM0a0909.jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC Floor 2000 SL TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "16 kg set"
+    ],
+    "colors": [
+      "Grey"
     ],
     "component_only": false
   }
