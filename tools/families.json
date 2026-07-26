@@ -71,30 +71,6 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "BC 715 INJECTION GROUT",
-    "name": "BC 715 Injection Grout",
-    "n_skus": 2,
-    "members": [
-      "BC 715 Injection Grout YELLOW 30 KG SYSTEM - FG",
-      "BC 715 Injection Grout YELLOW 5 KG SYSTEM - FG"
-    ],
-    "desc": "BC 715 Injection Grout is a two-component, low-viscosity polyurethane resin system designed for elastic sealing of cracks and voids in both wet and dry conditions in concrete and masonry structures. When mixed in the correct ratio, it expands (or reacts) to form a resilient waterproof seal that is capable of absorbing some movement and resisting hydrostatic pressure.",
-    "n_desc": 1,
-    "img": "/files/85964d7f7.png",
-    "n_img": 2,
-    "tds": "/private/files/BC 715 Injection Grout.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set",
-      "5 kg set"
-    ],
-    "colors": [
-      "Yellow"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "pu-foam-insulation",
     "key": "BC 801",
     "name": "BC 801",
@@ -3466,30 +3442,6 @@
   },
   {
     "slug": "pu-foam-insulation",
-    "key": "BC 715",
-    "name": "BC 715",
-    "n_skus": 2,
-    "members": [
-      "BC 715 Spray FOAM YELLOW 470 KG - FG",
-      "BC 715 Spray Polyol YELLOW 220 KG -FG"
-    ],
-    "desc": "BC 715 Spray Polyol & BC 768 Isocyanate is a two-component, 141B-based spray polyurethane foam system designed to achieve a density of 48–50 kg/m³. It produces foam with excellent adhesion and reliable dimensional stability for insulation and protective applications",
-    "n_desc": 1,
-    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
-    "n_img": 2,
-    "tds": "/files/BC 715 spray Foam.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "220 kg drum",
-      "470 kg set"
-    ],
-    "colors": [
-      "Yellow"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "pu-foam-insulation",
     "key": "BC 718",
     "name": "BC 718",
     "n_skus": 2,
@@ -5043,6 +4995,54 @@
     "sizes": [
       "220 kg drum",
       "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 715",
+    "name": "BC 715",
+    "n_skus": 2,
+    "members": [
+      "BC 715 Spray FOAM YELLOW 470 KG - FG",
+      "BC 715 Spray Polyol YELLOW 220 KG -FG"
+    ],
+    "desc": "BC 715 Spray Polyol & BC 768 Isocyanate is a two-component, 141B-based spray polyurethane foam system designed to achieve a density of 48–50 kg/m³. It produces foam with excellent adhesion and reliable dimensional stability for insulation and protective applications",
+    "n_desc": 1,
+    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
+    "n_img": 2,
+    "tds": "/files/BC 715 spray Foam.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "220 kg drum",
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC 715 INJECTION GROUT",
+    "name": "BC 715 Injection Grout",
+    "n_skus": 2,
+    "members": [
+      "BC 715 Injection Grout YELLOW 30 KG SYSTEM - FG",
+      "BC 715 Injection Grout YELLOW 5 KG SYSTEM - FG"
+    ],
+    "desc": "BC 715 Injection Grout is a two-component, low-viscosity polyurethane resin system designed for elastic sealing of cracks and voids in both wet and dry conditions in concrete and masonry structures. When mixed in the correct ratio, it expands (or reacts) to form a resilient waterproof seal that is capable of absorbing some movement and resisting hydrostatic pressure.",
+    "n_desc": 1,
+    "img": "/files/85964d7f7.png",
+    "n_img": 2,
+    "tds": "/private/files/BC 715 Injection Grout.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set",
+      "5 kg set"
     ],
     "colors": [
       "Yellow"
