@@ -543,28 +543,6 @@
   },
   {
     "slug": "flooring-systems",
-    "key": "BC FLOOR 1000 SL",
-    "name": "BC Floor 1000 SL",
-    "n_skus": 1,
-    "members": [
-      "BC Floor 1000 SL  GREY 15 KG System - FG"
-    ],
-    "desc": "BC Floor 1000 SL Two-component, solvent-free, pigmented epoxy self-smoothing floor system, 15 kg set, 0.8 kg/m² at 500 µm, one coat, approx. 21.3 SAR/m², for seamless, durable, and easy-to-clean flooring.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-12-14 at 2.34.04 PM (3)249876.jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Floor 1000 SL TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "15 kg set"
-    ],
-    "colors": [
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "flooring-systems",
     "key": "BC FLOOR EPU 100",
     "name": "BC Floor EPU 100",
     "n_skus": 1,
@@ -1064,28 +1042,6 @@
     ],
     "colors": [
       "Creamy"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "protective-coatings",
-    "key": "BC POXY PRIMER 1000 LV",
-    "name": "BC Poxy Primer 1000 LV",
-    "n_skus": 1,
-    "members": [
-      "BC POXY PRIMER 1000 LV CLEAR 12 KG SYSTEM - FG"
-    ],
-    "desc": "BC Poxy Clear Resin 1000 LV is a modified, ultra-clear, low-viscosity epoxy resin designed for high-clarity applications including castings, coatings, laminates, adhesives, and decorative encapsulations. It exhibits excellent transparency, polish ability, low color, and high mechanical strength when used with the recommended curing agents.",
-    "n_desc": 1,
-    "img": "/files/Epoxy Primer.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Poxy Clear 1000 LV (1).pdf",
-    "n_tds": 1,
-    "sizes": [
-      "12 kg set"
-    ],
-    "colors": [
-      "Clear"
     ],
     "component_only": false
   },
@@ -3649,28 +3605,6 @@
     "component_only": false
   },
   {
-    "slug": "concrete-repair",
-    "key": "BC POXY MORT 1000 LV",
-    "name": "BC Poxy Mort 1000 LV",
-    "n_skus": 1,
-    "members": [
-      "BC POXY MORT 1000 LV CLEAR 4 KG SYSTEM - FG"
-    ],
-    "desc": "BC Poxy Mortar 1000 LV is a 100% reactive, low-viscosity, two-component, moisture-insensitive epoxy adhesive and binder designed for structural bonding, priming, sealing, and mortar repair applications.",
-    "n_desc": 1,
-    "img": "/files/85964d7f7.png",
-    "n_img": 1,
-    "tds": "/private/files/BC Poxy Mortar 1000 LV.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "4 kg set"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "protective-coatings",
     "key": "BC PRIME CB 100",
     "name": "BC Prime CB 100",
@@ -5046,6 +4980,72 @@
     ],
     "colors": [
       "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC POXY PRIMER 1000 LV",
+    "name": "BC Poxy Primer 1000 LV",
+    "n_skus": 1,
+    "members": [
+      "BC POXY PRIMER 1000 LV CLEAR 12 KG SYSTEM - FG"
+    ],
+    "desc": "BC Poxy Clear Resin 1000 LV is a modified, ultra-clear, low-viscosity epoxy resin designed for high-clarity applications including castings, coatings, laminates, adhesives, and decorative encapsulations. It exhibits excellent transparency, polish ability, low color, and high mechanical strength when used with the recommended curing agents.",
+    "n_desc": 1,
+    "img": "/files/Epoxy Primer.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Poxy Clear 1000 LV (1).pdf",
+    "n_tds": 1,
+    "sizes": [
+      "12 kg set"
+    ],
+    "colors": [
+      "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "concrete-repair",
+    "key": "BC POXY MORT 1000 LV",
+    "name": "BC Poxy Mort 1000 LV",
+    "n_skus": 1,
+    "members": [
+      "BC POXY MORT 1000 LV CLEAR 4 KG SYSTEM - FG"
+    ],
+    "desc": "BC Poxy Mortar 1000 LV is a 100% reactive, low-viscosity, two-component, moisture-insensitive epoxy adhesive and binder designed for structural bonding, priming, sealing, and mortar repair applications.",
+    "n_desc": 1,
+    "img": "/files/85964d7f7.png",
+    "n_img": 1,
+    "tds": "/private/files/BC Poxy Mortar 1000 LV.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "4 kg set"
+    ],
+    "colors": [
+      "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "flooring-systems",
+    "key": "BC FLOOR 1000 SL",
+    "name": "BC Floor 1000 SL",
+    "n_skus": 1,
+    "members": [
+      "BC Floor 1000 SL  GREY 15 KG System - FG"
+    ],
+    "desc": "BC Floor 1000 SL Two-component, solvent-free, pigmented epoxy self-smoothing floor system, 15 kg set, 0.8 kg/m² at 500 µm, one coat, approx. 21.3 SAR/m², for seamless, durable, and easy-to-clean flooring.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-12-14 at 2.34.04 PM (3)249876.jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC Floor 1000 SL TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "15 kg set"
+    ],
+    "colors": [
+      "Grey"
     ],
     "component_only": false
   }
