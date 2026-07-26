@@ -4341,28 +4341,6 @@
     "component_only": false
   },
   {
-    "slug": "flooring-systems",
-    "key": "BC POXY TERAZZO 1000 LV",
-    "name": "BC Poxy Terazzo 1000 LV",
-    "n_skus": 1,
-    "members": [
-      "BC POXY TERAZZO 1000 LV CLEAR"
-    ],
-    "desc": "BC Poxy Mortar 1000 Three-component, solvent-free epoxy system (resin, hardener, quartz silica) for tough, resilient floor repairs and resurfacing; 100% solids, applied at 5 mm or greater.",
-    "n_desc": 1,
-    "img": "/files/Epoxy Primer.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC EPOXY TERRAZZO 1000 LV.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "33.5 kg set"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "concrete-repair",
     "key": "BC BLOCK MORTAR",
     "name": "BC Block Mortar",
@@ -4620,28 +4598,6 @@
       "Grey",
       "Orange",
       "Pink"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "pu-foam-insulation",
-    "key": "BC FOAMCONCRETE",
-    "name": "BC Foam Concrete",
-    "n_skus": 1,
-    "members": [
-      "BC Foam Concrete WHITE 200 KG -FG"
-    ],
-    "desc": "BC Foam Concrete Engineered fill material with uniformly distributed air voids for geotechnical construction and mining; combines cement slurry with stable foam to create lightweight, rigid concrete. 200 kg drum.",
-    "n_desc": 1,
-    "img": "/files/Foam conc.png",
-    "n_img": 1,
-    "tds": "/private/files/BC Foam Concrete TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "200 kg drum"
-    ],
-    "colors": [
-      "White"
     ],
     "component_only": false
   },
@@ -5046,6 +5002,50 @@
     ],
     "colors": [
       "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC FOAMCONCRETE",
+    "name": "BC Foam Concrete",
+    "n_skus": 1,
+    "members": [
+      "BC Foam Concrete WHITE 200 KG -FG"
+    ],
+    "desc": "BC Foam Concrete Engineered fill material with uniformly distributed air voids for geotechnical construction and mining; combines cement slurry with stable foam to create lightweight, rigid concrete. 200 kg drum.",
+    "n_desc": 1,
+    "img": "/files/Foam conc.png",
+    "n_img": 1,
+    "tds": "/private/files/BC Foam Concrete TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "200 kg drum"
+    ],
+    "colors": [
+      "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "flooring-systems",
+    "key": "BC POXY TERAZZO 1000 LV",
+    "name": "BC Poxy Terazzo 1000 LV",
+    "n_skus": 1,
+    "members": [
+      "BC POXY TERAZZO 1000 LV CLEAR"
+    ],
+    "desc": "BC Poxy Mortar 1000 Three-component, solvent-free epoxy system (resin, hardener, quartz silica) for tough, resilient floor repairs and resurfacing; 100% solids, applied at 5 mm or greater.",
+    "n_desc": 1,
+    "img": "/files/Epoxy Primer.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC EPOXY TERRAZZO 1000 LV.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "33.5 kg set"
+    ],
+    "colors": [
+      "Clear"
     ],
     "component_only": false
   }
