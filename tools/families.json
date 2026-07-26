@@ -3755,30 +3755,6 @@
     "component_only": false
   },
   {
-    "slug": "pu-foam-insulation",
-    "key": "BC 703 SWP",
-    "name": "BC 703 SWP",
-    "n_skus": 2,
-    "members": [
-      "BC 703 SWP FOAM YELLOW 470 KG -FG",
-      "BC 703 SWP Polyol YELLOW 220 KG -FG"
-    ],
-    "desc": "BC 703 Polyol Two-component, 141 B-based sandwich panel system, 42–45 kg/m³ density; reacts with BC 768 Isocyanate, 470 kg kit (220 kg Polyol + 250 kg Isocyanate) to form highly crosslinked, rigid, dimensionally stable foam with good metal adhesion, B2-grade per DIN 4102.",
-    "n_desc": 1,
-    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
-    "n_img": 2,
-    "tds": "/files/BC 703 SWP.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "220 kg drum",
-      "470 kg set"
-    ],
-    "colors": [
-      "Yellow"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "admixtures-aids",
     "key": "BC TEC MAR RELEASE",
     "name": "BC Tec Mar Release",
@@ -3799,30 +3775,6 @@
     ],
     "colors": [
       "Brown"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "pu-foam-insulation",
-    "key": "BC 714",
-    "name": "BC 714",
-    "n_skus": 2,
-    "members": [
-      "BC 714 FOAM YELLOW 470 KG - FG",
-      "BC 714 Polyol YELLOW 220 KG -FG"
-    ],
-    "desc": "It is a two component,141 B based polyurethane system developed for manufacturing of rigid polyurethane foam when reacted with BC 768.It has been designed to produce rigid polyurethane foam by discontinuous method. This foam can be used for making of sandwich panels and heaters. The foam lies in B2 fire grading according to DIN-4102 test.",
-    "n_desc": 1,
-    "img": "/files/Foam Drums0efc17.webp",
-    "n_img": 2,
-    "tds": "/files/BC 714 Foam.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "220 kg drum",
-      "470 kg set"
-    ],
-    "colors": [
-      "Yellow"
     ],
     "component_only": false
   },
@@ -5039,6 +4991,54 @@
     "img": "/files/Foam Drums9799e3.webp",
     "n_img": 2,
     "tds": "/files/BC 702spray Foam.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "220 kg drum",
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 703 SWP",
+    "name": "BC 703 SWP",
+    "n_skus": 2,
+    "members": [
+      "BC 703 SWP FOAM YELLOW 470 KG -FG",
+      "BC 703 SWP Polyol YELLOW 220 KG -FG"
+    ],
+    "desc": "BC 703 Polyol Two-component, 141 B-based sandwich panel system, 42–45 kg/m³ density; reacts with BC 768 Isocyanate, 470 kg kit (220 kg Polyol + 250 kg Isocyanate) to form highly crosslinked, rigid, dimensionally stable foam with good metal adhesion, B2-grade per DIN 4102.",
+    "n_desc": 1,
+    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
+    "n_img": 2,
+    "tds": "/files/BC 703 SWP.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "220 kg drum",
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 714",
+    "name": "BC 714",
+    "n_skus": 2,
+    "members": [
+      "BC 714 FOAM YELLOW 470 KG - FG",
+      "BC 714 Polyol YELLOW 220 KG -FG"
+    ],
+    "desc": "It is a two component,141 B based polyurethane system developed for manufacturing of rigid polyurethane foam when reacted with BC 768.It has been designed to produce rigid polyurethane foam by discontinuous method. This foam can be used for making of sandwich panels and heaters. The foam lies in B2 fire grading according to DIN-4102 test.",
+    "n_desc": 1,
+    "img": "/files/Foam Drums0efc17.webp",
+    "n_img": 2,
+    "tds": "/files/BC 714 Foam.pdf",
     "n_tds": 2,
     "sizes": [
       "220 kg drum",
