@@ -1782,32 +1782,6 @@
     "component_only": false
   },
   {
-    "slug": "tile-grouts-anchors",
-    "key": "BC TILE FIX PRIME",
-    "name": "BC Tile Fix Prime",
-    "n_skus": 3,
-    "members": [
-      "BC Tile Fix Prime Grey 20 KG - FG",
-      "BC Tile Fix Prime WHITE 20 KG - FG",
-      "BC Tile Fix Prime WHITE 50 KG - FG"
-    ],
-    "desc": "BC Tile Fix Prime Single-component, pre-packed, polymer-modified cementitious tile adhesive formulated with graded silica sand and special additives to provide superior bonding strength and workability under various climatic conditions.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-10-20 at 6.13.47 PM (1).jpeg",
-    "n_img": 3,
-    "tds": "/files/BC Tile Fix Prime.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "20 kg bag",
-      "50 kg bag"
-    ],
-    "colors": [
-      "Grey",
-      "White"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "waterproofing-roofing",
     "key": "BC SEAL 105",
     "name": "BC Seal 105",
@@ -2008,6 +1982,32 @@
     "colors": [
       "Black",
       "Slated"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "tile-grouts-anchors",
+    "key": "BC TILE FIX PRIME",
+    "name": "BC Tile Fix Prime",
+    "n_skus": 3,
+    "members": [
+      "BC Tile Fix Prime Grey 20 KG - FG",
+      "BC Tile Fix Prime WHITE 20 KG - FG",
+      "BC Tile Fix Prime WHITE 50 KG - FG"
+    ],
+    "desc": "BC Tile Fix Prime Single-component, pre-packed, polymer-modified cementitious tile adhesive formulated with graded silica sand and special additives to provide superior bonding strength and workability under various climatic conditions.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-10-20 at 6.13.47 PM (1).jpeg",
+    "n_img": 3,
+    "tds": "/files/BC Tile Fix Prime.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "20 kg bag",
+      "50 kg bag"
+    ],
+    "colors": [
+      "Grey",
+      "White"
     ],
     "component_only": false
   },
@@ -2571,26 +2571,6 @@
   },
   {
     "slug": "waterproofing-roofing",
-    "key": "BC GEO TEXTILE 200",
-    "name": "BC Geo Textile 200",
-    "n_skus": 1,
-    "members": [
-      "BC Geo textile 200"
-    ],
-    "desc": "BC Geotextile 200 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works.It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications.",
-    "n_desc": 1,
-    "img": "/files/Geotextile.jpg",
-    "n_img": 1,
-    "tds": "/private/files/BC Geo textile 200 GSM.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "6.99301 L roll"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
     "key": "BC GUARD",
     "name": "BC Guard",
     "n_skus": 3,
@@ -3098,28 +3078,6 @@
     ],
     "colors": [
       "Clear"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "tile-grouts-anchors",
-    "key": "BC TILE FIX PLUS",
-    "name": "BC Tile Fix Plus",
-    "n_skus": 1,
-    "members": [
-      "BC Tile Fix Plus GREY 20 KG -FG"
-    ],
-    "desc": "BC Tile Fix Plus is an ultra-high-performance, rapid-curing, one-component, polymer-modified cementitious tile adhesive. It is formulated using premium-grade cement, selected silica sands, and advanced polymeric additives that enhance bonding strength, curing speed, and overall durability.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-10-20 at 6.13.49 PM.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Tile Fix Plus.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20 kg bag"
-    ],
-    "colors": [
-      "Grey"
     ],
     "component_only": false
   },
@@ -5047,6 +5005,48 @@
     "colors": [
       "White"
     ],
+    "component_only": false
+  },
+  {
+    "slug": "tile-grouts-anchors",
+    "key": "BC TILE FIX PLUS",
+    "name": "BC Tile Fix Plus",
+    "n_skus": 1,
+    "members": [
+      "BC Tile Fix Plus GREY 20 KG -FG"
+    ],
+    "desc": "BC Tile Fix Plus is an ultra-high-performance, rapid-curing, one-component, polymer-modified cementitious tile adhesive. It is formulated using premium-grade cement, selected silica sands, and advanced polymeric additives that enhance bonding strength, curing speed, and overall durability.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-10-20 at 6.13.49 PM.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Tile Fix Plus.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20 kg bag"
+    ],
+    "colors": [
+      "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC GEO TEXTILE 200",
+    "name": "BC Geo Textile 200",
+    "n_skus": 1,
+    "members": [
+      "BC Geo textile 200"
+    ],
+    "desc": "BC Geotextile 200 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works.It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications.",
+    "n_desc": 1,
+    "img": "/files/Geotextile.jpg",
+    "n_img": 1,
+    "tds": "/private/files/BC Geo textile 200 GSM.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "6.99301 L roll"
+    ],
+    "colors": [],
     "component_only": false
   }
 ]
