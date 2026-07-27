@@ -1570,26 +1570,6 @@
     "component_only": false
   },
   {
-    "slug": "flooring-systems",
-    "key": "BC TERRAZO AGGREGATES COLORED",
-    "name": "BC Terrazo Aggregates Colored",
-    "n_skus": 1,
-    "members": [
-      "BC Terrazo Aggregates COLORED 25 KG - FG"
-    ],
-    "desc": "BC Terrazo aggregates a crushed and graded igneous aggregate, recommended for use wherever a hard, long wearing, heavy duty, decorative floor is required",
-    "n_desc": 1,
-    "img": "/files/ddcea77e-77b8-4e40-ac57-f9703160bad9-751.webp",
-    "n_img": 1,
-    "tds": "/private/files/BC Terrazo Aggregates.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "25 kg bag"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
     "slug": "tile-grouts-anchors",
     "key": "BC TILE GROUT",
     "name": "BC Tile Grout",
@@ -2190,29 +2170,6 @@
     "colors": [
       "Black",
       "Slated"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "protective-coatings",
-    "key": "BC GRP LINE PRIMER",
-    "name": "BC GRP Line Primer",
-    "n_skus": 2,
-    "members": [
-      "BC GRP Line  Primer CLEAR 20.44 KG SYSTEM - (FG)",
-      "BC GRP Line Primer (P) CLEAR 20.44 KG SYSTEM - (FG)"
-    ],
-    "desc": "BC Line GRP Primer is a three-pack, vinyl ester–based primer with inert fillers and fiberglass reinforcement, offering excellent chemical resistance for steel and concrete surfaces in tank linings and harsh environments. 20 kg set.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1)726a82.jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC GRP Line Primer TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20.44 kg set"
-    ],
-    "colors": [
-      "Clear"
     ],
     "component_only": false
   },
@@ -3345,78 +3302,6 @@
     "component_only": false
   },
   {
-    "slug": "polyurea-membranes",
-    "key": "BC 914 CA",
-    "name": "BC 914 CA",
-    "n_skus": 3,
-    "members": [
-      "BC 914 CA POLYUREA CLEAR 10 KG Part - B -FG",
-      "BC 914 CA POLYUREA GREY 10 KG Part - A -FG",
-      "BC 914 CA POLYUREA GREY 20 KG SYSTEM -FG"
-    ],
-    "desc": "BC 914 CA Polyurea Two-component, pure aliphatic, brushable polyurea waterproofing coating, 20 kg set, 0.79 m²/kg at 1 mm thickness, approx. 45.5 SAR/m², providing exceptional UV stability, mechanical durability, and zero water absorption.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-06-02 at 4.12.11 PM5ffeb0.jpeg",
-    "n_img": 3,
-    "tds": "/files/BC 914 CA Polyurea (1).pdf",
-    "n_tds": 2,
-    "sizes": [
-      "10 kg pail",
-      "20 kg set"
-    ],
-    "colors": [
-      "Clear",
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "protective-coatings",
-    "key": "BC GRP RESIN",
-    "name": "BC GRP Resin",
-    "n_skus": 2,
-    "members": [
-      "BC GRP Resin PURPLE 20.44 KG SYSTEM -FG",
-      "BC GRP Resin(P)- PURPLE 20.44 KG SYSTEM -FG"
-    ],
-    "desc": "BC Line GRP Resin is a three-pack, high chemical-resistant vinyl ester lining with inert fillers and fiberglass reinforcement for steel and concrete surfaces, ideal for tank and pipe linings requiring superior chemical resistance. 20 kg set.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-12-14 at 2.34.04 PM (3)249876.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Line GRP Resin (P).pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20.44 kg set"
-    ],
-    "colors": [
-      "Purple"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "protective-coatings",
-    "key": "BC GRP LINE",
-    "name": "BC GRP Line",
-    "n_skus": 2,
-    "members": [
-      "BC GRP LINE WHITE (P) 20.44 KG SYSTEM - FG",
-      "BC GRP LINE WHITE 20.44 KG SYSTEM - FG"
-    ],
-    "desc": "BC Line GRP White is a three-pack, high chemical-resistant vinyl ester lining with fiberglass reinforcement, ideal for tank and pipe interiors requiring superior resistance to acids and solvents. 20 kg set.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-12-14 at 2.34.04 PM (3)249876.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC GRP Line white ( P).pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20.44 kg set"
-    ],
-    "colors": [
-      "White"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "pu-foam-insulation",
     "key": "BC 710",
     "name": "BC 710",
@@ -4020,6 +3905,29 @@
   },
   {
     "slug": "protective-coatings",
+    "key": "BC GRP RESIN",
+    "name": "BC GRP Resin",
+    "n_skus": 2,
+    "members": [
+      "BC GRP Resin PURPLE 20.44 KG SYSTEM -FG",
+      "BC GRP Resin(P)- PURPLE 20.44 KG SYSTEM -FG"
+    ],
+    "desc": "BC Line GRP Resin is a three-pack, high chemical-resistant vinyl ester lining with inert fillers and fiberglass reinforcement for steel and concrete surfaces, ideal for tank and pipe linings requiring superior chemical resistance. 20 kg set.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-12-14 at 2.34.04 PM (3)249876.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Line GRP Resin (P).pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20.44 kg set"
+    ],
+    "colors": [
+      "Purple"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
     "key": "BC GRP MATT",
     "name": "BC GRP Matt",
     "n_skus": 1,
@@ -4100,30 +4008,6 @@
     "n_tds": 0,
     "sizes": [
       "6.66667 L roll"
-    ],
-    "colors": [
-      "White"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "tile-grouts-anchors",
-    "key": "BC TILE ADHESIVE PRO",
-    "name": "BC Tile Adhesive Pro",
-    "n_skus": 2,
-    "members": [
-      "BC Tile Adhesive PRO WHITE 20 KG -FG",
-      "BC Tile Adhesive Pro White 50 KG - FG"
-    ],
-    "desc": "BC Tile Adhesive Pro is a high-performance, polymer-modified cementitious dry-set mortar for fixing ceramic, porcelain, mosaic, quarry, terrazzo, and artificial granite tiles. Offers excellent adhesion, flexibility, and water resistance for interior and exterior applications. Available in grey and white, 20 kg bag.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-10-20 at 6.13.49 PM (2).jpeg",
-    "n_img": 2,
-    "tds": "/private/files/BC Tile Adhesive Pro.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "20 kg bag",
-      "50 kg bag"
     ],
     "colors": [
       "White"
@@ -4524,6 +4408,30 @@
     ],
     "colors": [
       "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "tile-grouts-anchors",
+    "key": "BC TILE ADHESIVE PRO",
+    "name": "BC Tile Adhesive Pro",
+    "n_skus": 2,
+    "members": [
+      "BC Tile Adhesive PRO WHITE 20 KG -FG",
+      "BC Tile Adhesive Pro White 50 KG - FG"
+    ],
+    "desc": "BC Tile Adhesive Pro is a high-performance, polymer-modified cementitious dry-set mortar for fixing ceramic, porcelain, mosaic, quarry, terrazzo, and artificial granite tiles. Offers excellent adhesion, flexibility, and water resistance for interior and exterior applications. Available in grey and white, 20 kg bag.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-10-20 at 6.13.49 PM (2).jpeg",
+    "n_img": 2,
+    "tds": "/private/files/BC Tile Adhesive Pro.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "20 kg bag",
+      "50 kg bag"
+    ],
+    "colors": [
+      "White"
     ],
     "component_only": false
   },
@@ -5046,6 +4954,98 @@
     ],
     "colors": [
       "Yellow"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC GRP LINE PRIMER",
+    "name": "BC GRP Line Primer",
+    "n_skus": 2,
+    "members": [
+      "BC GRP Line  Primer CLEAR 20.44 KG SYSTEM - (FG)",
+      "BC GRP Line Primer (P) CLEAR 20.44 KG SYSTEM - (FG)"
+    ],
+    "desc": "BC Line GRP Primer is a three-pack, vinyl ester–based primer with inert fillers and fiberglass reinforcement, offering excellent chemical resistance for steel and concrete surfaces in tank linings and harsh environments. 20 kg set.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1)726a82.jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC GRP Line Primer TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20.44 kg set"
+    ],
+    "colors": [
+      "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "flooring-systems",
+    "key": "BC TERRAZO AGGREGATES COLORED",
+    "name": "BC Terrazo Aggregates Colored",
+    "n_skus": 1,
+    "members": [
+      "BC Terrazo Aggregates COLORED 25 KG - FG"
+    ],
+    "desc": "BC Terrazo aggregates a crushed and graded igneous aggregate, recommended for use wherever a hard, long wearing, heavy duty, decorative floor is required",
+    "n_desc": 1,
+    "img": "/files/ddcea77e-77b8-4e40-ac57-f9703160bad9-751.webp",
+    "n_img": 1,
+    "tds": "/private/files/BC Terrazo Aggregates.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "25 kg bag"
+    ],
+    "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "polyurea-membranes",
+    "key": "BC 914 CA",
+    "name": "BC 914 CA",
+    "n_skus": 3,
+    "members": [
+      "BC 914 CA POLYUREA CLEAR 10 KG Part - B -FG",
+      "BC 914 CA POLYUREA GREY 10 KG Part - A -FG",
+      "BC 914 CA POLYUREA GREY 20 KG SYSTEM -FG"
+    ],
+    "desc": "BC 914 CA Polyurea Two-component, pure aliphatic, brushable polyurea waterproofing coating, 20 kg set, 0.79 m²/kg at 1 mm thickness, approx. 45.5 SAR/m², providing exceptional UV stability, mechanical durability, and zero water absorption.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-06-02 at 4.12.11 PM5ffeb0.jpeg",
+    "n_img": 3,
+    "tds": "/files/BC 914 CA Polyurea (1).pdf",
+    "n_tds": 2,
+    "sizes": [
+      "10 kg pail",
+      "20 kg set"
+    ],
+    "colors": [
+      "Clear",
+      "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC GRP LINE",
+    "name": "BC GRP Line",
+    "n_skus": 2,
+    "members": [
+      "BC GRP LINE WHITE (P) 20.44 KG SYSTEM - FG",
+      "BC GRP LINE WHITE 20.44 KG SYSTEM - FG"
+    ],
+    "desc": "BC Line GRP White is a three-pack, high chemical-resistant vinyl ester lining with fiberglass reinforcement, ideal for tank and pipe interiors requiring superior resistance to acids and solvents. 20 kg set.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-12-14 at 2.34.04 PM (3)249876.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC GRP Line white ( P).pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20.44 kg set"
+    ],
+    "colors": [
+      "White"
     ],
     "component_only": false
   }
