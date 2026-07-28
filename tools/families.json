@@ -1066,28 +1066,6 @@
     "component_only": false
   },
   {
-    "slug": "protective-coatings",
-    "key": "BC POXY ZINC RICH 859",
-    "name": "BC Poxy Zinc Rich 859",
-    "n_skus": 1,
-    "members": [
-      "BC Poxy Zinc Rich 859 Grey 2 KG System - FG"
-    ],
-    "desc": "BC Poxy Zinc Rich 859-FG Two-component, metallic zinc-rich epoxy primer, 2 kg set, 8 m²/L at 50 µm, one coat, approx. 11.3 SAR/m², for durable corrosion protection of steel substrates.",
-    "n_desc": 1,
-    "img": "/files/859.png",
-    "n_img": 1,
-    "tds": "/private/files/BC Epoxy Zich rich 859.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "2 kg set"
-    ],
-    "colors": [
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "concrete-repair",
     "key": "BC PROFILE LORA",
     "name": "BC Profile Lora",
@@ -5046,6 +5024,28 @@
     "colors": [
       "Brown",
       "Dark Brown"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC POXY ZINC RICH 859",
+    "name": "BC Poxy Zinc Rich 859",
+    "n_skus": 1,
+    "members": [
+      "BC Poxy Zinc Rich 859 Grey 2 KG System - FG"
+    ],
+    "desc": "BC Poxy Zinc Rich 859-FG Two-component, metallic zinc-rich epoxy primer, 2 kg set, 8 m²/L at 50 µm, one coat, approx. 11.3 SAR/m², for durable corrosion protection of steel substrates.",
+    "n_desc": 1,
+    "img": "/files/859.png",
+    "n_img": 1,
+    "tds": "/private/files/BC Epoxy Zich rich 859.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "2 kg set"
+    ],
+    "colors": [
+      "Grey"
     ],
     "component_only": false
   }
