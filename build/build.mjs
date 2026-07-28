@@ -51,6 +51,7 @@ const CONTENT_PAGES = [
   { file: 'Projects.html', key: 'projects', active: 'Projects', path: 'projects' },
   { file: 'Resources.html', key: 'resources', active: 'Resources', path: 'resources' },
   { file: 'Career.html', key: 'career', active: 'Career', path: 'career' },
+  { file: 'Supplier.html', key: 'supplier', active: 'Suppliers', path: 'supplier' },
   { file: 'Contact.html', key: 'contact', active: 'Contact', path: 'contact' },
 ];
 
@@ -341,6 +342,7 @@ function pageSchema(key, lang, D) {
   if (key === 'projects') scripts.push(ld(breadcrumbLd([crumbHome, here('projects', tr(lang, 'Projects', 'المشاريع', 'Proyectos'))])));
   if (key === 'resources') scripts.push(ld(breadcrumbLd([crumbHome, here('resources', tr(lang, 'Resources', 'الموارد', 'Recursos'))])));
   if (key === 'career') { scripts.push(ld(breadcrumbLd([crumbHome, here('career', tr(lang, 'Careers', 'الوظائف', 'Empleo'))]))); scripts.push(jobPostingsLd(D, lang)); }
+  if (key === 'supplier') scripts.push(ld(breadcrumbLd([crumbHome, here('supplier', tr(lang, 'Suppliers', 'الموردون', 'Proveedores'))])));
   if (key === 'contact') { scripts.push(ld(breadcrumbLd([crumbHome, here('contact', tr(lang, 'Contact', 'تواصل', 'Contacto'))]))); scripts.push(ld(orgLd(D))); scripts.push(localBusinessLd(D, lang)); }
   return scripts.join('\n');
 }

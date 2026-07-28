@@ -279,7 +279,9 @@ function Badge({ variant = 'outline', children, icon }) {
 // still delivers (we just can't read the response — so success is optimistic
 // and we rely on the form's client-side `required` validation). Override the
 // ERP origin with window.BCI_ERP_BASE if it ever changes.
-const ERP_BASE = (typeof window !== 'undefined' && window.BCI_ERP_BASE) || 'https://apcv14.lynx.sa';
+// 2026-07: the ERP moved from apcv14.lynx.sa (old v14 box, now a stale copy)
+// to erp.bcisaudi.net — posts to the old host land in a dead database.
+const ERP_BASE = (typeof window !== 'undefined' && window.BCI_ERP_BASE) || 'https://erp.bcisaudi.net';
 
 // webForm: the ERP Web Form *name* (e.g. 'contact-bci', 'job-application').
 // data: { doctype, ...fields } keyed by the web form's field names.

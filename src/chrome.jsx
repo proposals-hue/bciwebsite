@@ -715,6 +715,7 @@ function Footer() {
     { en: 'About BCI', ar: 'عن BCI', es: 'Acerca de BCI', href: 'About.html' },
     { en: 'Projects', ar: 'المشاريع', es: 'Proyectos', href: 'Projects.html' },
     { en: 'Careers', ar: 'الوظائف', es: 'Empleo', href: 'Career.html' },
+    { en: 'Become a Supplier', ar: 'كن موردًا', es: 'Conviértete en Proveedor', href: 'Supplier.html' },
     { en: 'Contact', ar: 'تواصل', es: 'Contacto', href: 'Contact.html' }]
 
   },

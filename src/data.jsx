@@ -1725,6 +1725,14 @@ const SEO_META = {
     es: { title: 'Empleo — Trabaja en BCI | Building Chemistry Industry, Arabia Saudita',
           description: 'Únete a BCI, fabricante saudí de químicos para construcción. Vacantes en ventas, I+D, operaciones, calidad y cadena de suministro en Dammam. Postula en línea.' },
   },
+  supplier: {
+    en: { title: 'Become a Supplier — BCI Supplier Registration | Saudi Arabia',
+          description: 'Register as a supplier to BCI, a Saudi construction-chemicals manufacturer in Dammam. Introduce your company and products — raw materials, packaging, equipment and services.' },
+    ar: { title: 'كن موردًا — تسجيل الموردين لدى BCI | السعودية',
+          description: 'سجّل كمورد لدى BCI (صناعة كيمياء البناء) في الدمام. عرّفنا بشركتك ومنتجاتك — مواد خام ومواد تعبئة ومعدات وخدمات — وسيتواصل معك فريق المشتريات.' },
+    es: { title: 'Conviértete en Proveedor — Registro de Proveedores | BCI',
+          description: 'Regístrate como proveedor de BCI, fabricante saudí de químicos para construcción en Dammam. Presenta tu empresa y productos — materias primas, envases, equipos y servicios.' },
+  },
   contact: {
     en: { title: 'Contact BCI | Sales, Technical Support & Quotes',
           description: 'Contact BCI in Dammam for construction chemical specifications, submittals, samples and supply. Phone +966 59 312 0221, info@bcisaudi.com.' },
