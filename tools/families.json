@@ -256,30 +256,6 @@
   },
   {
     "slug": "waterproofing-roofing",
-    "key": "BC BITU CLASSIC FIBER",
-    "name": "BC Bitu Classic Fiber",
-    "n_skus": 2,
-    "members": [
-      "BC Bitu Classic Fiber BLACK ROLL - FG",
-      "BC Bitu-Classic Fiber Slated ROLL - FG"
-    ],
-    "desc": "BC Bitu-Classic Fiber is a high-quality, torch-applied, APP-modified bituminous waterproofing membrane manufactured using a blend of premium bitumen and Atactic Polypropylene (APP) polymers. It is reinforced with a high-strength fiberglass mat to provide excellent dimensional stability and waterproofing performance.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1)29ff84edd90b.jpeg",
-    "n_img": 2,
-    "tds": "/files/BC Bitu Classic Fiber.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "0.909091 L roll"
-    ],
-    "colors": [
-      "Black",
-      "Slated"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
     "key": "BC BITU GOLD 180",
     "name": "BC Bitu Gold 180",
     "n_skus": 2,
@@ -292,6 +268,30 @@
     "img": "/files/Membrane8f0510.jpeg",
     "n_img": 2,
     "tds": "/files/BC Bitu-Gold 180.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "0.909091 L roll"
+    ],
+    "colors": [
+      "Black",
+      "Slated"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITU CLASSIC FIBER",
+    "name": "BC Bitu Classic Fiber",
+    "n_skus": 2,
+    "members": [
+      "BC Bitu Classic Fiber BLACK ROLL - FG",
+      "BC Bitu-Classic Fiber Slated ROLL - FG"
+    ],
+    "desc": "BC Bitu-Classic Fiber is a high-quality, torch-applied, APP-modified bituminous waterproofing membrane manufactured using a blend of premium bitumen and Atactic Polypropylene (APP) polymers. It is reinforced with a high-strength fiberglass mat to provide excellent dimensional stability and waterproofing performance.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1)29ff84edd90b.jpeg",
+    "n_img": 2,
+    "tds": "/files/BC Bitu Classic Fiber.pdf",
     "n_tds": 2,
     "sizes": [
       "0.909091 L roll"
@@ -1940,30 +1940,6 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "BC BITU CLASSIC 180",
-    "name": "BC Bitu Classic 180",
-    "n_skus": 2,
-    "members": [
-      "BC BITU-CLASSIC 180 BLACK ROLL - FG",
-      "BC BITU-CLASSIC 180 Slated   ROLL - FG"
-    ],
-    "desc": "BC Bitu Classic 180 Slated APP (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1)29ff84edd90b.jpeg",
-    "n_img": 1,
-    "tds": "/files/TDS BC Bitu-Classic9066b2 180.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "0.909091 L roll"
-    ],
-    "colors": [
-      "Black",
-      "Slated"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "tile-grouts-anchors",
     "key": "BC TILE FIX PRIME",
     "name": "BC Tile Fix Prime",
@@ -2815,28 +2791,6 @@
   },
   {
     "slug": "waterproofing-roofing",
-    "key": "BC ROOF COAT",
-    "name": "BC Roof Coat",
-    "n_skus": 1,
-    "members": [
-      "BC Roof Coat WHITE 20 KG - FG"
-    ],
-    "desc": "BC Roof Coat Single-component, heavy-duty, water-based acrylic waterproofing system; forms a flexible, UV-resistant barrier with excellent puncture resistance and long-lasting protection. 20 kg pail.",
-    "n_desc": 1,
-    "img": "/files/Acrylic Pail.png",
-    "n_img": 1,
-    "tds": null,
-    "n_tds": 0,
-    "sizes": [
-      "20 kg pail"
-    ],
-    "colors": [
-      "White"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
     "key": "BC ROOF GUARD",
     "name": "BC Roof Guard",
     "n_skus": 1,
@@ -2920,32 +2874,6 @@
     ],
     "colors": [
       "Clear"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
-    "key": "BC SHIELD",
-    "name": "BC Shield",
-    "n_skus": 3,
-    "members": [
-      "BC Shield BLACK 10 KG -FG",
-      "BC Shield BLACK 20 KG -FG",
-      "BC Shield WHITE 20 KG -FG"
-    ],
-    "desc": "BC Shield One-component, cold-applied, moisture-triggered modified polyurethane waterproofing membrane, 20 kg pail, 19.0 m² at 500 µm, approx. 7.9 SAR/m², for seamless, elastic, and durable protection on roofs, decks, terraces, and below-ground structures.",
-    "n_desc": 3,
-    "img": "/files/WhatsApp Image 2025-08-14 at 10.05.20 AM.jpeg",
-    "n_img": 3,
-    "tds": "/files/BC Shield TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "10 kg pail",
-      "20 kg pail"
-    ],
-    "colors": [
-      "Black",
-      "White"
     ],
     "component_only": false
   },
@@ -3989,6 +3917,30 @@
     ],
     "colors": [
       "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITU CLASSIC 180",
+    "name": "BC Bitu Classic 180",
+    "n_skus": 2,
+    "members": [
+      "BC BITU-CLASSIC 180 BLACK ROLL - FG",
+      "BC BITU-CLASSIC 180 Slated   ROLL - FG"
+    ],
+    "desc": "BC Bitu Classic 180 Slated APP (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1)29ff84edd90b.jpeg",
+    "n_img": 1,
+    "tds": "/files/TDS BC Bitu-Classic9066b2 180.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "0.909091 L roll"
+    ],
+    "colors": [
+      "Black",
+      "Slated"
     ],
     "component_only": false
   },
@@ -5046,6 +4998,54 @@
     ],
     "colors": [
       "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC ROOF COAT",
+    "name": "BC Roof Coat",
+    "n_skus": 1,
+    "members": [
+      "BC Roof Coat WHITE 20 KG - FG"
+    ],
+    "desc": "BC Roof Coat Single-component, heavy-duty, water-based acrylic waterproofing system; forms a flexible, UV-resistant barrier with excellent puncture resistance and long-lasting protection. 20 kg pail.",
+    "n_desc": 1,
+    "img": "/files/Acrylic Pail.png",
+    "n_img": 1,
+    "tds": null,
+    "n_tds": 0,
+    "sizes": [
+      "20 kg pail"
+    ],
+    "colors": [
+      "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC SHIELD",
+    "name": "BC Shield",
+    "n_skus": 3,
+    "members": [
+      "BC Shield BLACK 10 KG -FG",
+      "BC Shield BLACK 20 KG -FG",
+      "BC Shield WHITE 20 KG -FG"
+    ],
+    "desc": "BC Shield One-component, cold-applied, moisture-triggered modified polyurethane waterproofing membrane, 20 kg pail, 19.0 m² at 500 µm, approx. 7.9 SAR/m², for seamless, elastic, and durable protection on roofs, decks, terraces, and below-ground structures.",
+    "n_desc": 3,
+    "img": "/files/WhatsApp Image 2025-08-14 at 10.05.20 AM.jpeg",
+    "n_img": 3,
+    "tds": "/files/BC Shield TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "10 kg pail",
+      "20 kg pail"
+    ],
+    "colors": [
+      "Black",
+      "White"
     ],
     "component_only": false
   }
