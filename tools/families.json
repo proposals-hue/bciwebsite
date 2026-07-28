@@ -256,30 +256,6 @@
   },
   {
     "slug": "waterproofing-roofing",
-    "key": "BC BITU GOLD 180",
-    "name": "BC Bitu Gold 180",
-    "n_skus": 2,
-    "members": [
-      "BC BITU-GOLD 180 BLACK ROLL - FG",
-      "BC Bitu-Gold 180 Slated ROLL - FG"
-    ],
-    "desc": "BC Bitu-Gold 180 slated is a high-performance, pre-fabricated, torch-applied waterproofing membrane made from premium-grade bitumen modified with Styrene-Butadiene-Styrene (SBS) polymers, providing exceptional elasticity, flexibility, and resistance to ageing.",
-    "n_desc": 2,
-    "img": "/files/Membrane8f0510.jpeg",
-    "n_img": 2,
-    "tds": "/files/BC Bitu-Gold 180.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "0.909091 L roll"
-    ],
-    "colors": [
-      "Black",
-      "Slated"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
     "key": "BC BITU CLASSIC FIBER",
     "name": "BC Bitu Classic Fiber",
     "n_skus": 2,
@@ -290,30 +266,6 @@
     "desc": "BC Bitu-Classic Fiber is a high-quality, torch-applied, APP-modified bituminous waterproofing membrane manufactured using a blend of premium bitumen and Atactic Polypropylene (APP) polymers. It is reinforced with a high-strength fiberglass mat to provide excellent dimensional stability and waterproofing performance.",
     "n_desc": 2,
     "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1)29ff84edd90b.jpeg",
-    "n_img": 2,
-    "tds": "/files/BC Bitu Classic Fiber.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "0.909091 L roll"
-    ],
-    "colors": [
-      "Black",
-      "Slated"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
-    "key": "BC BITU GOLD FIBER",
-    "name": "BC Bitu Gold Fiber",
-    "n_skus": 2,
-    "members": [
-      "BC Bitu-Gold Fiber BLACK ROLL - FG",
-      "BC Bitu-Gold Fiber Slated ROLL - FG"
-    ],
-    "desc": "BC Bitu-Gold Fiber slated is a high-performance, prefabricated, torch-applied waterproofing membrane made from high-grade bitumen modified with Styrene-Butadiene-Styrene (SBS) polymers, offering exceptional elasticity and flexibility even at low temperatures.",
-    "n_desc": 2,
-    "img": "/files/Membrane.jpeg",
     "n_img": 2,
     "tds": "/files/BC Bitu Classic Fiber.pdf",
     "n_tds": 2,
@@ -5046,6 +4998,54 @@
     "colors": [
       "Black",
       "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITU GOLD FIBER",
+    "name": "BC Bitu Gold Fiber",
+    "n_skus": 2,
+    "members": [
+      "BC Bitu-Gold Fiber BLACK ROLL - FG",
+      "BC Bitu-Gold Fiber Slated ROLL - FG"
+    ],
+    "desc": "BC Bitu-Gold Fiber slated is a high-performance, prefabricated, torch-applied waterproofing membrane made from high-grade bitumen modified with Styrene-Butadiene-Styrene (SBS) polymers, offering exceptional elasticity and flexibility even at low temperatures.",
+    "n_desc": 2,
+    "img": "/files/Membrane.jpeg",
+    "n_img": 2,
+    "tds": "/files/BC Bitu Classic Fiber.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "0.909091 L roll"
+    ],
+    "colors": [
+      "Black",
+      "Slated"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITU GOLD 180",
+    "name": "BC Bitu Gold 180",
+    "n_skus": 2,
+    "members": [
+      "BC BITU-GOLD 180 BLACK ROLL - FG",
+      "BC Bitu-Gold 180 Slated ROLL - FG"
+    ],
+    "desc": "BC Bitu-Gold 180 slated is a high-performance, pre-fabricated, torch-applied waterproofing membrane made from premium-grade bitumen modified with Styrene-Butadiene-Styrene (SBS) polymers, providing exceptional elasticity, flexibility, and resistance to ageing.",
+    "n_desc": 2,
+    "img": "/files/Membrane8f0510.jpeg",
+    "n_img": 2,
+    "tds": "/files/BC Bitu-Gold 180.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "0.909091 L roll"
+    ],
+    "colors": [
+      "Black",
+      "Slated"
     ],
     "component_only": false
   }
