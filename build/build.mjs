@@ -461,6 +461,7 @@ ${landingPages}
 - [Projects](${ORIGIN}/projects): reference projects across Saudi Arabia and the GCC
 - [Resources](${ORIGIN}/resources): technical data sheets (TDS), safety data sheets (SDS), certifications
 - [Careers](${ORIGIN}/career): open roles in Dammam
+- [Become a Supplier](${ORIGIN}/supplier): supplier registration — BCI procures raw materials and chemicals, fillers and aggregates, packaging, equipment and spares, logistics and services
 - [Contact](${ORIGIN}/contact): sales, technical support and quotes
 
 ## Languages

@@ -173,7 +173,7 @@ function LanguageSelectorDropdown({ dark }) {
    ============================================================= */
 function MegaHeader({ active }) {
   const { lang } = useLang();
-  const { isMobile } = useViewport();
+  const { isMobile, w } = useViewport();
   const [prog, setProg] = useStateC(0);
   const [mega, setMega] = useStateC(false);
   const [drawer, setDrawer] = useStateC(false);
@@ -208,6 +208,12 @@ function MegaHeader({ active }) {
   const fg = 'var(--bci-navy)';
   const mBarH = isMobile ? 62 : barH;
   const mLogoScale = isMobile ? 0.9 : logoScale;
+  // Narrow desktops (1024–1199) can't fit logo + 7 nav items + the CTA at full
+  // size: Spanish has the longest labels and used to push "Solicitar Cotización"
+  // off the right edge. Tighten spacing/type here instead of dropping the CTA.
+  const tight = w < 1200;
+  const navGap = tight ? 17 : 30;
+  const navFont = tight ? 15 : 17;
 
   return (
     <header
@@ -288,15 +294,15 @@ function MegaHeader({ active }) {
 
           {!isMobile &&
           <nav style={{
-            display: 'flex', gap: 30, margin: '0 auto', alignItems: 'center',
+            display: 'flex', gap: navGap, margin: '0 auto', alignItems: 'center',
             flexDirection: isAr ? 'row-reverse' : 'row'
           }}>
-              {NAV.map((n) => {
+              {NAV.filter((n) => !n.mobileOnly).map((n) => {
               const isActive = active === n.en;
               const label = n[lang] || n.en;
               const common = {
                 fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-sans)',
-                fontSize: 17, fontWeight: 500, color: isActive ? 'var(--bci-green-600)' : fg,
+                fontSize: navFont, fontWeight: 500, color: isActive ? 'var(--bci-green-600)' : fg,
                 textDecoration: 'none', whiteSpace: 'nowrap',
                 transition: 'color 100ms linear',
                 display: 'inline-flex', alignItems: 'center', gap: 5,
@@ -304,7 +310,7 @@ function MegaHeader({ active }) {
                 borderBottom: isActive ? '2px solid var(--bci-green-500)' : '2px solid transparent'
               };
               if (n.mega) {
-                return <SolutionsNavItem key={n.en} n={n} fg={fg} barH={barH} isActive={isActive} open={mega} setOpen={setMega} />;
+                return <SolutionsNavItem key={n.en} n={n} fg={fg} barH={barH} fontSize={navFont} isActive={isActive} open={mega} setOpen={setMega} />;
               }
               return (
                 <a key={n.en} href={siteHref(n.href, lang)}
@@ -476,7 +482,7 @@ function MobileMenu({ open, onClose, active }) {
 
 }
 
-function SolutionsNavItem({ n, fg, barH = 72, isActive, open, setOpen }) {
+function SolutionsNavItem({ n, fg, barH = 72, fontSize = 17, isActive, open, setOpen }) {
   const { lang } = useLang();
   const isAr = lang === 'ar';
   const [cat, setCat] = useStateC(0);
@@ -487,7 +493,7 @@ function SolutionsNavItem({ n, fg, barH = 72, isActive, open, setOpen }) {
       onMouseLeave={() => setOpen(false)}
       style={{ position: 'relative', height: barH, display: 'flex', alignItems: 'center' }}>
       <a href={siteHref(n.href, lang)} style={{
-        fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-sans)', fontSize: 17, fontWeight: 500,
+        fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-sans)', fontSize, fontWeight: 500,
         color: isActive || open ? 'var(--bci-green-600)' : fg, textDecoration: 'none', whiteSpace: 'nowrap',
         display: 'inline-flex', alignItems: 'center', gap: 5, cursor: 'pointer', paddingBottom: 2,
         borderBottom: isActive ? '2px solid var(--bci-green-500)' : '2px solid transparent',

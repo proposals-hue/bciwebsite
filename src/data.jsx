@@ -1649,7 +1649,9 @@ const DEPARTMENTS = [
   { en: { t: 'Sales & Specification', d: 'info@bcisaudi.com' }, ar: { t: 'المبيعات والمواصفات', d: 'info@bcisaudi.com' }, es: { t: 'Ventas y Especificación', d: 'info@bcisaudi.com' }, icon: 'briefcase' },
   { en: { t: 'Technical Support', d: 'info@bcisaudi.com' }, ar: { t: 'الدعم الفني', d: 'info@bcisaudi.com' }, es: { t: 'Soporte Técnico', d: 'info@bcisaudi.com' }, icon: 'flask' },
   { en: { t: 'Careers / HR', d: 'info@bcisaudi.com' }, ar: { t: 'التوظيف', d: 'info@bcisaudi.com' }, es: { t: 'Empleo / RR. HH.', d: 'info@bcisaudi.com' }, icon: 'users' },
-  { en: { t: 'Procurement', d: 'info@bcisaudi.com' }, ar: { t: 'المشتريات', d: 'info@bcisaudi.com' }, es: { t: 'Compras', d: 'info@bcisaudi.com' }, icon: 'package' },
+  /* Procurement routes to the supplier registration page instead of a mailto —
+     it is where would-be suppliers land, and the form feeds the ERP directly. */
+  { en: { t: 'Procurement', d: 'Register as a supplier' }, ar: { t: 'المشتريات', d: 'سجّل كمورد' }, es: { t: 'Compras', d: 'Regístrate como proveedor' }, icon: 'package', href: 'Supplier.html' },
 ];
 
 const SOCIALS = [
@@ -1668,6 +1670,11 @@ const NAV = [
   { en: 'Resources', ar: 'الموارد', es: 'Recursos', href: 'Resources.html' },
   { en: 'Career', ar: 'الوظائف', es: 'Empleo', href: 'Career.html' },
   { en: 'Contact', ar: 'تواصل', es: 'Contacto', href: 'Contact.html' },
+  /* mobileOnly: the drawer is a vertical list with room to spare, but an 8th
+     desktop item pushes the "Get a Quote" CTA off-screen at 1024px (measured,
+     worst in Spanish). On desktop this page is reached from the footer and the
+     Contact page's Procurement card. */
+  { en: 'Suppliers', ar: 'الموردون', es: 'Proveedores', href: 'Supplier.html', mobileOnly: true },
 ];
 
 /* ---------------------------------------------------------------

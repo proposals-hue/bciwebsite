@@ -1,4 +1,4 @@
-/* global React, ReactDOM, LangProvider, useLang, t, Icon, Arrow,
+/* global React, ReactDOM, LangProvider, useLang, t, Icon, Arrow, siteHref,
    MegaHeader, PageHero, Footer, Contact, DEPARTMENTS */
 
 function Departments() {
@@ -13,12 +13,14 @@ function Departments() {
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
           {DEPARTMENTS.map((d, i) => (
-            <a key={i} href={`mailto:${d.en.d}`} style={{ background: '#fff', border: '1px solid var(--bci-hairline-light)', borderRadius: 2, padding: 28, textDecoration: 'none', display: 'block', textAlign: isAr ? 'right' : 'left' }}>
+            <a key={i} href={d.href ? siteHref(d.href, lang) : `mailto:${d.en.d}`} style={{ background: '#fff', border: '1px solid var(--bci-hairline-light)', borderRadius: 2, padding: 28, textDecoration: 'none', display: 'block', textAlign: isAr ? 'right' : 'left' }}>
               <div style={{ width: 48, height: 48, border: '1px solid var(--bci-navy)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--bci-navy)', marginBottom: 20 }}>
                 <Icon name={d.icon} size={22} />
               </div>
               <h3 style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 600, fontSize: 19, color: 'var(--bci-navy)', margin: '0 0 8px' }}>{d[lang].t}</h3>
-              <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 12, color: 'var(--bci-green-700)', letterSpacing: '0.02em', wordBreak: 'break-all' }}>{d[lang].d}</div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, fontFamily: 'var(--ff-mono)', fontSize: 12, color: 'var(--bci-green-700)', letterSpacing: '0.02em', wordBreak: d.href ? 'normal' : 'break-all', flexDirection: isAr ? 'row-reverse' : 'row' }}>
+                {d[lang].d}{d.href && <Arrow size={12} />}
+              </div>
             </a>
           ))}
         </div>
