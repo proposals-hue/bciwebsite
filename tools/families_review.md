@@ -118,7 +118,7 @@
   - colors: Black
   - desc: BC PUR Injection is a two-component, very low-viscosity, solvent-free polyurethane injection resin. Upon contact with water, it reacts to form a uniform, closed
 - **BC PVC Mambran** [1 skus]
-  - sizes: 83 kg roll
+  - sizes: 0.8 L roll
   - desc: BC PVC 1500-UV is a high-performance, calendared and extruded single-ply PVC waterproofing membrane, 1.5 mm thick, internally reinforced with high-tenacity poly
 - **BC PVC Membrane** [1 skus]
   - sizes: 66 kg roll

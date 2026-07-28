@@ -3619,29 +3619,6 @@
     "component_only": false
   },
   {
-    "slug": "admixtures-aids",
-    "key": "BC ADMIX 31",
-    "name": "BC Admix 31",
-    "n_skus": 1,
-    "members": [
-      "BC Admix 31 DARK BROWN 1170 KG - FG"
-    ],
-    "desc": "BC Admix 31 is a high-performance, ready-to-use, liquid admixture formulated from modified lignosulfonate compounds and organic salts. It acts as both a water-reducing and set-retarding agent conforming to ASTM C494 Type B and D",
-    "n_desc": 1,
-    "img": null,
-    "n_img": 0,
-    "tds": null,
-    "n_tds": 0,
-    "sizes": [
-      "1170 kg ibc"
-    ],
-    "colors": [
-      "Brown",
-      "Dark Brown"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "waterproofing-roofing",
     "key": "BC SEAL",
     "name": "BC Seal",
@@ -3793,26 +3770,6 @@
     "n_tds": 1,
     "sizes": [
       "66 kg roll"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
-    "key": "BC PVC MAMBRAN",
-    "name": "BC PVC Mambran",
-    "n_skus": 1,
-    "members": [
-      "BC PVC mambran 1.5 mm"
-    ],
-    "desc": "BC PVC 1500-UV is a high-performance, calendared and extruded single-ply PVC waterproofing membrane, 1.5 mm thick, internally reinforced with high-tenacity polyester mesh. It is specially formulated to resist ultraviolet (UV) radiation and harsh weathering, providing long-term durability and dimensional stability.",
-    "n_desc": 1,
-    "img": "/files/pvc membrane .png",
-    "n_img": 1,
-    "tds": "/files/BC PVC 1500 UV.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "83 kg roll"
     ],
     "colors": [],
     "component_only": false
@@ -5046,6 +5003,49 @@
     ],
     "colors": [
       "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC PVC MAMBRAN",
+    "name": "BC PVC Mambran",
+    "n_skus": 1,
+    "members": [
+      "BC PVC mambran 1.5 mm"
+    ],
+    "desc": "BC PVC 1500-UV is a high-performance, calendared and extruded single-ply PVC waterproofing membrane, 1.5 mm thick, internally reinforced with high-tenacity polyester mesh. It is specially formulated to resist ultraviolet (UV) radiation and harsh weathering, providing long-term durability and dimensional stability.",
+    "n_desc": 1,
+    "img": "/files/pvc membrane .png",
+    "n_img": 1,
+    "tds": "/files/BC PVC 1500 UV.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "0.8 L roll"
+    ],
+    "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "admixtures-aids",
+    "key": "BC ADMIX 31",
+    "name": "BC Admix 31",
+    "n_skus": 1,
+    "members": [
+      "BC Admix 31 DARK BROWN 1170 KG - FG"
+    ],
+    "desc": "BC Admix 31 is a high-performance, ready-to-use, liquid admixture formulated from modified lignosulfonate compounds and organic salts. It acts as both a water-reducing and set-retarding agent conforming to ASTM C494 Type B and D",
+    "n_desc": 1,
+    "img": null,
+    "n_img": 0,
+    "tds": null,
+    "n_tds": 0,
+    "sizes": [
+      "1170 kg ibc"
+    ],
+    "colors": [
+      "Brown",
+      "Dark Brown"
     ],
     "component_only": false
   }
