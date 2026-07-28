@@ -1084,32 +1084,6 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "BC PROTECT",
-    "name": "BC Protect",
-    "n_skus": 3,
-    "members": [
-      "BC Protect P BLACK BOARD  3mm - FG",
-      "BC Protect P BLACK BOARD  4mm - FG",
-      "BC Protect P BLACK BOARD  6 mm - FG"
-    ],
-    "desc": "BC Protect P is a torch-applied semi-rigid bituminous protection board reinforced with double layers of non-woven polyester. It is designed to protect waterproofing membranes and coatings from mechanical damage, sharp aggregates, and backfilling stress during construction.",
-    "n_desc": 1,
-    "img": "/files/protect P.jpg",
-    "n_img": 1,
-    "tds": null,
-    "n_tds": 0,
-    "sizes": [
-      "3.85 kg board",
-      "5.5 kg board",
-      "7.65 kg board"
-    ],
-    "colors": [
-      "Black"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "flooring-systems",
     "key": "BC PU MORTAR",
     "name": "BC PU Mortar",
@@ -1377,28 +1351,6 @@
     "n_tds": 1,
     "sizes": [
       "10 kg pail",
-      "20 kg pail"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "protective-coatings",
-    "key": "BC STONE PROTECTION WB",
-    "name": "BC Stone Protection WB",
-    "n_skus": 1,
-    "members": [
-      "BC Stone Protection WB Clear 20 KG - FG"
-    ],
-    "desc": "BC Stone Protection High-performance, solvent-based acrylic polymer sealer, 6–10 m²/L per coat, for exterior architectural concrete, exposed aggregate, and decorative cementitious surfaces, providing clear, UV-resistant, non-yellowing protection and enhanced natural luster.",
-    "n_desc": 1,
-    "img": "/files/Acrylic Pail.png",
-    "n_img": 1,
-    "tds": null,
-    "n_tds": 0,
-    "sizes": [
       "20 kg pail"
     ],
     "colors": [
@@ -3300,6 +3252,32 @@
     "component_only": false
   },
   {
+    "slug": "waterproofing-roofing",
+    "key": "BC PROTECT",
+    "name": "BC Protect",
+    "n_skus": 3,
+    "members": [
+      "BC Protect P BLACK BOARD  3mm - FG",
+      "BC Protect P BLACK BOARD  4mm - FG",
+      "BC Protect P BLACK BOARD  6 mm - FG"
+    ],
+    "desc": "BC Protect P is a torch-applied semi-rigid bituminous protection board reinforced with double layers of non-woven polyester. It is designed to protect waterproofing membranes and coatings from mechanical damage, sharp aggregates, and backfilling stress during construction.",
+    "n_desc": 1,
+    "img": "/files/protect P.jpg",
+    "n_img": 1,
+    "tds": null,
+    "n_tds": 0,
+    "sizes": [
+      "3.85 kg board",
+      "5.5 kg board",
+      "7.65 kg board"
+    ],
+    "colors": [
+      "Black"
+    ],
+    "component_only": false
+  },
+  {
     "slug": "protective-coatings",
     "key": "BC PU PRIMER 810",
     "name": "BC PU Primer 810",
@@ -5046,6 +5024,28 @@
     "colors": [
       "Black",
       "Slated"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC STONE PROTECTION WB",
+    "name": "BC Stone Protection WB",
+    "n_skus": 1,
+    "members": [
+      "BC Stone Protection WB Clear 20 KG - FG"
+    ],
+    "desc": "BC Stone Protection High-performance, solvent-based acrylic polymer sealer, 6–10 m²/L per coat, for exterior architectural concrete, exposed aggregate, and decorative cementitious surfaces, providing clear, UV-resistant, non-yellowing protection and enhanced natural luster.",
+    "n_desc": 1,
+    "img": "/files/Acrylic Pail.png",
+    "n_img": 1,
+    "tds": null,
+    "n_tds": 0,
+    "sizes": [
+      "20 kg pail"
+    ],
+    "colors": [
+      "Clear"
     ],
     "component_only": false
   }
