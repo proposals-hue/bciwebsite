@@ -3631,30 +3631,6 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "BC BITU CLASSIC 160",
-    "name": "BC Bitu Classic 160",
-    "n_skus": 2,
-    "members": [
-      "BC Bitu Classic 160 BLACK ROLL - FG",
-      "BC Bitu Classic 160 Slated   ROLL - FG"
-    ],
-    "desc": "BC Bitu Classic 160 Slated APP (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1).jpeg",
-    "n_img": 1,
-    "tds": "/files/TDS BC Bitu-Classic.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "0.909091 L roll"
-    ],
-    "colors": [
-      "Black",
-      "Slated"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "protective-coatings",
     "key": "BC GRP RESIN",
     "name": "BC GRP Resin",
@@ -3695,28 +3671,6 @@
       "47 kg roll"
     ],
     "colors": [],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
-    "key": "BC BITUMEN PRIMER",
-    "name": "BC Bitumen Primer",
-    "n_skus": 1,
-    "members": [
-      "BC Bitumen Primer BLACK 15 KG -FG"
-    ],
-    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
-    "n_desc": 1,
-    "img": "/files/solvent Can.png",
-    "n_img": 1,
-    "tds": "/private/files/BC Bitumen Primer New.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "15 kg pail"
-    ],
-    "colors": [
-      "Black"
-    ],
     "component_only": false
   },
   {
@@ -4845,28 +4799,6 @@
     "component_only": false
   },
   {
-    "slug": "pu-foam-insulation",
-    "key": "BC FOAMCONCRETE",
-    "name": "BC Foam Concrete",
-    "n_skus": 1,
-    "members": [
-      "BC Foam Concrete WHITE 200 KG -FG"
-    ],
-    "desc": "BC Foam Concrete Engineered fill material with uniformly distributed air voids for geotechnical construction and mining; combines cement slurry with stable foam to create lightweight, rigid concrete. 200 kg drum.",
-    "n_desc": 1,
-    "img": "/files/Foam conc.png",
-    "n_img": 1,
-    "tds": "/private/files/BC Foam Concrete TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "200 kg drum"
-    ],
-    "colors": [
-      "White"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "waterproofing-roofing",
     "key": "BC PVC MAMBRAN",
     "name": "BC PVC Mambran",
@@ -4981,6 +4913,30 @@
   },
   {
     "slug": "waterproofing-roofing",
+    "key": "BC BITU CLASSIC 160",
+    "name": "BC Bitu Classic 160",
+    "n_skus": 2,
+    "members": [
+      "BC Bitu Classic 160 BLACK ROLL - FG",
+      "BC Bitu Classic 160 Slated   ROLL - FG"
+    ],
+    "desc": "BC Bitu Classic 160 Slated APP (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1).jpeg",
+    "n_img": 1,
+    "tds": "/files/TDS BC Bitu-Classic.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "0.909091 L roll"
+    ],
+    "colors": [
+      "Black",
+      "Slated"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
     "key": "BC BITU GOLD FIBER",
     "name": "BC Bitu Gold Fiber",
     "n_skus": 2,
@@ -5046,6 +5002,50 @@
     ],
     "colors": [
       "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC FOAMCONCRETE",
+    "name": "BC Foam Concrete",
+    "n_skus": 1,
+    "members": [
+      "BC Foam Concrete WHITE 200 KG -FG"
+    ],
+    "desc": "BC Foam Concrete Engineered fill material with uniformly distributed air voids for geotechnical construction and mining; combines cement slurry with stable foam to create lightweight, rigid concrete. 200 kg drum.",
+    "n_desc": 1,
+    "img": "/files/Foam conc.png",
+    "n_img": 1,
+    "tds": "/private/files/BC Foam Concrete TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "200 kg drum"
+    ],
+    "colors": [
+      "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITUMEN PRIMER",
+    "name": "BC Bitumen Primer",
+    "n_skus": 1,
+    "members": [
+      "BC Bitumen Primer BLACK 15 KG -FG"
+    ],
+    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
+    "n_desc": 1,
+    "img": "/files/solvent Can.png",
+    "n_img": 1,
+    "tds": "/private/files/BC Bitumen Primer New.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "15 kg pail"
+    ],
+    "colors": [
+      "Black"
     ],
     "component_only": false
   }
