@@ -883,30 +883,6 @@
     "component_only": false
   },
   {
-    "slug": "polyurea-membranes",
-    "key": "BC 690 H",
-    "name": "BC 690 H",
-    "n_skus": 2,
-    "members": [
-      "BC 690 H POLYOL CLEAR 196 KG -FG",
-      "BC 690 H POLYUREA CLEAR 420 KG - FG"
-    ],
-    "desc": "BC 690H Hybrid Polyurea Two-component, solvent-free, high-build, elastomeric hybrid polyurea membrane, 1 kg/m² at 1 mm, 420 kg kit (196 kg Polyol + 220 kg Isocyanate + 4 kg Pigment), for seamless, flexible, and durable waterproofing with excellent tensile strength, elongation, tear resistance, and adhesion on commercial, industrial, and infrastructure substrates.",
-    "n_desc": 2,
-    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9168b5c74.webp",
-    "n_img": 2,
-    "tds": "/files/BC 690 H  TDS.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "196 kg drum",
-      "420 kg set"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "flooring-systems",
     "key": "BC FLOOR 1000 SL",
     "name": "BC Floor 1000 SL",
@@ -3114,28 +3090,6 @@
     "component_only": false
   },
   {
-    "slug": "pu-foam-insulation",
-    "key": "BC 721 CONTINUOUS LINE",
-    "name": "BC 721 Continuous Line",
-    "n_skus": 1,
-    "members": [
-      "BC 721 Continuous Line FOAM YELLOW 470 KG -FG"
-    ],
-    "desc": "BC721 Polyol Two-component, HCFC 141B-based continuous line sandwich panel system, 42–46 kg/m³ density; reacts with BC 768 Isocyanate (100/130 ratio), 470 kg kit (220 kg Polyol + 250 kg Isocyanate) to form highly crosslinked, rigid, dimensionally stable foam with excellent adhesion, B2-grade per DIN 4102.",
-    "n_desc": 1,
-    "img": "/files/image6839a5.webp",
-    "n_img": 1,
-    "tds": "/files/BC 721 141B basedContinious.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "220 kg set"
-    ],
-    "colors": [
-      "Yellow"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "protective-coatings",
     "key": "BC TEC SEALER 201",
     "name": "BC Tec Sealer 201",
@@ -5042,6 +4996,52 @@
     ],
     "colors": [
       "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "polyurea-membranes",
+    "key": "BC 690 H",
+    "name": "BC 690 H",
+    "n_skus": 2,
+    "members": [
+      "BC 690 H POLYOL CLEAR 196 KG -FG",
+      "BC 690 H POLYUREA CLEAR 420 KG - FG"
+    ],
+    "desc": "BC 690H Hybrid Polyurea Two-component, solvent-free, high-build, elastomeric hybrid polyurea membrane, 1 kg/m² at 1 mm, 420 kg kit (196 kg Polyol + 220 kg Isocyanate + 4 kg Pigment), for seamless, flexible, and durable waterproofing with excellent tensile strength, elongation, tear resistance, and adhesion on commercial, industrial, and infrastructure substrates.",
+    "n_desc": 2,
+    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9168b5c74.webp",
+    "n_img": 2,
+    "tds": "/files/BC 690 H  TDS.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "196 kg drum",
+      "420 kg set"
+    ],
+    "colors": [
+      "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 721 CONTINUOUS LINE",
+    "name": "BC 721 Continuous Line",
+    "n_skus": 1,
+    "members": [
+      "BC 721 Continuous Line FOAM YELLOW 470 KG -FG"
+    ],
+    "desc": "BC721 Polyol Two-component, HCFC 141B-based continuous line sandwich panel system, 42–46 kg/m³ density; reacts with BC 768 Isocyanate (100/130 ratio), 470 kg kit (220 kg Polyol + 250 kg Isocyanate) to form highly crosslinked, rigid, dimensionally stable foam with excellent adhesion, B2-grade per DIN 4102.",
+    "n_desc": 1,
+    "img": "/files/image6839a5.webp",
+    "n_img": 1,
+    "tds": "/files/BC 721 141B basedContinious.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
     ],
     "component_only": false
   }

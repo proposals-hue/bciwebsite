@@ -280,7 +280,7 @@
   - colors: Brown, Yellow
   - desc: BC 718 Spray Polyol is designed for the production of sprayed foams for cavity filling, with an applied density of 45 kg/m3. The reaction of BC 718 Polyol and B
 - **BC 721 Continuous Line** [1 skus]
-  - sizes: 220 kg set
+  - sizes: 470 kg set
   - colors: Yellow
   - desc: BC721 Polyol Two-component, HCFC 141B-based continuous line sandwich panel system, 42–46 kg/m³ density; reacts with BC 768 Isocyanate (100/130 ratio), 470 kg ki
 - **BC 801** [2 skus]
