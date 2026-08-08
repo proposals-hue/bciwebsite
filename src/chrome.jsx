@@ -1,5 +1,6 @@
-/* global React, ReactDOM, LangContext, useLang, t, Mark, Icon, Arrow, Chev, Badge,
-   NAV, SOLUTIONS, SOCIALS */
+/* global React, ReactDOM, LangContext, useLang, useViewport, useInView, t, Mark,
+   Icon, Arrow, Chev, Badge, pageLang, barePath, siteHref, solutionHref,
+   NAV, SOLUTIONS, SOCIALS, loadErpJobs */
 const { useState: useStateC, useEffect: useEffectC, useRef: useRefC } = React;
 
 // Switching language on the published site navigates to the same page under the
@@ -177,6 +178,28 @@ function MegaHeader({ active }) {
   const [prog, setProg] = useStateC(0);
   const [mega, setMega] = useStateC(false);
   const [drawer, setDrawer] = useStateC(false);
+  const [liveJobs, setLiveJobs] = useStateC([]);
+  const [jobIdx, setJobIdx] = useStateC(0);
+  const [tickerPaused, setTickerPaused] = useStateC(false);
+
+  useEffectC(() => {
+    let activeRequest = true;
+    loadErpJobs()
+      .then((jobs) => { if (activeRequest) setLiveJobs(jobs); })
+      .catch(() => { /* Careers page retains its pre-rendered fallback list. */ });
+    return () => { activeRequest = false; };
+  }, []);
+
+  // Hiring strip cycles through every open role, one every 3s. Paused while the
+  // pointer is over the strip so the link stays clickable on the job you read.
+  useEffectC(() => {
+    if (liveJobs.length < 2 || tickerPaused) return;
+    const id = setInterval(
+      () => setJobIdx((i) => (i + 1) % liveJobs.length),
+      3000
+    );
+    return () => clearInterval(id);
+  }, [liveJobs, tickerPaused]);
 
   useEffectC(() => {
     const START = 64,END = 230;
@@ -214,6 +237,10 @@ function MegaHeader({ active }) {
   const tight = w < 1200;
   const navGap = tight ? 17 : 30;
   const navFont = tight ? 15 : 17;
+  const announcedJob = liveJobs[jobIdx % (liveJobs.length || 1)];
+  const careerHref = announcedJob
+    ? `${siteHref('Career.html', lang)}?job=${encodeURIComponent(announcedJob.id)}#apply`
+    : siteHref('Career.html', lang);
 
   return (
     <header
@@ -346,6 +373,28 @@ function MegaHeader({ active }) {
           }
         </div>
       </div>
+
+      {announcedJob &&
+        <a href={careerHref}
+        onMouseEnter={() => setTickerPaused(true)}
+        onMouseLeave={() => setTickerPaused(false)}
+        onFocus={() => setTickerPaused(true)}
+        onBlur={() => setTickerPaused(false)}
+        style={{
+          minHeight: 38, padding: '8px 16px', background: 'var(--bci-green-500)', color: '#fff',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+          textDecoration: 'none', textAlign: 'center', overflow: 'hidden',
+          fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-mono)', fontSize: 12,
+          fontWeight: 600, letterSpacing: isAr ? 0 : '0.04em',
+          boxShadow: '0 4px 14px rgba(6,35,56,.14)'
+        }}>
+          <Icon name="briefcase" size={15} stroke="#fff" />
+          <span key={announcedJob.id || jobIdx} className="job-tick">
+            {t(lang, 'Now hiring', 'نحن نوظف الآن', 'Estamos contratando')}: {announcedJob.title}
+            {liveJobs.length > 1 && ` +${liveJobs.length - 1}`}
+          </span>
+          <Arrow size={14} />
+        </a>}
 
       {isMobile && <MobileMenu open={drawer} onClose={() => setDrawer(false)} active={active} />}
     </header>);

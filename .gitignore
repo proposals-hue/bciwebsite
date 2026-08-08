@@ -26,3 +26,5 @@ google-ads/
 
 # Local browser smoke-test tooling
 tools/browser/
+
+.env*.local

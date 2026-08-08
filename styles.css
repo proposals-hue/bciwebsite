@@ -114,7 +114,13 @@ section { padding: 120px 0; }
 section.tight { padding: 96px 0; }
 
 /* Form */
-.field { display: flex; flex-direction: column; gap: 6px; }
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+  max-width: 100%;
+}
 .field label {
   font-family: var(--ff-mono);
   font-size: 11px;
@@ -124,6 +130,10 @@ section.tight { padding: 96px 0; }
   font-weight: 500;
 }
 .field input, .field textarea, .field select {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   font-family: var(--ff-sans);
   font-size: 15px;
   color: var(--bci-ink);
@@ -134,13 +144,50 @@ section.tight { padding: 96px 0; }
   outline: none;
   transition: border-color 100ms linear;
 }
+.field select {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 body[dir="rtl"] .field input, body[dir="rtl"] .field textarea { font-family: var(--ff-arabic); }
-.field input:focus, .field textarea:focus { border-color: var(--bci-navy); }
+.field input:focus, .field textarea:focus, .field select:focus { border-color: var(--bci-navy); }
 .field textarea { resize: vertical; min-height: 132px; }
+
+/* Form layout contract. Explicit minmax(0, 1fr) tracks prevent native form
+   controls from widening a grid column to their intrinsic content width. */
+.bci-form {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+.bci-form .field input,
+.bci-form .field textarea,
+.bci-form .field select {
+  box-sizing: border-box !important;
+  inline-size: 100% !important;
+  min-inline-size: 0 !important;
+  max-inline-size: 100% !important;
+}
 
 /* Animation utility */
 @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 .fade-in { animation: fadeIn 480ms var(--ease-mech, cubic-bezier(.2,.8,.2,1)) both; }
+
+/* Hiring strip: each rotated job slides up into place */
+@keyframes jobTick { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
+.job-tick { animation: jobTick 380ms cubic-bezier(.2,.8,.2,1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .job-tick { animation: none; }
+}
 
 /* Hero entrance choreography (transition-based, JS-triggered for robustness) */
 .hero-rise { opacity: 0; transform: translateY(22px); transition: opacity 760ms cubic-bezier(.16,.84,.34,1), transform 760ms cubic-bezier(.16,.84,.34,1); }
@@ -314,6 +361,7 @@ img, svg, video { max-width: 100%; }
   [style*="grid-template-columns: repeat(5, 1fr)"] { grid-template-columns: repeat(2, 1fr) !important; }
   [style*="grid-template-columns: repeat(2, 1fr)"] { grid-template-columns: 1fr !important; }
   [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+  .form-grid-2 { grid-template-columns: minmax(0, 1fr) !important; }
 
   /* footer fully stacks */
   [style*="grid-template-columns: 1.6fr repeat(4, 1fr)"] { grid-template-columns: 1fr !important; }

@@ -33,13 +33,13 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(here, '..');
 const DIST = path.join(ROOT, 'dist');
 const ORIGIN = 'https://www.bcisaudi.com';
-const ASSET_V = '1.3';
+const ASSET_V = '1.9';
 const LANGS = ['en', 'ar', 'es'];
 const OG_LOCALE = { en: 'en_US', ar: 'ar_SA', es: 'es_ES' };
 const TODAY = new Date().toISOString().slice(0, 10);
 
 // Static files/folders copied verbatim. robots.txt + sitemap.xml are GENERATED.
-const STATIC = ['assets', 'ds', 'styles.css', 'image-slot.js', 'favicon.ico', 'vercel.json'];
+const STATIC = ['assets', 'ds', 'styles.css', 'image-slot.js', 'blob-upload.js', 'favicon.ico', 'vercel.json'];
 
 // Content pages: source file → SEO key + nav "active" id.
 // `path` is the clean, extensionless, lowercase public URL (Vercel cleanUrls
@@ -352,7 +352,8 @@ function buildDoc({ lang, title, description, p, schema, prerendered, scripts, r
   const canonical = abs(lang, p);
   const hreflang = LANGS.map((L) => `<link rel="alternate" hreflang="${L}" href="${abs(L, p)}" />`).join('\n')
     + `\n<link rel="alternate" hreflang="x-default" href="${abs('en', p)}" />`;
-  const scriptTags = scripts.map((s) => `<script src="/${s}.js?v=${ASSET_V}"></script>`).join('\n');
+  const blobUploadScript = p === 'career' ? `<script src="/blob-upload.js?v=${ASSET_V}"></script>\n` : '';
+  const scriptTags = blobUploadScript + scripts.map((s) => `<script src="/${s}.js?v=${ASSET_V}"></script>`).join('\n');
   return `<!doctype html>
 <html lang="${lang}" dir="${lang === 'ar' ? 'rtl' : 'ltr'}">
 <head>

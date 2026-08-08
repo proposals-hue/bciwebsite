@@ -1536,32 +1536,10 @@ const RESOURCES = [
 /* ---------------------------------------------------------------
    4 · CAREERS  (open positions + benefits + values)
    --------------------------------------------------------------- */
-const JOBS = [
-  { id: 'tech-sales-dammam', dept: { en: 'Sales', ar: 'المبيعات', es: 'Ventas' }, type: { en: 'Full-time', ar: 'دوام كامل', es: 'Tiempo completo' },
-    loc: { en: 'Dammam', ar: 'الدمام', es: 'Dammam' },
-    title: { en: 'Technical Sales Engineer', ar: 'مهندس مبيعات فني', es: 'Ingeniero de Ventas Técnicas' },
-    blurb: { en: 'Specify BCI systems with consultants and contractors across the Eastern Region.', ar: 'مواصفة أنظمة BCI مع الاستشاريين والمقاولين في المنطقة الشرقية.', es: 'Especificar sistemas BCI con consultores y contratistas en toda la Región Oriental.' } },
-  { id: 'rd-chemist', dept: { en: 'R&D', ar: 'البحث والتطوير', es: 'I+D' }, type: { en: 'Full-time', ar: 'دوام كامل', es: 'Tiempo completo' },
-    loc: { en: 'Dammam — Plant', ar: 'الدمام — المصنع', es: 'Dammam — Planta' },
-    title: { en: 'Formulation Chemist', ar: 'كيميائي تركيبات', es: 'Químico de Formulación' },
-    blurb: { en: 'Develop polyurethane and epoxy systems in our R&D laboratory.', ar: 'تطوير أنظمة البولي يوريثان والإيبوكسي في مختبر البحث والتطوير.', es: 'Desarrollar sistemas de poliuretano y epoxi en nuestro laboratorio de I+D.' } },
-  { id: 'site-applicator', dept: { en: 'Operations', ar: 'العمليات', es: 'Operaciones' }, type: { en: 'Full-time', ar: 'دوام كامل', es: 'Tiempo completo' },
-    loc: { en: 'KSA — Site', ar: 'السعودية — موقع', es: 'KSA — Obra' },
-    title: { en: 'Application Supervisor', ar: 'مشرف تطبيق', es: 'Supervisor de Aplicación' },
-    blurb: { en: 'Supervise waterproofing and flooring application on national projects.', ar: 'الإشراف على تطبيق العزل والأرضيات في المشاريع الوطنية.', es: 'Supervisar la aplicación de impermeabilización y pavimentos en proyectos nacionales.' } },
-  { id: 'qc-tech', dept: { en: 'Quality', ar: 'الجودة', es: 'Calidad' }, type: { en: 'Full-time', ar: 'دوام كامل', es: 'Tiempo completo' },
-    loc: { en: 'Dammam — Plant', ar: 'الدمام — المصنع', es: 'Dammam — Planta' },
-    title: { en: 'QA / QC Technician', ar: 'فني ضبط الجودة', es: 'Técnico de QA / QC' },
-    blurb: { en: 'Run batch testing and certify outgoing product against spec.', ar: 'إجراء اختبارات الدفعات واعتماد المنتجات وفق المواصفات.', es: 'Realizar ensayos de lotes y certificar el producto saliente según especificación.' } },
-  { id: 'logistics', dept: { en: 'Supply Chain', ar: 'سلسلة الإمداد', es: 'Cadena de Suministro' }, type: { en: 'Full-time', ar: 'دوام كامل', es: 'Tiempo completo' },
-    loc: { en: 'Dammam', ar: 'الدمام', es: 'Dammam' },
-    title: { en: 'Logistics Coordinator', ar: 'منسق لوجستيات', es: 'Coordinador de Logística' },
-    blurb: { en: 'Plan dispatch and delivery of product to projects across the Kingdom.', ar: 'تخطيط شحن وتسليم المنتجات للمشاريع في أنحاء المملكة.', es: 'Planificar el despacho y la entrega de producto a proyectos en todo el Reino.' } },
-  { id: 'marketing', dept: { en: 'Marketing', ar: 'التسويق', es: 'Marketing' }, type: { en: 'Full-time', ar: 'دوام كامل', es: 'Tiempo completo' },
-    loc: { en: 'Dammam', ar: 'الدمام', es: 'Dammam' },
-    title: { en: 'Marketing Specialist', ar: 'أخصائي تسويق', es: 'Especialista de Marketing' },
-    blurb: { en: 'Own technical content, brand and digital channels — Arabic & English.', ar: 'إدارة المحتوى الفني والعلامة والقنوات الرقمية — عربي وإنجليزي.', es: 'Gestionar el contenido técnico, la marca y los canales digitales — árabe e inglés.' } },
-];
+// Live vacancies come from ERP's "Request For Job Applicant" doctype through
+// /api/jobs. Keep this empty so an unavailable feed never shows invented or
+// obsolete roles as real openings.
+const JOBS = [];
 
 const BENEFITS = [
   { icon: 'shield-check', en: { t: 'Medical Coverage', d: 'Comprehensive health insurance for you and your family.' }, ar: { t: 'تأمين طبي', d: 'تأمين صحي شامل لك ولعائلتك.' }, es: { t: 'Cobertura Médica', d: 'Seguro de salud integral para ti y tu familia.' } },

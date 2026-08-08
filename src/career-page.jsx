@@ -1,6 +1,43 @@
-/* global React, ReactDOM, LangProvider, useLang, t, Icon, Arrow,
-   MegaHeader, PageHero, CtaBand, Footer, JOBS, BENEFITS, VALUES, submitErpWebForm */
-const { useState: useState_cr } = React;
+/* global React, ReactDOM, LangProvider, useLang, useViewport, t, Icon, Arrow, selectOptionLabel,
+   MegaHeader, PageHero, CtaBand, Footer, JOBS, BENEFITS, VALUES, loadErpJobs */
+const { useState: useState_cr, useEffect: useEffect_cr } = React;
+
+function normalizeCareerJob(job) {
+  if (job.title && typeof job.title === 'object') return job;
+  const title = job.title || '';
+  const description = job.description || '';
+  return {
+    id: job.id,
+    sourceDoctype: job.source_doctype,
+    jobOpening: job.job_opening || '',
+    title: { en: title, ar: title, es: title },
+    dept: { en: job.department || 'BCI', ar: job.department || 'BCI', es: job.department || 'BCI' },
+    loc: { en: job.location || 'Saudi Arabia', ar: job.location || 'Saudi Arabia', es: job.location || 'Saudi Arabia' },
+    type: { en: job.employment_type || 'Full-time', ar: job.employment_type || 'Full-time', es: job.employment_type || 'Full-time' },
+    blurb: { en: description, ar: description, es: description },
+  };
+}
+
+const MAX_CV_BYTES = 5 * 1024 * 1024;
+const MAX_PHOTO_BYTES = 5 * 1024 * 1024;
+
+function cvContentType(file) {
+  if (file.type) return file.type;
+  const name = String(file.name || '').toLowerCase();
+  if (name.endsWith('.pdf')) return 'application/pdf';
+  if (name.endsWith('.docx')) return 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+  if (name.endsWith('.doc')) return 'application/msword';
+  return 'application/octet-stream';
+}
+
+function photoContentType(file) {
+  if (file.type) return file.type;
+  const name = String(file.name || '').toLowerCase();
+  if (name.endsWith('.jpg') || name.endsWith('.jpeg')) return 'image/jpeg';
+  if (name.endsWith('.png')) return 'image/png';
+  if (name.endsWith('.webp')) return 'image/webp';
+  return '';
+}
 
 /* striped image placeholder (user drops real photography later) */
 function Placeholder({ label, ratio = '4 / 3', dark }) {
@@ -22,14 +59,32 @@ function Placeholder({ label, ratio = '4 / 3', dark }) {
 
 function CareerPage() {
   const { lang } = useLang();
+  const { isPhone } = useViewport();
   const isAr = lang === 'ar';
-  const [role, setRole] = useState_cr('');
+  const initialRole = typeof window === 'undefined' ? '' : (new URLSearchParams(window.location.search).get('job') || '');
+  const [jobs, setJobs] = useState_cr(() => JOBS.map(normalizeCareerJob));
+  const [role, setRole] = useState_cr(initialRole);
   const [status, setStatus] = useState_cr('idle'); // idle | sending | sent | error
   const [errorMsg, setErrorMsg] = useState_cr('');
+  const [uploadProgress, setUploadProgress] = useState_cr(0);
   const sent = status === 'sent';
 
-  const apply = (jobTitle) => {
-    setRole(jobTitle);
+  useEffect_cr(() => {
+    let active = true;
+    loadErpJobs()
+      .then((erpJobs) => { if (active) setJobs(erpJobs.map(normalizeCareerJob)); })
+      .catch(() => { /* Keep the pre-rendered list when developing offline. */ });
+    return () => { active = false; };
+  }, []);
+
+  const apply = (jobId) => {
+    setRole(jobId);
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set('job', jobId);
+      url.hash = 'apply';
+      window.history.replaceState({}, '', url);
+    } catch (e) {}
     const el = document.getElementById('apply');
     if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
   };
@@ -38,23 +93,84 @@ function CareerPage() {
     e.preventDefault();
     if (status === 'sending') return;
     const fd = new FormData(e.target);
+    const selectedJob = jobs.find((job) => job.id === role);
+    const cv = fd.get('resume_file');
+    const photo = fd.get('applicant_photo');
+    if (!(cv instanceof File) || !cv.name) {
+      setErrorMsg(t(lang, 'Please attach your CV.', 'يرجى إرفاق سيرتك الذاتية.', 'Adjunta tu CV.'));
+      setStatus('error');
+      return;
+    }
+    if (cv.size > MAX_CV_BYTES) {
+      setErrorMsg(t(lang, 'Your CV must be no larger than 5 MB.', 'يجب ألا يتجاوز حجم السيرة الذاتية 5 ميجابايت.', 'Tu CV no debe superar los 5 MB.'));
+      setStatus('error');
+      return;
+    }
+    if (!(photo instanceof File) || !photo.name) {
+      setErrorMsg(t(lang, 'Please attach a recent photo of yourself.', 'يرجى إرفاق صورة شخصية حديثة.', 'Adjunta una foto reciente tuya.'));
+      setStatus('error');
+      return;
+    }
+    const photoType = photoContentType(photo);
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(photoType)) {
+      setErrorMsg(t(lang, 'Your photo must be a JPG, PNG, or WebP image.', 'يجب أن تكون الصورة بصيغة JPG أو PNG أو WebP.', 'La foto debe ser JPG, PNG o WebP.'));
+      setStatus('error');
+      return;
+    }
+    if (photo.size > MAX_PHOTO_BYTES) {
+      setErrorMsg(t(lang, 'Your photo must be no larger than 5 MB.', 'يجب ألا يتجاوز حجم الصورة 5 ميجابايت.', 'La foto no debe superar los 5 MB.'));
+      setStatus('error');
+      return;
+    }
     setStatus('sending');
     setErrorMsg('');
+    setUploadProgress(0);
     try {
-      // → ERPNext 'job-application' guest web form → creates a Job Applicant (keyless).
-      // Note: the Job Applicant `job_title` is a Link to Job Opening, so we can't
-      // send the free-text position there — fold it into the cover letter instead.
-      const position = role || 'Open application';
-      const note = fd.get('cover_letter') || '';
-      await submitErpWebForm('job-application', {
-        doctype: 'Job Applicant',
-        applicant_name: fd.get('name') || '',
-        email_id: fd.get('email') || '',
-        phone_number: fd.get('phone') || '',
-        cover_letter: `Position applied for: ${position}\n\n${note}`.trim(),
-        resume_link: fd.get('resume_link') || '',
+      if (typeof window.uploadPrivateCv !== 'function' || typeof window.uploadPrivateApplicantPhoto !== 'function') {
+        throw new Error('Application uploaders are unavailable');
+      }
+      const cvType = cvContentType(cv);
+      const photoBlob = await window.uploadPrivateApplicantPhoto(
+        photo,
+        { name: photo.name, type: photoType, size: photo.size },
+        ({ percentage }) => setUploadProgress(Math.max(0, Math.min(40, Math.round((percentage || 0) * 0.4)))),
+      );
+      const blob = await window.uploadPrivateCv(
+        cv,
+        { name: cv.name, type: cvType, size: cv.size },
+        ({ percentage }) => setUploadProgress(Math.max(40, Math.min(100, 40 + Math.round((percentage || 0) * 0.6)))),
+      );
+      const response = await fetch('/api/job-application', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          name: fd.get('name') || '',
+          email: fd.get('email') || '',
+          phone: fd.get('phone') || '',
+          position: selectedJob ? selectedJob.title.en : 'Open application',
+          designation: selectedJob ? selectedJob.title.en : '',
+          job_opening: selectedJob ? selectedJob.jobOpening : '',
+          request_reference: selectedJob && selectedJob.sourceDoctype !== 'Job Opening' ? selectedJob.id : '',
+          cover_letter: fd.get('cover_letter') || '',
+          resume_blob: {
+            url: blob.url,
+            name: cv.name,
+            type: cvType,
+            size: cv.size,
+          },
+          photo_blob: {
+            url: photoBlob.url,
+            name: photo.name,
+            type: photoType,
+            size: photo.size,
+          },
+          website: fd.get('website') || '',
+        }),
       });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) throw new Error(payload.error || 'Application failed');
       setStatus('sent');
+      setUploadProgress(0);
       e.target.reset();
       setRole('');
       setTimeout(() => setStatus('idle'), 6000);
@@ -64,6 +180,7 @@ function CareerPage() {
         'حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى أو إرساله إلى info@bcisaudi.com.',
         'Hubo un problema al enviar tu solicitud. Inténtalo de nuevo o envíala a info@bcisaudi.com.'));
       setStatus('error');
+      setUploadProgress(0);
     }
   };
 
@@ -123,10 +240,14 @@ function CareerPage() {
             <h2 className="display" style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 700, fontSize: 'clamp(32px,3.4vw,48px)', color: 'var(--bci-navy)', margin: 0 }}>
               {t(lang, 'Open positions', 'الوظائف الشاغرة', 'Vacantes')}
             </h2>
-            <span className="sec-num" style={{ color: 'var(--bci-steel)' }}>{JOBS.length} {t(lang, 'roles', 'وظيفة', 'vacantes')}</span>
+            <span className="sec-num" style={{ color: 'var(--bci-steel)' }}>{jobs.length} {t(lang, 'roles', 'وظيفة', 'vacantes')}</span>
           </div>
           <div style={{ background: '#fff', border: '1px solid var(--bci-hairline-light)', borderRadius: 2 }}>
-            {JOBS.map((j, i) => <JobRow key={j.id} j={j} last={i === JOBS.length - 1} onApply={apply} />)}
+            {jobs.length > 0
+              ? jobs.map((j, i) => <JobRow key={j.id} j={j} last={i === jobs.length - 1} onApply={apply} />)
+              : <div style={{ padding: 36, textAlign: 'center', color: 'var(--bci-steel)' }}>
+                  {t(lang, 'There are no open positions right now. You can still send an open application below.', 'لا توجد وظائف شاغرة حالياً. لا يزال بإمكانك إرسال طلب توظيف مفتوح أدناه.', 'No hay vacantes abiertas ahora. Aun así puedes enviar una solicitud abierta abajo.')}
+                </div>}
           </div>
         </div>
       </section>
@@ -138,31 +259,44 @@ function CareerPage() {
           <h2 className="display" style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 700, fontSize: 'clamp(32px,3.4vw,48px)', color: 'var(--bci-navy)', margin: '0 0 32px', textAlign: isAr ? 'right' : 'left' }}>
             {t(lang, 'Send your application', 'أرسل طلبك', 'Envía tu solicitud')}
           </h2>
-          <form onSubmit={submitApplication}
+          <form className="bci-form" onSubmit={submitApplication}
             style={{ background: '#fff', border: '1px solid var(--bci-hairline-light)', borderRadius: 2, padding: 36, display: 'flex', flexDirection: 'column', gap: 20, direction: isAr ? 'rtl' : 'ltr' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+            <div className="form-grid-2">
               <div className="field"><label>{t(lang, 'Full name', 'الاسم الكامل', 'Nombre completo')}</label><input required name="name" type="text" /></div>
               <div className="field"><label>{t(lang, 'Email', 'البريد', 'Correo')}</label><input required name="email" type="email" placeholder="name@email.com" /></div>
               <div className="field"><label>{t(lang, 'Phone', 'الهاتف', 'Teléfono')}</label><input name="phone" type="tel" placeholder="+966" /></div>
               <div className="field"><label>{t(lang, 'Position', 'الوظيفة', 'Puesto')}</label>
-                <select value={role} onChange={e => setRole(e.target.value)}>
+                <select required value={role} onChange={e => setRole(e.target.value)}>
                   <option value="">{t(lang, 'Select a role…', 'اختر وظيفة…', 'Selecciona un puesto…')}</option>
-                  {JOBS.map(j => <option key={j.id} value={j.title.en}>{j.title[lang]}</option>)}
+                  {jobs.map(j => {
+                    const title = j.title[lang];
+                    return <option key={j.id} value={j.id} title={title}>{selectOptionLabel(title, isPhone)}</option>;
+                  })}
                   <option value="open">{t(lang, 'Open application', 'طلب مفتوح', 'Solicitud abierta')}</option>
                 </select>
               </div>
             </div>
+            <input type="text" name="website" tabIndex="-1" autoComplete="off" aria-hidden="true" style={{ position: 'absolute', left: '-10000px', width: 1, height: 1 }} />
             <div className="field"><label>{t(lang, 'Cover note', 'نبذة تعريفية', 'Carta de presentación')}</label><textarea name="cover_letter" placeholder={t(lang, 'Tell us about your experience…', 'حدثنا عن خبرتك…', 'Cuéntanos sobre tu experiencia…')}></textarea></div>
-            <div className="field"><label>{t(lang, 'Link to your CV (Google Drive, Dropbox, LinkedIn…)', 'رابط سيرتك الذاتية (جوجل درايف، دروب بوكس، لينكدإن…)', 'Enlace a tu CV (Google Drive, Dropbox, LinkedIn…)')}</label><input name="resume_link" type="url" placeholder="https://" /></div>
+            <div className="field"><label>{t(lang, 'Upload your CV', 'إرفاق السيرة الذاتية', 'Sube tu CV')}</label><input required name="resume_file" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" /></div>
             <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '0.06em', color: 'var(--bci-steel)', marginTop: -8, textAlign: isAr ? 'right' : 'left' }}>
               {t(lang,
-                'Paste a shareable link to your CV, or email the file to info@bcisaudi.com.',
-                'الصق رابطًا قابلاً للمشاركة لسيرتك الذاتية، أو أرسل الملف إلى info@bcisaudi.com.',
-                'Pega un enlace a tu CV, o envía el archivo a info@bcisaudi.com.')}
+                'Accepted files: PDF, DOC, or DOCX. Maximum size: 5 MB.',
+                'الملفات المقبولة: PDF أو DOC أو DOCX. الحد الأقصى للحجم: 5 ميجابايت.',
+                'Archivos aceptados: PDF, DOC o DOCX. Tamaño máximo: 5 MB.')}
+            </div>
+            <div className="field"><label>{t(lang, 'Upload a recent photo', 'إرفاق صورة شخصية حديثة', 'Sube una foto reciente')}</label><input required name="applicant_photo" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" /></div>
+            <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '0.06em', color: 'var(--bci-steel)', marginTop: -8, textAlign: isAr ? 'right' : 'left' }}>
+              {t(lang,
+                'Accepted images: JPG, PNG, or WebP. Maximum size: 5 MB.',
+                'الصور المقبولة: JPG أو PNG أو WebP. الحد الأقصى للحجم: 5 ميجابايت.',
+                'Imágenes aceptadas: JPG, PNG o WebP. Tamaño máximo: 5 MB.')}
             </div>
             <button type="submit" disabled={status === 'sending'} className="btn btn-accent" style={{ width: '100%', justifyContent: 'center', padding: '16px', opacity: status === 'sending' ? 0.7 : 1, cursor: status === 'sending' ? 'wait' : 'pointer' }}>
               {sent ? <><Icon name="check" size={14} stroke="#fff" /> {t(lang, 'Application sent', 'تم الإرسال', 'Solicitud enviada')}</>
-                : status === 'sending' ? <>{t(lang, 'Sending…', 'جارٍ الإرسال…', 'Enviando…')}</>
+                : status === 'sending' ? <>{uploadProgress > 0 && uploadProgress < 100
+                    ? t(lang, `Uploading files… ${uploadProgress}%`, `جارٍ رفع الملفات… ${uploadProgress}%`, `Subiendo archivos… ${uploadProgress}%`)
+                    : t(lang, 'Sending…', 'جارٍ الإرسال…', 'Enviando…')}</>
                 : <>{t(lang, 'Submit application', 'إرسال الطلب', 'Enviar solicitud')} <Arrow size={14} /></>}
             </button>
             {status === 'error' &&
@@ -191,7 +325,7 @@ function JobRow({ j, last, onApply }) {
         <h3 style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 600, fontSize: 21, color: 'var(--bci-navy)', margin: '0 0 6px' }}>{j.title[lang]}</h3>
         <p style={{ fontSize: 14, color: 'var(--bci-steel)', margin: 0 }}>{j.blurb[lang]}</p>
       </div>
-      <button onClick={() => onApply(j.title.en)} className="btn btn-ghost-navy" style={{ whiteSpace: 'nowrap' }}>{t(lang, 'Apply', 'تقديم', 'Postular')} <Arrow size={13} /></button>
+      <button onClick={() => onApply(j.id)} className="btn btn-ghost-navy" style={{ whiteSpace: 'nowrap' }}>{t(lang, 'Apply', 'تقديم', 'Postular')} <Arrow size={13} /></button>
     </div>
   );
 }

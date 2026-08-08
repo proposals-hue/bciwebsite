@@ -92,6 +92,15 @@ function useViewport() {
   return { w, isPhone: w < 640, isTablet: w >= 640 && w < 1024, isMobile: w < 1024, isDesktop: w >= 1024 };
 }
 
+// Native select popovers can use their longest option as a minimum width in
+// desktop mobile emulation. Keep phone labels compact while preserving the
+// complete option value submitted to the server.
+function selectOptionLabel(value, compact, maxChars = 28) {
+  const label = String(value == null ? '' : value);
+  if (!compact || label.length <= maxChars) return label;
+  return `${label.slice(0, Math.max(1, maxChars - 1)).trimEnd()}\u2026`;
+}
+
 // ---------------- Scroll reveal ----------------
 // Fires once when an element scrolls into view; respects reduced-motion.
 function useInView(opts) {
@@ -273,29 +282,45 @@ function Badge({ variant = 'outline', children, icon }) {
 }
 
 // ---------------- ERP form submit ----------------
-// The Contact/Career forms feed ERPNext's built-in *guest* web forms — no API
-// key lives anywhere, and nothing is hosted in between. The ERP sends no CORS
-// headers, but a `no-cors` urlencoded POST is a "simple request" the browser
-// still delivers (we just can't read the response — so success is optimistic
-// and we rely on the form's client-side `required` validation). Override the
-// ERP origin with window.BCI_ERP_BASE if it ever changes.
-// 2026-07: the ERP moved from apcv14.lynx.sa (old v14 box, now a stale copy)
-// to erp.bcisaudi.net — posts to the old host land in a dead database.
-const ERP_BASE = (typeof window !== 'undefined' && window.BCI_ERP_BASE) || 'https://erp.bcisaudi.net';
+// Contact and supplier submissions go through a same-origin serverless
+// function. It forwards only allow-listed fields to ERPNext's guest Web Forms
+// and returns the real ERP result, so the UI never reports success for a 4xx or
+// validation error. The ERP origin and credentials remain server-side.
+
+// Same-origin vacancy feed. The Vercel function keeps the ERP API token on the
+// server and returns only fields that are safe to publish. Cache the request so
+// the header announcement and Careers page share one network call.
+let erpJobsPromise;
+function loadErpJobs() {
+  if (!erpJobsPromise) {
+    erpJobsPromise = fetch('/api/jobs', { headers: { Accept: 'application/json' } })
+      .then(async (response) => {
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(payload.error || 'Vacancies feed unavailable');
+        return Array.isArray(payload.jobs) ? payload.jobs : [];
+      })
+      .catch((error) => {
+        erpJobsPromise = null;
+        throw error;
+      });
+  }
+  return erpJobsPromise;
+}
 
 // webForm: the ERP Web Form *name* (e.g. 'contact-bci', 'job-application').
 // data: { doctype, ...fields } keyed by the web form's field names.
 async function submitErpWebForm(webForm, data) {
-  const body = new URLSearchParams({ web_form: webForm, data: JSON.stringify(data) });
-  await fetch(`${ERP_BASE}/api/method/frappe.website.doctype.web_form.web_form.accept`, {
+  const response = await fetch('/api/web-form-submit', {
     method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body,
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({ web_form: webForm, data }),
   });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(payload.error || 'ERP submission failed');
+  return payload;
 }
 
-if (typeof window !== 'undefined') window.submitErpWebForm = submitErpWebForm;
+if (typeof window !== 'undefined') Object.assign(window, { submitErpWebForm, loadErpJobs });
 
 // Google Ads lead conversion — fires only where the built pages' head snippet
 // defined gtag + window.BCI_ADS_CONV (dev pages without it are a silent no-op).
@@ -316,4 +341,4 @@ function Chev({ size = 14 }) {
   return <span className="flip-rtl" style={{ display: 'inline-flex' }}><Icon name="chevron-right" size={size} /></span>;
 }
 
-Object.assign(window, { LangContext, useLang, useViewport, useInView, revealStyle, CountUp, t, Mark, Icon, Badge, Arrow, Chev, LANGS, pageLang, barePath, siteHref, solutionHref, trackAdsLeadConversion });
+Object.assign(window, { LangContext, useLang, useViewport, useInView, revealStyle, CountUp, t, Mark, Icon, Badge, Arrow, Chev, LANGS, pageLang, barePath, siteHref, solutionHref, selectOptionLabel, loadErpJobs, trackAdsLeadConversion });

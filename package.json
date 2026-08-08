@@ -1,0 +1,17 @@
+{
+  "name": "bci-website-runtime",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "bundle:blob": "esbuild build/blob-upload-entry.mjs --bundle --platform=browser --format=iife --outfile=blob-upload.js --minify"
+  },
+  "dependencies": {
+    "@vercel/blob": "^2.6.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.1"
+  }
+}

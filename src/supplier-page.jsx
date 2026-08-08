@@ -1,4 +1,4 @@
-/* global React, ReactDOM, LangProvider, useLang, useViewport, t, Icon, Arrow,
+/* global React, ReactDOM, LangProvider, useLang, useViewport, t, Icon, Arrow, selectOptionLabel,
    MegaHeader, PageHero, Footer, submitErpWebForm */
 const { useState: useState_sp } = React;
 
@@ -89,7 +89,7 @@ const PROCESS_STEPS = [
 
 function SupplierPage() {
   const { lang } = useLang();
-  const { isMobile } = useViewport();
+  const { isMobile, isPhone } = useViewport();
   const isAr = lang === 'ar';
   const [status, setStatus] = useState_sp('idle'); // idle | sending | sent | error
   const [errorMsg, setErrorMsg] = useState_sp('');
@@ -105,14 +105,11 @@ function SupplierPage() {
     setStatus('sending');
     setErrorMsg('');
     try {
-      // → ERPNext 'supplier-registration' guest web form → creates a Supplier
-      //   (disabled until procurement reviews and enables it). Contact person
-      //   and city have no Supplier field, so they ride along in supplier_details.
+      // → same-origin API → ERPNext 'supplier-registration' Web Form.
+      // City and contact person map to dedicated custom Supplier fields.
       const details = [
         fd.get('products') || '',
         '—',
-        `Contact person: ${fd.get('contact_person') || '-'}`,
-        `City: ${fd.get('city') || '-'}`,
         'Submitted via the bcisaudi.com supplier registration form',
       ].join('\n');
       await submitErpWebForm('supplier-registration', {
@@ -127,6 +124,8 @@ function SupplierPage() {
         custom_cr_no: fd.get('cr_no') || '',
         tax_id: fd.get('tax_id') || '',
         supplier_details: details,
+        custom_city: fd.get('city') || '',
+        custom_contact_person: fd.get('contact_person') || '',
         disabled: 1,
       });
       setStatus('sent');
@@ -206,7 +205,7 @@ function SupplierPage() {
               'تصل بياناتك مباشرة إلى نظام المشتريات لدينا. الحقول المعلمة بـ * إلزامية.',
               'Tus datos van directamente a nuestro sistema de compras. Los campos marcados con * son obligatorios.')}
           </p>
-          <form onSubmit={submitRegistration}
+          <form className="bci-form" onSubmit={submitRegistration}
             style={{ background: '#fff', border: '1px solid var(--bci-hairline-light)', borderRadius: 2, padding: isMobile ? 24 : 36, display: 'flex', flexDirection: 'column', gap: 20, direction: isAr ? 'rtl' : 'ltr' }}>
             <div style={twoCol}>
               <div className="field"><label>{t(lang, 'Company name *', 'اسم الشركة (بالإنجليزية) *', 'Nombre de la empresa *')}</label><input required name="company_name" type="text" /></div>
@@ -223,7 +222,7 @@ function SupplierPage() {
               <div className="field"><label>{t(lang, 'Country', 'الدولة', 'País')}</label>
                 <select name="country" defaultValue="">
                   <option value="">{t(lang, 'Select a country…', 'اختر دولة…', 'Selecciona un país…')}</option>
-                  {SUPPLIER_COUNTRIES.map((c) => <option key={c} value={c}>{c}</option>)}
+                  {SUPPLIER_COUNTRIES.map((c) => <option key={c} value={c} title={c}>{selectOptionLabel(c, isPhone)}</option>)}
                 </select>
               </div>
             </div>

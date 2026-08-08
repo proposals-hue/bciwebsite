@@ -190,7 +190,7 @@ function ContactForm() {
   };
 
   return (
-    <form onSubmit={onSubmit} style={{
+    <form className="bci-form" onSubmit={onSubmit} style={{
       background: '#fff',
       border: '1px solid var(--bci-hairline-light)',
       borderRadius: 2,
@@ -211,7 +211,7 @@ function ContactForm() {
         </span>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+      <div className="form-grid-2">
         <div className="field">
           <label>{t(lang, 'Name', 'الاسم', 'Nombre')}</label>
           <input type="text" required value={form.name} onChange={onChange('name')} placeholder={t(lang, 'Full name', 'الاسم الكامل', 'Nombre completo')} />
