@@ -231,8 +231,8 @@
   - sizes: 470 kg set
   - colors: Yellow
   - desc: BC 702 Spray 40 FR Polyol Two-component spray foam system, 40 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam wi
-- **BC 702 45** [2 skus]
-  - sizes: 220 kg drum, 470 kg set
+- **BC 702 45** [1 skus]
+  - sizes: 470 kg set
   - colors: Yellow
   - desc: BC 702 Spray 45 Polyol Two-component spray foam system, 45 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with 
 - **BC 703 SWP** [2 skus]
@@ -545,8 +545,7 @@
   - colors: Clear
   - desc: BC PU Clear
 - **BC PU Primer 810** [1 skus]
-  - sizes: 13.5 kg set
-  - colors: Cream
+  - sizes: 18 kg set
   - desc: BC PU Primer 810 is a two-component polyurethane-based adhesion promoting primer specially designed for use with BC liquid-applied membrane systems. It is used 
 - **BC PU TC** [1 skus]
   - sizes: 20 kg pail
