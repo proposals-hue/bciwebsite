@@ -641,29 +641,6 @@
   },
   {
     "slug": "protective-coatings",
-    "key": "BC GRP LINE PRIMER",
-    "name": "BC GRP Line Primer",
-    "n_skus": 2,
-    "members": [
-      "BC GRP Line  Primer CLEAR 20.44 KG SYSTEM - (FG)",
-      "BC GRP Line Primer (P) CLEAR 20.44 KG SYSTEM - (FG)"
-    ],
-    "desc": "BC Line GRP Primer is a three-pack, vinyl ester–based primer with inert fillers and fiberglass reinforcement, offering excellent chemical resistance for steel and concrete surfaces in tank linings and harsh environments. 20 kg set.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1)726a82.jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC GRP Line Primer TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20.44 kg set"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "protective-coatings",
     "key": "BC GRP RESIN",
     "name": "BC GRP Resin",
     "n_skus": 2,
@@ -729,6 +706,29 @@
       "25 kg bag"
     ],
     "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC GRP LINE PRIMER",
+    "name": "BC GRP Line Primer",
+    "n_skus": 2,
+    "members": [
+      "BC GRP Line  Primer CLEAR 20.44 KG SYSTEM - (FG)",
+      "BC GRP Line Primer (P) CLEAR 20.44 KG SYSTEM - (FG)"
+    ],
+    "desc": "BC Line GRP Primer is a three-pack, vinyl ester–based primer with inert fillers and fiberglass reinforcement, offering excellent chemical resistance for steel and concrete surfaces in tank linings and harsh environments. 20 kg set.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1)726a82.jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC GRP Line Primer TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20.44 kg set"
+    ],
+    "colors": [
+      "Clear"
+    ],
     "component_only": false
   },
   {
@@ -4519,26 +4519,6 @@
     "component_only": false
   },
   {
-    "slug": "protective-coatings",
-    "key": "BC GRP MATT",
-    "name": "BC GRP Matt",
-    "n_skus": 1,
-    "members": [
-      "BC GRP Matt"
-    ],
-    "desc": "BC GRP Matt is a high-quality, non-woven glass fiber reinforcement mat manufactured from randomly oriented chopped glass filaments (approx. 50 mm) bonded together with either powder or emulsion binder.",
-    "n_desc": 1,
-    "img": "/files/grp matt.webp",
-    "n_img": 1,
-    "tds": "/private/files/BC GRP Matt  TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "47 kg roll"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
     "slug": "tile-grouts-anchors",
     "key": "BC PE GROUT",
     "name": "BC PE Grout",
@@ -5043,6 +5023,26 @@
     "colors": [
       "Black"
     ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC GRP MATT",
+    "name": "BC GRP Matt",
+    "n_skus": 1,
+    "members": [
+      "BC GRP Matt"
+    ],
+    "desc": "BC GRP Matt is a high-quality, non-woven glass fiber reinforcement mat manufactured from randomly oriented chopped glass filaments (approx. 50 mm) bonded together with either powder or emulsion binder.",
+    "n_desc": 1,
+    "img": "/files/grp matt.webp",
+    "n_img": 1,
+    "tds": "/private/files/BC GRP Matt  TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "47 kg roll"
+    ],
+    "colors": [],
     "component_only": false
   }
 ]
