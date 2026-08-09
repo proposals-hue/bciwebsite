@@ -4343,52 +4343,6 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "BC BITU CLASSIC 160",
-    "name": "BC Bitu Classic 160",
-    "n_skus": 2,
-    "members": [
-      "BC Bitu Classic 160 BLACK ROLL - FG",
-      "BC Bitu Classic 160 Slated   ROLL - FG"
-    ],
-    "desc": "BC Bitu Classic 160 Slated APP (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1).jpeg",
-    "n_img": 1,
-    "tds": "/files/TDS BC Bitu-Classic.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "0.909091 L roll"
-    ],
-    "colors": [
-      "Black",
-      "Slated"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "admixtures-aids",
-    "key": "BC THINNER 101",
-    "name": "BC Thinner 101",
-    "n_skus": 1,
-    "members": [
-      "BC Thinner 101 CLEAR 20 KG -FG"
-    ],
-    "desc": "BC Thinner 101 is a highly reactive, low-boiling, fast-evaporating solvent with exceptional solvency power. It softens many synthetic elastomers, coatings, and sealants, making it ideal for surface activation, recoating, and cleaning of equipment before hardening. It is a pure liquid with no added fillers or solids.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-08-13 at 5.17.04 PM (2).jpeg",
-    "n_img": 1,
-    "tds": null,
-    "n_tds": 0,
-    "sizes": [
-      "20 kg pail"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "tile-grouts-anchors",
     "key": "BC TILE ADHESIVE PRO",
     "name": "BC Tile Adhesive Pro",
@@ -4650,23 +4604,25 @@
   },
   {
     "slug": "waterproofing-roofing",
-    "key": "BC BITUMEN PRIMER",
-    "name": "BC Bitumen Primer",
-    "n_skus": 1,
+    "key": "BC BITU CLASSIC 160",
+    "name": "BC Bitu Classic 160",
+    "n_skus": 2,
     "members": [
-      "BC Bitumen Primer BLACK 15 KG -FG"
+      "BC Bitu Classic 160 BLACK ROLL - FG",
+      "BC Bitu Classic 160 Slated   ROLL - FG"
     ],
-    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
-    "n_desc": 1,
-    "img": "/files/solvent Can.png",
+    "desc": "BC Bitu Classic 160 Slated APP (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1).jpeg",
     "n_img": 1,
-    "tds": "/private/files/BC Bitumen Primer New.pdf",
-    "n_tds": 1,
+    "tds": "/files/TDS BC Bitu-Classic.pdf",
+    "n_tds": 2,
     "sizes": [
-      "15 kg pail"
+      "0.909091 L roll"
     ],
     "colors": [
-      "Black"
+      "Black",
+      "Slated"
     ],
     "component_only": false
   },
@@ -5043,6 +4999,50 @@
       "2.5 kg board"
     ],
     "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "admixtures-aids",
+    "key": "BC THINNER 101",
+    "name": "BC Thinner 101",
+    "n_skus": 1,
+    "members": [
+      "BC Thinner 101 CLEAR 20 KG -FG"
+    ],
+    "desc": "BC Thinner 101 is a highly reactive, low-boiling, fast-evaporating solvent with exceptional solvency power. It softens many synthetic elastomers, coatings, and sealants, making it ideal for surface activation, recoating, and cleaning of equipment before hardening. It is a pure liquid with no added fillers or solids.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-08-13 at 5.17.04 PM (2).jpeg",
+    "n_img": 1,
+    "tds": null,
+    "n_tds": 0,
+    "sizes": [
+      "20 kg pail"
+    ],
+    "colors": [
+      "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITUMEN PRIMER",
+    "name": "BC Bitumen Primer",
+    "n_skus": 1,
+    "members": [
+      "BC Bitumen Primer BLACK 15 KG -FG"
+    ],
+    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
+    "n_desc": 1,
+    "img": "/files/solvent Can.png",
+    "n_img": 1,
+    "tds": "/private/files/BC Bitumen Primer New.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "15 kg pail"
+    ],
+    "colors": [
+      "Black"
+    ],
     "component_only": false
   }
 ]
