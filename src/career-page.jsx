@@ -20,6 +20,9 @@ function normalizeCareerJob(job) {
 
 const MAX_CV_BYTES = 5 * 1024 * 1024;
 const MAX_PHOTO_BYTES = 5 * 1024 * 1024;
+const MAX_SOURCE_PHOTO_BYTES = 25 * 1024 * 1024;
+const PHOTO_UPLOAD_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
+const PHOTO_SOURCE_TYPES = [...PHOTO_UPLOAD_TYPES, 'image/heic', 'image/heif'];
 
 function cvContentType(file) {
   if (file.type) return file.type;
@@ -31,12 +34,67 @@ function cvContentType(file) {
 }
 
 function photoContentType(file) {
-  if (file.type) return file.type;
+  const declaredType = String(file.type || '').toLowerCase();
+  if (declaredType === 'image/jpg') return 'image/jpeg';
+  if (declaredType) return declaredType;
   const name = String(file.name || '').toLowerCase();
   if (name.endsWith('.jpg') || name.endsWith('.jpeg')) return 'image/jpeg';
   if (name.endsWith('.png')) return 'image/png';
   if (name.endsWith('.webp')) return 'image/webp';
+  if (name.endsWith('.heic')) return 'image/heic';
+  if (name.endsWith('.heif')) return 'image/heif';
   return '';
+}
+
+function replacePhotoExtension(filename) {
+  const base = String(filename || 'applicant-photo').replace(/\.[^.]+$/, '') || 'applicant-photo';
+  return `${base}.jpg`;
+}
+
+function imageToJpegBlob(image, maxDimension = 2048, quality = 0.86) {
+  const sourceWidth = image.naturalWidth || image.width;
+  const sourceHeight = image.naturalHeight || image.height;
+  const scale = Math.min(1, maxDimension / Math.max(sourceWidth, sourceHeight));
+  const canvas = document.createElement('canvas');
+  canvas.width = Math.max(1, Math.round(sourceWidth * scale));
+  canvas.height = Math.max(1, Math.round(sourceHeight * scale));
+  const context = canvas.getContext('2d');
+  if (!context) return Promise.reject(new Error('PHOTO_CONVERSION_FAILED'));
+  context.drawImage(image, 0, 0, canvas.width, canvas.height);
+  return new Promise((resolve, reject) => {
+    canvas.toBlob(
+      (blob) => blob ? resolve(blob) : reject(new Error('PHOTO_CONVERSION_FAILED')),
+      'image/jpeg',
+      quality,
+    );
+  });
+}
+
+async function prepareApplicantPhoto(file) {
+  const sourceType = photoContentType(file);
+  const needsConversion = ['image/heic', 'image/heif'].includes(sourceType) || file.size > MAX_PHOTO_BYTES;
+  if (!needsConversion) return { file, type: sourceType };
+
+  const objectUrl = URL.createObjectURL(file);
+  try {
+    const image = await new Promise((resolve, reject) => {
+      const candidate = new Image();
+      candidate.onload = () => resolve(candidate);
+      candidate.onerror = () => reject(new Error('PHOTO_CONVERSION_FAILED'));
+      candidate.src = objectUrl;
+    });
+    const blob = await imageToJpegBlob(image);
+    if (blob.size > MAX_PHOTO_BYTES) throw new Error('PHOTO_CONVERSION_FAILED');
+    return {
+      file: new File([blob], replacePhotoExtension(file.name), {
+        type: 'image/jpeg',
+        lastModified: Date.now(),
+      }),
+      type: 'image/jpeg',
+    };
+  } finally {
+    URL.revokeObjectURL(objectUrl);
+  }
 }
 
 /* striped image placeholder (user drops real photography later) */
@@ -111,14 +169,14 @@ function CareerPage() {
       setStatus('error');
       return;
     }
-    const photoType = photoContentType(photo);
-    if (!['image/jpeg', 'image/png', 'image/webp'].includes(photoType)) {
-      setErrorMsg(t(lang, 'Your photo must be a JPG, PNG, or WebP image.', 'يجب أن تكون الصورة بصيغة JPG أو PNG أو WebP.', 'La foto debe ser JPG, PNG o WebP.'));
+    const sourcePhotoType = photoContentType(photo);
+    if (!PHOTO_SOURCE_TYPES.includes(sourcePhotoType)) {
+      setErrorMsg(t(lang, 'Your photo must be a JPG, PNG, WebP, HEIC, or HEIF image.', 'يجب أن تكون الصورة بصيغة JPG أو PNG أو WebP أو HEIC أو HEIF.', 'La foto debe ser JPG, PNG, WebP, HEIC o HEIF.'));
       setStatus('error');
       return;
     }
-    if (photo.size > MAX_PHOTO_BYTES) {
-      setErrorMsg(t(lang, 'Your photo must be no larger than 5 MB.', 'يجب ألا يتجاوز حجم الصورة 5 ميجابايت.', 'La foto no debe superar los 5 MB.'));
+    if (photo.size > MAX_SOURCE_PHOTO_BYTES) {
+      setErrorMsg(t(lang, 'Your original photo must be no larger than 25 MB.', 'يجب ألا يتجاوز حجم الصورة الأصلية 25 ميجابايت.', 'La foto original no debe superar los 25 MB.'));
       setStatus('error');
       return;
     }
@@ -130,9 +188,21 @@ function CareerPage() {
         throw new Error('Application uploaders are unavailable');
       }
       const cvType = cvContentType(cv);
+      let preparedPhoto;
+      try {
+        preparedPhoto = await prepareApplicantPhoto(photo);
+      } catch (_) {
+        setErrorMsg(t(lang,
+          'Your iPhone photo could not be prepared. Please choose a JPG/PNG image or take a screenshot of the photo and upload that.',
+          'تعذر تجهيز صورة الآيفون. يرجى اختيار صورة JPG أو PNG أو التقاط لقطة شاشة للصورة ورفعها.',
+          'No se pudo preparar la foto del iPhone. Elige una imagen JPG/PNG o haz una captura de pantalla y súbela.'));
+        setStatus('error');
+        setUploadProgress(0);
+        return;
+      }
       const photoBlob = await window.uploadPrivateApplicantPhoto(
-        photo,
-        { name: photo.name, type: photoType, size: photo.size },
+        preparedPhoto.file,
+        { name: preparedPhoto.file.name, type: preparedPhoto.type, size: preparedPhoto.file.size },
         ({ percentage }) => setUploadProgress(Math.max(0, Math.min(40, Math.round((percentage || 0) * 0.4)))),
       );
       const blob = await window.uploadPrivateCv(
@@ -160,9 +230,9 @@ function CareerPage() {
           },
           photo_blob: {
             url: photoBlob.url,
-            name: photo.name,
-            type: photoType,
-            size: photo.size,
+            name: preparedPhoto.file.name,
+            type: preparedPhoto.type,
+            size: preparedPhoto.file.size,
           },
           website: fd.get('website') || '',
         }),
@@ -285,12 +355,12 @@ function CareerPage() {
                 'الملفات المقبولة: PDF أو DOC أو DOCX. الحد الأقصى للحجم: 5 ميجابايت.',
                 'Archivos aceptados: PDF, DOC o DOCX. Tamaño máximo: 5 MB.')}
             </div>
-            <div className="field"><label>{t(lang, 'Upload a recent photo', 'إرفاق صورة شخصية حديثة', 'Sube una foto reciente')}</label><input required name="applicant_photo" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" /></div>
+            <div className="field"><label>{t(lang, 'Upload a recent photo', 'إرفاق صورة شخصية حديثة', 'Sube una foto reciente')}</label><input required name="applicant_photo" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif,.jpg,.jpeg,.png,.webp,.heic,.heif" /></div>
             <div style={{ fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '0.06em', color: 'var(--bci-steel)', marginTop: -8, textAlign: isAr ? 'right' : 'left' }}>
               {t(lang,
-                'Accepted images: JPG, PNG, or WebP. Maximum size: 5 MB.',
-                'الصور المقبولة: JPG أو PNG أو WebP. الحد الأقصى للحجم: 5 ميجابايت.',
-                'Imágenes aceptadas: JPG, PNG o WebP. Tamaño máximo: 5 MB.')}
+                'Accepted images: JPG, PNG, WebP, HEIC, or HEIF. iPhone photos are optimized automatically (maximum original size: 25 MB).',
+                'الصور المقبولة: JPG أو PNG أو WebP أو HEIC أو HEIF. يتم تحسين صور الآيفون تلقائياً (الحد الأقصى للصورة الأصلية: 25 ميجابايت).',
+                'Imágenes aceptadas: JPG, PNG, WebP, HEIC o HEIF. Las fotos del iPhone se optimizan automáticamente (máximo original: 25 MB).')}
             </div>
             <button type="submit" disabled={status === 'sending'} className="btn btn-accent" style={{ width: '100%', justifyContent: 'center', padding: '16px', opacity: status === 'sending' ? 0.7 : 1, cursor: status === 'sending' ? 'wait' : 'pointer' }}>
               {sent ? <><Icon name="check" size={14} stroke="#fff" /> {t(lang, 'Application sent', 'تم الإرسال', 'Solicitud enviada')}</>
