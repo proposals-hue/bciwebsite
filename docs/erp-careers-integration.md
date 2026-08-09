@@ -22,6 +22,8 @@ credential is never sent to the browser.
 Give the API user only these permissions:
 
 - Read on `Request For Job Applicant` (or the selected vacancy doctype).
+- Read on `Designation` so applicants seeking another position can choose a
+  valid ERP designation.
 - Create and Write on `Job Applicant`.
 - Create on `File` so CVs can be uploaded as private attachments.
 
@@ -57,7 +59,9 @@ applicant is linked through `job_title`; otherwise the request ID is included
 in the cover letter and linked through `custom_job_request` (or the field
 selected with `ERP_JOB_APPLICANT_REFERENCE_FIELD`). For a selected vacancy,
 the ERP Position value shown on the website is also written to the Job
-Applicant's `designation` field. Open applications leave Designation blank.
+Applicant's `designation` field. If the applicant chooses **Other position**,
+the website loads the current `Designation` records from ERP and requires one
+of them to be selected before submission.
 
 The CV is required and uploaded as a private PDF, DOC, or DOCX attachment to
 the Job Applicant's standard `resume_attachment` field. The website accepts
@@ -74,6 +78,6 @@ the applicant record. Photo uploads use the same private temporary Blob flow
 and are deleted after the ERP transfer.
 
 The position selector is required. Applicants must choose a published vacancy
-or explicitly choose Open application; leaving it blank can no longer create an
-ambiguous open application in ERP. Created records use the `Website Listing`
-source by default.
+or choose **Other position** and then select a valid ERP designation. Generic
+open applications and applications with a blank Designation are no longer
+accepted. Created records use the `Website Listing` source by default.

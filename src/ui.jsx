@@ -307,6 +307,23 @@ function loadErpJobs() {
   return erpJobsPromise;
 }
 
+let erpDesignationsPromise;
+function loadErpDesignations() {
+  if (!erpDesignationsPromise) {
+    erpDesignationsPromise = fetch('/api/designations', { headers: { Accept: 'application/json' } })
+      .then(async (response) => {
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(payload.error || 'Positions list unavailable');
+        return Array.isArray(payload.designations) ? payload.designations : [];
+      })
+      .catch((error) => {
+        erpDesignationsPromise = null;
+        throw error;
+      });
+  }
+  return erpDesignationsPromise;
+}
+
 // webForm: the ERP Web Form *name* (e.g. 'contact-bci', 'job-application').
 // data: { doctype, ...fields } keyed by the web form's field names.
 async function submitErpWebForm(webForm, data) {
@@ -320,7 +337,7 @@ async function submitErpWebForm(webForm, data) {
   return payload;
 }
 
-if (typeof window !== 'undefined') Object.assign(window, { submitErpWebForm, loadErpJobs });
+if (typeof window !== 'undefined') Object.assign(window, { submitErpWebForm, loadErpJobs, loadErpDesignations });
 
 // Google Ads lead conversion — fires only where the built pages' head snippet
 // defined gtag + window.BCI_ADS_CONV (dev pages without it are a silent no-op).

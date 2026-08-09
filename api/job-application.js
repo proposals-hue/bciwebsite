@@ -119,7 +119,7 @@ module.exports = async function handler(req, res) {
     const applicantName = clean(body.name, 140);
     const email = clean(body.email, 180).toLowerCase();
     const phone = clean(body.phone, 40);
-    const position = clean(body.position, 180) || 'Open application';
+    const position = clean(body.position, 180);
     const designation = clean(body.designation, 180);
     const coverNote = clean(body.cover_letter, 5000);
     const jobOpening = clean(body.job_opening, 180);
@@ -127,6 +127,19 @@ module.exports = async function handler(req, res) {
 
     if (!applicantName || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return sendJson(res, 400, { error: 'Please provide a valid name and email address.' });
+    }
+    if (!position || !designation) {
+      return sendJson(res, 400, { error: 'Please select the position you are applying for.' });
+    }
+    if (!jobOpening && !requestReference) {
+      try {
+        await erpFetch(`/api/resource/Designation/${encodeURIComponent(designation)}`);
+      } catch (error) {
+        if (error.statusCode === 404) {
+          return sendJson(res, 400, { error: 'Please select a valid ERP position.' });
+        }
+        throw error;
+      }
     }
     const [resume, photo] = await Promise.all([
       readResumeBlob(body.resume_blob),
@@ -141,9 +154,8 @@ module.exports = async function handler(req, res) {
       cover_letter: `Position applied for: ${position}\n${referenceLine}\n${coverNote}`.trim(),
     };
     if (jobOpening) data.job_title = jobOpening;
-    // ERP's vacancy Position value is also the Job Applicant's Designation.
-    // Open applications intentionally omit it because Designation may be a Link field.
-    if (designation) data.designation = designation;
+    // Vacancy positions and other-position choices both map to ERP Designation.
+    data.designation = designation;
     // This ERP already has the standard "Website Listing" source. Always use
     // it unless deployment explicitly selects another valid source record, so
     // website applicants are filterable and do not arrive with Source blank.

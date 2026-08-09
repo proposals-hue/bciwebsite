@@ -1,6 +1,8 @@
 /* global React, ReactDOM, LangProvider, useLang, useViewport, t, Icon, Arrow, selectOptionLabel,
-   MegaHeader, PageHero, CtaBand, Footer, JOBS, BENEFITS, VALUES, loadErpJobs */
+   MegaHeader, PageHero, CtaBand, Footer, JOBS, BENEFITS, VALUES, loadErpJobs, loadErpDesignations */
 const { useState: useState_cr, useEffect: useEffect_cr } = React;
+
+const OTHER_POSITION_ROLE = 'other-position';
 
 function normalizeCareerJob(job) {
   if (job.title && typeof job.title === 'object') return job;
@@ -119,8 +121,11 @@ function CareerPage() {
   const { lang } = useLang();
   const { isPhone } = useViewport();
   const isAr = lang === 'ar';
-  const initialRole = typeof window === 'undefined' ? '' : (new URLSearchParams(window.location.search).get('job') || '');
+  const requestedRole = typeof window === 'undefined' ? '' : (new URLSearchParams(window.location.search).get('job') || '');
+  const initialRole = requestedRole === 'open' ? OTHER_POSITION_ROLE : requestedRole;
   const [jobs, setJobs] = useState_cr(() => JOBS.map(normalizeCareerJob));
+  const [designations, setDesignations] = useState_cr([]);
+  const [designationsStatus, setDesignationsStatus] = useState_cr('idle'); // idle | loading | loaded | error
   const [role, setRole] = useState_cr(initialRole);
   const [status, setStatus] = useState_cr('idle'); // idle | sending | sent | error
   const [errorMsg, setErrorMsg] = useState_cr('');
@@ -134,6 +139,18 @@ function CareerPage() {
       .catch(() => { /* Keep the pre-rendered list when developing offline. */ });
     return () => { active = false; };
   }, []);
+
+  useEffect_cr(() => {
+    if (role !== OTHER_POSITION_ROLE || designationsStatus !== 'idle') return undefined;
+    setDesignationsStatus('loading');
+    loadErpDesignations()
+      .then((items) => {
+        setDesignations(items);
+        setDesignationsStatus('loaded');
+      })
+      .catch(() => setDesignationsStatus('error'));
+    return undefined;
+  }, [role, designationsStatus]);
 
   const apply = (jobId) => {
     setRole(jobId);
@@ -152,6 +169,7 @@ function CareerPage() {
     if (status === 'sending') return;
     const fd = new FormData(e.target);
     const selectedJob = jobs.find((job) => job.id === role);
+    const selectedDesignation = role === OTHER_POSITION_ROLE ? String(fd.get('designation') || '').trim() : '';
     const cv = fd.get('resume_file');
     const photo = fd.get('applicant_photo');
     if (!(cv instanceof File) || !cv.name) {
@@ -217,8 +235,8 @@ function CareerPage() {
           name: fd.get('name') || '',
           email: fd.get('email') || '',
           phone: fd.get('phone') || '',
-          position: selectedJob ? selectedJob.title.en : 'Open application',
-          designation: selectedJob ? selectedJob.title.en : '',
+          position: selectedJob ? selectedJob.title.en : selectedDesignation,
+          designation: selectedJob ? selectedJob.title.en : selectedDesignation,
           job_opening: selectedJob ? selectedJob.jobOpening : '',
           request_reference: selectedJob && selectedJob.sourceDoctype !== 'Job Opening' ? selectedJob.id : '',
           cover_letter: fd.get('cover_letter') || '',
@@ -316,7 +334,7 @@ function CareerPage() {
             {jobs.length > 0
               ? jobs.map((j, i) => <JobRow key={j.id} j={j} last={i === jobs.length - 1} onApply={apply} />)
               : <div style={{ padding: 36, textAlign: 'center', color: 'var(--bci-steel)' }}>
-                  {t(lang, 'There are no open positions right now. You can still send an open application below.', 'لا توجد وظائف شاغرة حالياً. لا يزال بإمكانك إرسال طلب توظيف مفتوح أدناه.', 'No hay vacantes abiertas ahora. Aun así puedes enviar una solicitud abierta abajo.')}
+                  {t(lang, 'There are no open positions right now. You can still apply for another position below.', 'لا توجد وظائف شاغرة حالياً. لا يزال بإمكانك التقدم لوظيفة أخرى أدناه.', 'No hay vacantes abiertas ahora. Aun así puedes postularte a otro puesto abajo.')}
                 </div>}
           </div>
         </div>
@@ -342,10 +360,31 @@ function CareerPage() {
                     const title = j.title[lang];
                     return <option key={j.id} value={j.id} title={title}>{selectOptionLabel(title, isPhone)}</option>;
                   })}
-                  <option value="open">{t(lang, 'Open application', 'طلب مفتوح', 'Solicitud abierta')}</option>
+                  <option value={OTHER_POSITION_ROLE}>{t(lang, 'Other position', 'وظيفة أخرى', 'Otro puesto')}</option>
                 </select>
               </div>
             </div>
+            {role === OTHER_POSITION_ROLE &&
+              <div className="field">
+                <label>{t(lang, 'Desired position', 'الوظيفة المطلوبة', 'Puesto deseado')}</label>
+                <select required name="designation" defaultValue="" disabled={designationsStatus === 'loading' || designationsStatus === 'error'}>
+                  <option value="">{designationsStatus === 'loading'
+                    ? t(lang, 'Loading positions…', 'جارٍ تحميل الوظائف…', 'Cargando puestos…')
+                    : t(lang, 'Select a position…', 'اختر الوظيفة…', 'Selecciona un puesto…')}</option>
+                  {designations.map((designation) => <option key={designation} value={designation}>{selectOptionLabel(designation, isPhone)}</option>)}
+                </select>
+                {designationsStatus === 'error' &&
+                  <div role="alert" style={{ fontSize: 12, color: '#b42318', marginTop: 8 }}>
+                    {t(lang,
+                      'The ERP positions list could not be loaded. Please try again shortly.',
+                      'تعذر تحميل قائمة الوظائف من نظام ERP. يرجى المحاولة مرة أخرى بعد قليل.',
+                      'No se pudo cargar la lista de puestos del ERP. Inténtalo de nuevo en unos momentos.')}
+                    {' '}
+                    <button type="button" onClick={() => setDesignationsStatus('idle')} style={{ border: 0, padding: 0, background: 'transparent', color: 'inherit', font: 'inherit', textDecoration: 'underline', cursor: 'pointer' }}>
+                      {t(lang, 'Retry', 'إعادة المحاولة', 'Reintentar')}
+                    </button>
+                  </div>}
+              </div>}
             <input type="text" name="website" tabIndex="-1" autoComplete="off" aria-hidden="true" style={{ position: 'absolute', left: '-10000px', width: 1, height: 1 }} />
             <div className="field"><label>{t(lang, 'Cover note', 'نبذة تعريفية', 'Carta de presentación')}</label><textarea name="cover_letter" placeholder={t(lang, 'Tell us about your experience…', 'حدثنا عن خبرتك…', 'Cuéntanos sobre tu experiencia…')}></textarea></div>
             <div className="field"><label>{t(lang, 'Upload your CV', 'إرفاق السيرة الذاتية', 'Sube tu CV')}</label><input required name="resume_file" type="file" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" /></div>
