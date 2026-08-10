@@ -355,9 +355,9 @@ function CustomerRfqForm({ source = 'website', maxWidth }) {
         cr_blob: crBlob ? {
           url: crBlob.url, name: crAttachment.name, type: rfqFileContentType(crAttachment), size: crAttachment.size,
         } : null,
-        website: data.get('website') || '',
       });
-      setRfqId(payload.rfq_id || '');
+      if (!payload.rfq_id) throw new Error('ERP did not return an RFQ ID');
+      setRfqId(payload.rfq_id);
       setStatus(payload.attachment_warning ? 'sent-warning' : 'sent');
       setUploadProgress(0);
       if (window.trackAdsLeadConversion) window.trackAdsLeadConversion();
@@ -778,9 +778,6 @@ function CustomerRfqForm({ source = 'website', maxWidth }) {
           {form.remarks && <p style={{ margin: '14px 0 0', paddingTop: 12, borderTop: '1px solid var(--bci-hairline-light)', color: 'var(--bci-steel)', fontSize: 13, whiteSpace: 'pre-wrap' }}>{form.remarks}</p>}
         </section>
       </div>
-
-      <input type="text" name="website" tabIndex="-1" autoComplete="off" aria-hidden="true"
-        style={{ position: 'absolute', left: '-10000px', width: 1, height: 1 }} />
 
       {!sent && (
         <div style={{ display: 'flex', justifyContent: step > 1 ? 'space-between' : 'flex-end', gap: 12, paddingTop: 4 }}>

@@ -74,6 +74,10 @@ The browser never receives the ERP API token. Deployment uses the existing
 - CR attachment: PDF, JPG, PNG, or WebP;
 - maximum attachment size: 5 MB each.
 
+The browser only displays a success confirmation after the API returns the
+created ERP `Customer RFQ` document ID. A generic HTTP success response is not
+treated as a registered RFQ.
+
 ## Verification policy
 
 Normal code verification uses the live ERP only for read-only schema, item,

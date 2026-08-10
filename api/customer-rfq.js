@@ -102,8 +102,6 @@ module.exports = async function handler(req, res) {
   let crBlobUrl = '';
   try {
     const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
-    if (body.website) return sendJson(res, 200, { ok: true }); // honeypot
-
     logoBlobUrl = clean(body.logo_blob?.url, 1000);
     crBlobUrl = clean(body.cr_blob?.url, 1000);
     const contactPerson = clean(body.contact_person, 140);
