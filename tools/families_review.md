@@ -879,7 +879,7 @@
   - sizes: 20 kg pail, 850 kg ibc
   - colors: Brown
   - desc: BC Tec Marlease Specially formulated blend of volatile hydrocarbons and fatty acids, providing superior Mould release performance, 60 m²/L on steel and 10 m²/L 
-- **BC Thinner 101** [1 skus] [NO-TDS]
+- **BC Thinner 101** [1 skus]
   - sizes: 20 kg pail
   - colors: Clear
   - desc: BC Thinner 101 is a highly reactive, low-boiling, fast-evaporating solvent with exceptional solvency power. It softens many synthetic elastomers, coatings, and 
