@@ -121,6 +121,7 @@ function DetailCard({ p, icon, catSlug }) {
   const [hover, setHover] = useState_d(false);
   const sizes = p.sizes || (p.size ? [p.size] : []);
   const href = productHref(catSlug, p.code);
+  const quoteHref = `${siteHref('Contact.html')}?product=${encodeURIComponent(p.code)}#rfq-form`;
   return (
     <article onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
       style={{
@@ -164,7 +165,7 @@ function DetailCard({ p, icon, catSlug }) {
             <Icon name="file-text" size={13} /> {t(lang, 'Request TDS', 'اطلب النشرة', 'Solicitar ficha')}
           </a>
         )}
-        <a href={siteHref('Contact.html')} style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500, color: 'var(--bci-green-700)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 7, marginInlineStart: 'auto' }}>
+        <a href={quoteHref} style={{ fontFamily: 'var(--ff-mono)', fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase', fontWeight: 500, color: 'var(--bci-green-700)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 7, marginInlineStart: 'auto' }}>
           {t(lang, 'Quote', 'عرض سعر', 'Cotización')} <Arrow size={12} />
         </a>
       </div>

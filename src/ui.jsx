@@ -324,6 +324,34 @@ function loadErpDesignations() {
   return erpDesignationsPromise;
 }
 
+let erpRfqItemsPromise;
+function loadErpRfqItems() {
+  if (!erpRfqItemsPromise) {
+    erpRfqItemsPromise = fetch('/api/rfq-items', { headers: { Accept: 'application/json' } })
+      .then(async (response) => {
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) throw new Error(payload.error || 'RFQ product list unavailable');
+        return Array.isArray(payload.items) ? payload.items : [];
+      })
+      .catch((error) => {
+        erpRfqItemsPromise = null;
+        throw error;
+      });
+  }
+  return erpRfqItemsPromise;
+}
+
+async function submitCustomerRfq(data) {
+  const response = await fetch('/api/customer-rfq', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(data),
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(payload.error || 'RFQ submission failed');
+  return payload;
+}
+
 // webForm: the ERP Web Form *name* (e.g. 'contact-bci', 'job-application').
 // data: { doctype, ...fields } keyed by the web form's field names.
 async function submitErpWebForm(webForm, data) {
@@ -337,7 +365,13 @@ async function submitErpWebForm(webForm, data) {
   return payload;
 }
 
-if (typeof window !== 'undefined') Object.assign(window, { submitErpWebForm, loadErpJobs, loadErpDesignations });
+if (typeof window !== 'undefined') Object.assign(window, {
+  submitErpWebForm,
+  submitCustomerRfq,
+  loadErpJobs,
+  loadErpDesignations,
+  loadErpRfqItems,
+});
 
 // Google Ads lead conversion — fires only where the built pages' head snippet
 // defined gtag + window.BCI_ADS_CONV (dev pages without it are a silent no-op).

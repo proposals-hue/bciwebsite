@@ -46,6 +46,7 @@ function ProductDetailPage() {
   const p = prod[lang] || prod.en;
   const sizes = prod.sizes || (prod.size ? [prod.size] : []);
   const related = cat.products.filter(x => x.code !== prod.code).slice(0, 4);
+  const quoteHref = `${siteHref('Contact.html')}?product=${encodeURIComponent(prod.code)}#rfq-form`;
 
   const specRows = [
     [t(lang, 'Solution line', 'خط الحلول', 'Línea'), (cat[lang] || cat.en).name],
@@ -103,7 +104,7 @@ function ProductDetailPage() {
                   <Icon name="file-text" size={15} /> {t(lang, 'Request TDS', 'اطلب النشرة', 'Solicitar ficha')}
                 </a>
               )}
-              <a href={siteHref('Contact.html')} className="btn btn-ghost-navy" style={{ display: 'inline-flex', alignItems: 'center', gap: 9 }}>
+              <a href={quoteHref} className="btn btn-ghost-navy" style={{ display: 'inline-flex', alignItems: 'center', gap: 9 }}>
                 {t(lang, 'Request a quote', 'اطلب عرض سعر', 'Solicitar cotización')} <Arrow size={13} />
               </a>
             </div>

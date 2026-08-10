@@ -21,3 +21,17 @@ window.uploadPrivateApplicantPhoto = (file, clientPayload, onUploadProgress) => 
     onUploadProgress,
   });
 };
+
+window.uploadPrivateRfqFile = (file, kind, clientPayload, onUploadProgress) => {
+  const safeKind = kind === 'logo' ? 'logo' : 'cr';
+  const safeName = String(file.name || 'attachment')
+    .split(/[\\/]/).pop()
+    .replace(/[^a-zA-Z0-9._ -]/g, '_');
+  return upload(`customer-rfq/${safeKind}/${safeName}`, file, {
+    access: 'private',
+    contentType: clientPayload?.type || file.type || undefined,
+    handleUploadUrl: '/api/rfq-file-upload',
+    clientPayload: JSON.stringify({ ...(clientPayload || {}), kind: safeKind }),
+    onUploadProgress,
+  });
+};
