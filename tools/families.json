@@ -4982,28 +4982,6 @@
     "component_only": false
   },
   {
-    "slug": "admixtures-aids",
-    "key": "BC THINNER 101",
-    "name": "BC Thinner 101",
-    "n_skus": 1,
-    "members": [
-      "BC Thinner 101 CLEAR 20 KG -FG"
-    ],
-    "desc": "BC Thinner 101 is a highly reactive, low-boiling, fast-evaporating solvent with exceptional solvency power. It softens many synthetic elastomers, coatings, and sealants, making it ideal for surface activation, recoating, and cleaning of equipment before hardening. It is a pure liquid with no added fillers or solids.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-08-13 at 5.17.04 PM (2).jpeg",
-    "n_img": 1,
-    "tds": null,
-    "n_tds": 0,
-    "sizes": [
-      "20 kg pail"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "waterproofing-roofing",
     "key": "BC BITUMEN PRIMER",
     "name": "BC Bitumen Primer",
@@ -5043,6 +5021,28 @@
       "47 kg roll"
     ],
     "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "admixtures-aids",
+    "key": "BC THINNER 101",
+    "name": "BC Thinner 101",
+    "n_skus": 1,
+    "members": [
+      "BC Thinner 101 CLEAR 20 KG -FG"
+    ],
+    "desc": "BC Thinner 101 is a highly reactive, low-boiling, fast-evaporating solvent with exceptional solvency power. It softens many synthetic elastomers, coatings, and sealants, making it ideal for surface activation, recoating, and cleaning of equipment before hardening. It is a pure liquid with no added fillers or solids.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-08-13 at 5.17.04 PM (2).jpeg",
+    "n_img": 1,
+    "tds": null,
+    "n_tds": 0,
+    "sizes": [
+      "20 kg pail"
+    ],
+    "colors": [
+      "Clear"
+    ],
     "component_only": false
   }
 ]
