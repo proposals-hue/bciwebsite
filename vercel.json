@@ -20,6 +20,10 @@
     { "source": "/Career", "destination": "/career", "permanent": true },
     { "source": "/Contact.html", "destination": "/contact", "permanent": true },
     { "source": "/Contact", "destination": "/contact", "permanent": true },
+    { "source": "/Request Quote.html", "destination": "/request-quote", "permanent": true },
+    { "source": "/Request Quote", "destination": "/request-quote", "permanent": true },
+    { "source": "/quote", "destination": "/request-quote", "permanent": true },
+    { "source": "/get-a-quote", "destination": "/request-quote", "permanent": true },
 
     { "source": "/about-us", "destination": "/about", "permanent": true },
     { "source": "/aboutus", "destination": "/about", "permanent": true },

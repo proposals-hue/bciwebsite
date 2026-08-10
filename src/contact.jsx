@@ -1,9 +1,11 @@
-/* global React, useLang, t, Icon, Arrow, useInView, revealStyle, CustomerRfqForm */
+/* global React, useLang, t, Icon, Arrow, useInView, useViewport, revealStyle,
+   submitErpWebForm, trackAdsLeadConversion */
 const { useState: useState_c } = React;
 
 // ---------- 05 · Contact ----------
 function Contact() {
   const { lang } = useLang();
+  const { isMobile } = useViewport();
   const [ref, inView] = useInView();
   const details = [
     {
@@ -44,14 +46,14 @@ function Contact() {
   ];
 
   return (
-    <section ref={ref} id="contact" style={{ background: 'var(--bci-concrete)', padding: '140px 0' }}>
+    <section ref={ref} id="contact" style={{ background: 'var(--bci-concrete)', padding: 'clamp(72px, 10vw, 140px) 0' }}>
       <div className="container">
         <div className="sec-num" style={{ color: 'var(--bci-steel)', marginBottom: 24, ...revealStyle(inView, 0) }}>
           {t(lang, 'Contact', 'تواصل', 'Contacto')}
         </div>
 
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1.05fr', gap: 80,
+          display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1.05fr', gap: isMobile ? 56 : 80,
           alignItems: 'start',
         }}>
           <div style={revealStyle(inView, 100)}>
@@ -84,11 +86,106 @@ function Contact() {
           </div>
 
           <div style={revealStyle(inView, 200)}>
-            <CustomerRfqForm source={typeof location !== 'undefined' && location.pathname === '/' ? 'homepage' : 'contact page'} />
+            <ContactForm />
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function ContactForm() {
+  const { lang } = useLang();
+  const { isPhone } = useViewport();
+  const emptyForm = { name: '', company: '', email: '', phone: '', message: '' };
+  const [form, setForm] = useState_c(emptyForm);
+  const [status, setStatus] = useState_c('idle');
+
+  const onChange = (key) => (event) => setForm({ ...form, [key]: event.target.value });
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    if (status === 'sending') return;
+    setStatus('sending');
+    try {
+      await submitErpWebForm('contact-bci', {
+        doctype: 'Lead',
+        lead_name: form.name.trim(),
+        company_name: form.company.trim(),
+        email_id: form.email.trim(),
+        mobile_no: form.phone.trim(),
+        custom_message: form.message.trim(),
+      });
+      setStatus('sent');
+      setForm(emptyForm);
+      trackAdsLeadConversion();
+      setTimeout(() => setStatus('idle'), 6000);
+    } catch (error) {
+      setStatus('error');
+    }
+  };
+
+  return (
+    <form className="bci-form" onSubmit={onSubmit} style={{
+      background: '#fff', border: '1px solid var(--bci-hairline-light)', borderRadius: 2,
+      padding: isPhone ? 24 : 36, display: 'flex', flexDirection: 'column', gap: 18,
+      direction: lang === 'ar' ? 'rtl' : 'ltr',
+    }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 16, flexWrap: 'wrap', marginBottom: 4 }}>
+        <h3 style={{
+          fontFamily: lang === 'ar' ? 'var(--ff-arabic)' : 'var(--ff-display)',
+          fontWeight: 600, fontSize: 28, color: 'var(--bci-navy)', margin: 0,
+          letterSpacing: lang === 'ar' ? 0 : '-0.01em',
+        }}>
+          {t(lang, 'Send an enquiry', 'أرسل استفساراً', 'Enviar una consulta')}
+        </h3>
+        <span className="eyebrow" style={{ color: 'var(--bci-steel)' }}>
+          {t(lang, 'Reply within 24 h', 'رد خلال 24 ساعة', 'Respuesta en 24 h')}
+        </span>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: isPhone ? '1fr' : '1fr 1fr', gap: 16 }}>
+        <div className="field">
+          <label>{t(lang, 'Name *', 'الاسم *', 'Nombre *')}</label>
+          <input type="text" required value={form.name} onChange={onChange('name')} placeholder={t(lang, 'Full name', 'الاسم الكامل', 'Nombre completo')} />
+        </div>
+        <div className="field">
+          <label>{t(lang, 'Company', 'الشركة', 'Empresa')}</label>
+          <input type="text" value={form.company} onChange={onChange('company')} placeholder={t(lang, 'Consultancy / Contractor', 'استشاري / مقاول', 'Consultoría / Contratista')} />
+        </div>
+        <div className="field">
+          <label>{t(lang, 'Email *', 'البريد الإلكتروني *', 'Correo *')}</label>
+          <input type="email" required value={form.email} onChange={onChange('email')} placeholder="name@firm.com" />
+        </div>
+        <div className="field">
+          <label>{t(lang, 'Phone', 'الهاتف', 'Teléfono')}</label>
+          <input type="tel" value={form.phone} onChange={onChange('phone')} placeholder="+966" />
+        </div>
+      </div>
+
+      <div className="field">
+        <label>{t(lang, 'Message *', 'الرسالة *', 'Mensaje *')}</label>
+        <textarea required value={form.message} onChange={onChange('message')}
+          placeholder={t(lang, 'How can our team help?', 'كيف يمكن لفريقنا مساعدتك؟', '¿Cómo puede ayudarte nuestro equipo?')} />
+      </div>
+
+      <button type="submit" disabled={status === 'sending'} className="btn btn-accent" style={{
+        width: '100%', justifyContent: 'center', padding: '16px 22px', marginTop: 2,
+        opacity: status === 'sending' ? 0.7 : 1, cursor: status === 'sending' ? 'wait' : 'pointer',
+      }}>
+        {status === 'sent' ? <><Icon name="check" size={14} stroke="#fff" />{t(lang, 'Sent', 'تم الإرسال', 'Enviado')}</>
+          : status === 'sending' ? t(lang, 'Sending…', 'جارٍ الإرسال…', 'Enviando…')
+          : <>{t(lang, 'Send message', 'إرسال الرسالة', 'Enviar mensaje')} <Arrow size={14} /></>}
+      </button>
+
+      {status === 'error' && (
+        <div role="alert" style={{ fontSize: 13, color: '#b42318', background: '#fef3f2', border: '1px solid #fda29b', borderRadius: 2, padding: '12px 14px' }}>
+          {t(lang,
+            'Something went wrong. Please try again, or email info@bcisaudi.com.',
+            'حدث خطأ. يرجى المحاولة مرة أخرى أو مراسلتنا على info@bcisaudi.com.',
+            'Hubo un problema. Inténtalo de nuevo o escribe a info@bcisaudi.com.')}
+        </div>
+      )}
+    </form>
   );
 }
 

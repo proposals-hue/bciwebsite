@@ -46,7 +46,7 @@ function ProductDetailPage() {
   const p = prod[lang] || prod.en;
   const sizes = prod.sizes || (prod.size ? [prod.size] : []);
   const related = cat.products.filter(x => x.code !== prod.code).slice(0, 4);
-  const quoteHref = `${siteHref('Contact.html')}?product=${encodeURIComponent(prod.code)}#rfq-form`;
+  const quoteHref = `${siteHref('Request Quote.html')}?product=${encodeURIComponent(prod.code)}#rfq-form`;
 
   const specRows = [
     [t(lang, 'Solution line', 'خط الحلول', 'Línea'), (cat[lang] || cat.en).name],

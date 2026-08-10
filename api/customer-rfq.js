@@ -113,6 +113,9 @@ module.exports = async function handler(req, res) {
     const transactionDate = clean(body.transaction_date, 10) || riyadhToday();
     const email = clean(body.email, 180).toLowerCase();
     const phone = clean(body.phone_no, 40);
+    const projectName = clean(body.project_name, 240);
+    const deliveryLocation = clean(body.delivery_location, 500);
+    const requiredDate = clean(body.required_date, 10);
     const remarks = clean(body.remarks, 5000);
     const source = clean(body.source, 300);
     const pageUrl = clean(body.page_url, 1000);
@@ -128,6 +131,9 @@ module.exports = async function handler(req, res) {
     }
     if (!isValidIsoDate(transactionDate)) {
       throw badRequest('Please provide a valid RFQ date.');
+    }
+    if (requiredDate && !isValidIsoDate(requiredDate)) {
+      throw badRequest('Please provide a valid required date.');
     }
     if (!rows.length || rows.length > 20) throw badRequest('Please add between 1 and 20 RFQ items.');
 
@@ -147,6 +153,9 @@ module.exports = async function handler(req, res) {
 
     const contextLines = [
       `Website contact person: ${contactPerson}`,
+      projectName ? `Project name: ${projectName}` : '',
+      deliveryLocation ? `Delivery location: ${deliveryLocation}` : '',
+      requiredDate ? `Required date: ${requiredDate}` : '',
       source ? `Website source: ${source}` : '',
       lang ? `Website language: ${lang}` : '',
       pageUrl ? `Website page: ${pageUrl}` : '',

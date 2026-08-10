@@ -121,7 +121,7 @@ function DetailCard({ p, icon, catSlug }) {
   const [hover, setHover] = useState_d(false);
   const sizes = p.sizes || (p.size ? [p.size] : []);
   const href = productHref(catSlug, p.code);
-  const quoteHref = `${siteHref('Contact.html')}?product=${encodeURIComponent(p.code)}#rfq-form`;
+  const quoteHref = `${siteHref('Request Quote.html')}?product=${encodeURIComponent(p.code)}#rfq-form`;
   return (
     <article onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
       style={{

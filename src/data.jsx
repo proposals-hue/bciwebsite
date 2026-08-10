@@ -1726,6 +1726,14 @@ const SEO_META = {
     es: { title: 'Contacto BCI — Ventas, Soporte Técnico y Cotizaciones | Dammam',
           description: 'Contacta a Building Chemistry Industry (BCI) en Dammam para especificaciones, documentación, muestras y suministro. Tel +966 59 312 0221, info@bcisaudi.com.' },
   },
+  requestQuote: {
+    en: { title: 'Request a Quote | BCI Saudi Arabia',
+          description: 'Request a quotation for BCI construction chemicals. Select products and quantities, add project details and send your RFQ directly to our sales team.' },
+    ar: { title: 'طلب عرض سعر من BCI | المملكة العربية السعودية',
+          description: 'اطلب عرض سعر لمنتجات BCI للكيماويات الإنشائية. اختر المنتجات والكميات وأضف تفاصيل المشروع وأرسل الطلب مباشرة إلى فريق المبيعات.' },
+    es: { title: 'Solicitar Cotización | BCI Arabia Saudita',
+          description: 'Solicita una cotización de químicos para construcción BCI. Elige productos y cantidades, añade los datos del proyecto y envía tu solicitud.' },
+  },
 };
 
 /* Common buyer/AI questions — drives the FAQ section + FAQPage schema.

@@ -54,6 +54,7 @@ const CONTENT_PAGES = [
   { file: 'Career.html', key: 'career', active: 'Career', path: 'career' },
   { file: 'Supplier.html', key: 'supplier', active: 'Suppliers', path: 'supplier' },
   { file: 'Contact.html', key: 'contact', active: 'Contact', path: 'contact' },
+  { file: 'Request Quote.html', key: 'requestQuote', active: '', path: 'request-quote' },
 ];
 
 const FAVICONS = [
@@ -345,6 +346,7 @@ function pageSchema(key, lang, D) {
   if (key === 'career') { scripts.push(ld(breadcrumbLd([crumbHome, here('career', tr(lang, 'Careers', 'الوظائف', 'Empleo'))]))); scripts.push(jobPostingsLd(D, lang)); }
   if (key === 'supplier') scripts.push(ld(breadcrumbLd([crumbHome, here('supplier', tr(lang, 'Suppliers', 'الموردون', 'Proveedores'))])));
   if (key === 'contact') { scripts.push(ld(breadcrumbLd([crumbHome, here('contact', tr(lang, 'Contact', 'تواصل', 'Contacto'))]))); scripts.push(ld(orgLd(D))); scripts.push(localBusinessLd(D, lang)); }
+  if (key === 'requestQuote') scripts.push(ld(breadcrumbLd([crumbHome, here('request-quote', tr(lang, 'Request a quote', 'طلب عرض سعر', 'Solicitar cotización'))])));
   return scripts.join('\n');
 }
 
@@ -353,7 +355,7 @@ function buildDoc({ lang, title, description, p, schema, prerendered, scripts, r
   const canonical = abs(lang, p);
   const hreflang = LANGS.map((L) => `<link rel="alternate" hreflang="${L}" href="${abs(L, p)}" />`).join('\n')
     + `\n<link rel="alternate" hreflang="x-default" href="${abs('en', p)}" />`;
-  const needsBlobUpload = p === 'career' || p === '' || p === 'contact' || p.startsWith('saudi-arabia/');
+  const needsBlobUpload = p === 'career' || p === 'request-quote';
   const blobUploadScript = needsBlobUpload ? `<script src="/blob-upload.js?v=${BLOB_UPLOAD_V}"></script>\n` : '';
   const scriptTags = blobUploadScript + scripts.map((s) => `<script src="/${s}.js?v=${ASSET_V}"></script>`).join('\n');
   return `<!doctype html>

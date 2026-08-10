@@ -46,7 +46,7 @@ function siteHref(path, lang) {
   // Dev serves the raw capitalised .html files, so links keep the extension there.
   if (built) {
     clean = clean.replace(/\.html$/i, '');
-    if (!clean.includes('/')) clean = clean.toLowerCase();   // top-level page → lowercase
+    if (!clean.includes('/')) clean = clean.toLowerCase().replace(/\s+/g, '-'); // top-level page → URL slug
   }
   return prefix + clean;
 }

@@ -6,15 +6,27 @@ or conversion to a quotation.
 
 ## Website surfaces
 
-The shared RFQ form is rendered on:
+The RFQ form is rendered on the dedicated `/request-quote` page. Header,
+footer, product, solution, and buyer-intent landing-page quote links send
+visitors to this page. The homepage and Contact page keep a shorter general
+enquiry form that creates a CRM Lead through the `contact-bci` ERP Web Form.
 
-- the homepage contact section;
-- the Contact page;
-- every buyer-intent SEO landing page.
+The RFQ is split into four steps:
+
+1. contact and company details;
+2. guided application/category browsing or direct ERP product search, followed
+   by quantities;
+3. project details plus optional CR/VAT information and documents;
+4. review and submission.
 
 Product and solution quote links pass the website product family in the URL so
 the requester sees the original product context. The requester must still pick
 an exact ERP SKU/pack variant before submitting.
+
+When the form runs from a plain localhost static server, the ERP API routes are
+not available. Local previews therefore use the website catalogue for product
+discovery and clearly label it as preview data; production continues to require
+the live ERP catalogue before submission.
 
 ## ERP mapping
 
@@ -26,15 +38,18 @@ an exact ERP SKU/pack variant before submitting.
 | RFQ date | `transaction_date` |
 | Email | `email` |
 | Phone | `phone_no` |
+| Project name | `remarks` context |
+| Delivery location | `remarks` context |
+| Required date | `remarks` context |
 | Company logo | `company_logo` |
 | CR attachment | `cr_attachment` |
 | Product rows | `items` (`Customer RFQ Item`) |
 | General notes and website context | `remarks` |
 
 Each item row writes `item_code`, `qty`, `description`, and the canonical
-`stock_uom` read from ERP. Contact person, page URL, language, and source page
-are recorded at the top of `remarks` because the ERP DocType has no dedicated
-fields for them.
+`stock_uom` read from ERP. Contact person, project name, delivery location,
+required date, page URL, language, and source page are recorded at the top of
+`remarks` because the ERP DocType has no dedicated fields for them.
 
 ## Serverless endpoints
 

@@ -1,6 +1,6 @@
 /* global React, ReactDOM, LangProvider, useLang, t, Icon, Arrow,
    MegaHeader, PageHero, CtaBand, Footer, SOLUTIONS, SEO_LANDING_PAGES,
-   productHref, solutionHref, CustomerRfqForm */
+   productHref, solutionHref, siteHref */
 
 function getLandingPage() {
   try {
@@ -41,6 +41,7 @@ function SeoLandingPage() {
   const categories = pageCategories(page);
   const products = landingProducts(categories);
   const primary = categories[0];
+  const quoteHref = `${siteHref('Request Quote.html', lang)}?source=${encodeURIComponent(page.path)}#rfq-form`;
 
   return (
     <main>
@@ -56,7 +57,7 @@ function SeoLandingPage() {
       <section style={{ background: 'var(--bci-concrete)', padding: '82px 0' }}>
         <div className="container" style={{ display: 'grid', gridTemplateColumns: 'minmax(260px, 360px) 1fr', gap: 48, alignItems: 'start', direction: isAr ? 'rtl' : 'ltr' }}>
           <aside style={{ position: 'sticky', top: 96, textAlign: isAr ? 'right' : 'left' }}>
-            <a href="#quote" className="btn btn-accent" style={{ marginBottom: 28 }}>
+            <a href={quoteHref} className="btn btn-accent" style={{ marginBottom: 28 }}>
               {t(lang, 'Request a quote', 'Ø§Ø·Ù„Ø¨ Ø¹Ø±Ø¶ Ø³Ø¹Ø±', 'Solicitar cotizaciÃ³n')} <Arrow size={14} />
             </a>
             <div className="eyebrow" style={{ color: 'var(--bci-green-700)', marginBottom: 14 }}>
@@ -146,8 +147,24 @@ function SeoLandingPage() {
       </section>
 
       <section id="quote" style={{ background: '#fff', padding: '82px 0' }}>
-        <div className="container">
-          <CustomerRfqForm source={`SEO landing page: ${page.path}`} maxWidth={760} />
+        <div className="container" style={{ textAlign: 'center' }}>
+          <div style={{ maxWidth: 720, marginInline: 'auto' }}>
+            <div className="eyebrow" style={{ color: 'var(--bci-green-700)', marginBottom: 16 }}>
+              {t(lang, 'Ready to price your project?', 'هل أنت جاهز لتسعير مشروعك؟', '¿Listo para cotizar tu proyecto?')}
+            </div>
+            <h2 className="display" style={{ fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontSize: 'clamp(30px, 4vw, 46px)', color: 'var(--bci-navy)', margin: '0 0 16px' }}>
+              {t(lang, 'Build your RFQ in four simple steps.', 'أنشئ طلب عرض السعر في أربع خطوات بسيطة.', 'Prepara tu solicitud en cuatro pasos sencillos.')}
+            </h2>
+            <p style={{ color: 'var(--bci-steel)', fontSize: 16, lineHeight: 1.65, margin: '0 auto 26px', maxWidth: 620 }}>
+              {t(lang,
+                'Select products and quantities, add your project details and send the request directly to BCI sales.',
+                'اختر المنتجات والكميات وأضف تفاصيل مشروعك ثم أرسل الطلب مباشرة إلى مبيعات BCI.',
+                'Elige productos y cantidades, añade los datos del proyecto y envía la solicitud directamente a ventas de BCI.')}
+            </p>
+            <a href={quoteHref} className="btn btn-accent">
+              {t(lang, 'Start request', 'ابدأ الطلب', 'Iniciar solicitud')} <Arrow size={14} />
+            </a>
+          </div>
         </div>
       </section>
     </main>

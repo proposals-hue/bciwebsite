@@ -354,7 +354,7 @@ function MegaHeader({ active }) {
 
           {!isMobile ?
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexShrink: 0, flexDirection: isAr ? 'row-reverse' : 'row' }}>
-              <a href={siteHref('Contact.html', lang)} className="btn btn-accent" style={{ padding: '12px 20px' }}>
+              <a href={siteHref('Request Quote.html', lang)} className="btn btn-accent" style={{ padding: '12px 20px' }}>
                 {t(lang, 'Get a Quote', 'اطلب عرض سعر', 'Solicitar Cotización')}
               </a>
             </div> :
@@ -509,7 +509,7 @@ function MobileMenu({ open, onClose, active }) {
 
         {/* CTA + utilities */}
         <div style={{ padding: '20px 22px 28px', marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: 18 }}>
-          <a href={siteHref('Contact.html', lang)} className="btn btn-accent" style={{ justifyContent: 'center', padding: '15px 22px' }}>
+          <a href={siteHref('Request Quote.html', lang)} className="btn btn-accent" style={{ justifyContent: 'center', padding: '15px 22px' }}>
             {t(lang, 'Get a Quote', 'اطلب عرض سعر', 'Solicitar Cotización')}
           </a>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
@@ -780,7 +780,7 @@ function Footer() {
     { en: '+966 59 312 0221', ar: '+966 59 312 0221', es: '+966 59 312 0221', href: 'tel:+966593120221', mono: true },
     { en: 'info@bcisaudi.com', ar: 'info@bcisaudi.com', es: 'info@bcisaudi.com', href: 'mailto:info@bcisaudi.com', mono: true },
     { en: 'WhatsApp', ar: 'واتساب', es: 'WhatsApp', href: 'https://wa.me/966593120221' },
-    { en: 'Get a Quote', ar: 'اطلب عرض سعر', es: 'Solicitar Cotización', href: 'Contact.html' }]
+    { en: 'Get a Quote', ar: 'اطلب عرض سعر', es: 'Solicitar Cotización', href: 'Request Quote.html' }]
 
   }];
 
