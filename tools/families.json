@@ -67,28 +67,6 @@
   },
   {
     "slug": "sealants-joints",
-    "key": "BC TEC PS PG",
-    "name": "BC Tec PS PG",
-    "n_skus": 1,
-    "members": [
-      "BC Tec PS PG WHITE 4.8 KG SYSTEM - FG"
-    ],
-    "desc": "BC Tec PSG Cross-linking, polysulphide-based elastic sealant for horizontal expansion joints, providing excellent flexibility, weather resistance, and durability under hot and tropical climatic conditions.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1)726a82.jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Tec PS PG.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "4 kg set"
-    ],
-    "colors": [
-      "White"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "sealants-joints",
     "key": "BC TEC 30S",
     "name": "BC Tec 30S",
     "n_skus": 3,
@@ -5042,6 +5020,28 @@
     ],
     "colors": [
       "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "sealants-joints",
+    "key": "BC TEC PS PG",
+    "name": "BC Tec PS PG",
+    "n_skus": 1,
+    "members": [
+      "BC Tec PS PG WHITE 4.8 KG SYSTEM - FG"
+    ],
+    "desc": "BC Tec PSG Cross-linking, polysulphide-based elastic sealant for horizontal expansion joints, providing excellent flexibility, weather resistance, and durability under hot and tropical climatic conditions.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1)726a82.jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC Tec PS PG.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "4 kg set"
+    ],
+    "colors": [
+      "White"
     ],
     "component_only": false
   }
