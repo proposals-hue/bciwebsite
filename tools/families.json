@@ -5002,28 +5002,6 @@
     "component_only": false
   },
   {
-    "slug": "concrete-repair",
-    "key": "BC REPAIR 100",
-    "name": "BC Repair 100",
-    "n_skus": 1,
-    "members": [
-      "BC Repair 100 GREY 20 KG -FG"
-    ],
-    "desc": "BC Repair 100 High-quality, water-resistant cementitious repair mortar, 20 kg bag, 1.10 m² at 10 mm, one coat, for durable crack and surface repair up to 4 mm width on concrete.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-08-12 at 4.07.52 PM (1).jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Repair 100c7d943.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20 kg bag"
-    ],
-    "colors": [
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "waterproofing-roofing",
     "key": "BC SEAL",
     "name": "BC Seal",
@@ -5039,6 +5017,28 @@
     "n_tds": 1,
     "sizes": [
       "30 kg set"
+    ],
+    "colors": [
+      "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "concrete-repair",
+    "key": "BC REPAIR 100",
+    "name": "BC Repair 100",
+    "n_skus": 1,
+    "members": [
+      "BC Repair 100 GREY 20 KG -FG"
+    ],
+    "desc": "BC Repair 100 High-quality, water-resistant cementitious repair mortar, 20 kg bag, 1.10 m² at 10 mm, one coat, for durable crack and surface repair up to 4 mm width on concrete.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-08-12 at 4.07.52 PM (1).jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC Repair 100c7d943.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20 kg bag"
     ],
     "colors": [
       "Grey"
