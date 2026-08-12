@@ -249,12 +249,21 @@ function CustomerRfqForm({ source = 'website', maxWidth }) {
     return true;
   };
 
-  const validateFiles = (formElement) => {
+  const validateProjectDetails = (formElement) => {
     const data = new FormData(formElement);
     const logo = data.get('company_logo');
     const crAttachment = data.get('cr_attachment');
+    const hasCrAttachment = crAttachment instanceof File && Boolean(crAttachment.name);
+    if (!form.delivery_location.trim() || !form.cr_number.trim()
+        || !form.vat_number.trim() || !hasCrAttachment) {
+      showError(t(lang,
+        'Please enter the delivery location, CR number, VAT number, and attach the CR document.',
+        'يرجى إدخال موقع التسليم ورقم السجل التجاري والرقم الضريبي وإرفاق مستند السجل التجاري.',
+        'Indica el lugar de entrega, el número de registro mercantil, el número de IVA y adjunta el documento del registro mercantil.'));
+      return false;
+    }
     if ((logo instanceof File && logo.name && logo.size > MAX_RFQ_ATTACHMENT_BYTES)
-        || (crAttachment instanceof File && crAttachment.name && crAttachment.size > MAX_RFQ_ATTACHMENT_BYTES)) {
+        || crAttachment.size > MAX_RFQ_ATTACHMENT_BYTES) {
       showError(t(lang,
         'Each attachment must be no larger than 5 MB.',
         'يجب ألا يتجاوز حجم كل مرفق 5 ميجابايت.',
@@ -276,7 +285,7 @@ function CustomerRfqForm({ source = 'website', maxWidth }) {
   const continueForm = (event) => {
     const valid = step === 1 ? validateContact()
       : step === 2 ? validateProducts()
-      : validateFiles(event.currentTarget.form);
+      : validateProjectDetails(event.currentTarget.form);
     if (valid) moveToStep(Math.min(4, step + 1));
   };
 
@@ -288,7 +297,7 @@ function CustomerRfqForm({ source = 'website', maxWidth }) {
     if (step < 4) {
       const valid = step === 1 ? validateContact()
         : step === 2 ? validateProducts()
-        : validateFiles(formElement);
+        : validateProjectDetails(formElement);
       if (valid) moveToStep(step + 1);
       return;
     }
@@ -299,6 +308,7 @@ function CustomerRfqForm({ source = 'website', maxWidth }) {
     const hasCrAttachment = crAttachment instanceof File && Boolean(crAttachment.name);
     if (!validateContact()) return;
     if (!validateProducts()) return;
+    if (!validateProjectDetails(formElement)) return;
     if ((hasLogo && logo.size > MAX_RFQ_ATTACHMENT_BYTES)
         || (hasCrAttachment && crAttachment.size > MAX_RFQ_ATTACHMENT_BYTES)) {
       setErrorMsg(t(lang,
@@ -662,24 +672,24 @@ function CustomerRfqForm({ source = 'website', maxWidth }) {
             <input type="text" value={form.project_name} onChange={changeForm('project_name')} />
           </div>
           <div className="field">
-            <label>{t(lang, 'Delivery location (optional)', 'موقع التسليم (اختياري)', 'Lugar de entrega (opcional)')}</label>
-            <input type="text" value={form.delivery_location} onChange={changeForm('delivery_location')} placeholder={t(lang, 'City / site', 'المدينة / الموقع', 'Ciudad / obra')} />
+            <label>{t(lang, 'Delivery location', 'موقع التسليم', 'Lugar de entrega')}</label>
+            <input type="text" required value={form.delivery_location} onChange={changeForm('delivery_location')} placeholder={t(lang, 'City / site', 'المدينة / الموقع', 'Ciudad / obra')} />
           </div>
           <div className="field">
             <label>{t(lang, 'Required date (optional)', 'التاريخ المطلوب (اختياري)', 'Fecha requerida (opcional)')}</label>
             <input type="date" min={form.transaction_date} value={form.required_date} onChange={changeForm('required_date')} />
           </div>
           <div className="field">
-            <label>{t(lang, 'CR number (optional)', 'رقم السجل التجاري (اختياري)', 'N.º de registro mercantil (opcional)')}</label>
-            <input type="text" inputMode="numeric" value={form.cr_number} onChange={changeForm('cr_number')} />
+            <label>{t(lang, 'CR number', 'رقم السجل التجاري', 'N.º de registro mercantil')}</label>
+            <input type="text" inputMode="numeric" required value={form.cr_number} onChange={changeForm('cr_number')} />
           </div>
           <div className="field">
-            <label>{t(lang, 'VAT number (optional)', 'الرقم الضريبي (اختياري)', 'N.º de IVA (opcional)')}</label>
-            <input type="text" inputMode="numeric" value={form.vat_number} onChange={changeForm('vat_number')} />
+            <label>{t(lang, 'VAT number', 'الرقم الضريبي', 'N.º de IVA')}</label>
+            <input type="text" inputMode="numeric" required value={form.vat_number} onChange={changeForm('vat_number')} />
           </div>
         </div>
         <div className="eyebrow" style={{ color: 'var(--bci-green-700)', borderBottom: '1px solid var(--bci-hairline-light)', paddingBottom: 9 }}>
-          {t(lang, 'Optional company documents', 'مستندات الشركة الاختيارية', 'Documentos opcionales de la empresa')}
+          {t(lang, 'Company documents', 'مستندات الشركة', 'Documentos de la empresa')}
         </div>
         <div className="form-grid-2">
         <div className="field">
@@ -688,8 +698,8 @@ function CustomerRfqForm({ source = 'website', maxWidth }) {
             onChange={(event) => setFiles({ ...files, logo: event.target.files?.[0]?.name || '' })} />
         </div>
         <div className="field">
-          <label>{t(lang, 'CR attachment (optional)', 'مرفق السجل التجاري (اختياري)', 'Registro mercantil adjunto (opcional)')}</label>
-          <input name="cr_attachment" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp,application/pdf,image/jpeg,image/png,image/webp"
+          <label>{t(lang, 'CR attachment', 'مرفق السجل التجاري', 'Registro mercantil adjunto')}</label>
+          <input name="cr_attachment" type="file" required accept=".pdf,.jpg,.jpeg,.png,.webp,application/pdf,image/jpeg,image/png,image/webp"
             onChange={(event) => setFiles({ ...files, cr: event.target.files?.[0]?.name || '' })} />
         </div>
       </div>

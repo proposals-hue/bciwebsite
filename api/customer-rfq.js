@@ -127,6 +127,10 @@ module.exports = async function handler(req, res) {
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       throw badRequest('Please provide a valid email address.');
     }
+    if (!deliveryLocation || !crNumber || !vatNumber) {
+      throw badRequest('Please provide the delivery location, CR number, and VAT number.');
+    }
+    if (!crBlobUrl) throw badRequest('Please attach the CR document.');
     if (!isValidIsoDate(transactionDate)) {
       throw badRequest('Please provide a valid RFQ date.');
     }
