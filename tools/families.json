@@ -66,33 +66,6 @@
     "component_only": false
   },
   {
-    "slug": "sealants-joints",
-    "key": "BC TEC 30S",
-    "name": "BC Tec 30S",
-    "n_skus": 3,
-    "members": [
-      "BC Tec 30S BLACK 600 ML-FG",
-      "BC Tec 30S GREY 600 ML-FG",
-      "BC Tec 30S WHITE 600 ML-FG"
-    ],
-    "desc": "BCI TEC30 S One-component, moisture-curing, non-sag polyurethane joint sealant, for elastic, tough, and resilient sealing with excellent recovery, suitable for a wide range of temperatures and joint applications.",
-    "n_desc": 1,
-    "img": "/files/TEC 30 S.jpeg",
-    "n_img": 3,
-    "tds": "/private/files/BC Tec 30 TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "0.714286 L sauge",
-      "600 kg pcs"
-    ],
-    "colors": [
-      "Black",
-      "Grey",
-      "White"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "admixtures-aids",
     "key": "BC PIGMENT PASTE",
     "name": "BC Pigment Paste",
@@ -1300,6 +1273,33 @@
     "n_tds": 1,
     "sizes": [],
     "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "sealants-joints",
+    "key": "BC TEC 30S",
+    "name": "BC Tec 30S",
+    "n_skus": 3,
+    "members": [
+      "BC Tec 30S BLACK 600 ML-FG",
+      "BC Tec 30S GREY 600 ML-FG",
+      "BC Tec 30S WHITE 600 ML-FG"
+    ],
+    "desc": "BCI TEC30 S One-component, moisture-curing, non-sag polyurethane joint sealant, for elastic, tough, and resilient sealing with excellent recovery, suitable for a wide range of temperatures and joint applications.",
+    "n_desc": 1,
+    "img": "/files/TEC 30 S.jpeg",
+    "n_img": 3,
+    "tds": "/private/files/BC Tec 30 TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "0.714286 L sauge",
+      "600 kg pcs"
+    ],
+    "colors": [
+      "Black",
+      "Grey",
+      "White"
+    ],
     "component_only": false
   },
   {
@@ -4918,28 +4918,6 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "BC BITUMEN PRIMER",
-    "name": "BC Bitumen Primer",
-    "n_skus": 1,
-    "members": [
-      "BC Bitumen Primer BLACK 15 KG -FG"
-    ],
-    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
-    "n_desc": 1,
-    "img": "/files/solvent Can.png",
-    "n_img": 1,
-    "tds": "/private/files/BC Bitumen Primer New.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "15 kg pail"
-    ],
-    "colors": [
-      "Black"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "pu-foam-insulation",
     "key": "BC FOAMCONCRETE",
     "name": "BC Foam Concrete",
@@ -5043,6 +5021,28 @@
       "47 kg roll"
     ],
     "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITUMEN PRIMER",
+    "name": "BC Bitumen Primer",
+    "n_skus": 1,
+    "members": [
+      "BC Bitumen Primer BLACK 15 KG -FG"
+    ],
+    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
+    "n_desc": 1,
+    "img": "/files/solvent Can.png",
+    "n_img": 1,
+    "tds": "/private/files/BC Bitumen Primer New.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "15 kg pail"
+    ],
+    "colors": [
+      "Black"
+    ],
     "component_only": false
   }
 ]
