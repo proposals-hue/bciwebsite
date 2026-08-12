@@ -5002,28 +5002,6 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "BC SEAL",
-    "name": "BC Seal",
-    "n_skus": 1,
-    "members": [
-      "BC Seal GREY 30 KG SYSTEM - FG"
-    ],
-    "desc": "BC Seal Two-component, acrylic-modified cementitious waterproofing coating, 30 kg set, 2 kg/m² at 1 mm, approx. 4.0 SAR/m², for flexible, durable protection against water and chemical ingress on concrete and masonry surfaces.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.09 PM.jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Seale5e739.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "sealants-joints",
     "key": "BC TEC PS PG",
     "name": "BC Tec PS PG",
@@ -5042,6 +5020,28 @@
     ],
     "colors": [
       "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC SEAL",
+    "name": "BC Seal",
+    "n_skus": 1,
+    "members": [
+      "BC Seal GREY 30 KG SYSTEM - FG"
+    ],
+    "desc": "BC Seal Two-component, acrylic-modified cementitious waterproofing coating, 30 kg set, 2 kg/m² at 1 mm, approx. 4.0 SAR/m², for flexible, durable protection against water and chemical ingress on concrete and masonry surfaces.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.09 PM.jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC Seale5e739.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Grey"
     ],
     "component_only": false
   }
