@@ -1215,23 +1215,28 @@
     "slug": "concrete-repair",
     "key": "BC POXY PUTTY 2000",
     "name": "BC Poxy Putty 2000",
-    "n_skus": 2,
+    "n_skus": 4,
     "members": [
       "BC Poxy Putty 2000 GREY 3 kg System - FG",
-      "BC Poxy Putty 2000 GREY 9.7kg System - FG"
+      "BC Poxy Putty 2000 GREY 5.2 KG Part-B - FG",
+      "BC Poxy Putty 2000 GREY 9.7kg System - FG",
+      "BC Poxy Putty 2000 WHITE 4.5 KG Part-A - FG"
     ],
-    "desc": "BC Poxy Putty 2000 Two-component, high-strength epoxy putty, 3 kg set yielding 1.75 L, for durable bonding, bedding, and concrete repair applications.",
-    "n_desc": 2,
+    "desc": "BC Poxy Putty 2000 Two-component, high-strength epoxy putty, 3 kg set yielding 1.75 L, for durable bonding, bedding, and concrete repair applications..",
+    "n_desc": 3,
     "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1).jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Epoxy Putty 2000 TDS.pdf",
-    "n_tds": 1,
+    "n_img": 3,
+    "tds": "/files/BC Epoxy Putty 2000 TDS.pdf",
+    "n_tds": 2,
     "sizes": [
       "3 kg set",
+      "4.5 kg can",
+      "5.2 kg can",
       "9.7 kg set"
     ],
     "colors": [
-      "Grey"
+      "Grey",
+      "White"
     ],
     "component_only": false
   },
@@ -2228,28 +2233,6 @@
     "n_tds": 1,
     "sizes": [
       "10 kg pail",
-      "20 kg pail"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "protective-coatings",
-    "key": "BC SEALER MATT",
-    "name": "BC Sealer Matt",
-    "n_skus": 1,
-    "members": [
-      "BC Sealer Matt CLEAR 20 KG -FG"
-    ],
-    "desc": "BC Sealer Matt — One-component, water-based acrylic sealer, 20 kg, offering fast-drying, stain-resistant, and water-blush-resistant protection without solvent odors.",
-    "n_desc": 1,
-    "img": "/files/Epoxy Primer.jpeg",
-    "n_img": 1,
-    "tds": null,
-    "n_tds": 0,
-    "sizes": [
       "20 kg pail"
     ],
     "colors": [
@@ -5042,6 +5025,28 @@
     ],
     "colors": [
       "Black"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC SEALER MATT",
+    "name": "BC Sealer Matt",
+    "n_skus": 1,
+    "members": [
+      "BC Sealer Matt CLEAR 20 KG -FG"
+    ],
+    "desc": "BC Sealer Matt — One-component, water-based acrylic sealer, 20 kg, offering fast-drying, stain-resistant, and water-blush-resistant protection without solvent odors.",
+    "n_desc": 1,
+    "img": "/files/Epoxy Primer.jpeg",
+    "n_img": 1,
+    "tds": null,
+    "n_tds": 0,
+    "sizes": [
+      "20 kg pail"
+    ],
+    "colors": [
+      "Clear"
     ],
     "component_only": false
   }

@@ -641,10 +641,10 @@
   - sizes: 33 kg set
   - colors: Creamy
   - desc: BC Mortar 5000
-- **BC Poxy Putty 2000** [2 skus]
-  - sizes: 3 kg set, 9.7 kg set
-  - colors: Grey
-  - desc: BC Poxy Putty 2000 Two-component, high-strength epoxy putty, 3 kg set yielding 1.75 L, for durable bonding, bedding, and concrete repair applications.
+- **BC Poxy Putty 2000** [4 skus]
+  - sizes: 3 kg set, 4.5 kg can, 5.2 kg can, 9.7 kg set
+  - colors: Grey, White
+  - desc: BC Poxy Putty 2000 Two-component, high-strength epoxy putty, 3 kg set yielding 1.75 L, for durable bonding, bedding, and concrete repair applications..
 - **BC Poxy Putty 3000** [1 skus]
   - sizes: 9.9 kg set
   - colors: Grey
