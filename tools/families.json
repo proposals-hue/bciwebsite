@@ -4027,28 +4027,6 @@
     "component_only": false
   },
   {
-    "slug": "pu-foam-insulation",
-    "key": "BC 702 45",
-    "name": "BC 702 45",
-    "n_skus": 1,
-    "members": [
-      "BC 702 Spary 45 FOAM YELLOW 470 KG -FG"
-    ],
-    "desc": "BC 702 Spray 45 Polyol Two-component spray foam system, 45 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with good mechanical strength, dimensional stability, and substrate adhesion, compatible with high- and low-pressure machines, containing 141B blowing agent.",
-    "n_desc": 1,
-    "img": "/files/Foam Drums9799e3.webp",
-    "n_img": 1,
-    "tds": "/private/files/BC 702  TDS - 50-55...pdf",
-    "n_tds": 1,
-    "sizes": [
-      "470 kg set"
-    ],
-    "colors": [
-      "Yellow"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "protective-coatings",
     "key": "BC PU PRIMER 810",
     "name": "BC PU Primer 810",
@@ -5047,6 +5025,28 @@
     ],
     "colors": [
       "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 702 45",
+    "name": "BC 702 45",
+    "n_skus": 1,
+    "members": [
+      "BC 702 Spary 45 FOAM YELLOW 470 KG -FG"
+    ],
+    "desc": "BC 702 Spray 45 Polyol Two-component spray foam system, 45 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with good mechanical strength, dimensional stability, and substrate adhesion, compatible with high- and low-pressure machines, containing 141B blowing agent.",
+    "n_desc": 1,
+    "img": "/files/Foam Drums9799e3.webp",
+    "n_img": 1,
+    "tds": "/private/files/BC 702  TDS - 50-55...pdf",
+    "n_tds": 1,
+    "sizes": [
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
     ],
     "component_only": false
   }
