@@ -1438,30 +1438,6 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "BC BITU CLASSIC 200",
-    "name": "BC Bitu Classic 200",
-    "n_skus": 2,
-    "members": [
-      "BC Bitu Classic 200 BLACK ROLL - FG",
-      "BC Bitu Classic 200 Slated   ROLL - FG"
-    ],
-    "desc": "BC Bitu Classic (200 APP) (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1)b8a6d8.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Bitu-Classic 200.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "0.909091 L roll"
-    ],
-    "colors": [
-      "Black",
-      "Slated"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "admixtures-aids",
     "key": "BC TEC 505 TP",
     "name": "BC Tec 505 TP",
@@ -1873,30 +1849,6 @@
     ],
     "colors": [
       "Yellow"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
-    "key": "BC BITU CLASSIC 250",
-    "name": "BC Bitu Classic 250",
-    "n_skus": 2,
-    "members": [
-      "BC Bitu Classic 250 BLACK ROLL - FG",
-      "BC Bitu Classic 250 Slated   ROLL - FG"
-    ],
-    "desc": "BC Bitu-Classic 250 slated is a high-performance, torch-applied APP modified bituminous waterproofing membrane reinforced with 250 gsm non-woven polyester mat. It is manufactured using premium-grade bitumen modified with Atactic Polypropylene (APP) to provide excellent heat resistance, tensile strength, elongation, and long-term durability.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1)b8a6d8.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Bitu-Classic 250.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "0.909091 L roll"
-    ],
-    "colors": [
-      "Black",
-      "Slated"
     ],
     "component_only": false
   },
@@ -3111,30 +3063,6 @@
     ],
     "colors": [
       "Grey"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "admixtures-aids",
-    "key": "BC TOOL CLEANER",
-    "name": "BC Tool Cleaner",
-    "n_skus": 2,
-    "members": [
-      "BC Tool Cleaner CLEAR 20 KG - FG",
-      "BC Tool Cleaner CLEAR 200 KG - FG"
-    ],
-    "desc": "BC Tool Cleaner is a highly reactive, low-boiling, fast-evaporating solvent with excellent solvency power. It is designed for effective cleaning of tools, equipment, and surfaces prior to coating or elastomer application.",
-    "n_desc": 1,
-    "img": "/files/WANOL.jpeg",
-    "n_img": 2,
-    "tds": "/files/BC Tool Cleaner TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20 kg pail",
-      "200 kg drum"
-    ],
-    "colors": [
-      "Clear"
     ],
     "component_only": false
   },
@@ -4966,6 +4894,30 @@
   },
   {
     "slug": "waterproofing-roofing",
+    "key": "BC BITU CLASSIC 200",
+    "name": "BC Bitu Classic 200",
+    "n_skus": 2,
+    "members": [
+      "BC Bitu Classic 200 BLACK ROLL - FG",
+      "BC Bitu Classic 200 Slated   ROLL - FG"
+    ],
+    "desc": "BC Bitu Classic (200 APP) (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1)b8a6d8.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Bitu-Classic 200.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "0.909091 L roll"
+    ],
+    "colors": [
+      "Black",
+      "Slated"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
     "key": "BC BITUMEN PRIMER",
     "name": "BC Bitumen Primer",
     "n_skus": 1,
@@ -5047,6 +4999,54 @@
     ],
     "colors": [
       "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITU CLASSIC 250",
+    "name": "BC Bitu Classic 250",
+    "n_skus": 2,
+    "members": [
+      "BC Bitu Classic 250 BLACK ROLL - FG",
+      "BC Bitu Classic 250 Slated   ROLL - FG"
+    ],
+    "desc": "BC Bitu-Classic 250 slated is a high-performance, torch-applied APP modified bituminous waterproofing membrane reinforced with 250 gsm non-woven polyester mat. It is manufactured using premium-grade bitumen modified with Atactic Polypropylene (APP) to provide excellent heat resistance, tensile strength, elongation, and long-term durability.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1)b8a6d8.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Bitu-Classic 250.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "0.909091 L roll"
+    ],
+    "colors": [
+      "Black",
+      "Slated"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "admixtures-aids",
+    "key": "BC TOOL CLEANER",
+    "name": "BC Tool Cleaner",
+    "n_skus": 2,
+    "members": [
+      "BC Tool Cleaner CLEAR 20 KG - FG",
+      "BC Tool Cleaner CLEAR 200 KG - FG"
+    ],
+    "desc": "BC Tool Cleaner is a highly reactive, low-boiling, fast-evaporating solvent with excellent solvency power. It is designed for effective cleaning of tools, equipment, and surfaces prior to coating or elastomer application.",
+    "n_desc": 1,
+    "img": "/files/WANOL.jpeg",
+    "n_img": 2,
+    "tds": "/files/BC Tool Cleaner TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20 kg pail",
+      "200 kg drum"
+    ],
+    "colors": [
+      "Clear"
     ],
     "component_only": false
   }
