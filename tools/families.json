@@ -4785,52 +4785,6 @@
     "component_only": false
   },
   {
-    "slug": "polyurea-membranes",
-    "key": "BC 237",
-    "name": "BC 237",
-    "n_skus": 2,
-    "members": [
-      "BC 237 POLYUREA CLEAR 420 KG - FG",
-      "BC 237 Polyol CLEAR 196 KG -FG"
-    ],
-    "desc": "BC 237 Pure Polyurea Two-component, solvent-free, 100% solid, spray-applied polyurea waterproofing coating, 1 kg/m² at 1 mm, 420 kg kit (196 kg Polyol + 220 kg Isocyanate + 4 kg Pigment), for seamless, permanently elastic, crack-bridging protection on concrete and metal substrates with excellent chemical and abrasion resistance.",
-    "n_desc": 1,
-    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x916.webp",
-    "n_img": 2,
-    "tds": "/private/files/BC 237 Polyurea TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "196 kg drum",
-      "Standard Industrial Size Drum"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "protective-coatings",
-    "key": "BC POXY PRIMER 349",
-    "name": "BC Poxy Primer 349",
-    "n_skus": 1,
-    "members": [
-      "BC Poxy primer 349 CREAMY 30 KG SYSTEM - FG"
-    ],
-    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Epoxy Primer 349.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Creamy"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "pu-foam-insulation",
     "key": "BC XPS 32 5CMX60CMX125CM",
     "name": "BC XPS 32 5cmx60cmx125cm",
@@ -4869,28 +4823,6 @@
     ],
     "colors": [
       "White"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "concrete-repair",
-    "key": "BC REPAIR 100",
-    "name": "BC Repair 100",
-    "n_skus": 1,
-    "members": [
-      "BC Repair 100 GREY 20 KG -FG"
-    ],
-    "desc": "BC Repair 100 High-quality, water-resistant cementitious repair mortar, 20 kg bag, 1.10 m² at 10 mm, one coat, for durable crack and surface repair up to 4 mm width on concrete.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-08-12 at 4.07.52 PM (1).jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Repair 100c7d943.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20 kg bag"
-    ],
-    "colors": [
-      "Grey"
     ],
     "component_only": false
   },
@@ -5010,6 +4942,94 @@
   },
   {
     "slug": "waterproofing-roofing",
+    "key": "GEOTEXTILE",
+    "name": "Geotextile",
+    "n_skus": 1,
+    "members": [
+      "Geotextile 180g/m2"
+    ],
+    "desc": "BC Geotextile 180 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works. It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications",
+    "n_desc": 1,
+    "img": "/files/Geotextile.jpg",
+    "n_img": 1,
+    "tds": "/files/BC Geotextile -180.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "6.94444 L roll"
+    ],
+    "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "polyurea-membranes",
+    "key": "BC 237",
+    "name": "BC 237",
+    "n_skus": 2,
+    "members": [
+      "BC 237 POLYUREA CLEAR 420 KG - FG",
+      "BC 237 Polyol CLEAR 196 KG -FG"
+    ],
+    "desc": "BC 237 Pure Polyurea Two-component, solvent-free, 100% solid, spray-applied polyurea waterproofing coating, 1 kg/m² at 1 mm, 420 kg kit (196 kg Polyol + 220 kg Isocyanate + 4 kg Pigment), for seamless, permanently elastic, crack-bridging protection on concrete and metal substrates with excellent chemical and abrasion resistance.",
+    "n_desc": 1,
+    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x916.webp",
+    "n_img": 2,
+    "tds": "/private/files/BC 237 Polyurea TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "196 kg drum",
+      "Standard Industrial Size Drum"
+    ],
+    "colors": [
+      "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC POXY PRIMER 349",
+    "name": "BC Poxy Primer 349",
+    "n_skus": 1,
+    "members": [
+      "BC Poxy primer 349 CREAMY 30 KG SYSTEM - FG"
+    ],
+    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Epoxy Primer 349.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Creamy"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "concrete-repair",
+    "key": "BC REPAIR 100",
+    "name": "BC Repair 100",
+    "n_skus": 1,
+    "members": [
+      "BC Repair 100 GREY 20 KG -FG"
+    ],
+    "desc": "BC Repair 100 High-quality, water-resistant cementitious repair mortar, 20 kg bag, 1.10 m² at 10 mm, one coat, for durable crack and surface repair up to 4 mm width on concrete.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-08-12 at 4.07.52 PM (1).jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC Repair 100c7d943.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20 kg bag"
+    ],
+    "colors": [
+      "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
     "key": "BC BITUMEN PRIMER",
     "name": "BC Bitumen Primer",
     "n_skus": 1,
@@ -5028,26 +5048,6 @@
     "colors": [
       "Black"
     ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
-    "key": "GEOTEXTILE",
-    "name": "Geotextile",
-    "n_skus": 1,
-    "members": [
-      "Geotextile 180g/m2"
-    ],
-    "desc": "BC Geotextile 180 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works. It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications",
-    "n_desc": 1,
-    "img": "/files/Geotextile.jpg",
-    "n_img": 1,
-    "tds": "/files/BC Geotextile -180.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "6.94444 L roll"
-    ],
-    "colors": [],
     "component_only": false
   }
 ]
