@@ -66,33 +66,6 @@
     "component_only": false
   },
   {
-    "slug": "admixtures-aids",
-    "key": "BC PIGMENT PASTE",
-    "name": "BC Pigment Paste",
-    "n_skus": 5,
-    "members": [
-      "BC PIGMENT PASTE GREY 4 KG - FG",
-      "BC PIGMENT PASTE RAL1013 4 KG - FG",
-      "BC PIGMENT PASTE RAL1015 4 KG - FG",
-      "BC PIGMENT PASTE RAL5026 4 KG - FG",
-      "BC PIGMENT PASTE WHITE 4 KG - FG"
-    ],
-    "desc": "BC Pigment Paste is a concentrated pigment paste based on high-quality resin and selected color pigments. It is formulated for tinting polyurea, polyurethane (PU), and nitrocellulose (NC) coatings, suitable for both matt and gloss finishes.",
-    "n_desc": 1,
-    "img": "/files/859a12d29.png",
-    "n_img": 5,
-    "tds": null,
-    "n_tds": 0,
-    "sizes": [
-      "4 kg can"
-    ],
-    "colors": [
-      "Grey",
-      "White"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "tile-grouts-anchors",
     "key": "BC TEC CEM GROUT",
     "name": "BC Tec Cem Grout",
@@ -3597,6 +3570,33 @@
     ],
     "colors": [
       "Pink"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "admixtures-aids",
+    "key": "BC PIGMENT PASTE",
+    "name": "BC Pigment Paste",
+    "n_skus": 5,
+    "members": [
+      "BC PIGMENT PASTE GREY 4 KG - FG",
+      "BC PIGMENT PASTE RAL1013 4 KG - FG",
+      "BC PIGMENT PASTE RAL1015 4 KG - FG",
+      "BC PIGMENT PASTE RAL5026 4 KG - FG",
+      "BC PIGMENT PASTE WHITE 4 KG - FG"
+    ],
+    "desc": "BC Pigment Paste is a concentrated pigment paste based on high-quality resin and selected color pigments. It is formulated for tinting polyurea, polyurethane (PU), and nitrocellulose (NC) coatings, suitable for both matt and gloss finishes.",
+    "n_desc": 1,
+    "img": "/files/859a12d29.png",
+    "n_img": 5,
+    "tds": null,
+    "n_tds": 0,
+    "sizes": [
+      "4 kg can"
+    ],
+    "colors": [
+      "Grey",
+      "White"
     ],
     "component_only": false
   },
