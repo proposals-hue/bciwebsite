@@ -4546,26 +4546,6 @@
     "component_only": false
   },
   {
-    "slug": "pu-foam-insulation",
-    "key": "BC XPS 32 10CMX60CMX125CM",
-    "name": "BC XPS 32 10cmx60cmx125cm",
-    "n_skus": 1,
-    "members": [
-      "BC XPS BOARD 32-35KG/M3 (10CMX60CMX125CM)"
-    ],
-    "desc": "XPS Board 32–35 kg/m³ (10 cm × 60 cm × 125 cm) is an extruded polystyrene insulation board designed for high compressive strength and low water absorption.It provides durable, long-lasting thermal insulation for foundations, roofs, walls, and below-grade applications",
-    "n_desc": 1,
-    "img": "/files/XPS-Extruded-Polystyrene-Board..jpg",
-    "n_img": 1,
-    "tds": "/private/files/BC XPS Board.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "2.5 kg board"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
     "slug": "protective-coatings",
     "key": "BC GRP LINE PRIMER",
     "name": "BC GRP Line Primer",
@@ -5048,6 +5028,26 @@
     "colors": [
       "Yellow"
     ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC XPS 32 10CMX60CMX125CM",
+    "name": "BC XPS 32 10cmx60cmx125cm",
+    "n_skus": 1,
+    "members": [
+      "BC XPS BOARD 32-35KG/M3 (10CMX60CMX125CM)"
+    ],
+    "desc": "XPS Board 32–35 kg/m³ (10 cm × 60 cm × 125 cm) is an extruded polystyrene insulation board designed for high compressive strength and low water absorption.It provides durable, long-lasting thermal insulation for foundations, roofs, walls, and below-grade applications",
+    "n_desc": 1,
+    "img": "/files/XPS-Extruded-Polystyrene-Board..jpg",
+    "n_img": 1,
+    "tds": "/private/files/BC XPS Board.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "2.5 kg board"
+    ],
+    "colors": [],
     "component_only": false
   }
 ]
