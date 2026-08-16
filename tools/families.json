@@ -715,30 +715,6 @@
   },
   {
     "slug": "pu-foam-insulation",
-    "key": "BC 703 SWP",
-    "name": "BC 703 SWP",
-    "n_skus": 2,
-    "members": [
-      "BC 703 SWP FOAM YELLOW 470 KG -FG",
-      "BC 703 SWP Polyol YELLOW 220 KG -FG"
-    ],
-    "desc": "BC 703 Polyol Two-component, 141 B-based sandwich panel system, 42–45 kg/m³ density; reacts with BC 768 Isocyanate, 470 kg kit (220 kg Polyol + 250 kg Isocyanate) to form highly crosslinked, rigid, dimensionally stable foam with good metal adhesion, B2-grade per DIN 4102.",
-    "n_desc": 1,
-    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
-    "n_img": 2,
-    "tds": "/files/BC 703 SWP.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "220 kg drum",
-      "470 kg set"
-    ],
-    "colors": [
-      "Yellow"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "pu-foam-insulation",
     "key": "BC 702 40 FR",
     "name": "BC 702 40 FR",
     "n_skus": 1,
@@ -1777,30 +1753,6 @@
     ],
     "colors": [
       "Brown",
-      "Yellow"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "pu-foam-insulation",
-    "key": "BC 710",
-    "name": "BC 710",
-    "n_skus": 2,
-    "members": [
-      "BC 710 FOAM YELLOW 470 KG - FG",
-      "BC 710 Polyol YELLOW 220 KG -FG"
-    ],
-    "desc": "It is a two component 141 B based polyisocyanurate (PIR) system which is typically designed to produce sandwich panel by discontinuous method. The resulted foam has a good adhesion with substrate and possesses higher strength as compared to conventional system. The resulting foam lies in B2 grade according to DIN 4102 test.",
-    "n_desc": 1,
-    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
-    "n_img": 2,
-    "tds": "/files/BC 710 Foam.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "220 kg drum",
-      "470 kg set"
-    ],
-    "colors": [
       "Yellow"
     ],
     "component_only": false
@@ -5043,6 +4995,54 @@
     "tds": "/private/files/BC 702  TDS - 50-55...pdf",
     "n_tds": 1,
     "sizes": [
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 703 SWP",
+    "name": "BC 703 SWP",
+    "n_skus": 2,
+    "members": [
+      "BC 703 SWP FOAM YELLOW 470 KG -FG",
+      "BC 703 SWP Polyol YELLOW 220 KG -FG"
+    ],
+    "desc": "BC 703 Polyol Two-component, 141 B-based sandwich panel system, 42–45 kg/m³ density; reacts with BC 768 Isocyanate, 470 kg kit (220 kg Polyol + 250 kg Isocyanate) to form highly crosslinked, rigid, dimensionally stable foam with good metal adhesion, B2-grade per DIN 4102.",
+    "n_desc": 1,
+    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
+    "n_img": 2,
+    "tds": "/files/BC 703 SWP.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "220 kg drum",
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 710",
+    "name": "BC 710",
+    "n_skus": 2,
+    "members": [
+      "BC 710 FOAM YELLOW 470 KG - FG",
+      "BC 710 Polyol YELLOW 220 KG -FG"
+    ],
+    "desc": "It is a two component 141 B based polyisocyanurate (PIR) system which is typically designed to produce sandwich panel by discontinuous method. The resulted foam has a good adhesion with substrate and possesses higher strength as compared to conventional system. The resulting foam lies in B2 grade according to DIN 4102 test.",
+    "n_desc": 1,
+    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
+    "n_img": 2,
+    "tds": "/files/BC 710 Foam.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "220 kg drum",
       "470 kg set"
     ],
     "colors": [
