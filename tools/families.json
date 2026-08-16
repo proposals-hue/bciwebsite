@@ -4141,30 +4141,6 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "BC BITU CLASSIC 180",
-    "name": "BC Bitu Classic 180",
-    "n_skus": 2,
-    "members": [
-      "BC BITU-CLASSIC 180 BLACK ROLL - FG",
-      "BC BITU-CLASSIC 180 Slated   ROLL - FG"
-    ],
-    "desc": "BC Bitu Classic 180 Slated APP (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1)29ff84edd90b.jpeg",
-    "n_img": 1,
-    "tds": "/files/TDS BC Bitu-Classic9066b2 180.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "0.909091 L roll"
-    ],
-    "colors": [
-      "Black",
-      "Slated"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "polyurea-membranes",
     "key": "BC AR",
     "name": "BC AR",
@@ -4539,6 +4515,30 @@
     ],
     "colors": [
       "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITU CLASSIC 180",
+    "name": "BC Bitu Classic 180",
+    "n_skus": 2,
+    "members": [
+      "BC BITU-CLASSIC 180 BLACK ROLL - FG",
+      "BC BITU-CLASSIC 180 Slated   ROLL - FG"
+    ],
+    "desc": "BC Bitu Classic 180 Slated APP (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1)29ff84edd90b.jpeg",
+    "n_img": 1,
+    "tds": "/files/TDS BC Bitu-Classic9066b2 180.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "0.909091 L roll"
+    ],
+    "colors": [
+      "Black",
+      "Slated"
     ],
     "component_only": false
   },
