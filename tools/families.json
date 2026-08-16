@@ -1367,26 +1367,6 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "GEOTEXTILE",
-    "name": "Geotextile",
-    "n_skus": 1,
-    "members": [
-      "Geotextile 180g/m2"
-    ],
-    "desc": "BC Geotextile 180 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works. It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications",
-    "n_desc": 1,
-    "img": "/files/Geotextile.jpg",
-    "n_img": 1,
-    "tds": "/files/BC Geotextile -180.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "6.94444 L roll"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
     "slug": "pu-foam-insulation",
     "key": "BC 708",
     "name": "BC 708",
@@ -2682,26 +2662,6 @@
     "colors": [
       "White"
     ],
-    "component_only": false
-  },
-  {
-    "slug": "sealants-joints",
-    "key": "BC BACKING RODS",
-    "name": "BC Backing Rods",
-    "n_skus": 1,
-    "members": [
-      "BC Backing rods"
-    ],
-    "desc": "BC Backing Rods are flexible, closed-cell polyethylene foam rods used as a backing material to control sealant depth in joints. They provide uniform joint geometry, improve sealant performance, and prevent three-side adhesion in construction applications.",
-    "n_desc": 1,
-    "img": null,
-    "n_img": 0,
-    "tds": "/private/files/BC Backing Rods.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "2.20833 L roll"
-    ],
-    "colors": [],
     "component_only": false
   },
   {
@@ -4871,52 +4831,6 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "BC BITU CLASSIC 200",
-    "name": "BC Bitu Classic 200",
-    "n_skus": 2,
-    "members": [
-      "BC Bitu Classic 200 BLACK ROLL - FG",
-      "BC Bitu Classic 200 Slated   ROLL - FG"
-    ],
-    "desc": "BC Bitu Classic (200 APP) (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1)b8a6d8.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Bitu-Classic 200.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "0.909091 L roll"
-    ],
-    "colors": [
-      "Black",
-      "Slated"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
-    "key": "BC BITUMEN PRIMER",
-    "name": "BC Bitumen Primer",
-    "n_skus": 1,
-    "members": [
-      "BC Bitumen Primer BLACK 15 KG -FG"
-    ],
-    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
-    "n_desc": 1,
-    "img": "/files/solvent Can.png",
-    "n_img": 1,
-    "tds": "/private/files/BC Bitumen Primer New.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "15 kg pail"
-    ],
-    "colors": [
-      "Black"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "pu-foam-insulation",
     "key": "BC XPS 32 5CMX60CMX125CM",
     "name": "BC XPS 32 5cmx60cmx125cm",
@@ -4977,6 +4891,30 @@
     ],
     "colors": [
       "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITU CLASSIC 200",
+    "name": "BC Bitu Classic 200",
+    "n_skus": 2,
+    "members": [
+      "BC Bitu Classic 200 BLACK ROLL - FG",
+      "BC Bitu Classic 200 Slated   ROLL - FG"
+    ],
+    "desc": "BC Bitu Classic (200 APP) (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1)b8a6d8.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Bitu-Classic 200.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "0.909091 L roll"
+    ],
+    "colors": [
+      "Black",
+      "Slated"
     ],
     "component_only": false
   },
@@ -5048,6 +4986,68 @@
     "colors": [
       "Yellow"
     ],
+    "component_only": false
+  },
+  {
+    "slug": "sealants-joints",
+    "key": "BC BACKING RODS",
+    "name": "BC Backing Rods",
+    "n_skus": 1,
+    "members": [
+      "BC Backing rods"
+    ],
+    "desc": "BC Backing Rods are flexible, closed-cell polyethylene foam rods used as a backing material to control sealant depth in joints. They provide uniform joint geometry, improve sealant performance, and prevent three-side adhesion in construction applications.",
+    "n_desc": 1,
+    "img": null,
+    "n_img": 0,
+    "tds": "/private/files/BC Backing Rods.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "2.20833 L roll"
+    ],
+    "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITUMEN PRIMER",
+    "name": "BC Bitumen Primer",
+    "n_skus": 1,
+    "members": [
+      "BC Bitumen Primer BLACK 15 KG -FG"
+    ],
+    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
+    "n_desc": 1,
+    "img": "/files/solvent Can.png",
+    "n_img": 1,
+    "tds": "/private/files/BC Bitumen Primer New.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "15 kg pail"
+    ],
+    "colors": [
+      "Black"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "GEOTEXTILE",
+    "name": "Geotextile",
+    "n_skus": 1,
+    "members": [
+      "Geotextile 180g/m2"
+    ],
+    "desc": "BC Geotextile 180 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works. It offers excellent permeability, durability, and resistance to puncture—ideal for roads, drainage systems, and landscaping applications",
+    "n_desc": 1,
+    "img": "/files/Geotextile.jpg",
+    "n_img": 1,
+    "tds": "/files/BC Geotextile -180.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "6.94444 L roll"
+    ],
+    "colors": [],
     "component_only": false
   }
 ]
