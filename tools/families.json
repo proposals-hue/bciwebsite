@@ -4899,28 +4899,6 @@
     "component_only": false
   },
   {
-    "slug": "pu-foam-insulation",
-    "key": "BC 702 45",
-    "name": "BC 702 45",
-    "n_skus": 1,
-    "members": [
-      "BC 702 Spary 45 FOAM YELLOW 470 KG -FG"
-    ],
-    "desc": "BC 702 Spray 45 Polyol Two-component spray foam system, 45 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with good mechanical strength, dimensional stability, and substrate adhesion, compatible with high- and low-pressure machines, containing 141B blowing agent.",
-    "n_desc": 1,
-    "img": "/files/Foam Drums9799e3.webp",
-    "n_img": 1,
-    "tds": "/private/files/BC 702  TDS - 50-55...pdf",
-    "n_tds": 1,
-    "sizes": [
-      "470 kg set"
-    ],
-    "colors": [
-      "Yellow"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "sealants-joints",
     "key": "BC BACKING RODS",
     "name": "BC Backing Rods",
@@ -5007,6 +4985,28 @@
     "component_only": false
   },
   {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITUMEN PRIMER",
+    "name": "BC Bitumen Primer",
+    "n_skus": 1,
+    "members": [
+      "BC Bitumen Primer BLACK 15 KG -FG"
+    ],
+    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
+    "n_desc": 1,
+    "img": "/files/solvent Can.png",
+    "n_img": 1,
+    "tds": "/private/files/BC Bitumen Primer New.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "15 kg pail"
+    ],
+    "colors": [
+      "Black"
+    ],
+    "component_only": false
+  },
+  {
     "slug": "concrete-repair",
     "key": "BC REPAIR 100",
     "name": "BC Repair 100",
@@ -5029,24 +5029,24 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "BC BITUMEN PRIMER",
-    "name": "BC Bitumen Primer",
+    "slug": "pu-foam-insulation",
+    "key": "BC 702 45",
+    "name": "BC 702 45",
     "n_skus": 1,
     "members": [
-      "BC Bitumen Primer BLACK 15 KG -FG"
+      "BC 702 Spary 45 FOAM YELLOW 470 KG -FG"
     ],
-    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
+    "desc": "BC 702 Spray 45 Polyol Two-component spray foam system, 45 kg/m³ density, designed for cavity filling; reacts with BC 768 Isocyanate to produce rigid foam with good mechanical strength, dimensional stability, and substrate adhesion, compatible with high- and low-pressure machines, containing 141B blowing agent.",
     "n_desc": 1,
-    "img": "/files/solvent Can.png",
+    "img": "/files/Foam Drums9799e3.webp",
     "n_img": 1,
-    "tds": "/private/files/BC Bitumen Primer New.pdf",
+    "tds": "/private/files/BC 702  TDS - 50-55...pdf",
     "n_tds": 1,
     "sizes": [
-      "15 kg pail"
+      "470 kg set"
     ],
     "colors": [
-      "Black"
+      "Yellow"
     ],
     "component_only": false
   }
