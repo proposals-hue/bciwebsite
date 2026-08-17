@@ -729,7 +729,7 @@ function CtaBand({ title, titleAr, titleEs, body, bodyAr, bodyEs }) {
           {ctaBody}
         </p>
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center', ...revealStyle(inView, 250) }}>
-          <a href={siteHref('Contact.html', lang)} className="btn btn-navy">
+          <a href={siteHref('Submittal Request.html', lang)} className="btn btn-navy">
             {t(lang, 'Request Submittal', 'طلب الوثائق', 'Solicitar Documentación')}
           </a>
           <a href="assets/BCI-Company-Profile.pdf" target="_blank" rel="noopener" download className="btn btn-ghost-light">

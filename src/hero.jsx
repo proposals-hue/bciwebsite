@@ -1,4 +1,4 @@
-/* global React, useLang, t, Mark, Icon, Arrow */
+/* global React, useLang, t, Mark, Icon, Arrow, siteHref */
 
 function SkylineBg({ overlayOpacity = 0.55 }) {
   // Stylized Riyadh skyline at golden hour
@@ -344,7 +344,7 @@ function Hero({ overlayOpacity = 0.55, bgStyle = 'skyline', videoSpeed = 0.6 }) 
             <a href="#solutions" className="btn btn-accent" style={{ width: isPhone ? '100%' : 'auto', justifyContent: 'center' }}>
               {t(lang, 'Explore Products', 'استكشف المنتجات', 'Explorar Productos')}
             </a>
-            <a href="#contact" className="btn btn-ghost-light" style={{ width: isPhone ? '100%' : 'auto', justifyContent: 'center' }}>
+            <a href={siteHref('Submittal Request.html', lang)} className="btn btn-ghost-light" style={{ width: isPhone ? '100%' : 'auto', justifyContent: 'center' }}>
               {t(lang, 'Request Submittal', 'طلب وثائق', 'Solicitar Documentación')} <Arrow size={14} />
             </a>
           </div>
