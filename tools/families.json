@@ -4565,28 +4565,6 @@
     "component_only": false
   },
   {
-    "slug": "waterproofing-roofing",
-    "key": "BC SEAL",
-    "name": "BC Seal",
-    "n_skus": 1,
-    "members": [
-      "BC Seal GREY 30 KG SYSTEM - FG"
-    ],
-    "desc": "BC Seal Two-component, acrylic-modified cementitious waterproofing coating, 30 kg set, 2 kg/m² at 1 mm, approx. 4.0 SAR/m², for flexible, durable protection against water and chemical ingress on concrete and masonry surfaces.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.09 PM.jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Seale5e739.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "protective-coatings",
     "key": "BC PU",
     "name": "BC PU",
@@ -5007,6 +4985,28 @@
     "component_only": false
   },
   {
+    "slug": "waterproofing-roofing",
+    "key": "GULF SEAL PRIMER 18 LIT",
+    "name": "Gulf Seal Primer 18 Lit",
+    "n_skus": 1,
+    "members": [
+      "gulf seal Primer BLACK 18 lit"
+    ],
+    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
+    "n_desc": 1,
+    "img": "/files/solvent Can.png",
+    "n_img": 1,
+    "tds": "/private/files/BC Bitumen Primer New.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "15 kg pail"
+    ],
+    "colors": [
+      "Black"
+    ],
+    "component_only": false
+  },
+  {
     "slug": "concrete-repair",
     "key": "BC REPAIR 100",
     "name": "BC Repair 100",
@@ -5030,23 +5030,23 @@
   },
   {
     "slug": "waterproofing-roofing",
-    "key": "GULF SEAL PRIMER 18 LIT",
-    "name": "Gulf Seal Primer 18 Lit",
+    "key": "BC SEAL",
+    "name": "BC Seal",
     "n_skus": 1,
     "members": [
-      "gulf seal Primer BLACK 18 lit"
+      "BC Seal GREY 30 KG SYSTEM - FG"
     ],
-    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
+    "desc": "BC Seal Two-component, acrylic-modified cementitious waterproofing coating, 30 kg set, 2 kg/m² at 1 mm, approx. 4.0 SAR/m², for flexible, durable protection against water and chemical ingress on concrete and masonry surfaces.",
     "n_desc": 1,
-    "img": "/files/solvent Can.png",
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.09 PM.jpeg",
     "n_img": 1,
-    "tds": "/private/files/BC Bitumen Primer New.pdf",
+    "tds": "/private/files/BC Seale5e739.pdf",
     "n_tds": 1,
     "sizes": [
-      "15 kg pail"
+      "30 kg set"
     ],
     "colors": [
-      "Black"
+      "Grey"
     ],
     "component_only": false
   }
