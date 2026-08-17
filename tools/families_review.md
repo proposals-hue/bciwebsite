@@ -42,10 +42,6 @@
   - sizes: 0.909091 L roll
   - colors: Black, Slated
   - desc: BC Bitu-Gold Fiber slated is a high-performance, prefabricated, torch-applied waterproofing membrane made from high-grade bitumen modified with Styrene-Butadien
-- **BC Bitumen Primer** [1 skus]
-  - sizes: 15 kg pail
-  - colors: Black
-  - desc: BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting a
 - **BC Crysto Proof** [1 skus] [NO-TDS]
   - sizes: 20 kg bag
   - colors: Grey
@@ -181,6 +177,10 @@
 - **Geotextile** [1 skus]
   - sizes: 6.94444 L roll
   - desc: BC Geotextile 180 g/m² is a non-woven polyester/ polypropylene fabric designed for filtration, separation, and soil stabilization in civil engineering works. It
+- **Gulf Seal Primer 18 Lit** [1 skus]
+  - sizes: 15 kg pail
+  - colors: Black
+  - desc: BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting a
 
 ## Polyurea & Elastomeric Membranes (7)
 
