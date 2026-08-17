@@ -1,5 +1,5 @@
 /* global React, SOLUTIONS, useLang, useViewport, t, Icon, Arrow, loadErpRfqItems,
-   submitSubmittalRequest */
+   submitSubmittalRequest, thankYouHref */
 const {
   useEffect: useEffect_sub,
   useId: useId_sub,
@@ -207,7 +207,11 @@ function SubmittalRequestForm({ source = 'website', maxWidth }) {
       setRequestId(payload.request_id);
       setStatus(payload.attachment_warning ? 'sent-warning' : 'sent');
       setUploadProgress(0);
-      if (window.trackAdsLeadConversion) window.trackAdsLeadConversion();
+      // The confirmation lives on its own page; the block below only shows if
+      // the browser has not navigated yet.
+      window.location.assign(thankYouHref({
+        type: 'submittal', ref: payload.request_id, warn: payload.attachment_warning,
+      }));
     } catch (error) {
       showError(t(lang,
         'We could not register the submittal request in ERP. Please review the fields and try again, or contact info@bcisaudi.com.',

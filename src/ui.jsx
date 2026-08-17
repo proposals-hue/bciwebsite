@@ -363,6 +363,16 @@ async function submitSubmittalRequest(data) {
   return payload;
 }
 
+// Destination both request forms send the browser to once ERP has accepted the
+// submission. The reference travels in the URL so the page can show it, and the
+// Google Ads conversion fires there rather than moments before navigating away.
+function thankYouHref({ type, ref, warn }) {
+  const query = new URLSearchParams({ type: type || 'rfq' });
+  if (ref) query.set('ref', ref);
+  if (warn) query.set('warn', '1');
+  return `${siteHref('Thank You.html')}?${query}`;
+}
+
 // webForm: the ERP Web Form *name* (e.g. 'contact-bci', 'job-application').
 // data: { doctype, ...fields } keyed by the web form's field names.
 async function submitErpWebForm(webForm, data) {
@@ -380,6 +390,7 @@ if (typeof window !== 'undefined') Object.assign(window, {
   submitErpWebForm,
   submitCustomerRfq,
   submitSubmittalRequest,
+  thankYouHref,
   loadErpJobs,
   loadErpDesignations,
   loadErpRfqItems,

@@ -1,5 +1,5 @@
 /* global React, SOLUTIONS, useLang, useViewport, t, Icon, Arrow, loadErpRfqItems,
-   submitCustomerRfq */
+   submitCustomerRfq, thankYouHref */
 const {
   useEffect: useEffect_rfq,
   useId: useId_rfq,
@@ -370,7 +370,11 @@ function CustomerRfqForm({ source = 'website', maxWidth }) {
       setRfqId(payload.rfq_id);
       setStatus(payload.attachment_warning ? 'sent-warning' : 'sent');
       setUploadProgress(0);
-      if (window.trackAdsLeadConversion) window.trackAdsLeadConversion();
+      // The confirmation lives on its own page; the block below only shows if
+      // the browser has not navigated yet.
+      window.location.assign(thankYouHref({
+        type: 'rfq', ref: payload.rfq_id, warn: payload.attachment_warning,
+      }));
     } catch (error) {
       setErrorMsg(t(lang,
         'We could not register the RFQ in ERP. Please review the fields and try again, or contact info@bcisaudi.com.',

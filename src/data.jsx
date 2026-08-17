@@ -1742,6 +1742,14 @@ const SEO_META = {
     es: { title: 'Solicitar Documentación de Aprobación | BCI Arabia Saudita',
           description: 'Solicita el paquete de aprobación de BCI para tu obra. Adjunta la especificación del proyecto, elige el producto y nuestro equipo técnico prepara fichas técnicas, certificados y declaraciones de conformidad.' },
   },
+  thankYou: {
+    en: { title: 'Thank You | BCI Saudi Arabia',
+          description: 'Your request has been registered with BCI. Our team reviews it and comes back to you with the documents, pricing and next steps.' },
+    ar: { title: 'شكرًا لك | BCI المملكة العربية السعودية',
+          description: 'تم تسجيل طلبك لدى BCI. يقوم فريقنا بمراجعته والرد عليك بالمستندات والأسعار والخطوات التالية.' },
+    es: { title: 'Gracias | BCI Arabia Saudita',
+          description: 'Tu solicitud ha quedado registrada en BCI. Nuestro equipo la revisa y te responde con los documentos, precios y próximos pasos.' },
+  },
 };
 
 /* Common buyer/AI questions — drives the FAQ section + FAQPage schema.

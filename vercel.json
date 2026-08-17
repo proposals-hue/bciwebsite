@@ -27,6 +27,9 @@
     { "source": "/Submittal Request.html", "destination": "/submittal-request", "permanent": true },
     { "source": "/Submittal Request", "destination": "/submittal-request", "permanent": true },
     { "source": "/request-submittal", "destination": "/submittal-request", "permanent": true },
+    { "source": "/Thank You.html", "destination": "/thank-you", "permanent": true },
+    { "source": "/Thank You", "destination": "/thank-you", "permanent": true },
+    { "source": "/thanks", "destination": "/thank-you", "permanent": true },
 
     { "source": "/about-us", "destination": "/about", "permanent": true },
     { "source": "/aboutus", "destination": "/about", "permanent": true },

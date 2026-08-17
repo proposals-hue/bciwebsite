@@ -56,6 +56,9 @@ const CONTENT_PAGES = [
   { file: 'Contact.html', key: 'contact', active: 'Contact', path: 'contact' },
   { file: 'Request Quote.html', key: 'requestQuote', active: '', path: 'request-quote' },
   { file: 'Submittal Request.html', key: 'submittalRequest', active: '', path: 'submittal-request' },
+  // Post-submission confirmation. `noindex` keeps it out of search results and
+  // the sitemap — it is only ever reached by redirect from a form.
+  { file: 'Thank You.html', key: 'thankYou', active: '', path: 'thank-you', noindex: true },
 ];
 
 const FAVICONS = [
@@ -533,7 +536,7 @@ async function main() {
   const sitemapPaths = [''];
   const sitemapImages = {};   // path → [absolute image URLs] for the image sitemap
   for (const pg of CONTENT_PAGES) {
-    if (pg.path) sitemapPaths.push(pg.path);
+    if (pg.path && !pg.noindex) sitemapPaths.push(pg.path);
     const srcHtml = await fs.readFile(path.join(ROOT, pg.file), 'utf8');
     const scripts = appScriptPaths(srcHtml);
     const code = await readScripts(scripts);
@@ -543,6 +546,7 @@ async function main() {
       const doc = buildDoc({
         lang, title: meta.title, description: meta.description, p: pg.path,
         schema: pageSchema(pg.key, lang, D), prerendered: inner, scripts,
+        robots: pg.noindex ? 'noindex, follow' : undefined,
       });
       const outRel = path.join(langPrefix(lang).slice(1), pg.path ? pg.path + '.html' : 'index.html');
       await writeFile(outRel, doc);
