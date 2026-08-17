@@ -34,7 +34,7 @@ const ROOT = path.resolve(here, '..');
 const DIST = path.join(ROOT, 'dist');
 const ORIGIN = 'https://www.bcisaudi.com';
 const ASSET_V = '2.1';
-const BLOB_UPLOAD_V = '3.0';
+const BLOB_UPLOAD_V = '3.1';
 const LANGS = ['en', 'ar', 'es'];
 const OG_LOCALE = { en: 'en_US', ar: 'ar_SA', es: 'es_ES' };
 const TODAY = new Date().toISOString().slice(0, 10);
@@ -55,6 +55,7 @@ const CONTENT_PAGES = [
   { file: 'Supplier.html', key: 'supplier', active: 'Suppliers', path: 'supplier' },
   { file: 'Contact.html', key: 'contact', active: 'Contact', path: 'contact' },
   { file: 'Request Quote.html', key: 'requestQuote', active: '', path: 'request-quote' },
+  { file: 'Submittal Request.html', key: 'submittalRequest', active: '', path: 'submittal-request' },
 ];
 
 const FAVICONS = [
@@ -347,6 +348,7 @@ function pageSchema(key, lang, D) {
   if (key === 'supplier') scripts.push(ld(breadcrumbLd([crumbHome, here('supplier', tr(lang, 'Suppliers', 'الموردون', 'Proveedores'))])));
   if (key === 'contact') { scripts.push(ld(breadcrumbLd([crumbHome, here('contact', tr(lang, 'Contact', 'تواصل', 'Contacto'))]))); scripts.push(ld(orgLd(D))); scripts.push(localBusinessLd(D, lang)); }
   if (key === 'requestQuote') scripts.push(ld(breadcrumbLd([crumbHome, here('request-quote', tr(lang, 'Request a quote', 'طلب عرض سعر', 'Solicitar cotización'))])));
+  if (key === 'submittalRequest') scripts.push(ld(breadcrumbLd([crumbHome, here('submittal-request', tr(lang, 'Submittal request', 'طلب وثائق الاعتماد', 'Solicitud de documentación'))])));
   return scripts.join('\n');
 }
 
@@ -355,7 +357,7 @@ function buildDoc({ lang, title, description, p, schema, prerendered, scripts, r
   const canonical = abs(lang, p);
   const hreflang = LANGS.map((L) => `<link rel="alternate" hreflang="${L}" href="${abs(L, p)}" />`).join('\n')
     + `\n<link rel="alternate" hreflang="x-default" href="${abs('en', p)}" />`;
-  const needsBlobUpload = p === 'career' || p === 'request-quote';
+  const needsBlobUpload = p === 'career' || p === 'request-quote' || p === 'submittal-request';
   const blobUploadScript = needsBlobUpload ? `<script src="/blob-upload.js?v=${BLOB_UPLOAD_V}"></script>\n` : '';
   const scriptTags = blobUploadScript + scripts.map((s) => `<script src="/${s}.js?v=${ASSET_V}"></script>`).join('\n');
   return `<!doctype html>

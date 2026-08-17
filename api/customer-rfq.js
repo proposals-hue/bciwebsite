@@ -1,6 +1,7 @@
-const { del, get } = require('@vercel/blob');
+const { del } = require('@vercel/blob');
 const { erpFetch, erpUploadFile, sendJson } = require('./_erp');
-const { validateRfqFileContents, validateRfqFileMetadata } = require('./_rfq-file');
+const { readPrivateBlob } = require('./_rfq-file');
+const { fetchWebsiteItem } = require('./_website-item');
 
 const clean = (value, max) => String(value == null ? '' : value).trim().slice(0, max);
 
@@ -30,38 +31,6 @@ function isValidIsoDate(value) {
     && date.getUTCDate() === day;
 }
 
-async function readRfqBlob(file, kind) {
-  if (!file || typeof file !== 'object' || !file.url) return null;
-
-  let parsedUrl;
-  try { parsedUrl = new URL(String(file.url)); }
-  catch (_) { throw badRequest('The uploaded RFQ attachment reference is invalid.'); }
-  if (parsedUrl.protocol !== 'https:' || !parsedUrl.hostname.endsWith('.private.blob.vercel-storage.com')) {
-    throw badRequest('The uploaded RFQ attachment reference is invalid.');
-  }
-
-  const declared = validateRfqFileMetadata({ ...file, kind });
-  const result = await get(parsedUrl.href, { access: 'private', useCache: false });
-  const prefix = `customer-rfq/${kind}/`;
-  if (!result || result.statusCode !== 200 || !result.stream || !result.blob.pathname.startsWith(prefix)) {
-    throw badRequest('The uploaded RFQ attachment could not be found.');
-  }
-  const stored = validateRfqFileMetadata({
-    name: declared.filename,
-    type: result.blob.contentType,
-    size: result.blob.size,
-    kind,
-  });
-  if (stored.size !== declared.size || stored.contentType !== declared.contentType) {
-    throw badRequest('The uploaded RFQ attachment details do not match the stored file.');
-  }
-
-  const buffer = Buffer.from(await new Response(result.stream).arrayBuffer());
-  if (buffer.length !== stored.size) throw badRequest('The uploaded RFQ attachment is incomplete.');
-  validateRfqFileContents(buffer, stored.extension);
-  return { buffer, filename: stored.filename, contentType: stored.contentType };
-}
-
 async function validateItem(row) {
   const itemCode = clean(row && row.item_code, 240);
   const qty = Number(row && row.qty);
@@ -70,20 +39,7 @@ async function validateItem(row) {
     throw badRequest('Every RFQ item needs a valid product and a quantity greater than zero.');
   }
 
-  let item;
-  try {
-    const payload = await erpFetch(`/api/resource/Item/${encodeURIComponent(itemCode)}`);
-    item = payload.data || {};
-  } catch (error) {
-    if (error.statusCode === 404) throw badRequest(`The selected product “${itemCode}” is no longer available.`);
-    throw error;
-  }
-  if (Number(item.disabled) || !Number(item.is_sales_item)
-      || item.item_group !== 'BCI-Finished Products'
-      || !Number(item.custom_bci_website_sync)) {
-    throw badRequest(`The selected product “${itemCode}” is not available for website RFQs.`);
-  }
-
+  const item = await fetchWebsiteItem(itemCode);
   return {
     item_code: item.name,
     qty,
@@ -149,8 +105,8 @@ module.exports = async function handler(req, res) {
 
     const [items, logo, crAttachment] = await Promise.all([
       Promise.all(rows.map(validateItem)),
-      readRfqBlob(body.logo_blob, 'logo'),
-      readRfqBlob(body.cr_blob, 'cr'),
+      readPrivateBlob(body.logo_blob, 'logo'),
+      readPrivateBlob(body.cr_blob, 'cr'),
     ]);
 
     const contextLines = [

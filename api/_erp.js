@@ -82,9 +82,11 @@ async function erpUploadFile({ buffer, filename, contentType, doctype, docname, 
   const form = new FormData();
   form.append('file', new Blob([buffer], { type: contentType }), filename);
   form.append('is_private', '1');
-  form.append('doctype', doctype);
-  form.append('docname', docname);
-  form.append('fieldname', fieldname);
+  // Omitted when the document does not exist yet: the file is then created
+  // unattached and linked to its document afterwards.
+  if (doctype) form.append('doctype', doctype);
+  if (docname) form.append('docname', docname);
+  if (fieldname) form.append('fieldname', fieldname);
 
   const response = await fetch(`${erpBase()}/api/method/upload_file`, {
     method: 'POST',

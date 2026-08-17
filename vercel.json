@@ -24,6 +24,9 @@
     { "source": "/Request Quote", "destination": "/request-quote", "permanent": true },
     { "source": "/quote", "destination": "/request-quote", "permanent": true },
     { "source": "/get-a-quote", "destination": "/request-quote", "permanent": true },
+    { "source": "/Submittal Request.html", "destination": "/submittal-request", "permanent": true },
+    { "source": "/Submittal Request", "destination": "/submittal-request", "permanent": true },
+    { "source": "/request-submittal", "destination": "/submittal-request", "permanent": true },
 
     { "source": "/about-us", "destination": "/about", "permanent": true },
     { "source": "/aboutus", "destination": "/about", "permanent": true },
@@ -64,8 +67,9 @@
     { "source": "/files/:path*", "destination": "/resources", "permanent": true },
     { "source": "/img1", "destination": "/resources", "permanent": true },
     { "source": "/img1/:path*", "destination": "/resources", "permanent": true },
-    { "source": "/submittal", "destination": "/contact", "permanent": true },
-    { "source": "/submittal/:path*", "destination": "/contact", "permanent": true },
+    { "source": "/submittal", "destination": "/submittal-request", "permanent": true },
+    { "source": "/submittal/:path*", "destination": "/submittal-request", "permanent": true },
+    { "source": "/submittals", "destination": "/submittal-request", "permanent": true },
     { "source": "/shop", "destination": "/", "permanent": true },
     { "source": "/shop/:path*", "destination": "/", "permanent": true },
     { "source": "/bc-guard", "destination": "/solutions", "permanent": true }

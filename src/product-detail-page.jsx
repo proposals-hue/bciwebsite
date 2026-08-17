@@ -47,6 +47,7 @@ function ProductDetailPage() {
   const sizes = prod.sizes || (prod.size ? [prod.size] : []);
   const related = cat.products.filter(x => x.code !== prod.code).slice(0, 4);
   const quoteHref = `${siteHref('Request Quote.html')}?product=${encodeURIComponent(prod.code)}#rfq-form`;
+  const submittalHref = `${siteHref('Submittal Request.html')}?product=${encodeURIComponent(prod.code)}#submittal-form`;
 
   const specRows = [
     [t(lang, 'Solution line', 'خط الحلول', 'Línea'), (cat[lang] || cat.en).name],
@@ -106,6 +107,9 @@ function ProductDetailPage() {
               )}
               <a href={quoteHref} className="btn btn-ghost-navy" style={{ display: 'inline-flex', alignItems: 'center', gap: 9 }}>
                 {t(lang, 'Request a quote', 'اطلب عرض سعر', 'Solicitar cotización')} <Arrow size={13} />
+              </a>
+              <a href={submittalHref} className="btn btn-ghost-navy" style={{ display: 'inline-flex', alignItems: 'center', gap: 9 }}>
+                {t(lang, 'Request a submittal', 'اطلب وثائق الاعتماد', 'Solicitar documentación')} <Arrow size={13} />
               </a>
             </div>
           </div>

@@ -1734,6 +1734,14 @@ const SEO_META = {
     es: { title: 'Solicitar Cotización | BCI Arabia Saudita',
           description: 'Solicita una cotización de químicos para construcción BCI. Elige productos y cantidades, añade los datos del proyecto y envía tu solicitud.' },
   },
+  submittalRequest: {
+    en: { title: 'Request a Submittal | BCI Saudi Arabia',
+          description: 'Request a BCI submittal package for your project. Attach the project specification, choose the product and our technical team prepares the approval documents — TDS, certificates and compliance statements.' },
+    ar: { title: 'طلب وثائق الاعتماد من BCI | المملكة العربية السعودية',
+          description: 'اطلب ملف اعتماد منتجات BCI لمشروعك. أرفق مواصفات المشروع واختر المنتج، ويقوم فريقنا الفني بتجهيز وثائق الاعتماد — النشرات الفنية والشهادات وبيانات المطابقة.' },
+    es: { title: 'Solicitar Documentación de Aprobación | BCI Arabia Saudita',
+          description: 'Solicita el paquete de aprobación de BCI para tu obra. Adjunta la especificación del proyecto, elige el producto y nuestro equipo técnico prepara fichas técnicas, certificados y declaraciones de conformidad.' },
+  },
 };
 
 /* Common buyer/AI questions — drives the FAQ section + FAQPage schema.

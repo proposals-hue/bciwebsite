@@ -352,6 +352,17 @@ async function submitCustomerRfq(data) {
   return payload;
 }
 
+async function submitSubmittalRequest(data) {
+  const response = await fetch('/api/submittal-request', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(data),
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(payload.error || 'Submittal request submission failed');
+  return payload;
+}
+
 // webForm: the ERP Web Form *name* (e.g. 'contact-bci', 'job-application').
 // data: { doctype, ...fields } keyed by the web form's field names.
 async function submitErpWebForm(webForm, data) {
@@ -368,6 +379,7 @@ async function submitErpWebForm(webForm, data) {
 if (typeof window !== 'undefined') Object.assign(window, {
   submitErpWebForm,
   submitCustomerRfq,
+  submitSubmittalRequest,
   loadErpJobs,
   loadErpDesignations,
   loadErpRfqItems,

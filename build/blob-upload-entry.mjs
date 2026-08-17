@@ -22,12 +22,20 @@ window.uploadPrivateApplicantPhoto = (file, clientPayload, onUploadProgress) => 
   });
 };
 
+// Staging prefixes must match FILE_KINDS in api/_rfq-file.js — the upload
+// authorizer rejects any other path for the declared kind.
+const FILE_PREFIX = {
+  logo: 'customer-rfq/logo/',
+  cr: 'customer-rfq/cr/',
+  spec: 'submittal-request/spec/',
+};
+
 window.uploadPrivateRfqFile = (file, kind, clientPayload, onUploadProgress) => {
-  const safeKind = kind === 'logo' ? 'logo' : 'cr';
+  const safeKind = FILE_PREFIX[kind] ? kind : 'cr';
   const safeName = String(file.name || 'attachment')
     .split(/[\\/]/).pop()
     .replace(/[^a-zA-Z0-9._ -]/g, '_');
-  return upload(`customer-rfq/${safeKind}/${safeName}`, file, {
+  return upload(`${FILE_PREFIX[safeKind]}${safeName}`, file, {
     access: 'private',
     contentType: clientPayload?.type || file.type || undefined,
     handleUploadUrl: '/api/rfq-file-upload',

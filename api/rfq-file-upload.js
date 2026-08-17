@@ -1,8 +1,9 @@
 const { handleUpload } = require('@vercel/blob/client');
 const { sendJson } = require('./_erp');
 const {
-  MAX_RFQ_FILE_BYTES,
   allowedRfqContentTypes,
+  blobPathPrefix,
+  maxFileBytes,
   safeRfqFileName,
   validateRfqFileMetadata,
 } = require('./_rfq-file');
@@ -21,17 +22,17 @@ module.exports = async function handler(req, res) {
       onBeforeGenerateToken: async (pathname, clientPayload) => {
         let details = {};
         try { details = JSON.parse(clientPayload || '{}'); }
-        catch (_) { throw new Error('Invalid RFQ file upload request.'); }
+        catch (_) { throw new Error('Invalid file upload request.'); }
 
         const metadata = validateRfqFileMetadata(details);
-        const expectedPath = `customer-rfq/${metadata.kind}/${safeRfqFileName(details.name)}`;
-        if (pathname !== expectedPath || !pathname.startsWith(`customer-rfq/${metadata.kind}/`)) {
-          throw new Error('Invalid RFQ file upload path.');
+        const prefix = blobPathPrefix(metadata.kind);
+        if (pathname !== `${prefix}${safeRfqFileName(details.name)}`) {
+          throw new Error('Invalid file upload path.');
         }
 
         return {
           allowedContentTypes: allowedRfqContentTypes(metadata.kind),
-          maximumSizeInBytes: MAX_RFQ_FILE_BYTES,
+          maximumSizeInBytes: maxFileBytes(metadata.kind),
           addRandomSuffix: true,
           tokenPayload: JSON.stringify({
             filename: metadata.filename,
@@ -44,7 +45,7 @@ module.exports = async function handler(req, res) {
     });
     return sendJson(res, 200, result);
   } catch (error) {
-    console.error('RFQ file upload authorization failed:', error.message);
-    return sendJson(res, 400, { error: error.message || 'RFQ file upload could not be authorized.' });
+    console.error('Website file upload authorization failed:', error.message);
+    return sendJson(res, 400, { error: error.message || 'The file upload could not be authorized.' });
   }
 };
