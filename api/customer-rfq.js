@@ -1,5 +1,6 @@
 const { del } = require('@vercel/blob');
 const { erpFetch, erpUploadFile, sendJson } = require('./_erp');
+const { isValidIsoDate, riyadhToday } = require('./_dates');
 const { readPrivateBlob } = require('./_rfq-file');
 const { fetchWebsiteItem } = require('./_website-item');
 
@@ -9,26 +10,6 @@ function badRequest(message) {
   const error = new Error(message);
   error.statusCode = 400;
   return error;
-}
-
-function riyadhToday() {
-  const parts = new Intl.DateTimeFormat('en', {
-    timeZone: 'Asia/Riyadh', year: 'numeric', month: '2-digit', day: '2-digit',
-  }).formatToParts(new Date());
-  const value = Object.fromEntries(parts.map((part) => [part.type, part.value]));
-  return `${value.year}-${value.month}-${value.day}`;
-}
-
-function isValidIsoDate(value) {
-  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
-  if (!match) return false;
-  const year = Number(match[1]);
-  const month = Number(match[2]);
-  const day = Number(match[3]);
-  const date = new Date(Date.UTC(year, month - 1, day));
-  return date.getUTCFullYear() === year
-    && date.getUTCMonth() === month - 1
-    && date.getUTCDate() === day;
 }
 
 async function validateItem(row) {

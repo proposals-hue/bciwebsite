@@ -56,6 +56,7 @@ const CONTENT_PAGES = [
   { file: 'Contact.html', key: 'contact', active: 'Contact', path: 'contact' },
   { file: 'Request Quote.html', key: 'requestQuote', active: '', path: 'request-quote' },
   { file: 'Submittal Request.html', key: 'submittalRequest', active: '', path: 'submittal-request' },
+  { file: 'Sample Request.html', key: 'sampleRequest', active: '', path: 'sample-request' },
   // Post-submission confirmation. `noindex` keeps it out of search results and
   // the sitemap — it is only ever reached by redirect from a form.
   { file: 'Thank You.html', key: 'thankYou', active: '', path: 'thank-you', noindex: true },
@@ -352,6 +353,7 @@ function pageSchema(key, lang, D) {
   if (key === 'contact') { scripts.push(ld(breadcrumbLd([crumbHome, here('contact', tr(lang, 'Contact', 'تواصل', 'Contacto'))]))); scripts.push(ld(orgLd(D))); scripts.push(localBusinessLd(D, lang)); }
   if (key === 'requestQuote') scripts.push(ld(breadcrumbLd([crumbHome, here('request-quote', tr(lang, 'Request a quote', 'طلب عرض سعر', 'Solicitar cotización'))])));
   if (key === 'submittalRequest') scripts.push(ld(breadcrumbLd([crumbHome, here('submittal-request', tr(lang, 'Submittal request', 'طلب وثائق الاعتماد', 'Solicitud de documentación'))])));
+  if (key === 'sampleRequest') scripts.push(ld(breadcrumbLd([crumbHome, here('sample-request', tr(lang, 'Sample request', 'طلب عينات', 'Solicitud de muestras'))])));
   return scripts.join('\n');
 }
 

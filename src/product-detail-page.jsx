@@ -48,6 +48,7 @@ function ProductDetailPage() {
   const related = cat.products.filter(x => x.code !== prod.code).slice(0, 4);
   const quoteHref = `${siteHref('Request Quote.html')}?product=${encodeURIComponent(prod.code)}#rfq-form`;
   const submittalHref = `${siteHref('Submittal Request.html')}?product=${encodeURIComponent(prod.code)}#submittal-form`;
+  const sampleHref = `${siteHref('Sample Request.html')}?product=${encodeURIComponent(prod.code)}#sample-form`;
 
   const specRows = [
     [t(lang, 'Solution line', 'خط الحلول', 'Línea'), (cat[lang] || cat.en).name],
@@ -110,6 +111,9 @@ function ProductDetailPage() {
               </a>
               <a href={submittalHref} className="btn btn-ghost-navy" style={{ display: 'inline-flex', alignItems: 'center', gap: 9 }}>
                 {t(lang, 'Request a submittal', 'اطلب وثائق الاعتماد', 'Solicitar documentación')} <Arrow size={13} />
+              </a>
+              <a href={sampleHref} className="btn btn-ghost-navy" style={{ display: 'inline-flex', alignItems: 'center', gap: 9 }}>
+                {t(lang, 'Request a sample', 'اطلب عينة', 'Solicitar una muestra')} <Arrow size={13} />
               </a>
             </div>
           </div>

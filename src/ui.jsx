@@ -363,7 +363,18 @@ async function submitSubmittalRequest(data) {
   return payload;
 }
 
-// Destination both request forms send the browser to once ERP has accepted the
+async function submitSampleRequest(data) {
+  const response = await fetch('/api/sample-request', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(data),
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(payload.error || 'Sample request submission failed');
+  return payload;
+}
+
+// Destination every request form sends the browser to once ERP has accepted the
 // submission. The reference travels in the URL so the page can show it, and the
 // Google Ads conversion fires there rather than moments before navigating away.
 function thankYouHref({ type, ref, warn }) {
@@ -390,6 +401,7 @@ if (typeof window !== 'undefined') Object.assign(window, {
   submitErpWebForm,
   submitCustomerRfq,
   submitSubmittalRequest,
+  submitSampleRequest,
   thankYouHref,
   loadErpJobs,
   loadErpDesignations,

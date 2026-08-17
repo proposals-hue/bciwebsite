@@ -781,7 +781,8 @@ function Footer() {
     { en: 'info@bcisaudi.com', ar: 'info@bcisaudi.com', es: 'info@bcisaudi.com', href: 'mailto:info@bcisaudi.com', mono: true },
     { en: 'WhatsApp', ar: 'واتساب', es: 'WhatsApp', href: 'https://wa.me/966593120221' },
     { en: 'Get a Quote', ar: 'اطلب عرض سعر', es: 'Solicitar Cotización', href: 'Request Quote.html' },
-    { en: 'Request a Submittal', ar: 'اطلب وثائق الاعتماد', es: 'Solicitar Documentación', href: 'Submittal Request.html' }]
+    { en: 'Request a Submittal', ar: 'اطلب وثائق الاعتماد', es: 'Solicitar Documentación', href: 'Submittal Request.html' },
+    { en: 'Request a Sample', ar: 'اطلب عينة', es: 'Solicitar una Muestra', href: 'Sample Request.html' }]
 
   }];
 

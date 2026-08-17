@@ -2,13 +2,16 @@
    siteHref, MegaHeader, Footer, trackAdsLeadConversion */
 const { useEffect: useEffect_ty, useMemo: useMemo_ty } = React;
 
-// Both website forms redirect here on success:
-//   /thank-you?type=submittal|rfq&ref=<ERP id>&warn=1
+// Every website request form redirects here on success:
+//   /thank-you?type=submittal|sample|rfq&ref=<ERP id>&warn=1
+const THANK_YOU_TYPES = ['submittal', 'sample', 'rfq'];
+
 function thankYouParams() {
   try {
     const query = new URLSearchParams(window.location.search);
+    const type = query.get('type');
     return {
-      type: query.get('type') === 'submittal' ? 'submittal' : 'rfq',
+      type: THANK_YOU_TYPES.includes(type) ? type : 'rfq',
       ref: (query.get('ref') || '').slice(0, 60),
       warn: query.get('warn') === '1',
     };
@@ -17,77 +20,119 @@ function thankYouParams() {
   }
 }
 
+// Heading, lead paragraph and the three "what happens next" steps, per request
+// type. Keyed rather than branched so a fourth form is one more entry.
+function thankYouCopy(type, lang) {
+  if (type === 'submittal') {
+    return {
+      heading: t(lang, 'Your submittal request is registered.', 'تم تسجيل طلب وثائق الاعتماد.', 'Tu solicitud de documentación está registrada.'),
+      lead: t(lang,
+        'Our technical team has your project specification and will prepare the submittal package for the product you selected.',
+        'استلم فريقنا الفني مواصفات مشروعك وسيقوم بتجهيز ملف الاعتماد للمنتج الذي اخترته.',
+        'Nuestro equipo técnico ha recibido la especificación de tu proyecto y preparará el paquete de aprobación del producto seleccionado.'),
+      steps: [
+        {
+          title: t(lang, 'Technical review', 'مراجعة فنية', 'Revisión técnica'),
+          body: t(lang,
+            'We read the specification and confirm the BCI product complies with the specified clause.',
+            'نراجع المواصفات ونتأكد من مطابقة منتج BCI للبند المحدد.',
+            'Leemos la especificación y confirmamos que el producto BCI cumple la cláusula indicada.'),
+        },
+        {
+          title: t(lang, 'Package prepared', 'تجهيز الملف', 'Preparación del paquete'),
+          body: t(lang,
+            'Data sheets, certificates, test reports and a compliance statement are compiled for your project.',
+            'يتم تجميع النشرات الفنية والشهادات وتقارير الاختبار وبيان المطابقة لمشروعك.',
+            'Se recopilan fichas técnicas, certificados, informes de ensayo y la declaración de conformidad.'),
+        },
+        {
+          title: t(lang, 'Sent to you', 'الإرسال إليك', 'Envío'),
+          body: t(lang,
+            'The complete submittal arrives by email, ready to issue to the consultant.',
+            'يصلك ملف الاعتماد كاملًا عبر البريد الإلكتروني جاهزًا لتقديمه للاستشاري.',
+            'Recibes el paquete completo por correo, listo para presentarlo al consultor.'),
+        },
+      ],
+    };
+  }
+
+  if (type === 'sample') {
+    return {
+      heading: t(lang, 'Your sample request is registered.', 'تم تسجيل طلب العينات.', 'Tu solicitud de muestras está registrada.'),
+      lead: t(lang,
+        'Our sales team has your requested products and delivery details, and will arrange the samples for your site trial.',
+        'استلم فريق المبيعات المنتجات المطلوبة وبيانات التسليم وسيقوم بترتيب العينات لتجربتها في موقعك.',
+        'Nuestro equipo comercial ha recibido los productos solicitados y los datos de entrega, y preparará las muestras para tu prueba en obra.'),
+      steps: [
+        {
+          title: t(lang, 'Request reviewed', 'مراجعة الطلب', 'Revisión de la solicitud'),
+          body: t(lang,
+            'We check the products you chose suit your application and confirm the right sample size.',
+            'نتأكد من مناسبة المنتجات التي اخترتها لتطبيقك ونحدد حجم العينة المناسب.',
+            'Comprobamos que los productos elegidos se ajustan a tu aplicación y definimos el tamaño de muestra.'),
+        },
+        {
+          title: t(lang, 'Samples prepared', 'تجهيز العينات', 'Preparación de muestras'),
+          body: t(lang,
+            'The samples are packed with the matching technical data sheets and application guidance.',
+            'يتم تجهيز العينات مع النشرات الفنية وإرشادات التطبيق الخاصة بها.',
+            'Las muestras se preparan con sus fichas técnicas y las instrucciones de aplicación.'),
+        },
+        {
+          title: t(lang, 'Delivered to you', 'التسليم إليك', 'Entrega'),
+          body: t(lang,
+            'A member of the sales team calls to confirm the address and arrange delivery to your site.',
+            'يتصل بك أحد أعضاء فريق المبيعات لتأكيد العنوان وترتيب التسليم إلى موقعك.',
+            'Un miembro del equipo comercial te llama para confirmar la dirección y coordinar la entrega en obra.'),
+        },
+      ],
+    };
+  }
+
+  return {
+    heading: t(lang, 'Your quote request is registered.', 'تم تسجيل طلب عرض السعر.', 'Tu solicitud de cotización está registrada.'),
+    lead: t(lang,
+      'Our sales team has your requested products and project details, and will come back to you with pricing and availability.',
+      'استلم فريق المبيعات المنتجات المطلوبة وتفاصيل المشروع وسيوافيك بالأسعار والتوفر.',
+      'Nuestro equipo comercial ha recibido los productos solicitados y los datos del proyecto, y te responderá con precios y disponibilidad.'),
+    steps: [
+      {
+        title: t(lang, 'Sales review', 'مراجعة المبيعات', 'Revisión comercial'),
+        body: t(lang,
+          'We confirm the right product and pack size for your application and site conditions.',
+          'نؤكد المنتج والعبوة المناسبين لتطبيقك وظروف الموقع.',
+          'Confirmamos el producto y el envase adecuados para tu aplicación y las condiciones de obra.'),
+      },
+      {
+        title: t(lang, 'Quotation issued', 'إصدار العرض', 'Emisión de la oferta'),
+        body: t(lang,
+          'Pricing, lead time and delivery terms are prepared for your project.',
+          'يتم تجهيز الأسعار ومدة التوريد وشروط التسليم لمشروعك.',
+          'Se preparan precios, plazos de entrega y condiciones para tu proyecto.'),
+      },
+      {
+        title: t(lang, 'Reply within 24 h', 'الرد خلال 24 ساعة', 'Respuesta en 24 h'),
+        body: t(lang,
+          'A member of the sales team contacts you to confirm quantities and next steps.',
+          'يتواصل معك أحد أعضاء فريق المبيعات لتأكيد الكميات والخطوات التالية.',
+          'Un miembro del equipo comercial te contacta para confirmar cantidades y próximos pasos.'),
+      },
+    ],
+  };
+}
+
 function ThankYouPage() {
   const { lang } = useLang();
   const { isPhone, isMobile } = useViewport();
   const isAr = lang === 'ar';
   const { type, ref, warn } = useMemo_ty(thankYouParams, []);
-  const isSubmittal = type === 'submittal';
 
   // The conversion fires here rather than in the form: a redirect can cut off a
   // tag fired moments before navigation, and this page is only ever reached
   // after ERP accepted the request.
   useEffect_ty(() => { if (typeof trackAdsLeadConversion === 'function') trackAdsLeadConversion(); }, []);
 
-  const heading = isSubmittal
-    ? t(lang, 'Your submittal request is registered.', 'تم تسجيل طلب وثائق الاعتماد.', 'Tu solicitud de documentación está registrada.')
-    : t(lang, 'Your quote request is registered.', 'تم تسجيل طلب عرض السعر.', 'Tu solicitud de cotización está registrada.');
-
-  const lead = isSubmittal
-    ? t(lang,
-      'Our technical team has your project specification and will prepare the submittal package for the product you selected.',
-      'استلم فريقنا الفني مواصفات مشروعك وسيقوم بتجهيز ملف الاعتماد للمنتج الذي اخترته.',
-      'Nuestro equipo técnico ha recibido la especificación de tu proyecto y preparará el paquete de aprobación del producto seleccionado.')
-    : t(lang,
-      'Our sales team has your requested products and project details, and will come back to you with pricing and availability.',
-      'استلم فريق المبيعات المنتجات المطلوبة وتفاصيل المشروع وسيوافيك بالأسعار والتوفر.',
-      'Nuestro equipo comercial ha recibido los productos solicitados y los datos del proyecto, y te responderá con precios y disponibilidad.');
-
-  const steps = isSubmittal ? [
-    {
-      title: t(lang, 'Technical review', 'مراجعة فنية', 'Revisión técnica'),
-      body: t(lang,
-        'We read the specification and confirm the BCI product complies with the specified clause.',
-        'نراجع المواصفات ونتأكد من مطابقة منتج BCI للبند المحدد.',
-        'Leemos la especificación y confirmamos que el producto BCI cumple la cláusula indicada.'),
-    },
-    {
-      title: t(lang, 'Package prepared', 'تجهيز الملف', 'Preparación del paquete'),
-      body: t(lang,
-        'Data sheets, certificates, test reports and a compliance statement are compiled for your project.',
-        'يتم تجميع النشرات الفنية والشهادات وتقارير الاختبار وبيان المطابقة لمشروعك.',
-        'Se recopilan fichas técnicas, certificados, informes de ensayo y la declaración de conformidad.'),
-    },
-    {
-      title: t(lang, 'Sent to you', 'الإرسال إليك', 'Envío'),
-      body: t(lang,
-        'The complete submittal arrives by email, ready to issue to the consultant.',
-        'يصلك ملف الاعتماد كاملًا عبر البريد الإلكتروني جاهزًا لتقديمه للاستشاري.',
-        'Recibes el paquete completo por correo, listo para presentarlo al consultor.'),
-    },
-  ] : [
-    {
-      title: t(lang, 'Sales review', 'مراجعة المبيعات', 'Revisión comercial'),
-      body: t(lang,
-        'We confirm the right product and pack size for your application and site conditions.',
-        'نؤكد المنتج والعبوة المناسبين لتطبيقك وظروف الموقع.',
-        'Confirmamos el producto y el envase adecuados para tu aplicación y las condiciones de obra.'),
-    },
-    {
-      title: t(lang, 'Quotation issued', 'إصدار العرض', 'Emisión de la oferta'),
-      body: t(lang,
-        'Pricing, lead time and delivery terms are prepared for your project.',
-        'يتم تجهيز الأسعار ومدة التوريد وشروط التسليم لمشروعك.',
-        'Se preparan precios, plazos de entrega y condiciones para tu proyecto.'),
-    },
-    {
-      title: t(lang, 'Reply within 24 h', 'الرد خلال 24 ساعة', 'Respuesta en 24 h'),
-      body: t(lang,
-        'A member of the sales team contacts you to confirm quantities and next steps.',
-        'يتواصل معك أحد أعضاء فريق المبيعات لتأكيد الكميات والخطوات التالية.',
-        'Un miembro del equipo comercial te contacta para confirmar cantidades y próximos pasos.'),
-    },
-  ];
+  const { heading, lead, steps } = thankYouCopy(type, lang);
 
   return (
     <main style={{ background: 'var(--bci-concrete)' }}>

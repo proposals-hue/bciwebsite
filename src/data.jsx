@@ -1742,6 +1742,14 @@ const SEO_META = {
     es: { title: 'Solicitar Documentación de Aprobación | BCI Arabia Saudita',
           description: 'Solicita el paquete de aprobación de BCI para tu obra. Adjunta la especificación del proyecto, elige el producto y nuestro equipo técnico prepara fichas técnicas, certificados y declaraciones de conformidad.' },
   },
+  sampleRequest: {
+    en: { title: 'Request a Sample | BCI Saudi Arabia',
+          description: 'Request free samples of BCI construction chemicals for a site trial. Choose the products, tell us where to deliver them and our sales team arranges the samples with their technical data sheets.' },
+    ar: { title: 'طلب عينات من BCI | المملكة العربية السعودية',
+          description: 'اطلب عينات مجانية من منتجات BCI للكيماويات الإنشائية لتجربتها في موقعك. اختر المنتجات وحدد مكان التسليم ويقوم فريق المبيعات بترتيب العينات مع نشراتها الفنية.' },
+    es: { title: 'Solicitar una Muestra | BCI Arabia Saudita',
+          description: 'Solicita muestras gratuitas de químicos para construcción BCI para una prueba en obra. Elige los productos, indica dónde entregarlos y nuestro equipo comercial prepara las muestras con sus fichas técnicas.' },
+  },
   thankYou: {
     en: { title: 'Thank You | BCI Saudi Arabia',
           description: 'Your request has been registered with BCI. Our team reviews it and comes back to you with the documents, pricing and next steps.' },
