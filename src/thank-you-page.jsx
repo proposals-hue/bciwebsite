@@ -19,7 +19,7 @@ function thankYouParams() {
 
 function ThankYouPage() {
   const { lang } = useLang();
-  const { isPhone } = useViewport();
+  const { isPhone, isMobile } = useViewport();
   const isAr = lang === 'ar';
   const { type, ref, warn } = useMemo_ty(thankYouParams, []);
   const isSubmittal = type === 'submittal';
@@ -91,7 +91,12 @@ function ThankYouPage() {
 
   return (
     <main style={{ background: 'var(--bci-concrete)' }}>
-      <section style={{ padding: isPhone ? '56px 0 40px' : 'clamp(72px, 9vw, 120px) 0 64px' }}>
+      {/* The header is fixed, so the first section clears it the same way
+          PageHero does (104 mobile / 176 desktop) plus its own breathing room. */}
+      <section style={{
+        paddingTop: isMobile ? 128 : 200,
+        paddingBottom: isPhone ? 48 : 80,
+      }}>
         <div className="container">
           <div style={{
             maxWidth: 780, marginInline: 'auto', background: '#fff',
@@ -103,7 +108,9 @@ function ThankYouPage() {
               width: 56, height: 56, borderRadius: '50%', background: 'var(--bci-green-50)',
               border: '1px solid var(--bci-green-200)', display: 'flex', alignItems: 'center',
               justifyContent: 'center', marginBottom: 24,
-              marginInlineStart: isAr ? 'auto' : 0, marginInlineEnd: isAr ? 0 : 'auto',
+              // inline-end:auto already resolves per direction — an isAr branch
+              // here would flip the icon to the wrong side in Arabic.
+              marginInlineEnd: 'auto',
             }}>
               <Icon name="check" size={26} stroke="var(--bci-green-700)" />
             </div>
@@ -124,7 +131,7 @@ function ThankYouPage() {
 
             {ref && (
               <div style={{
-                background: 'var(--bci-paper)', border: '1px solid var(--bci-hairline-light)',
+                background: 'var(--bci-green-50)', border: '1px solid var(--bci-green-200)',
                 padding: '16px 18px', display: 'flex', flexWrap: 'wrap', gap: 6,
                 alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 28,
               }}>
