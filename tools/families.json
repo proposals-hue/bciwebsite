@@ -4054,28 +4054,6 @@
   },
   {
     "slug": "waterproofing-roofing",
-    "key": "BC ROOF COAT",
-    "name": "BC Roof Coat",
-    "n_skus": 1,
-    "members": [
-      "BC Roof Coat WHITE 20 KG - FG"
-    ],
-    "desc": "BC Roof Coat Single-component, heavy-duty, water-based acrylic waterproofing system; forms a flexible, UV-resistant barrier with excellent puncture resistance and long-lasting protection. 20 kg pail.",
-    "n_desc": 1,
-    "img": "/files/Acrylic Pail.png",
-    "n_img": 1,
-    "tds": null,
-    "n_tds": 0,
-    "sizes": [
-      "20 kg pail"
-    ],
-    "colors": [
-      "White"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
     "key": "BC GEOTEXTILE",
     "name": "BC Geotextile",
     "n_skus": 2,
@@ -5047,6 +5025,28 @@
     ],
     "colors": [
       "Black"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC ROOF COAT",
+    "name": "BC Roof Coat",
+    "n_skus": 1,
+    "members": [
+      "BC Roof Coat WHITE 20 KG - FG"
+    ],
+    "desc": "BC Roof Coat Single-component, heavy-duty, water-based acrylic waterproofing system; forms a flexible, UV-resistant barrier with excellent puncture resistance and long-lasting protection. 20 kg pail.",
+    "n_desc": 1,
+    "img": "/files/Acrylic Pail.png",
+    "n_img": 1,
+    "tds": null,
+    "n_tds": 0,
+    "sizes": [
+      "20 kg pail"
+    ],
+    "colors": [
+      "White"
     ],
     "component_only": false
   }
