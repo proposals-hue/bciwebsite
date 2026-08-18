@@ -4810,26 +4810,6 @@
   },
   {
     "slug": "pu-foam-insulation",
-    "key": "BC XPS 32 10CMX60CMX125CM",
-    "name": "BC XPS 32 10cmx60cmx125cm",
-    "n_skus": 1,
-    "members": [
-      "BC XPS BOARD 32-35KG/M3 (10CMX60CMX125CM)"
-    ],
-    "desc": "XPS Board 32–35 kg/m³ (10 cm × 60 cm × 125 cm) is an extruded polystyrene insulation board designed for high compressive strength and low water absorption.It provides durable, long-lasting thermal insulation for foundations, roofs, walls, and below-grade applications",
-    "n_desc": 1,
-    "img": "/files/XPS-Extruded-Polystyrene-Board..jpg",
-    "n_img": 1,
-    "tds": "/private/files/BC XPS Board.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "2.5 kg board"
-    ],
-    "colors": [],
-    "component_only": false
-  },
-  {
-    "slug": "pu-foam-insulation",
     "key": "BC XPS 32 5CMX60CMX125CM",
     "name": "BC XPS 32 5cmx60cmx125cm",
     "n_skus": 1,
@@ -4939,28 +4919,6 @@
     "component_only": false
   },
   {
-    "slug": "pu-foam-insulation",
-    "key": "BC FOAMCONCRETE",
-    "name": "BC Foam Concrete",
-    "n_skus": 1,
-    "members": [
-      "BC Foam Concrete WHITE 200 KG -FG"
-    ],
-    "desc": "BC Foam Concrete Engineered fill material with uniformly distributed air voids for geotechnical construction and mining; combines cement slurry with stable foam to create lightweight, rigid concrete. 200 kg drum.",
-    "n_desc": 1,
-    "img": "/files/Foam conc.png",
-    "n_img": 1,
-    "tds": "/private/files/BC Foam Concrete TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "200 kg drum"
-    ],
-    "colors": [
-      "White"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "waterproofing-roofing",
     "key": "BC BITU CLASSIC 160",
     "name": "BC Bitu Classic 160",
@@ -4981,28 +4939,6 @@
     "colors": [
       "Black",
       "Slated"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
-    "key": "GULF SEAL PRIMER 18 LIT",
-    "name": "Gulf Seal Primer 18 Lit",
-    "n_skus": 1,
-    "members": [
-      "gulf seal Primer BLACK 18 lit"
-    ],
-    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
-    "n_desc": 1,
-    "img": "/files/solvent Can.png",
-    "n_img": 1,
-    "tds": "/private/files/BC Bitumen Primer New.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "15 kg pail"
-    ],
-    "colors": [
-      "Black"
     ],
     "component_only": false
   },
@@ -5047,6 +4983,70 @@
     ],
     "colors": [
       "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC FOAMCONCRETE",
+    "name": "BC Foam Concrete",
+    "n_skus": 1,
+    "members": [
+      "BC Foam Concrete WHITE 200 KG -FG"
+    ],
+    "desc": "BC Foam Concrete Engineered fill material with uniformly distributed air voids for geotechnical construction and mining; combines cement slurry with stable foam to create lightweight, rigid concrete. 200 kg drum.",
+    "n_desc": 1,
+    "img": "/files/Foam conc.png",
+    "n_img": 1,
+    "tds": "/private/files/BC Foam Concrete TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "200 kg drum"
+    ],
+    "colors": [
+      "White"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC XPS 32 10CMX60CMX125CM",
+    "name": "BC XPS 32 10cmx60cmx125cm",
+    "n_skus": 1,
+    "members": [
+      "BC XPS BOARD 32-35KG/M3 (10CMX60CMX125CM)"
+    ],
+    "desc": "XPS Board 32–35 kg/m³ (10 cm × 60 cm × 125 cm) is an extruded polystyrene insulation board designed for high compressive strength and low water absorption.It provides durable, long-lasting thermal insulation for foundations, roofs, walls, and below-grade applications",
+    "n_desc": 1,
+    "img": "/files/XPS-Extruded-Polystyrene-Board..jpg",
+    "n_img": 1,
+    "tds": "/private/files/BC XPS Board.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "2.5 kg board"
+    ],
+    "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "GULF SEAL PRIMER 18 LIT",
+    "name": "Gulf Seal Primer 18 Lit",
+    "n_skus": 1,
+    "members": [
+      "gulf seal Primer BLACK 18 lit"
+    ],
+    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
+    "n_desc": 1,
+    "img": "/files/solvent Can.png",
+    "n_img": 1,
+    "tds": "/private/files/BC Bitumen Primer New.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "15 kg pail"
+    ],
+    "colors": [
+      "Black"
     ],
     "component_only": false
   }
