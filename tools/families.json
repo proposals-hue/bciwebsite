@@ -4846,28 +4846,6 @@
   },
   {
     "slug": "waterproofing-roofing",
-    "key": "GULF SEAL PRIMER 18 LIT",
-    "name": "Gulf Seal Primer 18 Lit",
-    "n_skus": 1,
-    "members": [
-      "gulf seal Primer BLACK 18 lit"
-    ],
-    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
-    "n_desc": 1,
-    "img": "/files/solvent Can.png",
-    "n_img": 1,
-    "tds": "/private/files/BC Bitumen Primer New.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "15 kg pail"
-    ],
-    "colors": [
-      "Black"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
     "key": "BC ROOF COAT",
     "name": "BC Roof Coat",
     "n_skus": 1,
@@ -4961,6 +4939,72 @@
     "component_only": false
   },
   {
+    "slug": "protective-coatings",
+    "key": "BC POXY PRIMER 349",
+    "name": "BC Poxy Primer 349",
+    "n_skus": 1,
+    "members": [
+      "BC Poxy primer 349 CREAMY 30 KG SYSTEM - FG"
+    ],
+    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Epoxy Primer 349.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Creamy"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC PUR INJECTION",
+    "name": "BC PUR Injection",
+    "n_skus": 1,
+    "members": [
+      "BC PUR Injection BLACK 30 KG System - FG"
+    ],
+    "desc": "BC PUR Injection is a two-component, very low-viscosity, solvent-free polyurethane injection resin. Upon contact with water, it reacts to form a uniform, closed, watertight, and elastic pore structure that ensures long-term sealing performance.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1)726a82.jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC PUR Injection.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Black"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "GULF SEAL PRIMER 18 LIT",
+    "name": "Gulf Seal Primer 18 Lit",
+    "n_skus": 1,
+    "members": [
+      "gulf seal Primer BLACK 18 lit"
+    ],
+    "desc": "BC Bitumen Primer is a high-performance, cold-applied, fast-curing primer based on oxidized bitumen and fast-evaporating solvents. It is enhanced with wetting and adhesion-promoting additives to ensure excellent bonding of bituminous membranes and waterproofing systems to a variety of substrates.",
+    "n_desc": 1,
+    "img": "/files/solvent Can.png",
+    "n_img": 1,
+    "tds": "/private/files/BC Bitumen Primer New.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "15 kg pail"
+    ],
+    "colors": [
+      "Black"
+    ],
+    "component_only": false
+  },
+  {
     "slug": "waterproofing-roofing",
     "key": "BC BITU CLASSIC 160",
     "name": "BC Bitu Classic 160",
@@ -5003,50 +5047,6 @@
     ],
     "colors": [
       "Grey"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "protective-coatings",
-    "key": "BC POXY PRIMER 349",
-    "name": "BC Poxy Primer 349",
-    "n_skus": 1,
-    "members": [
-      "BC Poxy primer 349 CREAMY 30 KG SYSTEM - FG"
-    ],
-    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Epoxy Primer 349.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Creamy"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
-    "key": "BC PUR INJECTION",
-    "name": "BC PUR Injection",
-    "n_skus": 1,
-    "members": [
-      "BC PUR Injection BLACK 30 KG System - FG"
-    ],
-    "desc": "BC PUR Injection is a two-component, very low-viscosity, solvent-free polyurethane injection resin. Upon contact with water, it reacts to form a uniform, closed, watertight, and elastic pore structure that ensures long-term sealing performance.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1)726a82.jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC PUR Injection.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Black"
     ],
     "component_only": false
   }
