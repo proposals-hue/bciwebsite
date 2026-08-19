@@ -2764,28 +2764,6 @@
   },
   {
     "slug": "waterproofing-roofing",
-    "key": "BC PUR INJECTION",
-    "name": "BC PUR Injection",
-    "n_skus": 1,
-    "members": [
-      "BC PUR Injection BLACK 30 KG System - FG"
-    ],
-    "desc": "BC PUR Injection is a two-component, very low-viscosity, solvent-free polyurethane injection resin. Upon contact with water, it reacts to form a uniform, closed, watertight, and elastic pore structure that ensures long-term sealing performance.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1)726a82.jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC PUR Injection.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Black"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
     "key": "BC SEAL 105",
     "name": "BC Seal 105",
     "n_skus": 1,
@@ -4373,29 +4351,6 @@
     "component_only": false
   },
   {
-    "slug": "protective-coatings",
-    "key": "BC GRP LINE PRIMER",
-    "name": "BC GRP Line Primer",
-    "n_skus": 2,
-    "members": [
-      "BC GRP Line  Primer CLEAR 20.44 KG SYSTEM - (FG)",
-      "BC GRP Line Primer (P) CLEAR 20.44 KG SYSTEM - (FG)"
-    ],
-    "desc": "BC Line GRP Primer is a three-pack, vinyl ester–based primer with inert fillers and fiberglass reinforcement, offering excellent chemical resistance for steel and concrete surfaces in tank linings and harsh environments. 20 kg set.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1)726a82.jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC GRP Line Primer TDS.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20.44 kg set"
-    ],
-    "colors": [
-      "Clear"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "admixtures-aids",
     "key": "BC THINNER 101",
     "name": "BC Thinner 101",
@@ -4479,6 +4434,29 @@
     "n_tds": 1,
     "sizes": [
       "20 kg set"
+    ],
+    "colors": [
+      "Clear"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC GRP LINE PRIMER",
+    "name": "BC GRP Line Primer",
+    "n_skus": 2,
+    "members": [
+      "BC GRP Line  Primer CLEAR 20.44 KG SYSTEM - (FG)",
+      "BC GRP Line Primer (P) CLEAR 20.44 KG SYSTEM - (FG)"
+    ],
+    "desc": "BC Line GRP Primer is a three-pack, vinyl ester–based primer with inert fillers and fiberglass reinforcement, offering excellent chemical resistance for steel and concrete surfaces in tank linings and harsh environments. 20 kg set.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1)726a82.jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC GRP Line Primer TDS.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20.44 kg set"
     ],
     "colors": [
       "Clear"
@@ -5047,6 +5025,28 @@
     ],
     "colors": [
       "Creamy"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC PUR INJECTION",
+    "name": "BC PUR Injection",
+    "n_skus": 1,
+    "members": [
+      "BC PUR Injection BLACK 30 KG System - FG"
+    ],
+    "desc": "BC PUR Injection is a two-component, very low-viscosity, solvent-free polyurethane injection resin. Upon contact with water, it reacts to form a uniform, closed, watertight, and elastic pore structure that ensures long-term sealing performance.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1)726a82.jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC PUR Injection.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Black"
     ],
     "component_only": false
   }
