@@ -4664,28 +4664,6 @@
     "component_only": false
   },
   {
-    "slug": "protective-coatings",
-    "key": "BC POXY PRIMER 349",
-    "name": "BC Poxy Primer 349",
-    "n_skus": 1,
-    "members": [
-      "BC Poxy primer 349 CREAMY 30 KG SYSTEM - FG"
-    ],
-    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Epoxy Primer 349.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Creamy"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "pu-foam-insulation",
     "key": "BC XPS 32 5CMX60CMX125CM",
     "name": "BC XPS 32 5cmx60cmx125cm",
@@ -4793,30 +4771,6 @@
       "47 kg roll"
     ],
     "colors": [],
-    "component_only": false
-  },
-  {
-    "slug": "waterproofing-roofing",
-    "key": "BC BITU CLASSIC 160",
-    "name": "BC Bitu Classic 160",
-    "n_skus": 2,
-    "members": [
-      "BC Bitu Classic 160 BLACK ROLL - FG",
-      "BC Bitu Classic 160 Slated   ROLL - FG"
-    ],
-    "desc": "BC Bitu Classic 160 Slated APP (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
-    "n_desc": 2,
-    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1).jpeg",
-    "n_img": 1,
-    "tds": "/files/TDS BC Bitu-Classic.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "0.909091 L roll"
-    ],
-    "colors": [
-      "Black",
-      "Slated"
-    ],
     "component_only": false
   },
   {
@@ -5007,6 +4961,52 @@
     "component_only": false
   },
   {
+    "slug": "protective-coatings",
+    "key": "BC EPOXY PRIMER 349 30",
+    "name": "BC Epoxy Primer 349 30",
+    "n_skus": 1,
+    "members": [
+      "BC Epoxy Primer 349 brown 30 system -FG"
+    ],
+    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM0a0909.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Epoxy Primer 349.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Brown"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "waterproofing-roofing",
+    "key": "BC BITU CLASSIC 160",
+    "name": "BC Bitu Classic 160",
+    "n_skus": 2,
+    "members": [
+      "BC Bitu Classic 160 BLACK ROLL - FG",
+      "BC Bitu Classic 160 Slated   ROLL - FG"
+    ],
+    "desc": "BC Bitu Classic 160 Slated APP (Atactic Polypropylene) modified, reinforced plastomeric bituminous waterproofing membrane, torch-applied, offering excellent heat resistance, dimensional stability, and long-term waterproofing protection for roofs and foundations.",
+    "n_desc": 2,
+    "img": "/files/WhatsApp Image 2025-10-04 at 2.46.30 PM (1).jpeg",
+    "n_img": 1,
+    "tds": "/files/TDS BC Bitu-Classic.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "0.909091 L roll"
+    ],
+    "colors": [
+      "Black",
+      "Slated"
+    ],
+    "component_only": false
+  },
+  {
     "slug": "concrete-repair",
     "key": "BC REPAIR 100",
     "name": "BC Repair 100",
@@ -5030,15 +5030,15 @@
   },
   {
     "slug": "protective-coatings",
-    "key": "BC EPOXY PRIMER 349 30",
-    "name": "BC Epoxy Primer 349 30",
+    "key": "BC POXY PRIMER 349",
+    "name": "BC Poxy Primer 349",
     "n_skus": 1,
     "members": [
-      "BC Epoxy Primer 349 brown 30 system -FG"
+      "BC Poxy primer 349 CREAMY 30 KG SYSTEM - FG"
     ],
     "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
     "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM0a0909.jpeg",
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM.jpeg",
     "n_img": 1,
     "tds": "/files/BC Epoxy Primer 349.pdf",
     "n_tds": 1,
@@ -5046,7 +5046,7 @@
       "30 kg set"
     ],
     "colors": [
-      "Brown"
+      "Creamy"
     ],
     "component_only": false
   }
