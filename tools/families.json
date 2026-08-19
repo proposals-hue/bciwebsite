@@ -563,32 +563,6 @@
     "component_only": false
   },
   {
-    "slug": "polyurea-membranes",
-    "key": "BC 914 CA",
-    "name": "BC 914 CA",
-    "n_skus": 3,
-    "members": [
-      "BC 914 CA POLYUREA CLEAR 10 KG Part - B -FG",
-      "BC 914 CA POLYUREA GREY 10 KG Part - A -FG",
-      "BC 914 CA POLYUREA GREY 20 KG SYSTEM -FG"
-    ],
-    "desc": "BC 914 CA Polyurea Two-component, pure aliphatic, brushable polyurea waterproofing coating, 20 kg set, 0.79 m²/kg at 1 mm thickness, approx. 45.5 SAR/m², providing exceptional UV stability, mechanical durability, and zero water absorption.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-06-02 at 4.12.11 PM5ffeb0.jpeg",
-    "n_img": 3,
-    "tds": "/files/BC 914 CA Polyurea (1).pdf",
-    "n_tds": 2,
-    "sizes": [
-      "10 kg pail",
-      "20 kg set"
-    ],
-    "colors": [
-      "Clear",
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "flooring-systems",
     "key": "BC TERRAZO AGGREGATES COLORED",
     "name": "BC Terrazo Aggregates Colored",
@@ -4897,28 +4871,6 @@
     "component_only": false
   },
   {
-    "slug": "concrete-repair",
-    "key": "BC REPAIR 100",
-    "name": "BC Repair 100",
-    "n_skus": 1,
-    "members": [
-      "BC Repair 100 GREY 20 KG -FG"
-    ],
-    "desc": "BC Repair 100 High-quality, water-resistant cementitious repair mortar, 20 kg bag, 1.10 m² at 10 mm, one coat, for durable crack and surface repair up to 4 mm width on concrete.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-08-12 at 4.07.52 PM (1).jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Repair 100c7d943.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20 kg bag"
-    ],
-    "colors": [
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "waterproofing-roofing",
     "key": "BC SEAL",
     "name": "BC Seal",
@@ -5047,6 +4999,54 @@
     ],
     "colors": [
       "Yellow"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "concrete-repair",
+    "key": "BC REPAIR 100",
+    "name": "BC Repair 100",
+    "n_skus": 1,
+    "members": [
+      "BC Repair 100 GREY 20 KG -FG"
+    ],
+    "desc": "BC Repair 100 High-quality, water-resistant cementitious repair mortar, 20 kg bag, 1.10 m² at 10 mm, one coat, for durable crack and surface repair up to 4 mm width on concrete.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-08-12 at 4.07.52 PM (1).jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC Repair 100c7d943.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20 kg bag"
+    ],
+    "colors": [
+      "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "polyurea-membranes",
+    "key": "BC 914 CA",
+    "name": "BC 914 CA",
+    "n_skus": 3,
+    "members": [
+      "BC 914 CA POLYUREA CLEAR 10 KG Part - B -FG",
+      "BC 914 CA POLYUREA GREY 10 KG Part - A -FG",
+      "BC 914 CA POLYUREA GREY 20 KG SYSTEM -FG"
+    ],
+    "desc": "BC 914 CA Polyurea Two-component, pure aliphatic, brushable polyurea waterproofing coating, 20 kg set, 0.79 m²/kg at 1 mm thickness, approx. 45.5 SAR/m², providing exceptional UV stability, mechanical durability, and zero water absorption.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-06-02 at 4.12.11 PM5ffeb0.jpeg",
+    "n_img": 3,
+    "tds": "/files/BC 914 CA Polyurea (1).pdf",
+    "n_tds": 2,
+    "sizes": [
+      "10 kg pail",
+      "20 kg set"
+    ],
+    "colors": [
+      "Clear",
+      "Grey"
     ],
     "component_only": false
   }
