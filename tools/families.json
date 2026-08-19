@@ -1087,35 +1087,6 @@
     "component_only": false
   },
   {
-    "slug": "concrete-repair",
-    "key": "BC POXY PUTTY 2000",
-    "name": "BC Poxy Putty 2000",
-    "n_skus": 4,
-    "members": [
-      "BC Poxy Putty 2000 GREY 3 kg System - FG",
-      "BC Poxy Putty 2000 GREY 5.2 KG Part-B - FG",
-      "BC Poxy Putty 2000 GREY 9.7kg System - FG",
-      "BC Poxy Putty 2000 WHITE 4.5 KG Part-A - FG"
-    ],
-    "desc": "BC Poxy Putty 2000 Two-component, high-strength epoxy putty, 3 kg set yielding 1.75 L, for durable bonding, bedding, and concrete repair applications..",
-    "n_desc": 3,
-    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1).jpeg",
-    "n_img": 3,
-    "tds": "/files/BC Epoxy Putty 2000 TDS.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "3 kg set",
-      "4.5 kg can",
-      "5.2 kg can",
-      "9.7 kg set"
-    ],
-    "colors": [
-      "Grey",
-      "White"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "flooring-systems",
     "key": "BC POXY TERRAZO 253",
     "name": "BC Poxy Terrazo 253",
@@ -4516,28 +4487,6 @@
   },
   {
     "slug": "protective-coatings",
-    "key": "BC EPOXY PRIMER 349 30",
-    "name": "BC Epoxy Primer 349 30",
-    "n_skus": 1,
-    "members": [
-      "BC Epoxy Primer 349 brown 30 system -FG"
-    ],
-    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM0a0909.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Epoxy Primer 349.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "30 kg set"
-    ],
-    "colors": [
-      "Brown"
-    ],
-    "component_only": false
-  },
-  {
-    "slug": "protective-coatings",
     "key": "BC SEALER MATT",
     "name": "BC Sealer Matt",
     "n_skus": 1,
@@ -4893,6 +4842,35 @@
     "component_only": false
   },
   {
+    "slug": "concrete-repair",
+    "key": "BC POXY PUTTY 2000",
+    "name": "BC Poxy Putty 2000",
+    "n_skus": 4,
+    "members": [
+      "BC Poxy Putty 2000 GREY 3 kg System - FG",
+      "BC Poxy Putty 2000 GREY 5.2 KG Part-B - FG",
+      "BC Poxy Putty 2000 GREY 9.7kg System - FG",
+      "BC Poxy Putty 2000 WHITE 4.5 KG Part-A - FG"
+    ],
+    "desc": "BC Poxy Putty 2000 Two-component, high-strength epoxy putty, 3 kg set yielding 1.75 L, for durable bonding, bedding, and concrete repair applications..",
+    "n_desc": 3,
+    "img": "/files/WhatsApp Image 2025-12-14 at 2.33.55 PM (1).jpeg",
+    "n_img": 3,
+    "tds": "/files/BC Epoxy Putty 2000 TDS.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "3 kg set",
+      "4.5 kg can",
+      "5.2 kg can",
+      "9.7 kg set"
+    ],
+    "colors": [
+      "Grey",
+      "White"
+    ],
+    "component_only": false
+  },
+  {
     "slug": "pu-foam-insulation",
     "key": "BC FOAMCONCRETE",
     "name": "BC Foam Concrete",
@@ -5003,28 +4981,6 @@
     "component_only": false
   },
   {
-    "slug": "concrete-repair",
-    "key": "BC REPAIR 100",
-    "name": "BC Repair 100",
-    "n_skus": 1,
-    "members": [
-      "BC Repair 100 GREY 20 KG -FG"
-    ],
-    "desc": "BC Repair 100 High-quality, water-resistant cementitious repair mortar, 20 kg bag, 1.10 m² at 10 mm, one coat, for durable crack and surface repair up to 4 mm width on concrete.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-08-12 at 4.07.52 PM (1).jpeg",
-    "n_img": 1,
-    "tds": "/private/files/BC Repair 100c7d943.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20 kg bag"
-    ],
-    "colors": [
-      "Grey"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "polyurea-membranes",
     "key": "BC 914 CA",
     "name": "BC 914 CA",
@@ -5047,6 +5003,50 @@
     "colors": [
       "Clear",
       "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "concrete-repair",
+    "key": "BC REPAIR 100",
+    "name": "BC Repair 100",
+    "n_skus": 1,
+    "members": [
+      "BC Repair 100 GREY 20 KG -FG"
+    ],
+    "desc": "BC Repair 100 High-quality, water-resistant cementitious repair mortar, 20 kg bag, 1.10 m² at 10 mm, one coat, for durable crack and surface repair up to 4 mm width on concrete.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-08-12 at 4.07.52 PM (1).jpeg",
+    "n_img": 1,
+    "tds": "/private/files/BC Repair 100c7d943.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20 kg bag"
+    ],
+    "colors": [
+      "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "protective-coatings",
+    "key": "BC EPOXY PRIMER 349 30",
+    "name": "BC Epoxy Primer 349 30",
+    "n_skus": 1,
+    "members": [
+      "BC Epoxy Primer 349 brown 30 system -FG"
+    ],
+    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM0a0909.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Epoxy Primer 349.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "30 kg set"
+    ],
+    "colors": [
+      "Brown"
     ],
     "component_only": false
   }
