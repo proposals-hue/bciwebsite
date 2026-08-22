@@ -4779,30 +4779,6 @@
     "component_only": false
   },
   {
-    "slug": "pu-foam-insulation",
-    "key": "BC 715",
-    "name": "BC 715",
-    "n_skus": 2,
-    "members": [
-      "BC 715 Spray FOAM YELLOW 470 KG - FG",
-      "BC 715 Spray Polyol YELLOW 220 KG -FG"
-    ],
-    "desc": "BC 715 Spray Polyol & BC 768 Isocyanate is a two-component, 141B-based spray polyurethane foam system designed to achieve a density of 48–50 kg/m³. It produces foam with excellent adhesion and reliable dimensional stability for insulation and protective applications",
-    "n_desc": 2,
-    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
-    "n_img": 2,
-    "tds": "/files/BC 715 spray Foam.pdf",
-    "n_tds": 2,
-    "sizes": [
-      "220 kg drum",
-      "470 kg set"
-    ],
-    "colors": [
-      "Yellow"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "polyurea-membranes",
     "key": "BC 914 CA",
     "name": "BC 914 CA",
@@ -5047,6 +5023,30 @@
     ],
     "colors": [
       "Grey"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "pu-foam-insulation",
+    "key": "BC 715",
+    "name": "BC 715",
+    "n_skus": 2,
+    "members": [
+      "BC 715 Spray FOAM YELLOW 470 KG - FG",
+      "BC 715 Spray Polyol YELLOW 220 KG -FG"
+    ],
+    "desc": "BC 715 Spray Polyol & BC 768 Isocyanate is a two-component, 141B-based spray polyurethane foam system designed to achieve a density of 48–50 kg/m³. It produces foam with excellent adhesion and reliable dimensional stability for insulation and protective applications",
+    "n_desc": 2,
+    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
+    "n_img": 2,
+    "tds": "/files/BC 715 spray Foam.pdf",
+    "n_tds": 2,
+    "sizes": [
+      "220 kg drum",
+      "470 kg set"
+    ],
+    "colors": [
+      "Yellow"
     ],
     "component_only": false
   }
