@@ -4987,28 +4987,6 @@
     "component_only": false
   },
   {
-    "slug": "sealants-joints",
-    "key": "BC BOND LIQUID",
-    "name": "BC Bond Liquid",
-    "n_skus": 1,
-    "members": [
-      "BC BOND Liquid WHITE 20 KG -FG"
-    ],
-    "desc": "BC BOND Liquid-FG An admixture and bonding agent for cementitious materials",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.57.55 PMf61eb1.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Bond Super.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20 kg pail"
-    ],
-    "colors": [
-      "White"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "protective-coatings",
     "key": "BC EPOXY PRIMER 349 30",
     "name": "BC Epoxy Primer 349 30",
@@ -5048,6 +5026,28 @@
       "47 kg roll"
     ],
     "colors": [],
+    "component_only": false
+  },
+  {
+    "slug": "sealants-joints",
+    "key": "BC BOND LIQUID",
+    "name": "BC Bond Liquid",
+    "n_skus": 1,
+    "members": [
+      "BC BOND Liquid WHITE 20 KG -FG"
+    ],
+    "desc": "BC BOND Liquid-FG An admixture and bonding agent for cementitious materials",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.57.55 PMf61eb1.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Bond Super.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20 kg pail"
+    ],
+    "colors": [
+      "White"
+    ],
     "component_only": false
   }
 ]
