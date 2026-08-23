@@ -2582,28 +2582,6 @@
     "component_only": false
   },
   {
-    "slug": "sealants-joints",
-    "key": "BC BOND LIQUID",
-    "name": "BC Bond Liquid",
-    "n_skus": 1,
-    "members": [
-      "BC BOND Liquid WHITE 20 KG -FG"
-    ],
-    "desc": "BC BOND Liquid-FG An admixture and bonding agent for cementitious materials",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.57.55 PMf61eb1.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Bond Super.pdf",
-    "n_tds": 1,
-    "sizes": [
-      "20 kg pail"
-    ],
-    "colors": [
-      "White"
-    ],
-    "component_only": false
-  },
-  {
     "slug": "waterproofing-roofing",
     "key": "BC GUARD FL 100",
     "name": "BC Guard Fl 100",
@@ -4983,24 +4961,26 @@
     "component_only": false
   },
   {
-    "slug": "protective-coatings",
-    "key": "BC POXY PRIMER 349",
-    "name": "BC Poxy Primer 349",
-    "n_skus": 1,
+    "slug": "pu-foam-insulation",
+    "key": "BC 715",
+    "name": "BC 715",
+    "n_skus": 2,
     "members": [
-      "BC Poxy primer 349 CREAMY 30 KG SYSTEM - FG"
+      "BC 715 Spray FOAM YELLOW 470 KG - FG",
+      "BC 715 Spray Polyol YELLOW 220 KG -FG"
     ],
-    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
-    "n_desc": 1,
-    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM.jpeg",
-    "n_img": 1,
-    "tds": "/files/BC Epoxy Primer 349.pdf",
-    "n_tds": 1,
+    "desc": "BC 715 Spray Polyol & BC 768 Isocyanate is a two-component, 141B-based spray polyurethane foam system designed to achieve a density of 48–50 kg/m³. It produces foam with excellent adhesion and reliable dimensional stability for insulation and protective applications",
+    "n_desc": 2,
+    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
+    "n_img": 2,
+    "tds": "/files/BC 715 spray Foam.pdf",
+    "n_tds": 2,
     "sizes": [
-      "30 kg set"
+      "220 kg drum",
+      "470 kg set"
     ],
     "colors": [
-      "Creamy"
+      "Yellow"
     ],
     "component_only": false
   },
@@ -5027,26 +5007,46 @@
     "component_only": false
   },
   {
-    "slug": "pu-foam-insulation",
-    "key": "BC 715",
-    "name": "BC 715",
-    "n_skus": 2,
+    "slug": "protective-coatings",
+    "key": "BC POXY PRIMER 349",
+    "name": "BC Poxy Primer 349",
+    "n_skus": 1,
     "members": [
-      "BC 715 Spray FOAM YELLOW 470 KG - FG",
-      "BC 715 Spray Polyol YELLOW 220 KG -FG"
+      "BC Poxy primer 349 CREAMY 30 KG SYSTEM - FG"
     ],
-    "desc": "BC 715 Spray Polyol & BC 768 Isocyanate is a two-component, 141B-based spray polyurethane foam system designed to achieve a density of 48–50 kg/m³. It produces foam with excellent adhesion and reliable dimensional stability for insulation and protective applications",
-    "n_desc": 2,
-    "img": "/files/91ed3334-4e36-47d5-b934-f5be6cbd98c1-1000x9167565c9.webp",
-    "n_img": 2,
-    "tds": "/files/BC 715 spray Foam.pdf",
-    "n_tds": 2,
+    "desc": "BCI Primer 349 Two-component, medium-viscosity, high-performance epoxy primer designed to seal substrate porosity and enhance adhesion for epoxy and polyurethane coatings; can also be used as a scratch coat with graded quartz sand.",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.54.07 PM.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Epoxy Primer 349.pdf",
+    "n_tds": 1,
     "sizes": [
-      "220 kg drum",
-      "470 kg set"
+      "30 kg set"
     ],
     "colors": [
-      "Yellow"
+      "Creamy"
+    ],
+    "component_only": false
+  },
+  {
+    "slug": "sealants-joints",
+    "key": "BC BOND LIQUID",
+    "name": "BC Bond Liquid",
+    "n_skus": 1,
+    "members": [
+      "BC BOND Liquid WHITE 20 KG -FG"
+    ],
+    "desc": "BC BOND Liquid-FG An admixture and bonding agent for cementitious materials",
+    "n_desc": 1,
+    "img": "/files/WhatsApp Image 2025-05-25 at 6.57.55 PMf61eb1.jpeg",
+    "n_img": 1,
+    "tds": "/files/BC Bond Super.pdf",
+    "n_tds": 1,
+    "sizes": [
+      "20 kg pail"
+    ],
+    "colors": [
+      "White"
     ],
     "component_only": false
   }
