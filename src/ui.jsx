@@ -374,6 +374,17 @@ async function submitSampleRequest(data) {
   return payload;
 }
 
+async function submitSupplierRegistration(data) {
+  const response = await fetch('/api/supplier-registration', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(data),
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(payload.error || 'Supplier registration failed');
+  return payload;
+}
+
 // Destination every request form sends the browser to once ERP has accepted the
 // submission. The reference travels in the URL so the page can show it, and the
 // Google Ads conversion fires there rather than moments before navigating away.
@@ -402,6 +413,7 @@ if (typeof window !== 'undefined') Object.assign(window, {
   submitCustomerRfq,
   submitSubmittalRequest,
   submitSampleRequest,
+  submitSupplierRegistration,
   thankYouHref,
   loadErpJobs,
   loadErpDesignations,

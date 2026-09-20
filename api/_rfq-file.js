@@ -27,6 +27,14 @@ const FILE_KINDS = {
     prefix: 'submittal-request/spec/', maxBytes: 10 * MB, types: { ...PDF_TYPE, ...IMAGE_TYPES },
     message: 'The project specification must be a PDF, JPG, PNG, or WebP file.',
   },
+  'supplier-profile': {
+    prefix: 'supplier-registration/profile/', maxBytes: 10 * MB, types: { ...PDF_TYPE, ...IMAGE_TYPES },
+    message: 'The company profile must be a PDF, JPG, PNG, or WebP file.',
+  },
+  'supplier-catalog': {
+    prefix: 'supplier-registration/catalog/', maxBytes: 10 * MB, types: { ...PDF_TYPE, ...IMAGE_TYPES },
+    message: 'The catalog or price list must be a PDF, JPG, PNG, or WebP file.',
+  },
 };
 
 function rfqFileError(message) {

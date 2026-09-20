@@ -28,6 +28,8 @@ const FILE_PREFIX = {
   logo: 'customer-rfq/logo/',
   cr: 'customer-rfq/cr/',
   spec: 'submittal-request/spec/',
+  'supplier-profile': 'supplier-registration/profile/',
+  'supplier-catalog': 'supplier-registration/catalog/',
 };
 
 window.uploadPrivateRfqFile = (file, kind, clientPayload, onUploadProgress) => {

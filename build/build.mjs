@@ -33,8 +33,8 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(here, '..');
 const DIST = path.join(ROOT, 'dist');
 const ORIGIN = 'https://www.bcisaudi.com';
-const ASSET_V = '2.1';
-const BLOB_UPLOAD_V = '3.1';
+const ASSET_V = '2.2';
+const BLOB_UPLOAD_V = '3.2';
 const LANGS = ['en', 'ar', 'es'];
 const OG_LOCALE = { en: 'en_US', ar: 'ar_SA', es: 'es_ES' };
 const TODAY = new Date().toISOString().slice(0, 10);
@@ -362,7 +362,8 @@ function buildDoc({ lang, title, description, p, schema, prerendered, scripts, r
   const canonical = abs(lang, p);
   const hreflang = LANGS.map((L) => `<link rel="alternate" hreflang="${L}" href="${abs(L, p)}" />`).join('\n')
     + `\n<link rel="alternate" hreflang="x-default" href="${abs('en', p)}" />`;
-  const needsBlobUpload = p === 'career' || p === 'request-quote' || p === 'submittal-request';
+  const needsBlobUpload = p === 'career' || p === 'request-quote' || p === 'submittal-request'
+    || p === 'supplier';
   const blobUploadScript = needsBlobUpload ? `<script src="/blob-upload.js?v=${BLOB_UPLOAD_V}"></script>\n` : '';
   const scriptTags = blobUploadScript + scripts.map((s) => `<script src="/${s}.js?v=${ASSET_V}"></script>`).join('\n');
   return `<!doctype html>
