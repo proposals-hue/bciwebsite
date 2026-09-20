@@ -140,9 +140,11 @@ Three things follow from that shape:
   copy, and the reason a failed child-table write is logged but not reported to
   the supplier.
 
-Only `item` has `in_list_view` set on the child doctype, so the grid shows an
-empty Item column by default. Turn on `item_name` and `price` via the grid's
-settings (the gear) or Customize Form → Supplier Items to see the data.
+`Supplier Items` is a **custom** doctype (module APC), so Customize Form and
+Property Setters do not apply to it — `in_list_view` lives on the DocType's own
+fields. Originally only `item` had it set, so the grid showed an empty Item
+column and hid the data; `item_name` and `price` were switched on (2026-09-20).
+`item` is deliberately left visible so staff can still link a real Item by hand.
 
 ### How it is written
 
