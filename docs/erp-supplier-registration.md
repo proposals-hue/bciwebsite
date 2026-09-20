@@ -17,7 +17,7 @@ One page, `/supplier`, with three parts:
 
 `PROCUREMENT` in `src/supplier-page.jsx` drives both the tiles and the category
 dropdown. Its `key` slugs must stay in step with `CATEGORIES` in
-`api/supplier-registration.js`, which rejects any key it does not know.
+`api/_supplier-registration.js`, which rejects any key it does not know.
 
 ## What the form collects
 
@@ -35,7 +35,8 @@ email, mobile, website, CR number, VAT/Tax ID), the supply category, then:
 ## How it reaches ERP
 
 `src/supplier-page.jsx` → `submitSupplierRegistration` (`src/ui.jsx`) →
-`POST /api/supplier-registration` → ERP. The route does three things in order:
+`POST /api/web-form-submit` with `web_form: 'supplier-registration'` →
+`api/_supplier-registration.js` → ERP. The handler does three things in order:
 
 1. Validates everything and renders the offer lines into `supplier_details` as
    a readable block:
@@ -58,6 +59,23 @@ email, mobile, website, CR number, VAT/Tax ID), the supply category, then:
    **without** a `fieldname`. They land as ordinary document attachments, so no
    custom Attach field is needed on `Supplier`.
 
+### Why it is not its own api/ route
+
+Vercel caps a deployment at **12 Serverless Functions** and `api/` was already
+at exactly 12. Adding `api/supplier-registration.js` made it 13 and the
+deployment failed to build — the static site built fine, so the only symptom was
+a red deployment and an unchanged live site.
+
+The logic therefore lives in `api/_supplier-registration.js`. The leading
+underscore keeps it a shared helper rather than a route, and
+`api/web-form-submit.js` delegates to it when the payload carries an `items`
+array. **Adding any new file to `api/` without an underscore will break the
+deployment the same way** until the plan is upgraded.
+
+`web-form-submit.js` keeps its original flat allow-list for the
+`supplier-registration` web form; a payload with no `items` (an old cached copy
+of the page) still takes that path.
+
 ### Why the prices are text, not a child table
 
 `Supplier` has no child table for offered items, and adding one is an ERP schema
@@ -67,7 +85,7 @@ lines are serialized into `supplier_details` (capped at 5000 characters).
 If the prices ever need to be queryable or comparable in ERP, the follow-up is:
 create a child doctype (e.g. `Supplier Offered Item` with
 `item_name / uom / rate / currency`), add it to `Supplier`, then swap the
-`details` block in `api/supplier-registration.js` for a real child-table array.
+`details` block in `api/_supplier-registration.js` for a real child-table array.
 The website form already collects the fields in that shape.
 
 ## Attachments
@@ -110,6 +128,6 @@ showing a bare fetch error — everything else on the page works locally.
 
 ## Legacy path
 
-`web-form-submit.js` still carries a `supplier-registration` entry from the
-original text-only form. It is no longer used by the page, and is kept only so
-that a cached copy of the old page still submits successfully.
+The flat `supplier-registration` entry in `FORMS` (`web-form-submit.js`) is the
+original text-only form. The current page never produces that shape, and it is
+kept only so a cached copy of the old page still submits successfully.

@@ -1,4 +1,5 @@
 const { erpWebForm, sendJson } = require('./_erp');
+const registerSupplier = require('./_supplier-registration');
 
 const clean = (value, max) => String(value == null ? '' : value).trim().slice(0, max);
 
@@ -59,6 +60,16 @@ module.exports = async function handler(req, res) {
     if (body.website_check) return sendJson(res, 200, { ok: true }); // honeypot
 
     const webForm = clean(body.web_form, 80);
+
+    // The supplier page sends structured offer lines and attachment references,
+    // which the flat allow-list below cannot express. It is handled here rather
+    // than in its own api/ file to stay under the 12-function deployment cap.
+    // Payloads without `items` are the old text-only form, still served from
+    // any cached copy of the page, and keep taking the generic path.
+    if (webForm === 'supplier-registration' && Array.isArray(body.items)) {
+      return registerSupplier(body, res);
+    }
+
     const config = FORMS[webForm];
     if (!config) return sendJson(res, 400, { error: 'Unsupported form.' });
 

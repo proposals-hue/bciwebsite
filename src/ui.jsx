@@ -374,11 +374,13 @@ async function submitSampleRequest(data) {
   return payload;
 }
 
+// Routed through web-form-submit rather than its own endpoint: Vercel caps the
+// deployment at 12 Serverless Functions and api/ is already at 12.
 async function submitSupplierRegistration(data) {
-  const response = await fetch('/api/supplier-registration', {
+  const response = await fetch('/api/web-form-submit', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify(data),
+    body: JSON.stringify({ web_form: 'supplier-registration', ...data }),
   });
   const payload = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(payload.error || 'Supplier registration failed');

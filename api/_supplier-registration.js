@@ -4,6 +4,11 @@ const { readPrivateBlob } = require('./_rfq-file');
 
 // Supplier registration with structured offer lines and two attachments.
 //
+// This is a helper, not a route: it is reached through api/web-form-submit.js.
+// Vercel's plan caps a deployment at 12 Serverless Functions and api/ was
+// already at 12, so a 14th file here must not become a 13th function — keep the
+// leading underscore.
+//
 // The Supplier record itself is still created through the guest ERP Web Form
 // (same path the plain form used), so no ERP credential reaches the browser.
 // The offered items are rendered into `supplier_details` because Supplier has
@@ -69,18 +74,10 @@ function formatItem(item, index) {
   return `${index + 1}. ${item.name}${unitOnly} — ${price}`;
 }
 
-module.exports = async function handler(req, res) {
-  if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
-    return sendJson(res, 405, { error: 'Method not allowed' });
-  }
-
+module.exports = async function registerSupplier(body, res) {
   let profileBlobUrl = '';
   let catalogBlobUrl = '';
   try {
-    const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
-    if (body.website_check) return sendJson(res, 200, { ok: true }); // honeypot
-
     profileBlobUrl = clean(body.profile_blob?.url, 1000);
     catalogBlobUrl = clean(body.catalog_blob?.url, 1000);
 
