@@ -19,6 +19,21 @@ One page, `/supplier`, with three parts:
 dropdown. Its `key` slugs must stay in step with `CATEGORIES` in
 `api/_supplier-registration.js`, which rejects any key it does not know.
 
+## The country list
+
+`SUPPLIER_COUNTRIES` in `src/supplier-page.jsx` is **generated**, not
+hand-written. `Supplier.country` is a Link field, so a name ERP does not know
+fails the insert server-side.
+
+The authoritative list is the option list of the `country` field on the ERP web
+form, which is public: fetch `https://erp.bcisaudi.net/supplier-registration`
+and read the `Autocomplete` field's `options` array. Note ERP uses forms like
+`Antigua & Barbuda` and `Bosnia & Herzegovina`, not the ISO long names.
+
+The lists had drifted: 43 of the 249 countries the website offered were not
+accepted by ERP, so any supplier picking one of them got a failed registration.
+Re-sync rather than editing either list by hand.
+
 ## What the form collects
 
 Company identity (name EN/AR, supplier type, country, city, contact person,
@@ -111,9 +126,15 @@ page never loads the uploader and attachments silently stop working.
 
 ## Failure behaviour
 
-- Validation errors return 400 with the real message, which the form shows
-  verbatim (`Item 2 needs a currency for its price.`).
-- ERP failures return 502 with a generic message; the real cause is logged.
+- Our own validation errors return 400 with the real message, which the form
+  shows verbatim (`Item 2 needs a currency for its price.`).
+- **ERP validation errors (Frappe answers 417) are passed through**, prefixed
+  with `ERP rejected the registration:`. Frappe puts a human-readable reason in
+  `_server_messages` (`Value missing for Supplier: Supplier Name`, `Could not
+  find Country: Xyz`) and it tells the supplier what to fix. HTML is stripped
+  and the message is capped at 300 characters.
+- Anything else (5xx, network) returns 502 with a generic message and the real
+  cause goes to the Vercel function log; a missing `ERP_TOKEN` returns 503.
 - A **failed attachment does not fail the registration**. The record is already
   saved, so the route returns `attachment_warning: true` and the page asks the
   supplier to email the file to info@bcisaudi.com.

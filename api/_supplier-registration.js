@@ -43,6 +43,34 @@ function badRequest(message) {
   return error;
 }
 
+// Frappe answers a validation failure with 417 and a human-readable reason in
+// `_server_messages`, which `erpWebForm` has already unwrapped into
+// error.message. Those say exactly what the supplier has to fix ("Value missing
+// for Supplier: Supplier Name", "Could not find Country: Xyz"), so they are
+// worth showing instead of a generic apology. Anything else stays generic, and
+// the real cause goes to the function log.
+function erpErrorResponse(error) {
+  const ownValidation = error.statusCode === 400;
+  const erpValidation = error.statusCode === 417 || error.statusCode === 409;
+  if (ownValidation) return [400, { error: error.message }];
+  if (erpValidation) {
+    const message = String(error.message || '')
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .slice(0, 300);
+    return [400, {
+      error: message
+        ? `ERP rejected the registration: ${message}`
+        : 'ERP rejected the registration. Please check the details and try again.',
+    }];
+  }
+  if (error.statusCode === 503) {
+    return [503, { error: 'The ERP connection is not configured. Please try again later.' }];
+  }
+  return [502, { error: 'We could not register your company in ERP. Please try again.' }];
+}
+
 // One offered product or service. Price is optional — plenty of suppliers will
 // not quote before an NDA — but a price without a currency is meaningless.
 function validateItem(row, index) {
@@ -174,12 +202,7 @@ module.exports = async function registerSupplier(body, res) {
     });
   } catch (error) {
     console.error('ERP supplier registration failed:', error.message);
-    const status = error.statusCode === 400 ? 400 : (error.statusCode === 503 ? 503 : 502);
-    return sendJson(res, status, {
-      error: status === 400
-        ? error.message
-        : 'We could not register your company in ERP. Please try again.',
-    });
+    return sendJson(res, ...erpErrorResponse(error));
   } finally {
     for (const blobUrl of [profileBlobUrl, catalogBlobUrl].filter(Boolean)) {
       try { await del(blobUrl); }
