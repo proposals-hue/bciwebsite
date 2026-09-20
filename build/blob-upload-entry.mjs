@@ -28,6 +28,7 @@ const FILE_PREFIX = {
   logo: 'customer-rfq/logo/',
   cr: 'customer-rfq/cr/',
   spec: 'submittal-request/spec/',
+  'supplier-logo': 'supplier-registration/logo/',
   'supplier-profile': 'supplier-registration/profile/',
   'supplier-catalog': 'supplier-registration/catalog/',
 };

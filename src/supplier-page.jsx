@@ -7,6 +7,8 @@ const { useState: useState_sp, useRef: useRef_sp } = React;
 const SUPPLIER_CURRENCIES = ['SAR', 'USD', 'EUR', 'AED', 'GBP', 'CNY', 'INR', 'JPY', 'TRY', 'EGP'];
 const MAX_SUPPLIER_ITEMS = 20;
 const MAX_SUPPLIER_ATTACHMENT_BYTES = 10 * 1024 * 1024;
+// Images only and smaller — matches the 'supplier-logo' kind in api/_rfq-file.js.
+const MAX_SUPPLIER_LOGO_BYTES = 5 * 1024 * 1024;
 
 function emptySupplierItem() {
   return { name: '', unit: '', price: '', currency: 'SAR' };
@@ -217,16 +219,18 @@ function SupplierPage() {
         'Los precios deben ser números mayores que cero — deja el precio vacío si es a consultar.'));
     }
 
-    const profile = fd.get('company_profile');
-    const catalog = fd.get('company_catalog');
-    const hasProfile = profile instanceof File && Boolean(profile.name);
-    const hasCatalog = catalog instanceof File && Boolean(catalog.name);
-    if ((hasProfile && profile.size > MAX_SUPPLIER_ATTACHMENT_BYTES)
-        || (hasCatalog && catalog.size > MAX_SUPPLIER_ATTACHMENT_BYTES)) {
+    // Each attachment with the blob `kind` the API expects and its own cap.
+    const chosen = [
+      { key: 'logo_blob', kind: 'supplier-logo', max: MAX_SUPPLIER_LOGO_BYTES, file: fd.get('company_logo') },
+      { key: 'profile_blob', kind: 'supplier-profile', max: MAX_SUPPLIER_ATTACHMENT_BYTES, file: fd.get('company_profile') },
+      { key: 'catalog_blob', kind: 'supplier-catalog', max: MAX_SUPPLIER_ATTACHMENT_BYTES, file: fd.get('company_catalog') },
+    ].filter((entry) => entry.file instanceof File && Boolean(entry.file.name));
+
+    if (chosen.some((entry) => entry.file.size > entry.max)) {
       return fail(t(lang,
-        'Each attachment must be no larger than 10 MB.',
-        'يجب ألا يتجاوز حجم كل مرفق 10 ميجابايت.',
-        'Cada archivo adjunto debe tener un tamaño máximo de 10 MB.'));
+        'The logo must be no larger than 5 MB, and each document no larger than 10 MB.',
+        'يجب ألا يتجاوز الشعار 5 ميجابايت، وكل مستند 10 ميجابايت.',
+        'El logotipo no debe superar 5 MB, y cada documento 10 MB.'));
     }
 
     setStatus('sending');
@@ -234,27 +238,22 @@ function SupplierPage() {
     setSupplierId('');
     setAttachWarning(false);
     setUploadProgress(0);
-    let profileBlob = null;
-    let catalogBlob = null;
+    const blobs = { logo_blob: null, profile_blob: null, catalog_blob: null };
     try {
       // Files are staged in private Vercel Blob first; the API route pulls them
       // into ERP and deletes the staged copy.
-      if ((hasProfile || hasCatalog) && typeof window.uploadPrivateRfqFile !== 'function') {
+      if (chosen.length && typeof window.uploadPrivateRfqFile !== 'function') {
         throw new Error('Supplier file uploader unavailable');
       }
-      if (hasProfile) {
-        profileBlob = await window.uploadPrivateRfqFile(
-          profile, 'supplier-profile',
-          { name: profile.name, type: supplierFileType(profile), size: profile.size },
-          ({ percentage }) => setUploadProgress(Math.round((percentage || 0) * (hasCatalog ? 0.5 : 1))),
+      for (let i = 0; i < chosen.length; i += 1) {
+        const { key, kind, file } = chosen[i];
+        const type = supplierFileType(file);
+        const staged = await window.uploadPrivateRfqFile(
+          file, kind, { name: file.name, type, size: file.size },
+          ({ percentage }) => setUploadProgress(
+            Math.round(((i + (percentage || 0) / 100) / chosen.length) * 100)),
         );
-      }
-      if (hasCatalog) {
-        catalogBlob = await window.uploadPrivateRfqFile(
-          catalog, 'supplier-catalog',
-          { name: catalog.name, type: supplierFileType(catalog), size: catalog.size },
-          ({ percentage }) => setUploadProgress(Math.round((hasProfile ? 50 : 0) + (percentage || 0) * (hasProfile ? 0.5 : 1))),
-        );
+        blobs[key] = { url: staged.url, name: file.name, type, size: file.size };
       }
 
       // → same-origin API → ERPNext 'supplier-registration' Web Form.
@@ -276,12 +275,9 @@ function SupplierPage() {
         items: items.map((row) => ({
           name: row.name, unit: row.unit, price: row.price, currency: row.currency,
         })),
-        profile_blob: profileBlob ? {
-          url: profileBlob.url, name: profile.name, type: supplierFileType(profile), size: profile.size,
-        } : null,
-        catalog_blob: catalogBlob ? {
-          url: catalogBlob.url, name: catalog.name, type: supplierFileType(catalog), size: catalog.size,
-        } : null,
+        logo_blob: blobs.logo_blob,
+        profile_blob: blobs.profile_blob,
+        catalog_blob: blobs.catalog_blob,
         page_url: typeof window === 'undefined' ? '' : window.location.href,
         lang,
       });
@@ -479,7 +475,11 @@ function SupplierPage() {
               <div className="eyebrow" style={{ color: 'var(--bci-green-700)' }}>
                 {t(lang, 'Company documents', 'مستندات الشركة', 'Documentos de la empresa')}
               </div>
-              <div style={twoCol}>
+              <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, minmax(0, 1fr))', gap: 16 }}>
+                <div className="field">
+                  <label>{t(lang, 'Company logo (optional)', 'شعار الشركة (اختياري)', 'Logotipo (opcional)')}</label>
+                  <input name="company_logo" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" />
+                </div>
                 <div className="field">
                   <label>{t(lang, 'Company profile (optional)', 'الملف التعريفي للشركة (اختياري)', 'Perfil de la empresa (opcional)')}</label>
                   <input name="company_profile" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp,application/pdf,image/jpeg,image/png,image/webp" />
@@ -491,9 +491,9 @@ function SupplierPage() {
               </div>
               <div style={{ fontSize: 12, color: 'var(--bci-steel)' }}>
                 {t(lang,
-                  'Accepted files: PDF, JPG, PNG or WebP, up to 10 MB each. Export Word or Excel catalogs to PDF first.',
-                  'الملفات المقبولة: PDF أو JPG أو PNG أو WebP بحد أقصى 10 ميجابايت لكل ملف. يرجى تحويل كتالوجات Word أو Excel إلى PDF أولًا.',
-                  'Archivos aceptados: PDF, JPG, PNG o WebP, hasta 10 MB cada uno. Exporta los catálogos de Word o Excel a PDF primero.')}
+                  'Logo: JPG, PNG or WebP up to 5 MB. Documents: PDF, JPG, PNG or WebP up to 10 MB each — export Word or Excel catalogs to PDF first.',
+                  'الشعار: JPG أو PNG أو WebP بحد أقصى 5 ميجابايت. المستندات: PDF أو JPG أو PNG أو WebP بحد أقصى 10 ميجابايت — يرجى تحويل كتالوجات Word أو Excel إلى PDF أولًا.',
+                  'Logotipo: JPG, PNG o WebP hasta 5 MB. Documentos: PDF, JPG, PNG o WebP hasta 10 MB cada uno — exporta los catálogos de Word o Excel a PDF primero.')}
               </div>
               <div className="field">
                 <label>{t(lang, 'Company introduction / notes (optional)', 'نبذة عن الشركة / ملاحظات (اختياري)', 'Presentación de la empresa / notas (opcional)')}</label>

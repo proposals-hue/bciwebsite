@@ -27,6 +27,10 @@ const FILE_KINDS = {
     prefix: 'submittal-request/spec/', maxBytes: 10 * MB, types: { ...PDF_TYPE, ...IMAGE_TYPES },
     message: 'The project specification must be a PDF, JPG, PNG, or WebP file.',
   },
+  'supplier-logo': {
+    prefix: 'supplier-registration/logo/', maxBytes: 5 * MB, types: { ...IMAGE_TYPES },
+    message: 'The company logo must be a JPG, PNG, or WebP image.',
+  },
   'supplier-profile': {
     prefix: 'supplier-registration/profile/', maxBytes: 10 * MB, types: { ...PDF_TYPE, ...IMAGE_TYPES },
     message: 'The company profile must be a PDF, JPG, PNG, or WebP file.',

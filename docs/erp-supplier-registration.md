@@ -112,6 +112,7 @@ filtered by `dt = Supplier` to see them.
 | VAT / Tax ID | `tax_id` | |
 | Category + items + notes | `supplier_details` | Text, rendered block |
 | Offer lines | `custom_supplier_items` | child table, see below |
+| Company logo | `image` | ERPNext's Supplier avatar. **Hidden** in the field list because it renders as the logo at the top of the form, so it will not show up in a DocType field dump |
 | Company profile | `custom_company_profile` | Attach field |
 | Catalog / price list | — | no field exists; filed as a plain attachment |
 
@@ -155,10 +156,15 @@ credential the file upload already needs.
 
 ## Attachments
 
-| kind | staging prefix | limit | accepted |
-| --- | --- | --- | --- |
-| `supplier-profile` | `supplier-registration/profile/` | 10 MB | PDF, JPG, PNG, WebP |
-| `supplier-catalog` | `supplier-registration/catalog/` | 10 MB | PDF, JPG, PNG, WebP |
+| kind | staging prefix | limit | accepted | ERP field |
+| --- | --- | --- | --- | --- |
+| `supplier-logo` | `supplier-registration/logo/` | 5 MB | JPG, PNG, WebP | `image` |
+| `supplier-profile` | `supplier-registration/profile/` | 10 MB | PDF, JPG, PNG, WebP | `custom_company_profile` |
+| `supplier-catalog` | `supplier-registration/catalog/` | 10 MB | PDF, JPG, PNG, WebP | plain attachment |
+
+The logo is images-only and capped lower than the documents; PDFs are rejected
+for it. All three are uploaded as **private** files, which the desk UI still
+renders for signed-in users.
 
 Word and Excel are deliberately **not** accepted: the shared validator in
 `api/_rfq-file.js` checks magic bytes, and Office formats are ZIP containers

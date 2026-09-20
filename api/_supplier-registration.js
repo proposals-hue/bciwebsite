@@ -122,9 +122,11 @@ function formatItem(item, index) {
 }
 
 module.exports = async function registerSupplier(body, res) {
+  let logoBlobUrl = '';
   let profileBlobUrl = '';
   let catalogBlobUrl = '';
   try {
+    logoBlobUrl = clean(body.logo_blob?.url, 1000);
     profileBlobUrl = clean(body.profile_blob?.url, 1000);
     catalogBlobUrl = clean(body.catalog_blob?.url, 1000);
 
@@ -159,7 +161,8 @@ module.exports = async function registerSupplier(body, res) {
 
     const items = rows.map(validateItem);
 
-    const [profile, catalog] = await Promise.all([
+    const [logo, profile, catalog] = await Promise.all([
+      readPrivateBlob(body.logo_blob, 'supplier-logo'),
       readPrivateBlob(body.profile_blob, 'supplier-profile'),
       readPrivateBlob(body.catalog_blob, 'supplier-catalog'),
     ]);
@@ -170,8 +173,8 @@ module.exports = async function registerSupplier(body, res) {
       'Offered products and services:',
       ...items.map(formatItem),
       notes ? `\nNotes:\n${notes}` : null,
-      profile || catalog
-        ? `\nAttached: ${[profile && 'company profile', catalog && 'catalog / price list'].filter(Boolean).join(', ')}`
+      logo || profile || catalog
+        ? `\nAttached: ${[logo && 'company logo', profile && 'company profile', catalog && 'catalog / price list'].filter(Boolean).join(', ')}`
         : null,
       '\n—',
       'Submitted via the bcisaudi.com supplier registration form',
@@ -207,6 +210,9 @@ module.exports = async function registerSupplier(body, res) {
       const updates = { custom_supplier_items: items.map(supplierItemRow) };
 
       for (const [file, label, fieldname] of [
+        // `image` is ERPNext's Supplier avatar - hidden from the field list
+        // because it renders as the logo at the top of the form.
+        [logo, 'company logo', 'image'],
         [profile, 'company profile', 'custom_company_profile'],
         [catalog, 'catalog', ''], // no dedicated field: a plain attachment
       ]) {
@@ -236,7 +242,7 @@ module.exports = async function registerSupplier(body, res) {
         // procurement loses nothing — no need to alarm the supplier.
         console.error(`Supplier ${supplierId} item/profile sync failed:`, error.message);
       }
-    } else if (profile || catalog) {
+    } else if (logo || profile || catalog) {
       attachmentWarnings.push('all');
       console.error('ERP did not return a Supplier name; attachments were not linked.');
     }
@@ -250,7 +256,7 @@ module.exports = async function registerSupplier(body, res) {
     console.error('ERP supplier registration failed:', error.message);
     return sendJson(res, ...erpErrorResponse(error));
   } finally {
-    for (const blobUrl of [profileBlobUrl, catalogBlobUrl].filter(Boolean)) {
+    for (const blobUrl of [logoBlobUrl, profileBlobUrl, catalogBlobUrl].filter(Boolean)) {
       try { await del(blobUrl); }
       catch (error) { console.error('Temporary supplier file cleanup failed:', error.message); }
     }
