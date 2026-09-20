@@ -1,5 +1,5 @@
 const { del } = require('@vercel/blob');
-const { erpWebForm, erpUploadFile, sendJson } = require('./_erp');
+const { erpFetch, erpWebForm, erpUploadFile, sendJson } = require('./_erp');
 const { readPrivateBlob } = require('./_rfq-file');
 
 // Supplier registration with structured offer lines and two attachments.
@@ -11,9 +11,10 @@ const { readPrivateBlob } = require('./_rfq-file');
 //
 // The Supplier record itself is still created through the guest ERP Web Form
 // (same path the plain form used), so no ERP credential reaches the browser.
-// The offered items are rendered into `supplier_details` because Supplier has
-// no child table for them — see docs/erp-supplier-registration.md before
-// moving them to a real ERP table.
+// The offered items go two places: the `custom_supplier_items` child table
+// (structured, one row per product) and, as a readable block, `supplier_details`
+// — the child table has no unit or currency column, so the text keeps what the
+// grid cannot hold. See docs/erp-supplier-registration.md.
 //
 // The attachments are a separate, token-authenticated step: they are uploaded
 // against the created Supplier with no `fieldname`, which files them as ordinary
@@ -92,6 +93,24 @@ function validateItem(row, index) {
     }
   }
   return { name, unit, price, currency: price === null ? '' : currency };
+}
+
+// A `custom_supplier_items` row. The grid has exactly three columns:
+//   item       Link -> Item   left empty on purpose. ERP does NOT validate Item
+//                             links on child rows, so a supplier's free-text
+//                             product name would be stored as a broken link.
+//   item_name  Data           where the supplier's own wording belongs.
+//   price      Currency       in the company's currency (SAR).
+// Unit and non-SAR currency have no column, so they ride along in item_name
+// rather than being silently dropped or misfiled as SAR.
+function supplierItemRow(item) {
+  const unit = item.unit ? ` (per ${item.unit})` : '';
+  const foreign = item.price !== null && item.currency !== 'SAR';
+  const note = foreign ? ` — ${item.price} ${item.currency}` : '';
+  return {
+    item_name: `${item.name}${unit}${note}`.slice(0, 140),
+    price: foreign || item.price === null ? 0 : item.price,
+  };
 }
 
 function formatItem(item, index) {
@@ -178,17 +197,44 @@ module.exports = async function registerSupplier(body, res) {
     });
     const supplierId = payload.message?.name || payload.data?.name || '';
 
-    // The registration is already saved; a failed attachment must not fail it.
+    // Everything below runs against an already-saved registration, so a failure
+    // here is logged and reported but never loses the submission.
     const attachmentWarnings = [];
     if (supplierId) {
-      for (const [file, label] of [[profile, 'company profile'], [catalog, 'catalog']]) {
+      // The guest web form can only set its own 13 fields. The child table and
+      // the Company Profile attachment are written back over the authenticated
+      // REST API, which is also the only way to upload a file at all.
+      const updates = { custom_supplier_items: items.map(supplierItemRow) };
+
+      for (const [file, label, fieldname] of [
+        [profile, 'company profile', 'custom_company_profile'],
+        [catalog, 'catalog', ''], // no dedicated field: a plain attachment
+      ]) {
         if (!file) continue;
         try {
-          await erpUploadFile({ ...file, doctype: 'Supplier', docname: supplierId });
+          const upload = await erpUploadFile({
+            ...file,
+            doctype: 'Supplier',
+            docname: supplierId,
+            ...(fieldname ? { fieldname } : {}),
+          });
+          const fileUrl = upload.message?.file_url || upload.data?.file_url || '';
+          if (fieldname && fileUrl) updates[fieldname] = fileUrl;
         } catch (error) {
           attachmentWarnings.push(label);
           console.error(`Supplier ${supplierId} ${label} upload failed:`, error.message);
         }
+      }
+
+      try {
+        await erpFetch(`/api/resource/Supplier/${encodeURIComponent(supplierId)}`, {
+          method: 'PUT',
+          body: JSON.stringify(updates),
+        });
+      } catch (error) {
+        // supplier_details still carries every line in readable form, so
+        // procurement loses nothing — no need to alarm the supplier.
+        console.error(`Supplier ${supplierId} item/profile sync failed:`, error.message);
       }
     } else if (profile || catalog) {
       attachmentWarnings.push('all');

@@ -91,17 +91,65 @@ deployment the same way** until the plan is upgraded.
 `supplier-registration` web form; a payload with no `items` (an old cached copy
 of the page) still takes that path.
 
-### Why the prices are text, not a child table
+## ERP field map
 
-`Supplier` has no child table for offered items, and adding one is an ERP schema
-change that has to be run against the live instance. Until that exists, the
-lines are serialized into `supplier_details` (capped at 5000 characters).
+`Supplier`'s website-relevant fields are mostly **Custom Fields**, which do not
+appear in `/api/resource/DocType/Supplier` — query the `Custom Field` doctype
+filtered by `dt = Supplier` to see them.
 
-If the prices ever need to be queryable or comparable in ERP, the follow-up is:
-create a child doctype (e.g. `Supplier Offered Item` with
-`item_name / uom / rate / currency`), add it to `Supplier`, then swap the
-`details` block in `api/_supplier-registration.js` for a real child-table array.
-The website form already collects the fields in that shape.
+| website field | ERP field | notes |
+| --- | --- | --- |
+| Company name | `supplier_name` | required; also the record's name |
+| Company name (Arabic) | `supplier_name_in_arabic` | custom |
+| Supplier type | `supplier_type` | Select: Company / Individual / Partnership |
+| Country | `country` | Link → Country, see above |
+| City | `custom_city` | custom |
+| Contact person | `custom_contact_person` | custom |
+| Email | `email_id` | **Read Only** on the form; ERP derives it from the primary contact it creates |
+| Mobile | `mobile_no` | **Read Only**, same as above |
+| Website | `website` | |
+| CR number | `custom_cr_no` | custom |
+| VAT / Tax ID | `tax_id` | |
+| Category + items + notes | `supplier_details` | Text, rendered block |
+| Offer lines | `custom_supplier_items` | child table, see below |
+| Company profile | `custom_company_profile` | Attach field |
+| Catalog / price list | — | no field exists; filed as a plain attachment |
+
+`custom_iban` (IBAN) exists in ERP but the website does not ask for it.
+
+### The offer lines child table
+
+`custom_supplier_items` → child doctype **`Supplier Items`**, which has exactly
+three columns:
+
+| column | type | what we write |
+| --- | --- | --- |
+| `item` | Link → Item | **left empty on purpose** |
+| `item_name` | Data | the supplier's own wording, plus `(per <unit>)` |
+| `price` | Currency | the number, **only when the currency is SAR** |
+
+Three things follow from that shape:
+
+- **`item` stays empty.** ERP does *not* validate Item links on child rows, so a
+  free-text product name would be stored verbatim as a broken link. Suppliers
+  offer raw materials that are not in BCI's Item master.
+- **There is no unit or currency column.** The unit rides in `item_name`, and a
+  non-SAR price is appended there too (`Silica sand (per ton) — 40 USD`) with
+  `price` left at 0, so a foreign amount is never misread as riyals.
+- **`supplier_details` still carries the full text block.** It is the lossless
+  copy, and the reason a failed child-table write is logged but not reported to
+  the supplier.
+
+Only `item` has `in_list_view` set on the child doctype, so the grid shows an
+empty Item column by default. Turn on `item_name` and `price` via the grid's
+settings (the gear) or Customize Form → Supplier Items to see the data.
+
+### How it is written
+
+The guest web form can only set its own 13 fields, so the child table and the
+Company Profile attachment are written afterwards with a `PUT` to
+`/api/resource/Supplier/<name>` over the token-authenticated REST API — the same
+credential the file upload already needs.
 
 ## Attachments
 
