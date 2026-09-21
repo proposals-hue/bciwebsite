@@ -39,6 +39,13 @@ const FILE_KINDS = {
     prefix: 'supplier-registration/catalog/', maxBytes: 10 * MB, types: { ...PDF_TYPE, ...IMAGE_TYPES },
     message: 'The catalog or price list must be a PDF, JPG, PNG, or WebP file.',
   },
+  // One per offered item, so up to 20 of these ride on a single registration —
+  // capped lower than the company documents to keep that within one function
+  // invocation. A datasheet is a page or two; 5 MB is generous for one.
+  'supplier-tds': {
+    prefix: 'supplier-registration/tds/', maxBytes: 5 * MB, types: { ...PDF_TYPE, ...IMAGE_TYPES },
+    message: 'A technical data sheet must be a PDF, JPG, PNG, or WebP file.',
+  },
 };
 
 function rfqFileError(message) {

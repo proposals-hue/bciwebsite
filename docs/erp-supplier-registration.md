@@ -48,6 +48,10 @@ then:
   allow-list shared with the client.
 - **Company logo**, **company profile** and **catalog / price list** — all three
   attachments required.
+- **A technical data sheet per offered item**, required for every category
+  except `logistics` and `services` (a freight forwarder or a maintenance
+  contractor has no datasheet). It is filed onto that item's own child row so
+  the technical team reviews it next to the item it describes.
 - A company introduction / notes paragraph — **the only optional field**.
 
 The rule is enforced twice: `required` on the inputs (so the browser blocks
@@ -69,6 +73,8 @@ Mandatory-everything will turn some legitimate suppliers away:
 - **Price on every line** — suppliers commonly will not quote before an NDA.
 - **Three attachments** — a logo, a profile *and* a catalog, all before they can
   submit anything at all.
+- **A datasheet on every line** — a distributor reselling someone else's product
+  may not hold one, and 20 items means 20 files in a single submission.
 
 Relaxing any of these is a one-line change in both `src/supplier-page.jsx` and
 the `REQUIRED` list in `api/_supplier-registration.js`.
@@ -86,7 +92,7 @@ the `REQUIRED` list in `api/_supplier-registration.js`.
    Category: Raw Materials & Chemicals
 
    Offered products and services:
-   1. Titanium dioxide R-902 — 12.5 SAR / kg
+   1. Titanium dioxide R-902 — 12.5 SAR / kg [TDS attached]
    2. Epoxy resin 828 (per drum) — price on request
 
    Notes:
@@ -141,21 +147,24 @@ filtered by `dt = Supplier` to see them.
 | Company logo | `image` | ERPNext's Supplier avatar. **Hidden** in the field list because it renders as the logo at the top of the form, so it will not show up in a DocType field dump |
 | Company profile | `custom_company_profile` | Attach field |
 | Catalog / price list | — | no field exists; filed as a plain attachment |
+| Item technical data sheet | `custom_supplier_items[].tds_attachment` | Attach, on the child row — a custom field on the child doctype, so it is absent from a `Supplier` field dump |
 
 `custom_iban` (IBAN) exists in ERP but the website does not ask for it.
 
 ### The offer lines child table
 
-`custom_supplier_items` → child doctype **`Supplier Items`**, which has exactly
-three columns:
+`custom_supplier_items` → child doctype **`Supplier Items`**:
 
 | column | type | what we write |
 | --- | --- | --- |
 | `item` | Link → Item | **left empty on purpose** |
 | `item_name` | Data | the supplier's own wording, plus `(per <unit>)` |
 | `price` | Currency | the number, **only when the currency is SAR** |
+| `tds_attachment` | Attach | the item's datasheet, written after the file is uploaded |
 
-Three things follow from that shape:
+`tds_attachment` is a custom field on the child doctype and already had
+`in_list_view` set, so no ERP change was needed to start filling it. Three things
+follow from the rest of that shape:
 
 - **`item` stays empty.** ERP does *not* validate Item links on child rows, so a
   free-text product name would be stored verbatim as a broken link. Suppliers
@@ -180,6 +189,15 @@ Company Profile attachment are written afterwards with a `PUT` to
 `/api/resource/Supplier/<name>` over the token-authenticated REST API — the same
 credential the file upload already needs.
 
+**Order matters for the datasheets.** `tds_attachment` holds a file URL, so every
+TDS is uploaded *before* the `PUT` and its returned `file_url` is written into
+the matching row. Frappe cannot target a child row from an upload, so each one is
+uploaded against the Supplier with no `fieldname` (an ordinary attachment) and the
+row is then pointed at it. They go up in parallel batches of `TDS_UPLOAD_BATCH`,
+because a registration can carry 20 of them in one invocation — which is also why
+`vercel.json` raises `maxDuration` to 60s for `api/web-form-submit.js` and why the
+`supplier-tds` kind is capped at 5 MB rather than 10.
+
 ## Attachments
 
 | kind | staging prefix | limit | accepted | ERP field |
@@ -187,6 +205,7 @@ credential the file upload already needs.
 | `supplier-logo` | `supplier-registration/logo/` | 5 MB | JPG, PNG, WebP | `image` |
 | `supplier-profile` | `supplier-registration/profile/` | 10 MB | PDF, JPG, PNG, WebP | `custom_company_profile` |
 | `supplier-catalog` | `supplier-registration/catalog/` | 10 MB | PDF, JPG, PNG, WebP | plain attachment |
+| `supplier-tds` | `supplier-registration/tds/` | 5 MB | PDF, JPG, PNG, WebP | the row's `tds_attachment` |
 
 The logo is images-only and capped lower than the documents; PDFs are rejected
 for it. All three are uploaded as **private** files, which the desk UI still

@@ -2,7 +2,8 @@ const { del } = require('@vercel/blob');
 const { erpFetch, erpWebForm, erpUploadFile, sendJson } = require('./_erp');
 const { readPrivateBlob } = require('./_rfq-file');
 
-// Supplier registration with structured offer lines and two attachments.
+// Supplier registration: structured offer lines, three company documents and a
+// technical data sheet per offered item.
 //
 // This is a helper, not a route: it is reached through api/web-form-submit.js.
 // Vercel's plan caps a deployment at 12 Serverless Functions and api/ was
@@ -18,7 +19,9 @@ const { readPrivateBlob } = require('./_rfq-file');
 //
 // The attachments are a separate, token-authenticated step: they are uploaded
 // against the created Supplier with no `fieldname`, which files them as ordinary
-// document attachments and needs no custom Attach field in ERP.
+// document attachments. The logo, the company profile and each item's datasheet
+// are then pointed at from `image`, `custom_company_profile` and the row's
+// `tds_attachment` respectively.
 
 const clean = (value, max) => String(value == null ? '' : value).trim().slice(0, max);
 
@@ -35,8 +38,15 @@ const CATEGORIES = {
   services: 'Services & Contracting',
   other: 'Other / multiple categories',
 };
+// A freight forwarder or a maintenance contractor has no technical data sheet,
+// so these are the only categories where the per-item TDS is optional. Mirrored
+// by SUPPLIER_SERVICE_CATEGORIES in src/supplier-page.jsx.
+const SERVICE_CATEGORIES = ['logistics', 'services'];
 const MAX_ITEMS = 20;
 const MAX_DETAILS = 5000;
+// TDS uploads run sequentially against ERP inside one invocation, so they go up
+// in small parallel batches instead of one at a time.
+const TDS_UPLOAD_BATCH = 4;
 
 function badRequest(message) {
   const error = new Error(message);
@@ -73,8 +83,9 @@ function erpErrorResponse(error) {
 }
 
 // One offered product or service. Every column is required: the form marks all
-// four fields mandatory, and this is the server-side half of that rule.
-function validateItem(row, index) {
+// four fields mandatory, and this is the server-side half of that rule. The
+// technical data sheet is required too, except for the service categories.
+function validateItem(row, index, tdsRequired) {
   const name = clean(row && row.name, 240);
   const unit = clean(row && row.unit, 40);
   const rawPrice = clean(row && row.price, 40);
@@ -91,7 +102,12 @@ function validateItem(row, index) {
   if (!CURRENCIES.includes(currency)) {
     throw badRequest(`Item ${index + 1} needs a currency for its price.`);
   }
-  return { name, unit, price, currency };
+
+  const tdsBlob = row && row.tds_blob && clean(row.tds_blob.url, 1000) ? row.tds_blob : null;
+  if (tdsRequired && !tdsBlob) {
+    throw badRequest(`Item ${index + 1} needs a technical data sheet (TDS).`);
+  }
+  return { name, unit, price, currency, tdsBlob };
 }
 
 // A `custom_supplier_items` row. The grid has exactly three columns:
@@ -102,6 +118,8 @@ function validateItem(row, index) {
 //   price      Currency       in the company's currency (SAR).
 // Unit and non-SAR currency have no column, so they ride along in item_name
 // rather than being silently dropped or misfiled as SAR.
+//   tds_attachment  Attach  the datasheet for this line, uploaded separately and
+//                           filled in afterwards (see attachItemDataSheets).
 function supplierItemRow(item) {
   const unit = item.unit ? ` (per ${item.unit})` : '';
   const foreign = item.price !== null && item.currency !== 'SAR';
@@ -112,22 +130,65 @@ function supplierItemRow(item) {
   };
 }
 
+// Pulls each item's datasheet out of Blob and into ERP, returning the file URL
+// per item index so it can be written onto that item's child row. Uploaded in
+// small parallel batches: a registration can carry 20 of these and they all
+// share one function invocation. A datasheet that fails to upload is reported
+// but never loses the registration, which is already saved by this point.
+async function attachItemDataSheets(items, supplierId, onFailure) {
+  const urls = new Array(items.length).fill('');
+  const pending = items
+    .map((item, index) => ({ item, index }))
+    .filter(({ item }) => item.tdsBlob);
+
+  for (let start = 0; start < pending.length; start += TDS_UPLOAD_BATCH) {
+    const batch = pending.slice(start, start + TDS_UPLOAD_BATCH);
+    await Promise.all(batch.map(async ({ item, index }) => {
+      try {
+        const file = await readPrivateBlob(item.tdsBlob, 'supplier-tds');
+        if (!file) return;
+        const upload = await erpUploadFile({
+          ...file,
+          doctype: 'Supplier',
+          docname: supplierId,
+          // No `fieldname`: the target is a child row, which Frappe cannot set
+          // from an upload. It is filed as a document attachment here and the
+          // row's tds_attachment is pointed at it in the PUT below.
+        });
+        urls[index] = upload.message?.file_url || upload.data?.file_url || '';
+      } catch (error) {
+        onFailure(`TDS for item ${index + 1}`);
+        console.error(`Supplier ${supplierId} TDS upload failed for item ${index + 1}:`, error.message);
+      }
+    }));
+  }
+  return urls;
+}
+
 function formatItem(item, index) {
   const price = item.price === null
     ? 'price on request'
     : `${item.price} ${item.currency}${item.unit ? ` / ${item.unit}` : ''}`;
   const unitOnly = item.price === null && item.unit ? ` (per ${item.unit})` : '';
-  return `${index + 1}. ${item.name}${unitOnly} — ${price}`;
+  const tds = item.tdsBlob ? ' [TDS attached]' : '';
+  return `${index + 1}. ${item.name}${unitOnly} — ${price}${tds}`;
 }
 
 module.exports = async function registerSupplier(body, res) {
   let logoBlobUrl = '';
   let profileBlobUrl = '';
   let catalogBlobUrl = '';
+  // Collected before any validation runs, so a rejected registration still
+  // cleans up every file the browser staged for it.
+  const tdsBlobUrls = [];
   try {
     logoBlobUrl = clean(body.logo_blob?.url, 1000);
     profileBlobUrl = clean(body.profile_blob?.url, 1000);
     catalogBlobUrl = clean(body.catalog_blob?.url, 1000);
+    for (const row of Array.isArray(body.items) ? body.items : []) {
+      const url = clean(row && row.tds_blob && row.tds_blob.url, 1000);
+      if (url) tdsBlobUrls.push(url);
+    }
 
     const supplierName = clean(body.supplier_name, 140);
     const supplierNameAr = clean(body.supplier_name_in_arabic, 140);
@@ -177,7 +238,8 @@ module.exports = async function registerSupplier(body, res) {
       throw badRequest(`Please list between 1 and ${MAX_ITEMS} products or services.`);
     }
 
-    const items = rows.map(validateItem);
+    const tdsRequired = !SERVICE_CATEGORIES.includes(categoryKey);
+    const items = rows.map((row, index) => validateItem(row, index, tdsRequired));
 
     const [logo, profile, catalog] = await Promise.all([
       readPrivateBlob(body.logo_blob, 'supplier-logo'),
@@ -225,7 +287,17 @@ module.exports = async function registerSupplier(body, res) {
       // The guest web form can only set its own 13 fields. The child table and
       // the Company Profile attachment are written back over the authenticated
       // REST API, which is also the only way to upload a file at all.
-      const updates = { custom_supplier_items: items.map(supplierItemRow) };
+      const rowsForErp = items.map(supplierItemRow);
+      const updates = { custom_supplier_items: rowsForErp };
+
+      // Datasheets first: their file URLs have to be in hand before the child
+      // rows are written, since tds_attachment lives on the row itself.
+      const tdsUrls = await attachItemDataSheets(
+        items, supplierId, (label) => attachmentWarnings.push(label),
+      );
+      tdsUrls.forEach((url, index) => {
+        if (url) rowsForErp[index].tds_attachment = url;
+      });
 
       for (const [file, label, fieldname] of [
         // `image` is ERPNext's Supplier avatar - hidden from the field list
@@ -274,7 +346,8 @@ module.exports = async function registerSupplier(body, res) {
     console.error('ERP supplier registration failed:', error.message);
     return sendJson(res, ...erpErrorResponse(error));
   } finally {
-    for (const blobUrl of [logoBlobUrl, profileBlobUrl, catalogBlobUrl].filter(Boolean)) {
+    const staged = [logoBlobUrl, profileBlobUrl, catalogBlobUrl, ...tdsBlobUrls];
+    for (const blobUrl of staged.filter(Boolean)) {
       try { await del(blobUrl); }
       catch (error) { console.error('Temporary supplier file cleanup failed:', error.message); }
     }

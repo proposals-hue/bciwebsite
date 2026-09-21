@@ -9,9 +9,17 @@ const MAX_SUPPLIER_ITEMS = 20;
 const MAX_SUPPLIER_ATTACHMENT_BYTES = 10 * 1024 * 1024;
 // Images only and smaller — matches the 'supplier-logo' kind in api/_rfq-file.js.
 const MAX_SUPPLIER_LOGO_BYTES = 5 * 1024 * 1024;
+// One TDS per item, so a registration can carry 20 of them — matches the
+// 'supplier-tds' kind in api/_rfq-file.js, which is capped lower than the
+// company documents to keep 23 uploads inside one function invocation.
+const MAX_SUPPLIER_TDS_BYTES = 5 * 1024 * 1024;
+/* A freight forwarder or a maintenance contractor has no technical data sheet,
+   so these two categories are the only ones where the TDS is optional. Mirrored
+   by SERVICE_CATEGORIES in api/_supplier-registration.js. */
+const SUPPLIER_SERVICE_CATEGORIES = ['logistics', 'services'];
 
 function emptySupplierItem() {
-  return { name: '', unit: '', price: '', currency: 'SAR' };
+  return { name: '', unit: '', price: '', currency: 'SAR', tds: null };
 }
 
 function supplierFileType(file) {
@@ -237,6 +245,9 @@ function SupplierPage() {
   )));
   const removeRow = (index) => setRows(rows.filter((_, i) => i !== index));
   const sent = status === 'sent';
+  // Nothing to attach for a freight or contracting line, so the TDS follows the
+  // selected category rather than being demanded of every supplier.
+  const tdsRequired = Boolean(category) && !SUPPLIER_SERVICE_CATEGORIES.includes(category);
   const twoCol = { display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 16 };
 
   /* Clicking a procurement tile now does the obvious thing. The focus is
@@ -321,6 +332,37 @@ function SupplierPage() {
       },
     ].filter((entry) => entry.file instanceof File && Boolean(entry.file.name));
 
+    // One datasheet per item, filed onto that item's row in ERP. Required for
+    // everything BCI buys as a physical product; a logistics or contracting
+    // line has no datasheet to give.
+    items.forEach((row, index) => {
+      const number = index + 1;
+      const has = row.tds instanceof File && Boolean(row.tds.name);
+      if (!has) return;
+      chosen.push({
+        key: `tds_${index}`, kind: 'supplier-tds', max: MAX_SUPPLIER_TDS_BYTES,
+        extensions: SUPPLIER_DOC_EXTENSIONS, advice: documents, file: row.tds,
+        label: {
+          en: `the technical data sheet for item ${number}`,
+          enCap: `The technical data sheet for item ${number}`,
+          ar: ` ورقة البيانات الفنية للبند ${number}`,
+          es: `la ficha técnica del artículo ${number}`,
+          esCap: `La ficha técnica del artículo ${number}`,
+        },
+      });
+    });
+
+    if (tdsRequired) {
+      const missing = items.findIndex((row) => !(row.tds instanceof File && row.tds.name));
+      if (missing !== -1) {
+        const number = missing + 1;
+        return fail(t(lang,
+          `Item ${number} needs a technical data sheet (TDS) so our technical team can review it.`,
+          `البند ${number} يتطلب ورقة بيانات فنية (TDS) ليتمكن فريقنا الفني من مراجعته.`,
+          `El artículo ${number} necesita una ficha técnica (TDS) para que nuestro equipo técnico pueda revisarlo.`));
+      }
+    }
+
     for (let i = 0; i < chosen.length; i += 1) {
       const problem = supplierFileProblem(chosen[i], lang);
       if (problem) return fail(problem);
@@ -373,8 +415,11 @@ function SupplierPage() {
         custom_contact_person: fd.get('contact_person') || '',
         category: fd.get('category') || '',
         notes: fd.get('notes') || '',
-        items: items.map((row) => ({
+        // The File itself never goes in the payload — only the staged blob
+        // reference, which the route pulls into ERP and then deletes.
+        items: items.map((row, index) => ({
           name: row.name, unit: row.unit, price: row.price, currency: row.currency,
+          tds_blob: blobs[`tds_${index}`] || null,
         })),
         logo_blob: blobs.logo_blob,
         profile_blob: blobs.profile_blob,
@@ -517,10 +562,15 @@ function SupplierPage() {
                   {t(lang, 'What you supply *', 'ما الذي توّرده *', 'Qué suministras *')}
                 </div>
                 <div style={{ fontSize: 13, lineHeight: 1.6, color: 'var(--bci-steel)' }}>
-                  {t(lang,
-                    'List each product, material or service on its own line. Every row needs a name, a unit, a price and a currency.',
-                    'أدرج كل منتج أو مادة أو خدمة في سطر منفصل. كل سطر يتطلب اسمًا ووحدة وسعرًا وعملة.',
-                    'Enumera cada producto, material o servicio en su propia línea. Cada fila necesita nombre, unidad, precio y moneda.')}
+                  {tdsRequired
+                    ? t(lang,
+                      'List each product, material or service on its own line. Every row needs a name, a unit, a price, a currency and its technical data sheet — our technical team reviews the TDS against the item.',
+                      'أدرج كل منتج أو مادة أو خدمة في سطر منفصل. كل سطر يتطلب اسمًا ووحدة وسعرًا وعملة وورقة البيانات الفنية الخاصة به — يراجع فريقنا الفني ورقة البيانات مع البند.',
+                      'Enumera cada producto, material o servicio en su propia línea. Cada fila necesita nombre, unidad, precio, moneda y su ficha técnica — nuestro equipo técnico revisa la TDS junto al artículo.')
+                    : t(lang,
+                      'List each product, material or service on its own line. Every row needs a name, a unit, a price and a currency. Attach a technical data sheet wherever you have one.',
+                      'أدرج كل منتج أو مادة أو خدمة في سطر منفصل. كل سطر يتطلب اسمًا ووحدة وسعرًا وعملة. أرفق ورقة بيانات فنية حيثما توفرت.',
+                      'Enumera cada producto, material o servicio en su propia línea. Cada fila necesita nombre, unidad, precio y moneda. Adjunta una ficha técnica siempre que la tengas.')}
                 </div>
               </div>
 
@@ -561,6 +611,18 @@ function SupplierPage() {
                         {SUPPLIER_CURRENCIES.map((code) => <option key={code} value={code}>{code}</option>)}
                       </select>
                     </div>
+                  </div>
+                  {/* Filed onto this row's tds_attachment in ERP, so the technical
+                      team reviews the datasheet next to the item it belongs to. */}
+                  <div className="field">
+                    <label>
+                      {tdsRequired
+                        ? t(lang, 'Technical data sheet (TDS) *', 'ورقة البيانات الفنية (TDS) *', 'Ficha técnica (TDS) *')
+                        : t(lang, 'Technical data sheet (TDS) (optional)', 'ورقة البيانات الفنية (TDS) (اختياري)', 'Ficha técnica (TDS) (opcional)')}
+                    </label>
+                    <input required={tdsRequired} type="file"
+                      accept=".pdf,.jpg,.jpeg,.png,.webp,application/pdf,image/jpeg,image/png,image/webp"
+                      onChange={(event) => changeRow(index, 'tds', event.target.files?.[0] || null)} />
                   </div>
                 </div>
               ))}
