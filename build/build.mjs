@@ -33,8 +33,8 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(here, '..');
 const DIST = path.join(ROOT, 'dist');
 const ORIGIN = 'https://www.bcisaudi.com';
-const ASSET_V = '2.8';
-const BLOB_UPLOAD_V = '3.5';
+const ASSET_V = '2.9';
+const BLOB_UPLOAD_V = '3.6';
 const LANGS = ['en', 'ar', 'es'];
 const OG_LOCALE = { en: 'en_US', ar: 'ar_SA', es: 'es_ES' };
 const TODAY = new Date().toISOString().slice(0, 10);
@@ -53,6 +53,7 @@ const CONTENT_PAGES = [
   { file: 'Resources.html', key: 'resources', active: 'Resources', path: 'resources' },
   { file: 'Career.html', key: 'career', active: 'Career', path: 'career' },
   { file: 'Supplier.html', key: 'supplier', active: 'Suppliers', path: 'supplier' },
+  { file: 'Customer Registration.html', key: 'customerRegistration', active: 'Open an Account', path: 'customer-registration' },
   { file: 'Contact.html', key: 'contact', active: 'Contact', path: 'contact' },
   { file: 'Request Quote.html', key: 'requestQuote', active: '', path: 'request-quote' },
   { file: 'Submittal Request.html', key: 'submittalRequest', active: '', path: 'submittal-request' },
@@ -350,6 +351,7 @@ function pageSchema(key, lang, D) {
   if (key === 'resources') scripts.push(ld(breadcrumbLd([crumbHome, here('resources', tr(lang, 'Resources', 'الموارد', 'Recursos'))])));
   if (key === 'career') { scripts.push(ld(breadcrumbLd([crumbHome, here('career', tr(lang, 'Careers', 'الوظائف', 'Empleo'))]))); scripts.push(jobPostingsLd(D, lang)); }
   if (key === 'supplier') scripts.push(ld(breadcrumbLd([crumbHome, here('supplier', tr(lang, 'Suppliers', 'الموردون', 'Proveedores'))])));
+  if (key === 'customerRegistration') scripts.push(ld(breadcrumbLd([crumbHome, here('customer-registration', tr(lang, 'Open an account', 'فتح حساب', 'Abrir una cuenta'))])));
   if (key === 'contact') { scripts.push(ld(breadcrumbLd([crumbHome, here('contact', tr(lang, 'Contact', 'تواصل', 'Contacto'))]))); scripts.push(ld(orgLd(D))); scripts.push(localBusinessLd(D, lang)); }
   if (key === 'requestQuote') scripts.push(ld(breadcrumbLd([crumbHome, here('request-quote', tr(lang, 'Request a quote', 'طلب عرض سعر', 'Solicitar cotización'))])));
   if (key === 'submittalRequest') scripts.push(ld(breadcrumbLd([crumbHome, here('submittal-request', tr(lang, 'Submittal request', 'طلب وثائق الاعتماد', 'Solicitud de documentación'))])));
@@ -363,7 +365,7 @@ function buildDoc({ lang, title, description, p, schema, prerendered, scripts, r
   const hreflang = LANGS.map((L) => `<link rel="alternate" hreflang="${L}" href="${abs(L, p)}" />`).join('\n')
     + `\n<link rel="alternate" hreflang="x-default" href="${abs('en', p)}" />`;
   const needsBlobUpload = p === 'career' || p === 'request-quote' || p === 'submittal-request'
-    || p === 'supplier';
+    || p === 'supplier' || p === 'customer-registration';
   const blobUploadScript = needsBlobUpload ? `<script src="/blob-upload.js?v=${BLOB_UPLOAD_V}"></script>\n` : '';
   const scriptTags = blobUploadScript + scripts.map((s) => `<script src="/${s}.js?v=${ASSET_V}"></script>`).join('\n');
   return `<!doctype html>
@@ -475,6 +477,7 @@ ${landingPages}
 - [Resources](${ORIGIN}/resources): technical data sheets (TDS), safety data sheets (SDS), certifications
 - [Careers](${ORIGIN}/career): open roles in Dammam
 - [Become a Supplier](${ORIGIN}/supplier): supplier registration — BCI procures raw materials and chemicals, fillers and aggregates, packaging, equipment and spares, logistics and services
+- [Open a Trade Account](${ORIGIN}/customer-registration): customer registration — contractors, applicators, traders and developers register a BCI trade account for quotes, orders and technical documents
 - [Contact](${ORIGIN}/contact): sales, technical support and quotes
 
 ## Languages

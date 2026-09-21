@@ -39,6 +39,20 @@ const FILE_KINDS = {
     prefix: 'supplier-registration/catalog/', maxBytes: 10 * MB, types: { ...PDF_TYPE, ...IMAGE_TYPES },
     message: 'The catalog or price list must be a PDF, JPG, PNG, or WebP file.',
   },
+  // The customer registration's logo is not decorative: ERP makes `custom_image`
+  // mandatory on Customer, so it must be an image ERP will accept.
+  'customer-logo': {
+    prefix: 'customer-registration/logo/', maxBytes: 5 * MB, types: { ...IMAGE_TYPES },
+    message: 'The company logo must be a JPG, PNG, or WebP image.',
+  },
+  'customer-cr': {
+    prefix: 'customer-registration/cr/', maxBytes: 10 * MB, types: { ...PDF_TYPE, ...IMAGE_TYPES },
+    message: 'The commercial registration (CR) must be a PDF, JPG, PNG, or WebP file.',
+  },
+  'customer-vat': {
+    prefix: 'customer-registration/vat/', maxBytes: 10 * MB, types: { ...PDF_TYPE, ...IMAGE_TYPES },
+    message: 'The VAT certificate must be a PDF, JPG, PNG, or WebP file.',
+  },
   // One per offered item, so up to 20 of these ride on a single registration —
   // capped lower than the company documents to keep that within one function
   // invocation. A datasheet is a page or two; 5 MB is generous for one.

@@ -1,5 +1,5 @@
 /* global React, ReactDOM, LangProvider, useLang, useViewport, t, Icon, Arrow, selectOptionLabel,
-   MegaHeader, PageHero, Footer, submitSupplierRegistration */
+   MegaHeader, PageHero, Footer, submitSupplierRegistration, ERP_COUNTRIES */
 const { useState: useState_sp, useRef: useRef_sp } = React;
 
 /* Must match CURRENCIES in api/supplier-registration.js — the route rejects
@@ -129,48 +129,10 @@ const PROCUREMENT = [
     es: { t: 'Servicios y Contratación', d: 'Mantenimiento, calibración, servicios de instalaciones y contratación especializada.' } },
 ];
 
-/* Country names must match the ERP Country records exactly (Supplier.country
-   is a Link field — an unknown name makes the registration fail server-side).
-   Generated from the option list of the ERP `supplier-registration` web form;
-   re-sync from there rather than editing by hand. Saudi Arabia + GCC first,
-   then the rest alphabetically. */
-const SUPPLIER_COUNTRIES = [
-  'Saudi Arabia', 'Bahrain', 'Kuwait', 'Oman', 'Qatar', 'United Arab Emirates', 'Afghanistan', 'Albania',
-  'Algeria', 'American Samoa', 'Andorra', 'Angola', 'Anguilla', 'Antarctica', 'Antigua & Barbuda',
-  'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bangladesh',
-  'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia',
-  'Bosnia & Herzegovina', 'Botswana', 'Bouvet Island', 'Brazil', 'British Indian Ocean Territory',
-  'British Virgin Islands', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon',
-  'Canada', 'Cape Verde', 'Caribbean Netherlands', 'Cayman Islands', 'Central African Republic', 'Chad',
-  'Chile', 'China', 'Christmas Island', 'Cocos (Keeling) Islands', 'Colombia', 'Comoros',
-  'Congo - Brazzaville', 'Congo - Kinshasa', 'Cook Islands', 'Costa Rica', 'Croatia', 'Cuba', 'Curaçao',
-  'Cyprus', 'Czechia', 'Côte d’Ivoire', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador',
-  'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Eswatini', 'Ethiopia',
-  'Falkland Islands', 'Faroe Islands', 'Fiji', 'Finland', 'France', 'French Guiana', 'French Polynesia',
-  'French Southern Territories', 'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Gibraltar', 'Greece',
-  'Greenland', 'Grenada', 'Guadeloupe', 'Guam', 'Guatemala', 'Guernsey', 'Guinea', 'Guinea-Bissau',
-  'Guyana', 'Haiti', 'Heard & McDonald Islands', 'Honduras', 'Hong Kong SAR China', 'Hungary', 'Iceland',
-  'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Isle of Man', 'Israel', 'Italy', 'Jamaica', 'Japan',
-  'Jersey', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon',
-  'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macao SAR China',
-  'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Martinique',
-  'Mauritania', 'Mauritius', 'Mayotte', 'Mexico', 'Micronesia', 'Moldova', 'Monaco', 'Mongolia',
-  'Montenegro', 'Montserrat', 'Morocco', 'Mozambique', 'Myanmar (Burma)', 'Namibia', 'Nauru', 'Nepal',
-  'Netherlands', 'New Caledonia', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Niue', 'Norfolk Island',
-  'North Korea', 'North Macedonia', 'Northern Mariana Islands', 'Norway', 'Pakistan', 'Palau',
-  'Palestinian Territories', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines',
-  'Pitcairn Islands', 'Poland', 'Portugal', 'Puerto Rico', 'Romania', 'Russia', 'Rwanda', 'Réunion',
-  'Samoa', 'San Marino', 'Senegal', 'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Sint Maarten',
-  'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa',
-  'South Georgia & South Sandwich Islands', 'South Korea', 'South Sudan', 'Spain', 'Sri Lanka',
-  'St. Barthélemy', 'St. Helena', 'St. Kitts & Nevis', 'St. Lucia', 'St. Martin', 'St. Pierre & Miquelon',
-  'St. Vincent & Grenadines', 'Sudan', 'Suriname', 'Svalbard & Jan Mayen', 'Sweden', 'Switzerland', 'Syria',
-  'São Tomé & Príncipe', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tokelau',
-  'Tonga', 'Trinidad & Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Turks & Caicos Islands', 'Tuvalu',
-  'U.S. Outlying Islands', 'U.S. Virgin Islands', 'Uganda', 'Ukraine', 'United Kingdom', 'United States',
-  'Uruguay', 'Uzbekistan', 'Vanuatu', 'Vatican City', 'Venezuela', 'Vietnam', 'Wallis & Futuna',
-  'Western Sahara', 'Yemen', 'Zambia', 'Zimbabwe', 'Åland Islands', 'المملكة العربية السعودية',
-];
+/* The country list moved to src/data.jsx as ERP_COUNTRIES — the customer
+   registration form needs the same one, and two hand-maintained copies of a
+   249-entry ERP-validated list would drift. */
+const SUPPLIER_COUNTRIES = ERP_COUNTRIES;
 
 /* One "What we procure" tile. It is a real link: the grid reads as clickable,
    so visitors click it — before, nothing happened and the page felt broken. */

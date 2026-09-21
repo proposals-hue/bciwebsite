@@ -1,5 +1,6 @@
 const { erpWebForm, sendJson } = require('./_erp');
 const registerSupplier = require('./_supplier-registration');
+const registerCustomer = require('./_customer-registration');
 
 const clean = (value, max) => String(value == null ? '' : value).trim().slice(0, max);
 
@@ -68,6 +69,14 @@ module.exports = async function handler(req, res) {
     // any cached copy of the page, and keep taking the generic path.
     if (webForm === 'supplier-registration' && Array.isArray(body.items)) {
       return registerSupplier(body, res);
+    }
+
+    // Customer registration has no ERP Web Form at all: ERP makes Customer's
+    // `custom_image` mandatory and a web form cannot carry a file, so the whole
+    // record is written over the authenticated REST API instead. It rides on
+    // this route for the same 12-function reason as the supplier path.
+    if (webForm === 'customer-registration') {
+      return registerCustomer(body, res);
     }
 
     const config = FORMS[webForm];

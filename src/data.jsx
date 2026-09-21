@@ -1653,6 +1653,9 @@ const NAV = [
      worst in Spanish). On desktop this page is reached from the footer and the
      Contact page's Procurement card. */
   { en: 'Suppliers', ar: 'الموردون', es: 'Proveedores', href: 'Supplier.html', mobileOnly: true },
+  /* Same reasoning as Suppliers above — drawer only. Reached on desktop from
+     the footer's Company group. */
+  { en: 'Open an Account', ar: 'افتح حسابًا', es: 'Abrir una Cuenta', href: 'Customer Registration.html', mobileOnly: true },
 ];
 
 /* ---------------------------------------------------------------
@@ -1717,6 +1720,14 @@ const SEO_META = {
           description: 'سجّل كمورد لدى BCI (صناعة كيمياء البناء) في الدمام. عرّفنا بشركتك ومنتجاتك — مواد خام ومواد تعبئة ومعدات وخدمات — وسيتواصل معك فريق المشتريات.' },
     es: { title: 'Conviértete en Proveedor — Registro de Proveedores | BCI',
           description: 'Regístrate como proveedor de BCI, fabricante saudí de químicos para construcción en Dammam. Presenta tu empresa y productos — materias primas, envases, equipos y servicios.' },
+  },
+  customerRegistration: {
+    en: { title: 'Customer Registration — Open a BCI Trade Account | Saudi Arabia',
+          description: 'Open a trade account with BCI, a Saudi construction-chemicals manufacturer in Dammam. Register your company for quotes, orders and technical documents through a named account manager.' },
+    ar: { title: 'تسجيل العملاء — افتح حسابًا تجاريًا لدى BCI | السعودية',
+          description: 'افتح حسابًا تجاريًا لدى BCI (صناعة كيمياء البناء) في الدمام. سجّل شركتك للحصول على عروض الأسعار والطلبات والوثائق الفنية عبر مسؤول حساب مخصص.' },
+    es: { title: 'Registro de Clientes — Abre una Cuenta Comercial | BCI',
+          description: 'Abre una cuenta comercial con BCI, fabricante saudí de químicos para construcción en Dammam. Registra tu empresa para cotizaciones, pedidos y documentación técnica con un gestor asignado.' },
   },
   contact: {
     en: { title: 'Contact BCI | Sales, Technical Support & Quotes',
@@ -1795,8 +1806,52 @@ const FAQS = [
          es: 'Las fichas técnicas están disponibles en cada producto en la sección Soluciones y en la página de Recursos. Para una cotización o documentación específica de proyecto, contacta a BCI en info@bcisaudi.com o +966 59 312 0221.' } },
 ];
 
+/* Country names must match the ERP Country records exactly — `country` is a
+   Link field on both Supplier and Address, so a name ERP does not know fails
+   the insert server-side. Generated from the option list of the ERP
+   `supplier-registration` web form; re-sync from there rather than editing by
+   hand. Saudi Arabia + GCC first, then the rest alphabetically. Shared by the
+   supplier and customer registration forms. */
+const ERP_COUNTRIES = [
+  'Saudi Arabia', 'Bahrain', 'Kuwait', 'Oman', 'Qatar', 'United Arab Emirates', 'Afghanistan', 'Albania',
+  'Algeria', 'American Samoa', 'Andorra', 'Angola', 'Anguilla', 'Antarctica', 'Antigua & Barbuda',
+  'Argentina', 'Armenia', 'Aruba', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bangladesh',
+  'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia',
+  'Bosnia & Herzegovina', 'Botswana', 'Bouvet Island', 'Brazil', 'British Indian Ocean Territory',
+  'British Virgin Islands', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon',
+  'Canada', 'Cape Verde', 'Caribbean Netherlands', 'Cayman Islands', 'Central African Republic', 'Chad',
+  'Chile', 'China', 'Christmas Island', 'Cocos (Keeling) Islands', 'Colombia', 'Comoros',
+  'Congo - Brazzaville', 'Congo - Kinshasa', 'Cook Islands', 'Costa Rica', 'Croatia', 'Cuba', 'Curaçao',
+  'Cyprus', 'Czechia', 'Côte d’Ivoire', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador',
+  'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Eswatini', 'Ethiopia',
+  'Falkland Islands', 'Faroe Islands', 'Fiji', 'Finland', 'France', 'French Guiana', 'French Polynesia',
+  'French Southern Territories', 'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Gibraltar', 'Greece',
+  'Greenland', 'Grenada', 'Guadeloupe', 'Guam', 'Guatemala', 'Guernsey', 'Guinea', 'Guinea-Bissau',
+  'Guyana', 'Haiti', 'Heard & McDonald Islands', 'Honduras', 'Hong Kong SAR China', 'Hungary', 'Iceland',
+  'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Isle of Man', 'Israel', 'Italy', 'Jamaica', 'Japan',
+  'Jersey', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon',
+  'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macao SAR China',
+  'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Martinique',
+  'Mauritania', 'Mauritius', 'Mayotte', 'Mexico', 'Micronesia', 'Moldova', 'Monaco', 'Mongolia',
+  'Montenegro', 'Montserrat', 'Morocco', 'Mozambique', 'Myanmar (Burma)', 'Namibia', 'Nauru', 'Nepal',
+  'Netherlands', 'New Caledonia', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Niue', 'Norfolk Island',
+  'North Korea', 'North Macedonia', 'Northern Mariana Islands', 'Norway', 'Pakistan', 'Palau',
+  'Palestinian Territories', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines',
+  'Pitcairn Islands', 'Poland', 'Portugal', 'Puerto Rico', 'Romania', 'Russia', 'Rwanda', 'Réunion',
+  'Samoa', 'San Marino', 'Senegal', 'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Sint Maarten',
+  'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa',
+  'South Georgia & South Sandwich Islands', 'South Korea', 'South Sudan', 'Spain', 'Sri Lanka',
+  'St. Barthélemy', 'St. Helena', 'St. Kitts & Nevis', 'St. Lucia', 'St. Martin', 'St. Pierre & Miquelon',
+  'St. Vincent & Grenadines', 'Sudan', 'Suriname', 'Svalbard & Jan Mayen', 'Sweden', 'Switzerland', 'Syria',
+  'São Tomé & Príncipe', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tokelau',
+  'Tonga', 'Trinidad & Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Turks & Caicos Islands', 'Tuvalu',
+  'U.S. Outlying Islands', 'U.S. Virgin Islands', 'Uganda', 'Ukraine', 'United Kingdom', 'United States',
+  'Uruguay', 'Uzbekistan', 'Vanuatu', 'Vatican City', 'Venezuela', 'Vietnam', 'Wallis & Futuna',
+  'Western Sahara', 'Yemen', 'Zambia', 'Zimbabwe', 'Åland Islands', 'المملكة العربية السعودية',
+];
+
 Object.assign(window, {
   SOLUTIONS, PROJECTS, PROJECT_SECTORS, RESOURCE_TYPES, RESOURCES,
   JOBS, BENEFITS, VALUES, STATS, TIMELINE, CONTACT_DETAILS, DEPARTMENTS, SOCIALS, NAV,
-  STORES, KSA_BORDER, DOC_BASE, SEO_META, FAQS, SEO_LANDING_PAGES,
+  STORES, KSA_BORDER, DOC_BASE, SEO_META, FAQS, SEO_LANDING_PAGES, ERP_COUNTRIES,
 });

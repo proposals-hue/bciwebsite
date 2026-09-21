@@ -50,6 +50,9 @@ const FILE_PREFIX = {
   'supplier-profile': 'supplier-registration/profile/',
   'supplier-catalog': 'supplier-registration/catalog/',
   'supplier-tds': 'supplier-registration/tds/',
+  'customer-logo': 'customer-registration/logo/',
+  'customer-cr': 'customer-registration/cr/',
+  'customer-vat': 'customer-registration/vat/',
 };
 
 window.uploadPrivateRfqFile = (file, kind, clientPayload, onUploadProgress) => {

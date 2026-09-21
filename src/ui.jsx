@@ -387,6 +387,20 @@ async function submitSupplierRegistration(data) {
   return payload;
 }
 
+// Opens a (disabled) ERP Customer account. Rides on the same route as the other
+// web-form submissions, but the handler behind it writes over the REST API —
+// see api/_customer-registration.js.
+async function submitCustomerRegistration(data) {
+  const response = await fetch('/api/web-form-submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({ web_form: 'customer-registration', ...data }),
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(payload.error || 'Customer registration failed');
+  return payload;
+}
+
 // Destination every request form sends the browser to once ERP has accepted the
 // submission. The reference travels in the URL so the page can show it, and the
 // Google Ads conversion fires there rather than moments before navigating away.
@@ -416,6 +430,7 @@ if (typeof window !== 'undefined') Object.assign(window, {
   submitSubmittalRequest,
   submitSampleRequest,
   submitSupplierRegistration,
+  submitCustomerRegistration,
   thankYouHref,
   loadErpJobs,
   loadErpDesignations,
