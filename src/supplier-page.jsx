@@ -365,9 +365,9 @@ function SupplierPage() {
           </h2>
           <p style={{ fontSize: 15, lineHeight: 1.6, color: 'var(--bci-steel)', margin: '0 0 32px', textAlign: isAr ? 'right' : 'left' }}>
             {t(lang,
-              'Your details go directly to our procurement system. Every field is required.',
-              'تصل بياناتك مباشرة إلى نظام المشتريات لدينا. جميع الحقول إلزامية.',
-              'Tus datos van directamente a nuestro sistema de compras. Todos los campos son obligatorios.')}
+              'Your details go directly to our procurement system. Fields marked * are required.',
+              'تصل بياناتك مباشرة إلى نظام المشتريات لدينا. الحقول المعلمة بـ * إلزامية.',
+              'Tus datos van directamente a nuestro sistema de compras. Los campos marcados con * son obligatorios.')}
           </p>
           <form className="bci-form" onSubmit={submitRegistration}
             style={{ background: '#fff', border: '1px solid var(--bci-hairline-light)', borderRadius: 2, padding: isMobile ? 24 : 36, display: 'flex', flexDirection: 'column', gap: 20, direction: isAr ? 'rtl' : 'ltr' }}>
@@ -498,8 +498,8 @@ function SupplierPage() {
                   'Logotipo: JPG, PNG o WebP hasta 5 MB. Documentos: PDF, JPG, PNG o WebP hasta 10 MB cada uno — exporta los catálogos de Word o Excel a PDF primero.')}
               </div>
               <div className="field">
-                <label>{t(lang, 'Company introduction / notes *', 'نبذة عن الشركة / ملاحظات *', 'Presentación de la empresa / notas *')}</label>
-                <textarea required name="notes" rows={4} placeholder={t(lang,
+                <label>{t(lang, 'Company introduction / notes (optional)', 'نبذة عن الشركة / ملاحظات (اختياري)', 'Presentación de la empresa / notas (opcional)')}</label>
+                <textarea name="notes" rows={4} placeholder={t(lang,
                   'Certifications, production capacity, lead times, existing clients…',
                   'الشهادات، الطاقة الإنتاجية، مدد التوريد، العملاء الحاليون…',
                   'Certificaciones, capacidad de producción, plazos de entrega, clientes actuales…')}></textarea>

@@ -159,7 +159,7 @@ module.exports = async function registerSupplier(body, res) {
       [website, 'your website'],
       [crNo, 'your CR number'],
       [taxId, 'your VAT / Tax ID'],
-      [notes, 'a short company introduction'],
+      // `notes` is deliberately NOT here - it is the one optional field.
     ];
     for (const [value, what] of REQUIRED) {
       if (!value) throw badRequest(`Please provide ${what}.`);

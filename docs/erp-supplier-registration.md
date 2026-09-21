@@ -36,8 +36,8 @@ Re-sync rather than editing either list by hand.
 
 ## What the form collects
 
-**Every field is mandatory** (changed 2026-09-21 at the client's request).
-Nothing on the form is optional any more.
+**Every field is mandatory except the company introduction / notes**
+(changed 2026-09-21 at the client's request).
 
 Company identity (name EN **and** AR, supplier type, country, city, contact
 person, email, mobile, website, CR number, VAT/Tax ID), the supply category,
@@ -48,7 +48,7 @@ then:
   allow-list shared with the client.
 - **Company logo**, **company profile** and **catalog / price list** — all three
   attachments required.
-- A company introduction / notes paragraph.
+- A company introduction / notes paragraph — **the only optional field**.
 
 The rule is enforced twice: `required` on the inputs (so the browser blocks
 submission and focuses the offending field) and again in
