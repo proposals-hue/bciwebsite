@@ -72,8 +72,8 @@ function erpErrorResponse(error) {
   return [502, { error: 'We could not register your company in ERP. Please try again.' }];
 }
 
-// One offered product or service. Price is optional — plenty of suppliers will
-// not quote before an NDA — but a price without a currency is meaningless.
+// One offered product or service. Every column is required: the form marks all
+// four fields mandatory, and this is the server-side half of that rule.
 function validateItem(row, index) {
   const name = clean(row && row.name, 240);
   const unit = clean(row && row.unit, 40);
@@ -81,18 +81,17 @@ function validateItem(row, index) {
   const currency = clean(row && row.currency, 8).toUpperCase();
 
   if (!name) throw badRequest(`Item ${index + 1} needs a product or service name.`);
+  if (!unit) throw badRequest(`Item ${index + 1} needs a unit.`);
+  if (!rawPrice) throw badRequest(`Item ${index + 1} needs a price.`);
 
-  let price = null;
-  if (rawPrice) {
-    price = Number(rawPrice);
-    if (!Number.isFinite(price) || price <= 0 || price > 1000000000) {
-      throw badRequest(`Item ${index + 1} has an invalid price.`);
-    }
-    if (!CURRENCIES.includes(currency)) {
-      throw badRequest(`Item ${index + 1} needs a currency for its price.`);
-    }
+  const price = Number(rawPrice);
+  if (!Number.isFinite(price) || price <= 0 || price > 1000000000) {
+    throw badRequest(`Item ${index + 1} has an invalid price.`);
   }
-  return { name, unit, price, currency: price === null ? '' : currency };
+  if (!CURRENCIES.includes(currency)) {
+    throw badRequest(`Item ${index + 1} needs a currency for its price.`);
+  }
+  return { name, unit, price, currency };
 }
 
 // A `custom_supplier_items` row. The grid has exactly three columns:
@@ -147,14 +146,33 @@ module.exports = async function registerSupplier(body, res) {
     const lang = clean(body.lang, 10);
     const rows = Array.isArray(body.items) ? body.items : [];
 
-    if (!supplierName) throw badRequest('Please provide your company name.');
-    if (!email) throw badRequest('Please provide an email address.');
+    // The form marks every field mandatory; enforce the same here so the
+    // endpoint cannot be used to file a half-complete registration.
+    const REQUIRED = [
+      [supplierName, 'your company name'],
+      [supplierNameAr, 'your company name in Arabic'],
+      [country, 'your country'],
+      [city, 'your city'],
+      [contactPerson, 'a contact person'],
+      [email, 'an email address'],
+      [mobile, 'a mobile number'],
+      [website, 'your website'],
+      [crNo, 'your CR number'],
+      [taxId, 'your VAT / Tax ID'],
+      [notes, 'a short company introduction'],
+    ];
+    for (const [value, what] of REQUIRED) {
+      if (!value) throw badRequest(`Please provide ${what}.`);
+    }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw badRequest('Please provide a valid email address.');
     if (!SUPPLIER_TYPES.includes(supplierType)) throw badRequest('Please select a valid supplier type.');
     if (!CATEGORIES[categoryKey]) throw badRequest('Please select the category you supply.');
-    if (website && !/^https?:\/\//i.test(website)) {
+    if (!/^https?:\/\//i.test(website)) {
       throw badRequest('The website address must start with http:// or https://.');
     }
+    if (!logoBlobUrl) throw badRequest('Please attach your company logo.');
+    if (!profileBlobUrl) throw badRequest('Please attach your company profile.');
+    if (!catalogBlobUrl) throw badRequest('Please attach your catalog or price list.');
     if (!rows.length || rows.length > MAX_ITEMS) {
       throw badRequest(`Please list between 1 and ${MAX_ITEMS} products or services.`);
     }

@@ -203,20 +203,22 @@ function SupplierPage() {
     // Honeypot: real visitors never fill this hidden input — pretend success for bots.
     if (fd.get('company_fax')) { setStatus('sent'); return; }
 
-    const items = rows
-      .map((row) => ({ ...row, name: row.name.trim(), unit: row.unit.trim(), price: row.price.trim() }))
-      .filter((row) => row.name);
-    if (!items.length) {
+    // The row inputs carry `required`, so the browser normally catches these
+    // first; this is the backstop for anything that gets past it.
+    const items = rows.map((row) => ({
+      ...row, name: row.name.trim(), unit: row.unit.trim(), price: row.price.trim(),
+    }));
+    if (!items.length || items.some((row) => !row.name || !row.unit || !row.price || !row.currency)) {
       return fail(t(lang,
-        'Please list at least one product or service you supply.',
-        'يرجى إدراج منتج أو خدمة واحدة على الأقل توّردها.',
-        'Indica al menos un producto o servicio que suministras.'));
+        'Every item needs a name, a unit, a price and a currency.',
+        'كل بند يتطلب اسمًا ووحدة وسعرًا وعملة.',
+        'Cada artículo necesita nombre, unidad, precio y moneda.'));
     }
-    if (items.some((row) => row.price && !(Number(row.price) > 0))) {
+    if (items.some((row) => !(Number(row.price) > 0))) {
       return fail(t(lang,
-        'Prices must be numbers greater than zero — leave the price empty if it is on request.',
-        'يجب أن تكون الأسعار أرقامًا أكبر من صفر — اترك السعر فارغًا إذا كان عند الطلب.',
-        'Los precios deben ser números mayores que cero — deja el precio vacío si es a consultar.'));
+        'Prices must be numbers greater than zero.',
+        'يجب أن تكون الأسعار أرقامًا أكبر من صفر.',
+        'Los precios deben ser números mayores que cero.'));
     }
 
     // Each attachment with the blob `kind` the API expects and its own cap.
@@ -363,15 +365,15 @@ function SupplierPage() {
           </h2>
           <p style={{ fontSize: 15, lineHeight: 1.6, color: 'var(--bci-steel)', margin: '0 0 32px', textAlign: isAr ? 'right' : 'left' }}>
             {t(lang,
-              'Your details go directly to our procurement system. Fields marked * are required.',
-              'تصل بياناتك مباشرة إلى نظام المشتريات لدينا. الحقول المعلمة بـ * إلزامية.',
-              'Tus datos van directamente a nuestro sistema de compras. Los campos marcados con * son obligatorios.')}
+              'Your details go directly to our procurement system. Every field is required.',
+              'تصل بياناتك مباشرة إلى نظام المشتريات لدينا. جميع الحقول إلزامية.',
+              'Tus datos van directamente a nuestro sistema de compras. Todos los campos son obligatorios.')}
           </p>
           <form className="bci-form" onSubmit={submitRegistration}
             style={{ background: '#fff', border: '1px solid var(--bci-hairline-light)', borderRadius: 2, padding: isMobile ? 24 : 36, display: 'flex', flexDirection: 'column', gap: 20, direction: isAr ? 'rtl' : 'ltr' }}>
             <div style={twoCol}>
               <div className="field"><label>{t(lang, 'Company name *', 'اسم الشركة (بالإنجليزية) *', 'Nombre de la empresa *')}</label><input required name="company_name" type="text" /></div>
-              <div className="field"><label>{t(lang, 'Company name (Arabic)', 'اسم الشركة (بالعربية)', 'Nombre de la empresa (árabe)')}</label><input name="company_name_ar" type="text" dir="rtl" /></div>
+              <div className="field"><label>{t(lang, 'Company name (Arabic) *', 'اسم الشركة (بالعربية) *', 'Nombre de la empresa (árabe) *')}</label><input required name="company_name_ar" type="text" dir="rtl" /></div>
             </div>
             <div style={twoCol}>
               <div className="field"><label>{t(lang, 'Supplier type *', 'نوع المورد *', 'Tipo de proveedor *')}</label>
@@ -381,24 +383,24 @@ function SupplierPage() {
                   <option value="Partnership">{t(lang, 'Partnership', 'شراكة', 'Sociedad')}</option>
                 </select>
               </div>
-              <div className="field"><label>{t(lang, 'Country', 'الدولة', 'País')}</label>
-                <select name="country" defaultValue="">
+              <div className="field"><label>{t(lang, 'Country *', 'الدولة *', 'País *')}</label>
+                <select required name="country" defaultValue="">
                   <option value="">{t(lang, 'Select a country…', 'اختر دولة…', 'Selecciona un país…')}</option>
                   {SUPPLIER_COUNTRIES.map((c) => <option key={c} value={c} title={c}>{selectOptionLabel(c, isPhone)}</option>)}
                 </select>
               </div>
             </div>
             <div style={twoCol}>
-              <div className="field"><label>{t(lang, 'City', 'المدينة', 'Ciudad')}</label><input name="city" type="text" /></div>
-              <div className="field"><label>{t(lang, 'Contact person', 'الشخص المسؤول', 'Persona de contacto')}</label><input name="contact_person" type="text" /></div>
+              <div className="field"><label>{t(lang, 'City *', 'المدينة *', 'Ciudad *')}</label><input required name="city" type="text" /></div>
+              <div className="field"><label>{t(lang, 'Contact person *', 'الشخص المسؤول *', 'Persona de contacto *')}</label><input required name="contact_person" type="text" /></div>
             </div>
             <div style={twoCol}>
               <div className="field"><label>{t(lang, 'Email *', 'البريد الإلكتروني *', 'Correo *')}</label><input required name="email" type="email" placeholder="name@company.com" /></div>
-              <div className="field"><label>{t(lang, 'Mobile', 'الجوال', 'Móvil')}</label><input name="mobile" type="tel" placeholder="+966" /></div>
+              <div className="field"><label>{t(lang, 'Mobile *', 'الجوال *', 'Móvil *')}</label><input required name="mobile" type="tel" placeholder="+966" /></div>
             </div>
             <div style={twoCol}>
-              <div className="field"><label>{t(lang, 'CR number', 'رقم السجل التجاري', 'Registro comercial (CR)')}</label><input name="cr_no" type="text" /></div>
-              <div className="field"><label>{t(lang, 'VAT / Tax ID', 'الرقم الضريبي', 'NIF / RUC (impuestos)')}</label><input name="tax_id" type="text" /></div>
+              <div className="field"><label>{t(lang, 'CR number *', 'رقم السجل التجاري *', 'Registro comercial (CR) *')}</label><input required name="cr_no" type="text" /></div>
+              <div className="field"><label>{t(lang, 'VAT / Tax ID *', 'الرقم الضريبي *', 'NIF / RUC (impuestos) *')}</label><input required name="tax_id" type="text" /></div>
             </div>
             <div style={twoCol}>
               <div className="field"><label>{t(lang, 'Supply category *', 'فئة التوريد *', 'Categoría de suministro *')}</label>
@@ -408,7 +410,7 @@ function SupplierPage() {
                   <option value="other">{t(lang, 'Other / multiple categories', 'أخرى / عدة فئات', 'Otra / varias categorías')}</option>
                 </select>
               </div>
-              <div className="field"><label>{t(lang, 'Website', 'الموقع الإلكتروني', 'Sitio web')}</label><input name="website" type="url" placeholder="https://" /></div>
+              <div className="field"><label>{t(lang, 'Website *', 'الموقع الإلكتروني *', 'Sitio web *')}</label><input required name="website" type="url" placeholder="https://" /></div>
             </div>
             <div style={{ borderTop: '1px solid var(--bci-hairline-light)', paddingTop: 20, display: 'flex', flexDirection: 'column', gap: 14 }}>
               <div>
@@ -417,9 +419,9 @@ function SupplierPage() {
                 </div>
                 <div style={{ fontSize: 13, lineHeight: 1.6, color: 'var(--bci-steel)' }}>
                   {t(lang,
-                    'List each product, material or service on its own line. Prices are optional — leave one empty to mark it as price on request.',
-                    'أدرج كل منتج أو مادة أو خدمة في سطر منفصل. الأسعار اختيارية — اترك السعر فارغًا ليكون عند الطلب.',
-                    'Enumera cada producto, material o servicio en su propia línea. Los precios son opcionales — déjalo vacío para indicar precio a consultar.')}
+                    'List each product, material or service on its own line. Every row needs a name, a unit, a price and a currency.',
+                    'أدرج كل منتج أو مادة أو خدمة في سطر منفصل. كل سطر يتطلب اسمًا ووحدة وسعرًا وعملة.',
+                    'Enumera cada producto, material o servicio en su propia línea. Cada fila necesita nombre, unidad, precio y moneda.')}
                 </div>
               </div>
 
@@ -438,25 +440,25 @@ function SupplierPage() {
                   </div>
                   <div className="field">
                     <label>{t(lang, 'Product / material / service *', 'المنتج / المادة / الخدمة *', 'Producto / material / servicio *')}</label>
-                    <input type="text" value={row.name} ref={index === 0 ? firstItemRef : null}
+                    <input required type="text" value={row.name} ref={index === 0 ? firstItemRef : null}
                       onChange={(event) => changeRow(index, 'name', event.target.value)}
                       placeholder={t(lang, 'e.g. Titanium dioxide R-902', 'مثال: ثاني أكسيد التيتانيوم R-902', 'p. ej. Dióxido de titanio R-902')} />
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: isPhone ? '1fr' : '1fr 1fr 1fr', gap: 12 }}>
                     <div className="field">
-                      <label>{t(lang, 'Unit', 'الوحدة', 'Unidad')}</label>
-                      <input type="text" value={row.unit}
+                      <label>{t(lang, 'Unit *', 'الوحدة *', 'Unidad *')}</label>
+                      <input required type="text" value={row.unit}
                         onChange={(event) => changeRow(index, 'unit', event.target.value)}
                         placeholder={t(lang, 'kg, drum, ton…', 'كجم، برميل، طن…', 'kg, tambor, tonelada…')} />
                     </div>
                     <div className="field">
-                      <label>{t(lang, 'Price (optional)', 'السعر (اختياري)', 'Precio (opcional)')}</label>
-                      <input type="number" min="0" step="any" inputMode="decimal" value={row.price}
+                      <label>{t(lang, 'Price *', 'السعر *', 'Precio *')}</label>
+                      <input required type="number" min="0" step="any" inputMode="decimal" value={row.price}
                         onChange={(event) => changeRow(index, 'price', event.target.value)} placeholder="0.00" />
                     </div>
                     <div className="field">
-                      <label>{t(lang, 'Currency', 'العملة', 'Moneda')}</label>
-                      <select value={row.currency} onChange={(event) => changeRow(index, 'currency', event.target.value)}>
+                      <label>{t(lang, 'Currency *', 'العملة *', 'Moneda *')}</label>
+                      <select required value={row.currency} onChange={(event) => changeRow(index, 'currency', event.target.value)}>
                         {SUPPLIER_CURRENCIES.map((code) => <option key={code} value={code}>{code}</option>)}
                       </select>
                     </div>
@@ -477,16 +479,16 @@ function SupplierPage() {
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, minmax(0, 1fr))', gap: 16 }}>
                 <div className="field">
-                  <label>{t(lang, 'Company logo (optional)', 'شعار الشركة (اختياري)', 'Logotipo (opcional)')}</label>
-                  <input name="company_logo" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" />
+                  <label>{t(lang, 'Company logo *', 'شعار الشركة *', 'Logotipo *')}</label>
+                  <input required name="company_logo" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" />
                 </div>
                 <div className="field">
-                  <label>{t(lang, 'Company profile (optional)', 'الملف التعريفي للشركة (اختياري)', 'Perfil de la empresa (opcional)')}</label>
-                  <input name="company_profile" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp,application/pdf,image/jpeg,image/png,image/webp" />
+                  <label>{t(lang, 'Company profile *', 'الملف التعريفي للشركة *', 'Perfil de la empresa *')}</label>
+                  <input required name="company_profile" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp,application/pdf,image/jpeg,image/png,image/webp" />
                 </div>
                 <div className="field">
-                  <label>{t(lang, 'Catalog / price list (optional)', 'الكتالوج / قائمة الأسعار (اختياري)', 'Catálogo / lista de precios (opcional)')}</label>
-                  <input name="company_catalog" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp,application/pdf,image/jpeg,image/png,image/webp" />
+                  <label>{t(lang, 'Catalog / price list *', 'الكتالوج / قائمة الأسعار *', 'Catálogo / lista de precios *')}</label>
+                  <input required name="company_catalog" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp,application/pdf,image/jpeg,image/png,image/webp" />
                 </div>
               </div>
               <div style={{ fontSize: 12, color: 'var(--bci-steel)' }}>
@@ -496,8 +498,8 @@ function SupplierPage() {
                   'Logotipo: JPG, PNG o WebP hasta 5 MB. Documentos: PDF, JPG, PNG o WebP hasta 10 MB cada uno — exporta los catálogos de Word o Excel a PDF primero.')}
               </div>
               <div className="field">
-                <label>{t(lang, 'Company introduction / notes (optional)', 'نبذة عن الشركة / ملاحظات (اختياري)', 'Presentación de la empresa / notas (opcional)')}</label>
-                <textarea name="notes" rows={4} placeholder={t(lang,
+                <label>{t(lang, 'Company introduction / notes *', 'نبذة عن الشركة / ملاحظات *', 'Presentación de la empresa / notas *')}</label>
+                <textarea required name="notes" rows={4} placeholder={t(lang,
                   'Certifications, production capacity, lead times, existing clients…',
                   'الشهادات، الطاقة الإنتاجية، مدد التوريد، العملاء الحاليون…',
                   'Certificaciones, capacidad de producción, plazos de entrega, clientes actuales…')}></textarea>

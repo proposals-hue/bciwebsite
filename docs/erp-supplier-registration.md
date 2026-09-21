@@ -36,16 +36,42 @@ Re-sync rather than editing either list by hand.
 
 ## What the form collects
 
-Company identity (name EN/AR, supplier type, country, city, contact person,
-email, mobile, website, CR number, VAT/Tax ID), the supply category, then:
+**Every field is mandatory** (changed 2026-09-21 at the client's request).
+Nothing on the form is optional any more.
 
-- **Structured offer lines** — up to 20 rows of
-  `{ name, unit, price, currency }`. The name is required; the price is
-  optional, because many suppliers will not quote before an NDA, and an empty
-  price is recorded as *price on request*. A price **does** require a currency,
-  from the `CURRENCIES` allow-list shared with the client.
-- **Company profile** and **catalog / price list** attachments, both optional.
-- Free-text notes (certifications, capacity, lead times).
+Company identity (name EN **and** AR, supplier type, country, city, contact
+person, email, mobile, website, CR number, VAT/Tax ID), the supply category,
+then:
+
+- **Structured offer lines** — 1 to 20 rows of `{ name, unit, price, currency }`,
+  all four required on every row. The currency comes from the `CURRENCIES`
+  allow-list shared with the client.
+- **Company logo**, **company profile** and **catalog / price list** — all three
+  attachments required.
+- A company introduction / notes paragraph.
+
+The rule is enforced twice: `required` on the inputs (so the browser blocks
+submission and focuses the offending field) and again in
+`api/_supplier-registration.js`, so the endpoint cannot be used to file a
+half-complete registration. `price on request` is no longer reachable from the
+form; the handling stays in the code as a defensive fallback.
+
+### Worth revisiting
+
+Mandatory-everything will turn some legitimate suppliers away:
+
+- **Company name in Arabic** — a Chinese or European manufacturer has none, and
+  the page explicitly invites suppliers "in the Kingdom and worldwide".
+- **Website** — many small suppliers and individual contractors have none, and
+  the field also demands a valid `http(s)://` URL.
+- **CR number / VAT ID** — Saudi-shaped identifiers that a foreign supplier
+  cannot provide.
+- **Price on every line** — suppliers commonly will not quote before an NDA.
+- **Three attachments** — a logo, a profile *and* a catalog, all before they can
+  submit anything at all.
+
+Relaxing any of these is a one-line change in both `src/supplier-page.jsx` and
+the `REQUIRED` list in `api/_supplier-registration.js`.
 
 ## How it reaches ERP
 
