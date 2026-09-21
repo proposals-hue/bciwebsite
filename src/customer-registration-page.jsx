@@ -1,5 +1,5 @@
 /* global React, ReactDOM, LangProvider, useLang, useViewport, t, Icon, Arrow, selectOptionLabel,
-   MegaHeader, PageHero, Footer, submitCustomerRegistration, ERP_COUNTRIES */
+   MegaHeader, PageHero, Footer, submitCustomerRegistration, thankYouHref, ERP_COUNTRIES */
 const { useState: useState_cr } = React;
 
 const MAX_CUSTOMER_DOC_BYTES = 10 * 1024 * 1024;
@@ -276,6 +276,11 @@ function CustomerRegistrationPage() {
       formElement.reset();
       setInterests([]);
       setUploadProgress(0);
+      // The confirmation lives on its own page; the inline block below only
+      // shows if the browser has not navigated yet.
+      window.location.assign(thankYouHref({
+        type: 'customer', ref: payload.customer_id, warn: payload.attachment_warning,
+      }));
     } catch (err) {
       if (isLocalCustomerPreviewHost()) {
         return fail(t(lang,

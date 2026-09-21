@@ -1,5 +1,5 @@
 /* global React, ReactDOM, LangProvider, useLang, useViewport, t, Icon, Arrow, selectOptionLabel,
-   MegaHeader, PageHero, Footer, submitSupplierRegistration, ERP_COUNTRIES */
+   MegaHeader, PageHero, Footer, submitSupplierRegistration, thankYouHref, ERP_COUNTRIES */
 const { useState: useState_sp, useRef: useRef_sp } = React;
 
 /* Must match CURRENCIES in api/supplier-registration.js — the route rejects
@@ -396,6 +396,11 @@ function SupplierPage() {
       setCategory('');
       setRows([emptySupplierItem()]);
       setUploadProgress(0);
+      // The confirmation lives on its own page; the inline block below only
+      // shows if the browser has not navigated yet.
+      window.location.assign(thankYouHref({
+        type: 'supplier', ref: payload.supplier_id, warn: payload.attachment_warning,
+      }));
     } catch (err) {
       if (isLocalPreviewHost()) {
         return fail(t(lang,

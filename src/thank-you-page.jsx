@@ -2,9 +2,11 @@
    siteHref, MegaHeader, Footer, trackAdsLeadConversion */
 const { useEffect: useEffect_ty, useMemo: useMemo_ty } = React;
 
-// Every website request form redirects here on success:
-//   /thank-you?type=submittal|sample|rfq&ref=<ERP id>&warn=1
-const THANK_YOU_TYPES = ['submittal', 'sample', 'rfq'];
+// Every website request and registration form redirects here on success:
+//   /thank-you?type=submittal|sample|rfq|customer|supplier&ref=<ERP id>&warn=1
+// An unknown type falls back to the RFQ wording, so keep this list in step with
+// the `type` each form passes to thankYouHref().
+const THANK_YOU_TYPES = ['submittal', 'sample', 'rfq', 'customer', 'supplier'];
 
 function thankYouParams() {
   try {
@@ -22,7 +24,94 @@ function thankYouParams() {
 
 // Heading, lead paragraph and the three "what happens next" steps, per request
 // type. Keyed rather than branched so a fourth form is one more entry.
+//
+// `eyebrow` and `warnNote` are optional: the registration forms say
+// "Registration received" rather than "Request received", and their attachment
+// warning asks for the file by email because procurement/sales need it to
+// review the company. Both fall back to the request wording when omitted.
 function thankYouCopy(type, lang) {
+  if (type === 'customer') {
+    return {
+      eyebrow: t(lang, 'Registration received', 'تم استلام التسجيل', 'Registro recibido'),
+      // ERP names both Customer and Supplier by company name, so the
+      // "reference" is that name — labelling it "Your reference" reads as a bug.
+      refLabel: t(lang, 'Registered as', 'مسجّل باسم', 'Registrado como'),
+      heading: t(lang, 'Your trade account is being opened.', 'جارٍ فتح حسابك التجاري.', 'Tu cuenta comercial está en proceso.'),
+      lead: t(lang,
+        'Our sales team has your company details and commercial documents. Your account is created and waiting for verification — we activate it once your CR and VAT details check out.',
+        'استلم فريق المبيعات بيانات شركتك ووثائقها التجارية. تم إنشاء حسابك وهو بانتظار التحقق — نقوم بتفعيله بمجرد التأكد من سجلك التجاري وبياناتك الضريبية.',
+        'Nuestro equipo comercial tiene los datos y documentos de tu empresa. Tu cuenta está creada y pendiente de verificación — la activamos en cuanto comprobemos tu CR y tus datos fiscales.'),
+      warnNote: t(lang,
+        'Your registration was saved, but one attachment did not reach us. Please email it to info@bcisaudi.com so we can finish verifying your account.',
+        'تم حفظ تسجيلك، لكن أحد المرفقات لم يصل إلينا. يرجى إرساله إلى info@bcisaudi.com لنتمكن من استكمال التحقق من حسابك.',
+        'Tu registro se guardó, pero un archivo adjunto no llegó. Envíalo a info@bcisaudi.com para que podamos terminar de verificar tu cuenta.'),
+      steps: [
+        {
+          title: t(lang, 'Document check', 'التحقق من الوثائق', 'Verificación de documentos'),
+          body: t(lang,
+            'We verify your commercial registration and VAT details against the documents you attached.',
+            'نتحقق من سجلك التجاري وبياناتك الضريبية مقابل الوثائق التي أرفقتها.',
+            'Verificamos tu registro comercial y tus datos fiscales con los documentos que adjuntaste.'),
+        },
+        {
+          title: t(lang, 'Account activated', 'تفعيل الحساب', 'Activación de la cuenta'),
+          body: t(lang,
+            'Your account is enabled in our system and an account manager is assigned to you.',
+            'يتم تفعيل حسابك في نظامنا ويُسند إليك مسؤول حساب.',
+            'Tu cuenta se habilita en nuestro sistema y se te asigna un gestor de cuenta.'),
+        },
+        {
+          title: t(lang, 'Start ordering', 'ابدأ الطلب', 'Empieza a pedir'),
+          body: t(lang,
+            'Your account manager contacts you with pricing for the product lines you selected.',
+            'يتواصل معك مسؤول الحساب بالأسعار الخاصة بخطوط المنتجات التي اخترتها.',
+            'Tu gestor te contacta con los precios de las líneas de producto que seleccionaste.'),
+        },
+      ],
+    };
+  }
+
+  if (type === 'supplier') {
+    return {
+      eyebrow: t(lang, 'Registration received', 'تم استلام التسجيل', 'Registro recibido'),
+      // ERP names both Customer and Supplier by company name, so the
+      // "reference" is that name — labelling it "Your reference" reads as a bug.
+      refLabel: t(lang, 'Registered as', 'مسجّل باسم', 'Registrado como'),
+      heading: t(lang, 'Your supplier registration is with our procurement team.', 'تسجيلك كمورد لدى فريق المشتريات.', 'Tu registro de proveedor está con nuestro equipo de compras.'),
+      lead: t(lang,
+        'We have your company details, the products or services you offer and your commercial documents. Our procurement team reviews every registration.',
+        'لدينا بيانات شركتك والمنتجات أو الخدمات التي توّردها ووثائقك التجارية. يراجع فريق المشتريات لدينا كل تسجيل.',
+        'Tenemos los datos de tu empresa, los productos o servicios que ofreces y tus documentos comerciales. Nuestro equipo de compras revisa cada registro.'),
+      warnNote: t(lang,
+        'Your registration was saved, but one attachment did not reach us. Please email it to info@bcisaudi.com so our team can complete the review.',
+        'تم حفظ تسجيلك، لكن أحد المرفقات لم يصل إلينا. يرجى إرساله إلى info@bcisaudi.com ليتمكن فريقنا من استكمال المراجعة.',
+        'Tu registro se guardó, pero un archivo adjunto no llegó. Envíalo a info@bcisaudi.com para que nuestro equipo pueda completar la revisión.'),
+      steps: [
+        {
+          title: t(lang, 'Procurement review', 'مراجعة المشتريات', 'Revisión de compras'),
+          body: t(lang,
+            'Our procurement team evaluates your registration and verifies your commercial documents.',
+            'يقيّم فريق المشتريات لدينا تسجيلك ويتحقق من وثائقك التجارية.',
+            'Nuestro equipo de compras evalúa tu registro y verifica tus documentos comerciales.'),
+        },
+        {
+          title: t(lang, 'Technical review', 'المراجعة الفنية', 'Revisión técnica'),
+          body: t(lang,
+            'Where you offered products, our technical team reviews each data sheet against what we buy.',
+            'في حال عرضت منتجات، يراجع فريقنا الفني كل ورقة بيانات مقابل ما نشتريه.',
+            'Si ofreciste productos, nuestro equipo técnico revisa cada ficha técnica frente a lo que compramos.'),
+        },
+        {
+          title: t(lang, 'Onboarding', 'الاعتماد', 'Incorporación'),
+          body: t(lang,
+            'Approved suppliers join our vendor list and start receiving requests for quotation.',
+            'ينضم الموردون المعتمدون إلى قائمة موردينا ويبدؤون باستلام طلبات عروض الأسعار.',
+            'Los proveedores aprobados entran en nuestra lista de vendedores y comienzan a recibir solicitudes de cotización.'),
+        },
+      ],
+    };
+  }
+
   if (type === 'submittal') {
     return {
       heading: t(lang, 'Your submittal request is registered.', 'تم تسجيل طلب وثائق الاعتماد.', 'Tu solicitud de documentación está registrada.'),
@@ -132,7 +221,7 @@ function ThankYouPage() {
   // after ERP accepted the request.
   useEffect_ty(() => { if (typeof trackAdsLeadConversion === 'function') trackAdsLeadConversion(); }, []);
 
-  const { heading, lead, steps } = thankYouCopy(type, lang);
+  const { heading, lead, steps, eyebrow, warnNote, refLabel } = thankYouCopy(type, lang);
 
   return (
     <main style={{ background: 'var(--bci-concrete)' }}>
@@ -161,7 +250,7 @@ function ThankYouPage() {
             </div>
 
             <div className="eyebrow" style={{ color: 'var(--bci-green-700)', marginBottom: 12 }}>
-              {t(lang, 'Request received', 'تم استلام الطلب', 'Solicitud recibida')}
+              {eyebrow || t(lang, 'Request received', 'تم استلام الطلب', 'Solicitud recibida')}
             </div>
             <h1 style={{
               fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 700,
@@ -181,7 +270,7 @@ function ThankYouPage() {
                 alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 28,
               }}>
                 <span className="eyebrow" style={{ color: 'var(--bci-steel)' }}>
-                  {t(lang, 'Your reference', 'رقم المرجع', 'Tu referencia')}
+                  {refLabel || t(lang, 'Your reference', 'رقم المرجع', 'Tu referencia')}
                 </span>
                 <strong style={{ fontFamily: 'var(--ff-mono)', fontSize: 17, color: 'var(--bci-navy)', letterSpacing: '0.02em' }}>
                   {ref}
@@ -194,7 +283,7 @@ function ThankYouPage() {
                 fontSize: 13, lineHeight: 1.6, color: 'var(--bci-navy-800)', background: '#fffaeb',
                 border: '1px solid #fedf89', padding: '12px 14px', marginBottom: 28,
               }}>
-                {t(lang,
+                {warnNote || t(lang,
                   'One attachment could not be linked to the record. Your request itself was registered — our team will contact you if the file is needed again.',
                   'تعذر ربط أحد المرفقات بالسجل. تم تسجيل طلبك بنجاح وسيتواصل معك فريقنا إذا لزم إعادة إرسال الملف.',
                   'No se pudo vincular un archivo adjunto al registro. Tu solicitud sí quedó registrada; nuestro equipo te contactará si el archivo es necesario de nuevo.')}
