@@ -206,10 +206,37 @@ Blob in a `finally`. The prefixes above live in **two** places that must match:
 `build/build.mjs` must also list `supplier` in `needsBlobUpload`, or the built
 page never loads the uploader and attachments silently stop working.
 
+### The upload authorizer cannot talk to the supplier
+
+`/api/rfq-file-upload` answers a rejected file with a precise 400
+(`The company profile must be a PDF, JPG, PNG, or WebP file.`) — **and the
+browser never sees it.** `upload()` from `@vercel/blob/client` discards the
+response body and throws `Vercel Blob: Failed to retrieve the client token` for
+*any* non-2xx. A supplier who picks a `.docx` profile, a 14 MB catalog or an
+empty file therefore gets one meaningless message naming neither the file nor
+the reason, and no amount of server-side wording changes that.
+
+So the rules are enforced **twice on purpose**: `supplierFileProblem()` in
+`src/supplier-page.jsx` mirrors `FILE_KINDS` and refuses the file in the browser
+with a translated message that names it, and the server re-checks because the
+browser cannot be trusted. Keep the two lists in step when either changes.
+`supplierUploadFailure()` catches anything that still escapes and never shows
+the vendor string.
+
+The same trap hides a subtler one: the authorizer also rejects a staging path it
+would have spelled differently, so `safeStagedName` in
+`build/blob-upload-entry.mjs` and `safeRfqFileName` / `safeResumeName` /
+`safePhotoName` in `api/` must stay identical — they truncate at 180 characters
+*keeping the extension*, and split on `\` and `/` alike (`path.basename` only
+splits on `\` on Windows, so a Windows dev box and Vercel disagreed).
+
 ## Failure behaviour
 
 - Our own validation errors return 400 with the real message, which the form
   shows verbatim (`Item 2 needs a currency for its price.`).
+- Attachment problems are reported **before** anything is uploaded, naming the
+  file and the field (`"Company Profile.docx" cannot be used for the company
+  profile.`) — see the note above on why the server cannot report them itself.
 - **ERP validation errors (Frappe answers 417) are passed through**, prefixed
   with `ERP rejected the registration:`. Frappe puts a human-readable reason in
   `_server_messages` (`Value missing for Supplier: Supplier Name`, `Could not

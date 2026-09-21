@@ -15,9 +15,15 @@ function photoError(message) {
   return error;
 }
 
+// Identical to safeStagedName in build/blob-upload-entry.mjs — see the note there.
 function safePhotoName(value) {
-  return path.basename(String(value || '').trim().slice(0, 180))
+  const base = String(value || '').trim()
+    .split(/[\\/]/).pop()
     .replace(/[^a-zA-Z0-9._ -]/g, '_');
+  if (base.length <= 180) return base;
+  const dot = base.lastIndexOf('.');
+  const extension = dot > 0 && base.length - dot <= 12 ? base.slice(dot) : '';
+  return base.slice(0, 180 - extension.length) + extension;
 }
 
 function validatePhotoMetadata({ name, type, size }) {

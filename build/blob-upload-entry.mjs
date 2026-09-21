@@ -1,7 +1,25 @@
 import { upload } from '@vercel/blob/client';
 
+// Must stay byte-for-byte equivalent to safeRfqFileName / safeResumeName /
+// safePhotoName in api/. The upload authorizer compares the staging path it
+// would have spelled against the one the browser asks for and rejects any
+// difference — and @vercel/blob reports that rejection only as the opaque
+// "Failed to retrieve the client token", so a drift here is near-undebuggable.
+// The 180-character cap keeps the extension, or the type check downstream sees
+// a truncated name with no extension at all and blames the file format.
+function safeStagedName(value, fallback) {
+  const base = String(value || '').trim()
+    .split(/[\\/]/).pop()
+    .replace(/[^a-zA-Z0-9._ -]/g, '_');
+  if (!base) return fallback;
+  if (base.length <= 180) return base;
+  const dot = base.lastIndexOf('.');
+  const extension = dot > 0 && base.length - dot <= 12 ? base.slice(dot) : '';
+  return base.slice(0, 180 - extension.length) + extension;
+}
+
 window.uploadPrivateCv = (file, clientPayload, onUploadProgress) => {
-  const safeName = String(file.name || 'cv.pdf').replace(/[^a-zA-Z0-9._ -]/g, '_');
+  const safeName = safeStagedName(file.name, 'cv.pdf');
   return upload(`job-cvs/${safeName}`, file, {
     access: 'private',
     contentType: clientPayload?.type || file.type || undefined,
@@ -12,7 +30,7 @@ window.uploadPrivateCv = (file, clientPayload, onUploadProgress) => {
 };
 
 window.uploadPrivateApplicantPhoto = (file, clientPayload, onUploadProgress) => {
-  const safeName = String(file.name || 'photo.jpg').replace(/[^a-zA-Z0-9._ -]/g, '_');
+  const safeName = safeStagedName(file.name, 'photo.jpg');
   return upload(`job-photos/${safeName}`, file, {
     access: 'private',
     contentType: clientPayload?.type || file.type || undefined,
@@ -35,9 +53,7 @@ const FILE_PREFIX = {
 
 window.uploadPrivateRfqFile = (file, kind, clientPayload, onUploadProgress) => {
   const safeKind = FILE_PREFIX[kind] ? kind : 'cr';
-  const safeName = String(file.name || 'attachment')
-    .split(/[\\/]/).pop()
-    .replace(/[^a-zA-Z0-9._ -]/g, '_');
+  const safeName = safeStagedName(file.name, 'attachment');
   return upload(`${FILE_PREFIX[safeKind]}${safeName}`, file, {
     access: 'private',
     contentType: clientPayload?.type || file.type || undefined,

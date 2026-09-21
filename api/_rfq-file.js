@@ -53,9 +53,19 @@ function fileKind(kind) {
   return config;
 }
 
+// Must stay identical to safeStagedName in build/blob-upload-entry.mjs — the
+// browser spells the staging path with that one and this compares against it.
+// Truncation keeps the extension so an over-long name is not misreported as a
+// forbidden file type, and the split handles `\` on every platform (path.basename
+// only does on Windows, so the check behaved differently locally than on Vercel).
 function safeRfqFileName(value) {
-  return path.basename(String(value || '').trim().slice(0, 180))
+  const base = String(value || '').trim()
+    .split(/[\\/]/).pop()
     .replace(/[^a-zA-Z0-9._ -]/g, '_');
+  if (base.length <= 180) return base;
+  const dot = base.lastIndexOf('.');
+  const extension = dot > 0 && base.length - dot <= 12 ? base.slice(dot) : '';
+  return base.slice(0, 180 - extension.length) + extension;
 }
 
 function allowedRfqContentTypes(kind) {

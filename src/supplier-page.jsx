@@ -26,6 +26,63 @@ function supplierFileType(file) {
   }[extension] || 'application/octet-stream';
 }
 
+/* Extensions accepted per attachment, mirroring FILE_KINDS in api/_rfq-file.js. */
+const SUPPLIER_IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp'];
+const SUPPLIER_DOC_EXTENSIONS = ['.pdf'].concat(SUPPLIER_IMAGE_EXTENSIONS);
+
+function supplierFileExtension(file) {
+  const name = String(file?.name || '');
+  const dot = name.lastIndexOf('.');
+  return dot > 0 ? name.slice(dot).toLowerCase() : '';
+}
+
+function supplierFileMb(bytes) {
+  return (Math.round((bytes / (1024 * 1024)) * 10) / 10).toString();
+}
+
+/* The upload authorizer re-checks every one of these rules server-side, but
+   @vercel/blob discards its reply and throws a bare "Failed to retrieve the
+   client token" — so unless we check here first, a supplier who picks a .docx
+   profile or a 14 MB catalog gets an error that names neither the file nor the
+   reason. Returns '' when the file is fine. */
+function supplierFileProblem(entry, lang) {
+  const { file, label, advice, extensions, max } = entry;
+  const name = file.name;
+  if (!file.size) {
+    return t(lang,
+      `“${name}” is empty (0 bytes). Please select the file again.`,
+      `«${name}» فارغ (0 بايت). يرجى اختيار الملف مرة أخرى.`,
+      `«${name}» está vacío (0 bytes). Vuelve a seleccionar el archivo.`);
+  }
+  if (!extensions.includes(supplierFileExtension(file))) {
+    return t(lang,
+      `“${name}” cannot be used for ${label.en}. ${advice.en}`,
+      `«${name}» غير مناسب لحقل${label.ar}. ${advice.ar}`,
+      `«${name}» no sirve para ${label.es}. ${advice.es}`);
+  }
+  if (file.size > max) {
+    const size = supplierFileMb(file.size);
+    const cap = supplierFileMb(max);
+    return t(lang,
+      `“${name}” is ${size} MB. ${label.enCap} must be no larger than ${cap} MB.`,
+      `«${name}» حجمه ${size} ميجابايت. يجب ألا يتجاوز${label.ar} ${cap} ميجابايت.`,
+      `«${name}» pesa ${size} MB. ${label.esCap} no debe superar ${cap} MB.`);
+  }
+  return '';
+}
+
+/* Never show the raw @vercel/blob failure: it leaks a vendor name and explains
+   nothing. Anything it does not recognise is kept as a parenthetical. */
+function supplierUploadFailure(entry, error, lang) {
+  const raw = String((error && error.message) || '');
+  const detail = /client token|vercel blob/i.test(raw) ? '' : raw;
+  const suffix = detail ? ` (${detail})` : '';
+  return t(lang,
+    `“${entry.file.name}” could not be uploaded as ${entry.label.en}. Please check the file opens on your device, then try again${suffix}.`,
+    `تعذّر رفع «${entry.file.name}» في حقل${entry.label.ar}. يرجى التأكد من أن الملف يفتح على جهازك ثم المحاولة مرة أخرى${suffix}.`,
+    `No se pudo subir «${entry.file.name}» como ${entry.label.es}. Comprueba que el archivo se abre en tu dispositivo e inténtalo de nuevo${suffix}.`);
+}
+
 /* The /api routes are Vercel functions — a plain static dev server has none,
    so say that rather than showing a bare fetch error. */
 function isLocalPreviewHost() {
@@ -221,18 +278,52 @@ function SupplierPage() {
         'Los precios deben ser números mayores que cero.'));
     }
 
-    // Each attachment with the blob `kind` the API expects and its own cap.
+    // Each attachment with the blob `kind` the API expects, its own cap, and the
+    // wording used when it is rejected — the labels are worded to read inside a
+    // sentence ("cannot be used for the company logo").
+    const imagesOnly = {
+      en: 'Please upload a JPG, PNG or WebP image.',
+      ar: 'يرجى رفع صورة بصيغة JPG أو PNG أو WebP.',
+      es: 'Sube una imagen JPG, PNG o WebP.',
+    };
+    const documents = {
+      en: 'Please upload a PDF, JPG, PNG or WebP file — save Word, PowerPoint or Excel files as PDF first.',
+      ar: 'يرجى رفع ملف بصيغة PDF أو JPG أو PNG أو WebP — احفظ ملفات Word أو PowerPoint أو Excel بصيغة PDF أولًا.',
+      es: 'Sube un archivo PDF, JPG, PNG o WebP — guarda los archivos de Word, PowerPoint o Excel como PDF primero.',
+    };
     const chosen = [
-      { key: 'logo_blob', kind: 'supplier-logo', max: MAX_SUPPLIER_LOGO_BYTES, file: fd.get('company_logo') },
-      { key: 'profile_blob', kind: 'supplier-profile', max: MAX_SUPPLIER_ATTACHMENT_BYTES, file: fd.get('company_profile') },
-      { key: 'catalog_blob', kind: 'supplier-catalog', max: MAX_SUPPLIER_ATTACHMENT_BYTES, file: fd.get('company_catalog') },
+      {
+        key: 'logo_blob', kind: 'supplier-logo', max: MAX_SUPPLIER_LOGO_BYTES,
+        extensions: SUPPLIER_IMAGE_EXTENSIONS, advice: imagesOnly, file: fd.get('company_logo'),
+        label: {
+          en: 'the company logo', enCap: 'The company logo',
+          ar: ' شعار الشركة',
+          es: 'el logotipo de la empresa', esCap: 'El logotipo de la empresa',
+        },
+      },
+      {
+        key: 'profile_blob', kind: 'supplier-profile', max: MAX_SUPPLIER_ATTACHMENT_BYTES,
+        extensions: SUPPLIER_DOC_EXTENSIONS, advice: documents, file: fd.get('company_profile'),
+        label: {
+          en: 'the company profile', enCap: 'The company profile',
+          ar: ' الملف التعريفي للشركة',
+          es: 'el perfil de la empresa', esCap: 'El perfil de la empresa',
+        },
+      },
+      {
+        key: 'catalog_blob', kind: 'supplier-catalog', max: MAX_SUPPLIER_ATTACHMENT_BYTES,
+        extensions: SUPPLIER_DOC_EXTENSIONS, advice: documents, file: fd.get('company_catalog'),
+        label: {
+          en: 'the catalog / price list', enCap: 'The catalog / price list',
+          ar: ' الكتالوج / قائمة الأسعار',
+          es: 'el catálogo / lista de precios', esCap: 'El catálogo / lista de precios',
+        },
+      },
     ].filter((entry) => entry.file instanceof File && Boolean(entry.file.name));
 
-    if (chosen.some((entry) => entry.file.size > entry.max)) {
-      return fail(t(lang,
-        'The logo must be no larger than 5 MB, and each document no larger than 10 MB.',
-        'يجب ألا يتجاوز الشعار 5 ميجابايت، وكل مستند 10 ميجابايت.',
-        'El logotipo no debe superar 5 MB, y cada documento 10 MB.'));
+    for (let i = 0; i < chosen.length; i += 1) {
+      const problem = supplierFileProblem(chosen[i], lang);
+      if (problem) return fail(problem);
     }
 
     setStatus('sending');
@@ -248,13 +339,21 @@ function SupplierPage() {
         throw new Error('Supplier file uploader unavailable');
       }
       for (let i = 0; i < chosen.length; i += 1) {
-        const { key, kind, file } = chosen[i];
+        const entry = chosen[i];
+        const { key, kind, file } = entry;
         const type = supplierFileType(file);
-        const staged = await window.uploadPrivateRfqFile(
-          file, kind, { name: file.name, type, size: file.size },
-          ({ percentage }) => setUploadProgress(
-            Math.round(((i + (percentage || 0) / 100) / chosen.length) * 100)),
-        );
+        let staged;
+        try {
+          staged = await window.uploadPrivateRfqFile(
+            file, kind, { name: file.name, type, size: file.size },
+            ({ percentage }) => setUploadProgress(
+              Math.round(((i + (percentage || 0) / 100) / chosen.length) * 100)),
+          );
+        } catch (uploadError) {
+          // Keep the real cause in the console; the supplier gets a usable one.
+          console.error('Supplier attachment upload failed:', kind, uploadError);
+          throw new Error(supplierUploadFailure(entry, uploadError, lang));
+        }
         blobs[key] = { url: staged.url, name: file.name, type, size: file.size };
       }
 
@@ -493,9 +592,9 @@ function SupplierPage() {
               </div>
               <div style={{ fontSize: 12, color: 'var(--bci-steel)' }}>
                 {t(lang,
-                  'Logo: JPG, PNG or WebP up to 5 MB. Documents: PDF, JPG, PNG or WebP up to 10 MB each — export Word or Excel catalogs to PDF first.',
-                  'الشعار: JPG أو PNG أو WebP بحد أقصى 5 ميجابايت. المستندات: PDF أو JPG أو PNG أو WebP بحد أقصى 10 ميجابايت — يرجى تحويل كتالوجات Word أو Excel إلى PDF أولًا.',
-                  'Logotipo: JPG, PNG o WebP hasta 5 MB. Documentos: PDF, JPG, PNG o WebP hasta 10 MB cada uno — exporta los catálogos de Word o Excel a PDF primero.')}
+                  'Logo: JPG, PNG or WebP up to 5 MB. Documents: PDF, JPG, PNG or WebP up to 10 MB each — save Word, PowerPoint or Excel files as PDF first.',
+                  'الشعار: JPG أو PNG أو WebP بحد أقصى 5 ميجابايت. المستندات: PDF أو JPG أو PNG أو WebP بحد أقصى 10 ميجابايت — يرجى حفظ ملفات Word أو PowerPoint أو Excel بصيغة PDF أولًا.',
+                  'Logotipo: JPG, PNG o WebP hasta 5 MB. Documentos: PDF, JPG, PNG o WebP hasta 10 MB cada uno — guarda los archivos de Word, PowerPoint o Excel como PDF primero.')}
               </div>
               <div className="field">
                 <label>{t(lang, 'Company introduction / notes (optional)', 'نبذة عن الشركة / ملاحظات (اختياري)', 'Presentación de la empresa / notas (opcional)')}</label>
