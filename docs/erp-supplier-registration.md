@@ -10,14 +10,44 @@ reviews the record and enables it.
 One page, `/supplier`, with three parts:
 
 1. **What we procure** — six category tiles. Each tile is a link to `#register`
-   that preselects the matching **Supply category** in the form. They used to be
-   inert `div`s that looked clickable, which read as a broken page.
+   that ticks the categories it covers in the form. They used to be inert `div`s
+   that looked clickable, which read as a broken page.
 2. **How it works** — the three-step review process, copy only.
 3. **Supplier registration** — the form described below.
 
-`PROCUREMENT` in `src/supplier-page.jsx` drives both the tiles and the category
-dropdown. Its `key` slugs must stay in step with `CATEGORIES` in
-`api/_supplier-registration.js`, which rejects any key it does not know.
+`PROCUREMENT` in `src/supplier-page.jsx` drives the six tiles. Each tile carries
+a `picks` array naming the categories it ticks in the form — the tiles are a
+curated overview, not the category list itself.
+
+## Supplier categories
+
+The form's category field is **`SUPPLIER_CATEGORIES`** in `src/supplier-page.jsx`:
+procurement's own sheet, 21 categories each with its own sub-items, trilingual.
+It is a **multi-select** ("select all applicable categories"), rendered as a
+scrollable checkbox list; ticking a category reveals its sub-items, and unticking
+it takes them with it, so a sub-item can never be submitted without its parent.
+
+The browser posts two arrays — `categories: ['raw-materials']` and
+`category_items: ['raw-materials/polyol']` — which `validateCategories` in
+`api/_supplier-registration.js` resolves against `CATEGORIES`, the English-label
+mirror of the same tree. **Keep the two in step**; the slugs are what a
+registration records.
+
+They land in `supplier_details` as:
+
+```
+Supplier categories:
+- Raw Materials: Polyol, Silica / Silica Flour
+- Packaging Materials
+```
+
+Sub-item lists for categories 3-21 are still to come from procurement; those
+categories currently have `items: []` and render as a plain checkbox.
+
+**Cached copies of the previous page** post a single `category` slug from the old
+six-category list. `LEGACY_CATEGORIES` translates those (`fillers` →
+`raw-materials`, `equipment` → `machinery-equipment`, and so on) rather than
+rejecting the registration.
 
 ## The country list
 
@@ -40,18 +70,23 @@ Re-sync rather than editing either list by hand.
 (changed 2026-09-21 at the client's request).
 
 Company identity (name EN **and** AR, supplier type, country, city, contact
-person, email, mobile, website, CR number, VAT/Tax ID), the supply category,
-then:
+person, email, mobile, website, CR number, VAT/Tax ID), then:
 
+- **At least one supplier category**, from the 21 in the sheet. Checkboxes
+  cannot carry `required` as a group, so the form checks this itself before
+  submitting and the route checks it again.
 - **Structured offer lines** — 1 to 20 rows of `{ name, unit, price, currency }`,
   all four required on every row. The currency comes from the `CURRENCIES`
   allow-list shared with the client.
 - **Company logo**, **company profile** and **catalog / price list** — all three
   attachments required.
-- **A technical data sheet per offered item**, required for every category
-  except `logistics` and `services` (a freight forwarder or a maintenance
-  contractor has no datasheet). It is filed onto that item's own child row so
-  the technical team reviews it next to the item it describes.
+- **A technical data sheet per offered item**, waived only when *every* category
+  the supplier picked is a service one (`logistics-freight`,
+  `maintenance-services`, `construction-services`) — a freight forwarder or a
+  maintenance contractor has no datasheet. A supplier who picks both raw
+  materials and logistics still needs one per line. Each sheet is filed onto that
+  item's own child row, so the technical team reviews it next to the item it
+  describes.
 - A company introduction / notes paragraph — **the only optional field**.
 
 The rule is enforced twice: `required` on the inputs (so the browser blocks
@@ -89,7 +124,9 @@ the `REQUIRED` list in `api/_supplier-registration.js`.
    a readable block:
 
    ```
-   Category: Raw Materials & Chemicals
+   Supplier categories:
+   - Raw Materials: Polyol, Silica / Silica Flour
+   - Packaging Materials
 
    Offered products and services:
    1. Titanium dioxide R-902 — 12.5 SAR / kg [TDS attached]
@@ -142,7 +179,7 @@ filtered by `dt = Supplier` to see them.
 | Website | `website` | |
 | CR number | `custom_cr_no` | custom |
 | VAT / Tax ID | `tax_id` | |
-| Category + items + notes | `supplier_details` | Text, rendered block |
+| Categories + sub-items + items + notes | `supplier_details` | Text, rendered block |
 | Offer lines | `custom_supplier_items` | child table, see below |
 | Company logo | `image` | ERPNext's Supplier avatar. **Hidden** in the field list because it renders as the logo at the top of the form, so it will not show up in a DocType field dump |
 | Company profile | `custom_company_profile` | Attach field |

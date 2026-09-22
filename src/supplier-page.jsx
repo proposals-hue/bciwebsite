@@ -14,9 +14,11 @@ const MAX_SUPPLIER_LOGO_BYTES = 5 * 1024 * 1024;
 // company documents to keep 23 uploads inside one function invocation.
 const MAX_SUPPLIER_TDS_BYTES = 5 * 1024 * 1024;
 /* A freight forwarder or a maintenance contractor has no technical data sheet,
-   so these two categories are the only ones where the TDS is optional. Mirrored
-   by SERVICE_CATEGORIES in api/_supplier-registration.js. */
-const SUPPLIER_SERVICE_CATEGORIES = ['logistics', 'services'];
+   so a registration made up only of these is the one case where the TDS is
+   optional. Mirrored by SERVICE_CATEGORIES in api/_supplier-registration.js. */
+const SUPPLIER_SERVICE_CATEGORIES = [
+  'logistics-freight', 'maintenance-services', 'construction-services',
+];
 
 function emptySupplierItem() {
   return { name: '', unit: '', price: '', currency: 'SAR', tds: null };
@@ -98,32 +100,93 @@ function isLocalPreviewHost() {
   catch (_) { return false; }
 }
 
+/* The supply categories BCI buys under, from procurement's own sheet: 21
+   categories, each with its own sub-items. Suppliers tick every one that
+   applies, so this is a multi-select, not a dropdown. `key` is what the
+   registration records, so renaming one means renaming it in CATEGORIES in
+   api/_supplier-registration.js too. Sub-item lists for the categories that
+   have none yet are still to come from procurement. */
+const SUPPLIER_CATEGORIES = [
+  { key: 'raw-materials', en: 'Raw Materials', ar: 'المواد الخام', es: 'Materias Primas',
+    items: [
+      { key: 'polyol', en: 'Polyol', ar: 'بوليول', es: 'Poliol' },
+      { key: 'mdi-isocyanates', en: 'MDI / Isocyanates', ar: 'MDI / الأيزوسيانات', es: 'MDI / Isocianatos' },
+      { key: 'polyether-polyester-polyols', en: 'Polyether / Polyester Polyols', ar: 'بوليولات البولي إيثر / البولي إستر', es: 'Polioles de Poliéter / Poliéster' },
+      { key: 'resins', en: 'Resins', ar: 'الراتنجات', es: 'Resinas' },
+      { key: 'epoxy-raw', en: 'Epoxy Raw Materials', ar: 'المواد الخام للإيبوكسي', es: 'Materias Primas para Epoxi' },
+      { key: 'polyurea-raw', en: 'Polyurea Raw Materials', ar: 'المواد الخام للبولي يوريا', es: 'Materias Primas para Poliurea' },
+      { key: 'acrylic-emulsions', en: 'Acrylic / Polymer Emulsions', ar: 'مستحلبات الأكريليك / البوليمر', es: 'Emulsiones Acrílicas / Poliméricas' },
+      { key: 'catalysts-additives', en: 'Catalysts & Additives', ar: 'المحفزات والإضافات', es: 'Catalizadores y Aditivos' },
+      { key: 'plasticizers', en: 'Plasticizers', ar: 'الملدنات', es: 'Plastificantes' },
+      { key: 'solvents', en: 'Solvents', ar: 'المذيبات', es: 'Disolventes' },
+      { key: 'bitumen', en: 'Bitumen & Bituminous Materials', ar: 'البيتومين والمواد البيتومينية', es: 'Betún y Materiales Bituminosos' },
+      { key: 'sbs-app', en: 'SBS / APP', ar: 'SBS / APP', es: 'SBS / APP' },
+      { key: 'calcium-carbonate', en: 'Calcium Carbonate', ar: 'كربونات الكالسيوم', es: 'Carbonato de Calcio' },
+      { key: 'silica', en: 'Silica / Silica Flour', ar: 'السيليكا / مسحوق السيليكا', es: 'Sílice / Harina de Sílice' },
+      { key: 'pigments-colorants', en: 'Pigments & Colorants', ar: 'الأصباغ والملونات', es: 'Pigmentos y Colorantes' },
+      { key: 'fibers', en: 'Fibers', ar: 'الألياف', es: 'Fibras' },
+      { key: 'specialty-chemicals', en: 'Specialty Chemicals', ar: 'الكيماويات المتخصصة', es: 'Químicos Especializados' },
+      { key: 'other-raw-materials', en: 'Other Raw Materials', ar: 'مواد خام أخرى', es: 'Otras Materias Primas' },
+    ] },
+  { key: 'waterproofing-roofing', en: 'Waterproofing & Roofing Materials', ar: 'مواد العزل المائي والأسقف', es: 'Impermeabilización y Materiales para Cubiertas',
+    items: [
+      { key: 'bituminous-waterproofing', en: 'Bituminous Waterproofing', ar: 'العزل المائي البيتوميني', es: 'Impermeabilización Bituminosa' },
+      { key: 'damp-proofing', en: 'Damp Proofing', ar: 'العزل ضد الرطوبة', es: 'Protección contra la Humedad' },
+      { key: 'waterproofing-membranes', en: 'Waterproofing Membranes', ar: 'أغشية العزل المائي', es: 'Membranas Impermeabilizantes' },
+      { key: 'liquid-waterproofing', en: 'Liquid Waterproofing', ar: 'العزل المائي السائل', es: 'Impermeabilización Líquida' },
+      { key: 'cementitious-waterproofing', en: 'Cementitious Waterproofing', ar: 'العزل المائي الأسمنتي', es: 'Impermeabilización Cementosa' },
+      { key: 'roof-coatings', en: 'Roof Coatings', ar: 'طلاءات الأسقف', es: 'Recubrimientos para Cubiertas' },
+      { key: 'roofing-materials', en: 'Roofing Materials', ar: 'مواد الأسقف', es: 'Materiales para Cubiertas' },
+      { key: 'waterproofing-accessories', en: 'Waterproofing Accessories', ar: 'ملحقات العزل المائي', es: 'Accesorios de Impermeabilización' },
+    ] },
+  { key: 'packaging', en: 'Packaging Materials', ar: 'مواد التعبئة والتغليف', es: 'Materiales de Embalaje', items: [] },
+  { key: 'production-consumables', en: 'Production Materials & Consumables', ar: 'مواد ومستهلكات الإنتاج', es: 'Materiales y Consumibles de Producción', items: [] },
+  { key: 'insulation', en: 'Insulation Materials', ar: 'مواد العزل الحراري', es: 'Materiales de Aislamiento', items: [] },
+  { key: 'flooring', en: 'Flooring Materials', ar: 'مواد الأرضيات', es: 'Materiales para Pisos', items: [] },
+  { key: 'protective-coatings', en: 'Protective & Industrial Coatings', ar: 'الطلاءات الصناعية ومواد الحماية', es: 'Recubrimientos Industriales y de Protección', items: [] },
+  { key: 'construction-chemicals', en: 'Construction Chemicals & Concrete Repair', ar: 'كيماويات البناء وإصلاح الخرسانة', es: 'Químicos para Construcción y Reparación de Concreto', items: [] },
+  { key: 'sealants-adhesives', en: 'Sealants & Adhesives', ar: 'مواد السيلانت واللاصق', es: 'Selladores y Adhesivos', items: [] },
+  { key: 'machinery-equipment', en: 'Machinery & Equipment', ar: 'الآلات والمعدات', es: 'Maquinaria y Equipos', items: [] },
+  { key: 'spare-parts', en: 'Spare Parts & Maintenance', ar: 'قطع الغيار والصيانة', es: 'Repuestos y Mantenimiento', items: [] },
+  { key: 'electrical', en: 'Electrical Materials & Equipment', ar: 'المواد والمعدات الكهربائية', es: 'Materiales y Equipos Eléctricos', items: [] },
+  { key: 'mechanical', en: 'Mechanical Materials & Equipment', ar: 'المواد والمعدات الميكانيكية', es: 'Materiales y Equipos Mecánicos', items: [] },
+  { key: 'laboratory', en: 'Laboratory Equipment & Chemicals', ar: 'معدات ومواد المختبر', es: 'Equipos y Químicos de Laboratorio', items: [] },
+  { key: 'safety-ppe', en: 'Safety & PPE', ar: 'السلامة ومعدات الحماية الشخصية', es: 'Seguridad y EPP', items: [] },
+  { key: 'it-office', en: 'IT & Office Supplies', ar: 'تقنية المعلومات والمستلزمات المكتبية', es: 'TI y Suministros de Oficina', items: [] },
+  { key: 'vehicles-transport', en: 'Vehicles & Transportation', ar: 'المركبات والنقل', es: 'Vehículos y Transporte', items: [] },
+  { key: 'logistics-freight', en: 'Logistics & Freight Services', ar: 'الخدمات اللوجستية والشحن', es: 'Servicios Logísticos y de Carga', items: [] },
+  { key: 'maintenance-services', en: 'Maintenance & Technical Services', ar: 'خدمات الصيانة والخدمات الفنية', es: 'Servicios de Mantenimiento y Técnicos', items: [] },
+  { key: 'construction-services', en: 'Construction & Contracting Services', ar: 'خدمات الإنشاء والمقاولات', es: 'Servicios de Construcción y Contratación', items: [] },
+  { key: 'general-supplies', en: 'General Supplies', ar: 'المستلزمات العامة', es: 'Suministros Generales', items: [] },
+];
+
 /* What BCI procures — drives the category grid. Each tile is clickable: it jumps
    to the registration form and preselects `key` in the Supply category field, so
    the grid behaves the way visitors already expect it to. `key` is also what the
    ERP registration records, so don't rename one without the other. */
 const PROCUREMENT = [
-  { key: 'raw-materials', icon: 'flask',
+  { key: 'raw-materials', icon: 'flask', picks: ['raw-materials'],
     en: { t: 'Raw Materials & Chemicals', d: 'Polyols, isocyanates, epoxy resins, acrylics, additives, pigments and specialty chemicals.' },
     ar: { t: 'المواد الخام والكيماويات', d: 'البوليولات، الإيزوسيانات، راتنجات الإيبوكسي، الأكريليك، الإضافات، الأصباغ والكيماويات المتخصصة.' },
     es: { t: 'Materias Primas y Químicos', d: 'Polioles, isocianatos, resinas epóxicas, acrílicos, aditivos, pigmentos y químicos especializados.' } },
   { key: 'fillers', icon: 'layers',
+    picks: ['raw-materials', 'raw-materials/calcium-carbonate', 'raw-materials/silica'],
     en: { t: 'Fillers & Aggregates', d: 'Silica sand, quartz, calcium carbonate, cement and mineral fillers.' },
     ar: { t: 'الحشوات والركام', d: 'رمل السيليكا، الكوارتز، كربونات الكالسيوم، الأسمنت والحشوات المعدنية.' },
     es: { t: 'Cargas y Agregados', d: 'Arena de sílice, cuarzo, carbonato de calcio, cemento y cargas minerales.' } },
-  { key: 'packaging', icon: 'package',
+  { key: 'packaging', icon: 'package', picks: ['packaging'],
     en: { t: 'Packaging', d: 'Pails, drums, bags, cartridges, IBCs, labels and printed packaging.' },
     ar: { t: 'مواد التعبئة والتغليف', d: 'الدلاء، البراميل، الأكياس، الخراطيش، حاويات IBC، الملصقات والتغليف المطبوع.' },
     es: { t: 'Envases y Embalaje', d: 'Cubetas, tambores, sacos, cartuchos, IBCs, etiquetas y embalaje impreso.' } },
-  { key: 'equipment', icon: 'factory',
+  { key: 'equipment', icon: 'factory', picks: ['machinery-equipment', 'spare-parts', 'laboratory'],
     en: { t: 'Equipment & Spares', d: 'Mixers, pumps, spray rigs, lab instruments and production spare parts.' },
     ar: { t: 'المعدات وقطع الغيار', d: 'الخلاطات، المضخات، أجهزة الرش، أجهزة المختبر وقطع غيار الإنتاج.' },
     es: { t: 'Equipos y Repuestos', d: 'Mezcladoras, bombas, equipos de proyección, instrumentos de laboratorio y repuestos de producción.' } },
-  { key: 'logistics', icon: 'globe',
+  { key: 'logistics', icon: 'globe', picks: ['logistics-freight', 'vehicles-transport'],
     en: { t: 'Logistics & Transport', d: 'Freight, fleet services, customs clearance and warehousing.' },
     ar: { t: 'الخدمات اللوجستية والنقل', d: 'الشحن، خدمات الأسطول، التخليص الجمركي والتخزين.' },
     es: { t: 'Logística y Transporte', d: 'Flete, servicios de flota, despacho aduanero y almacenamiento.' } },
-  { key: 'services', icon: 'briefcase',
+  { key: 'services', icon: 'briefcase', picks: ['maintenance-services', 'construction-services'],
     en: { t: 'Services & Contracting', d: 'Maintenance, calibration, facility services and specialist contracting.' },
     ar: { t: 'الخدمات والمقاولات', d: 'الصيانة، المعايرة، خدمات المرافق والمقاولات المتخصصة.' },
     es: { t: 'Servicios y Contratación', d: 'Mantenimiento, calibración, servicios de instalaciones y contratación especializada.' } },
@@ -143,7 +206,7 @@ function ProcurementTile({ c, i, total, onPick }) {
   const [lit, setLit] = useState_sp(false);
   const copy = c[lang] || c.en;
   return (
-    <a href="#register" onClick={(e) => onPick(e, c.key)}
+    <a href="#register" onClick={(e) => onPick(e, c.picks)}
       onMouseEnter={() => setLit(true)} onMouseLeave={() => setLit(false)}
       onFocus={() => setLit(true)} onBlur={() => setLit(false)}
       style={{
@@ -195,7 +258,9 @@ function SupplierPage() {
   const isAr = lang === 'ar';
   const [status, setStatus] = useState_sp('idle'); // idle | sending | sent | error
   const [errorMsg, setErrorMsg] = useState_sp('');
-  const [category, setCategory] = useState_sp('');
+  /* Every ticked box, as `category` or `category/sub-item`. One flat list keeps
+     the toggling honest: a sub-item can never outlive its category. */
+  const [picks, setPicks] = useState_sp([]);
   const [rows, setRows] = useState_sp([emptySupplierItem()]);
   const [uploadProgress, setUploadProgress] = useState_sp(0);
   const [supplierId, setSupplierId] = useState_sp('');
@@ -207,15 +272,29 @@ function SupplierPage() {
   )));
   const removeRow = (index) => setRows(rows.filter((_, i) => i !== index));
   const sent = status === 'sent';
-  // Nothing to attach for a freight or contracting line, so the TDS follows the
-  // selected category rather than being demanded of every supplier.
-  const tdsRequired = Boolean(category) && !SUPPLIER_SERVICE_CATEGORIES.includes(category);
   const twoCol = { display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: 16 };
+
+  const pickedCategories = picks.filter((p) => !p.includes('/'));
+  const isPicked = (value) => picks.includes(value);
+  /* Ticking a category reveals its sub-items; unticking it takes them with it,
+     so a stray sub-item can never be submitted on its own. */
+  const togglePick = (value) => setPicks((current) => {
+    if (current.includes(value)) {
+      return current.filter((p) => p !== value && !p.startsWith(`${value}/`));
+    }
+    const parent = value.includes('/') ? value.split('/')[0] : '';
+    const added = parent && !current.includes(parent) ? [parent, value] : [value];
+    return current.concat(added.filter((v) => !current.includes(v)));
+  });
+  // Nothing to attach for a freight or contracting line, so the TDS is only
+  // waived when every category the supplier picked is a service one.
+  const tdsRequired = pickedCategories.length > 0
+    && pickedCategories.some((key) => !SUPPLIER_SERVICE_CATEGORIES.includes(key));
 
   /* Clicking a procurement tile now does the obvious thing. The focus is
      deferred so it does not cut the smooth scroll short. */
-  const goToRegister = (e, key) => {
-    setCategory(key);
+  const goToRegister = (e, keys) => {
+    setPicks((current) => current.concat(keys.filter((k) => !current.includes(k))));
     const target = document.getElementById('register');
     if (!target?.scrollIntoView) return; // let the plain #register jump happen
     e.preventDefault();
@@ -232,6 +311,15 @@ function SupplierPage() {
     const fd = new FormData(formElement);
     // Honeypot: real visitors never fill this hidden input — pretend success for bots.
     if (fd.get('company_fax')) { setStatus('sent'); return; }
+
+    // Checkboxes cannot carry `required` as a group, so this is the only guard
+    // before the request goes out.
+    if (pickedCategories.length === 0) {
+      return fail(t(lang,
+        'Please select at least one supplier category.',
+        'يرجى اختيار فئة توريد واحدة على الأقل.',
+        'Selecciona al menos una categoría de proveedor.'));
+    }
 
     // The row inputs carry `required`, so the browser normally catches these
     // first; this is the backstop for anything that gets past it.
@@ -375,7 +463,8 @@ function SupplierPage() {
         tax_id: fd.get('tax_id') || '',
         custom_city: fd.get('city') || '',
         custom_contact_person: fd.get('contact_person') || '',
-        category: fd.get('category') || '',
+        categories: pickedCategories,
+        category_items: picks.filter((p) => p.includes('/')),
         notes: fd.get('notes') || '',
         // The File itself never goes in the payload — only the staged blob
         // reference, which the route pulls into ERP and then deletes.
@@ -393,7 +482,7 @@ function SupplierPage() {
       setAttachWarning(Boolean(payload.attachment_warning));
       setStatus('sent');
       formElement.reset();
-      setCategory('');
+      setPicks([]);
       setRows([emptySupplierItem()]);
       setUploadProgress(0);
       // The confirmation lives on its own page; the inline block below only
@@ -438,9 +527,9 @@ function SupplierPage() {
           </h2>
           <p style={{ fontSize: 15, lineHeight: 1.6, color: 'var(--bci-steel)', margin: '0 0 40px', maxWidth: 620, textAlign: isAr ? 'right' : 'left' }}>
             {t(lang,
-              'Pick the category you supply — it takes you to the registration form with that category already filled in.',
-              'اختر الفئة التي توّردها — سينتقل بك ذلك إلى نموذج التسجيل مع تعبئة الفئة مسبقًا.',
-              'Elige la categoría que suministras — te lleva al formulario de registro con esa categoría ya seleccionada.')}
+              'Pick what you supply — it takes you to the registration form with the matching categories already ticked. You can add more there.',
+              'اختر ما توّرده — سينتقل بك ذلك إلى نموذج التسجيل مع تحديد الفئات المطابقة مسبقًا، ويمكنك إضافة المزيد هناك.',
+              'Elige lo que suministras — te lleva al formulario de registro con las categorías correspondientes ya marcadas. Allí puedes añadir más.')}
           </p>
           <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 0, borderTop: '1px solid var(--bci-hairline-light)' }}>
             {PROCUREMENT.map((c, i) => (
@@ -513,15 +602,57 @@ function SupplierPage() {
               <div className="field"><label>{t(lang, 'CR number *', 'رقم السجل التجاري *', 'Registro comercial (CR) *')}</label><input required name="cr_no" type="text" /></div>
               <div className="field"><label>{t(lang, 'VAT / Tax ID *', 'الرقم الضريبي *', 'NIF / RUC (impuestos) *')}</label><input required name="tax_id" type="text" /></div>
             </div>
-            <div style={twoCol}>
-              <div className="field"><label>{t(lang, 'Supply category *', 'فئة التوريد *', 'Categoría de suministro *')}</label>
-                <select required name="category" value={category} onChange={(e) => setCategory(e.target.value)}>
-                  <option value="">{t(lang, 'Select a category…', 'اختر فئة…', 'Selecciona una categoría…')}</option>
-                  {PROCUREMENT.map((c) => <option key={c.key} value={c.key}>{(c[lang] || c.en).t}</option>)}
-                  <option value="other">{t(lang, 'Other / multiple categories', 'أخرى / عدة فئات', 'Otra / varias categorías')}</option>
-                </select>
+            <div className="field"><label>{t(lang, 'Website *', 'الموقع الإلكتروني *', 'Sitio web *')}</label><input required name="website" type="url" placeholder="https://" /></div>
+
+            {/* Procurement's own category sheet. Multi-select, because a supplier
+                routinely sits in several: "select all applicable categories". */}
+            <div style={{ borderTop: '1px solid var(--bci-hairline-light)', paddingTop: 20, display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <div>
+                <div className="eyebrow" style={{ color: 'var(--bci-green-700)', marginBottom: 6 }}>
+                  {t(lang, 'Supplier categories *', 'فئات التوريد *', 'Categorías de proveedor *')}
+                </div>
+                <div style={{ fontSize: 13, lineHeight: 1.6, color: 'var(--bci-steel)' }}>
+                  {t(lang,
+                    'Select all that apply. Tick a category to see what sits under it.',
+                    'اختر كل ما ينطبق. حدّد فئة لعرض ما تحتها.',
+                    'Selecciona todas las que correspondan. Marca una categoría para ver lo que contiene.')}
+                  {pickedCategories.length > 0 && ` — ${picks.length} ${t(lang, 'selected', 'محدد', 'seleccionadas')}`}
+                </div>
               </div>
-              <div className="field"><label>{t(lang, 'Website *', 'الموقع الإلكتروني *', 'Sitio web *')}</label><input required name="website" type="url" placeholder="https://" /></div>
+              <div style={{
+                border: '1px solid var(--bci-hairline-light)', background: 'var(--bci-paper)',
+                maxHeight: 340, overflowY: 'auto', padding: '8px 14px',
+              }}>
+                {SUPPLIER_CATEGORIES.map((c) => {
+                  const open = isPicked(c.key);
+                  return (
+                    <div key={c.key} style={{ padding: '6px 0' }}>
+                      <label style={{ display: 'flex', gap: 10, alignItems: 'flex-start', cursor: 'pointer', fontSize: 14, lineHeight: 1.45 }}>
+                        <input type="checkbox" checked={open} onChange={() => togglePick(c.key)}
+                          style={{ marginTop: 3, flex: '0 0 auto' }} />
+                        <span style={{ fontWeight: open ? 600 : 400, color: 'var(--bci-navy)' }}>{c[lang] || c.en}</span>
+                      </label>
+                      {open && c.items.length > 0 && (
+                        <div style={{
+                          display: 'grid', gridTemplateColumns: isPhone ? '1fr' : 'repeat(2, minmax(0, 1fr))',
+                          gap: '2px 16px', padding: isAr ? '6px 28px 8px 0' : '6px 0 8px 28px',
+                        }}>
+                          {c.items.map((sub) => {
+                            const value = `${c.key}/${sub.key}`;
+                            return (
+                              <label key={sub.key} style={{ display: 'flex', gap: 8, alignItems: 'flex-start', cursor: 'pointer', fontSize: 13, lineHeight: 1.45, color: 'var(--bci-steel)' }}>
+                                <input type="checkbox" checked={isPicked(value)} onChange={() => togglePick(value)}
+                                  style={{ marginTop: 3, flex: '0 0 auto' }} />
+                                <span>{sub[lang] || sub.en}</span>
+                              </label>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
             <div style={{ borderTop: '1px solid var(--bci-hairline-light)', paddingTop: 20, display: 'flex', flexDirection: 'column', gap: 14 }}>
               <div>

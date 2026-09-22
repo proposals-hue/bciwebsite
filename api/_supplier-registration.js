@@ -27,21 +27,86 @@ const clean = (value, max) => String(value == null ? '' : value).trim().slice(0,
 
 const SUPPLIER_TYPES = ['Company', 'Individual', 'Partnership'];
 const CURRENCIES = ['SAR', 'USD', 'EUR', 'AED', 'GBP', 'CNY', 'INR', 'JPY', 'TRY', 'EGP'];
-// Mirrors PROCUREMENT in src/supplier-page.jsx — the value is a slug, the label
-// is what procurement reads in ERP. Keep the two lists in step.
+// Mirrors SUPPLIER_CATEGORIES in src/supplier-page.jsx — the value is a slug,
+// the label is what procurement reads in ERP. Keep the two lists in step.
 const CATEGORIES = {
-  'raw-materials': 'Raw Materials & Chemicals',
-  fillers: 'Fillers & Aggregates',
-  packaging: 'Packaging',
-  equipment: 'Equipment & Spares',
-  logistics: 'Logistics & Transport',
-  services: 'Services & Contracting',
-  other: 'Other / multiple categories',
+  'raw-materials': {
+    label: 'Raw Materials',
+    items: {
+      'polyol': 'Polyol',
+      'mdi-isocyanates': 'MDI / Isocyanates',
+      'polyether-polyester-polyols': 'Polyether / Polyester Polyols',
+      'resins': 'Resins',
+      'epoxy-raw': 'Epoxy Raw Materials',
+      'polyurea-raw': 'Polyurea Raw Materials',
+      'acrylic-emulsions': 'Acrylic / Polymer Emulsions',
+      'catalysts-additives': 'Catalysts & Additives',
+      'plasticizers': 'Plasticizers',
+      'solvents': 'Solvents',
+      'bitumen': 'Bitumen & Bituminous Materials',
+      'sbs-app': 'SBS / APP',
+      'calcium-carbonate': 'Calcium Carbonate',
+      'silica': 'Silica / Silica Flour',
+      'pigments-colorants': 'Pigments & Colorants',
+      'fibers': 'Fibers',
+      'specialty-chemicals': 'Specialty Chemicals',
+      'other-raw-materials': 'Other Raw Materials',
+    },
+  },
+  'waterproofing-roofing': {
+    label: 'Waterproofing & Roofing Materials',
+    items: {
+      'bituminous-waterproofing': 'Bituminous Waterproofing',
+      'damp-proofing': 'Damp Proofing',
+      'waterproofing-membranes': 'Waterproofing Membranes',
+      'liquid-waterproofing': 'Liquid Waterproofing',
+      'cementitious-waterproofing': 'Cementitious Waterproofing',
+      'roof-coatings': 'Roof Coatings',
+      'roofing-materials': 'Roofing Materials',
+      'waterproofing-accessories': 'Waterproofing Accessories',
+    },
+  },
+  'packaging': { label: 'Packaging Materials', items: {} },
+  'production-consumables': { label: 'Production Materials & Consumables', items: {} },
+  'insulation': { label: 'Insulation Materials', items: {} },
+  'flooring': { label: 'Flooring Materials', items: {} },
+  'protective-coatings': { label: 'Protective & Industrial Coatings', items: {} },
+  'construction-chemicals': { label: 'Construction Chemicals & Concrete Repair', items: {} },
+  'sealants-adhesives': { label: 'Sealants & Adhesives', items: {} },
+  'machinery-equipment': { label: 'Machinery & Equipment', items: {} },
+  'spare-parts': { label: 'Spare Parts & Maintenance', items: {} },
+  'electrical': { label: 'Electrical Materials & Equipment', items: {} },
+  'mechanical': { label: 'Mechanical Materials & Equipment', items: {} },
+  'laboratory': { label: 'Laboratory Equipment & Chemicals', items: {} },
+  'safety-ppe': { label: 'Safety & PPE', items: {} },
+  'it-office': { label: 'IT & Office Supplies', items: {} },
+  'vehicles-transport': { label: 'Vehicles & Transportation', items: {} },
+  'logistics-freight': { label: 'Logistics & Freight Services', items: {} },
+  'maintenance-services': { label: 'Maintenance & Technical Services', items: {} },
+  'construction-services': { label: 'Construction & Contracting Services', items: {} },
+  'general-supplies': { label: 'General Supplies', items: {} },
 };
+
+// Slugs the previous six-category form used. A browser holding a cached copy of
+// that page still posts one of these, so they are translated rather than
+// rejected.
+const LEGACY_CATEGORIES = {
+  'raw-materials': 'raw-materials',
+  fillers: 'raw-materials',
+  packaging: 'packaging',
+  equipment: 'machinery-equipment',
+  logistics: 'logistics-freight',
+  services: 'maintenance-services',
+  other: 'general-supplies',
+};
+const MAX_CATEGORIES = 21;
+const MAX_CATEGORY_ITEMS = 120;
 // A freight forwarder or a maintenance contractor has no technical data sheet,
 // so these are the only categories where the per-item TDS is optional. Mirrored
 // by SUPPLIER_SERVICE_CATEGORIES in src/supplier-page.jsx.
-const SERVICE_CATEGORIES = ['logistics', 'services'];
+const SERVICE_CATEGORIES = [
+  'logistics-freight', 'maintenance-services', 'construction-services',
+];
 const MAX_ITEMS = 20;
 const MAX_DETAILS = 5000;
 // TDS uploads run sequentially against ERP inside one invocation, so they go up
@@ -165,6 +230,48 @@ async function attachItemDataSheets(items, supplierId, onFailure) {
   return urls;
 }
 
+// The supplier ticks categories and, under them, sub-items. Returns the picks
+// resolved to their English labels, or throws if anything is not in the sheet.
+// A cached copy of the previous page posts a single legacy slug instead, which
+// is translated rather than rejected.
+function validateCategories(body) {
+  const rawKeys = Array.isArray(body.categories) ? body.categories : [];
+  const rawItems = Array.isArray(body.category_items) ? body.category_items : [];
+
+  const keys = [];
+  for (const value of rawKeys.slice(0, MAX_CATEGORIES)) {
+    const key = clean(value, 60);
+    if (!CATEGORIES[key]) throw badRequest('Please select a supplier category from the list.');
+    if (!keys.includes(key)) keys.push(key);
+  }
+
+  if (!keys.length) {
+    const legacy = LEGACY_CATEGORIES[clean(body.category, 40)];
+    if (legacy) keys.push(legacy);
+  }
+  if (!keys.length) throw badRequest('Please select at least one supplier category.');
+
+  const chosen = new Map(keys.map((key) => [key, []]));
+  for (const value of rawItems.slice(0, MAX_CATEGORY_ITEMS)) {
+    const [key, item] = clean(value, 120).split('/');
+    const label = CATEGORIES[key] && CATEGORIES[key].items[item];
+    // A sub-item without its category is a malformed payload, not a choice.
+    if (!label || !chosen.has(key)) {
+      throw badRequest('Please select a supplier category from the list.');
+    }
+    if (!chosen.get(key).includes(label)) chosen.get(key).push(label);
+  }
+  return { keys, chosen };
+}
+
+// One line per category, with its sub-items after a colon when there are any.
+function formatCategories(chosen) {
+  return [...chosen.entries()].map(([key, items]) => {
+    const label = CATEGORIES[key].label;
+    return items.length ? `- ${label}: ${items.join(', ')}` : `- ${label}`;
+  });
+}
+
 function formatItem(item, index) {
   const price = item.price === null
     ? 'price on request'
@@ -201,7 +308,7 @@ module.exports = async function registerSupplier(body, res) {
     const website = clean(body.website, 1000);
     const crNo = clean(body.custom_cr_no, 140);
     const taxId = clean(body.tax_id, 140);
-    const categoryKey = clean(body.category, 40);
+    const { keys: categoryKeys, chosen: categoryPicks } = validateCategories(body);
     const notes = clean(body.notes, 2000);
     const pageUrl = clean(body.page_url, 1000);
     const lang = clean(body.lang, 10);
@@ -227,7 +334,6 @@ module.exports = async function registerSupplier(body, res) {
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) throw badRequest('Please provide a valid email address.');
     if (!SUPPLIER_TYPES.includes(supplierType)) throw badRequest('Please select a valid supplier type.');
-    if (!CATEGORIES[categoryKey]) throw badRequest('Please select the category you supply.');
     if (!/^https?:\/\//i.test(website)) {
       throw badRequest('The website address must start with http:// or https://.');
     }
@@ -238,7 +344,8 @@ module.exports = async function registerSupplier(body, res) {
       throw badRequest(`Please list between 1 and ${MAX_ITEMS} products or services.`);
     }
 
-    const tdsRequired = !SERVICE_CATEGORIES.includes(categoryKey);
+    // Waived only when every category the supplier picked is a service one.
+    const tdsRequired = categoryKeys.some((key) => !SERVICE_CATEGORIES.includes(key));
     const items = rows.map((row, index) => validateItem(row, index, tdsRequired));
 
     const [logo, profile, catalog] = await Promise.all([
@@ -248,7 +355,8 @@ module.exports = async function registerSupplier(body, res) {
     ]);
 
     const details = [
-      `Category: ${CATEGORIES[categoryKey]}`,
+      'Supplier categories:',
+      ...formatCategories(categoryPicks),
       '',
       'Offered products and services:',
       ...items.map(formatItem),
