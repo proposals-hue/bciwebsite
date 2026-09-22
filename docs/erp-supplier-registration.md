@@ -21,8 +21,9 @@ curated overview, not the category list itself.
 
 ## Supplier categories
 
-The form's category field is **`SUPPLIER_CATEGORIES`** in `src/supplier-page.jsx`:
-procurement's own sheet, 21 categories each with its own sub-items, trilingual.
+The form's category field is **`SUPPLIER_CATEGORIES`** in `src/supplier-page.jsx`,
+transcribed from procurement's sheet (`supliers cat.xlsx`): **22 categories, 170
+sub-items**, trilingual.
 It is a **multi-select** ("select all applicable categories"), rendered as a
 scrollable checkbox list; ticking a category reveals its sub-items, and unticking
 it takes them with it, so a sub-item can never be submitted without its parent.
@@ -41,13 +42,29 @@ Supplier categories:
 - Packaging Materials
 ```
 
-Sub-item lists for categories 3-21 are still to come from procurement; those
-categories currently have `items: []` and render as a plain checkbox.
+**English and the category-level Arabic are the sheet's own wording. The Arabic
+for the sub-items and all of the Spanish are translations, not client copy** —
+the sheet carries neither. Worth a review by someone who knows the trade terms.
+
+Sub-item slugs are derived from the English (`Silica / Silica Flour` →
+`silica-silica-flour`), so **re-transcribing the sheet can change a slug**. Run
+the parity check below afterwards; it catches a tile left pointing at a slug that
+no longer exists, which would otherwise tick nothing at all and say nothing.
 
 **Cached copies of the previous page** post a single `category` slug from the old
 six-category list. `LEGACY_CATEGORIES` translates those (`fillers` →
-`raw-materials`, `equipment` → `machinery-equipment`, and so on) rather than
-rejecting the registration.
+`raw-materials`, `equipment` → `machinery-equipment`, `other` → `other`) rather
+than rejecting the registration.
+
+### Keeping the two copies in step
+
+The tree is written out twice: trilingual in the page, English-only in the route.
+A drift between them silently rejects a valid pick, so check both after editing
+either. The checks worth running are that the two have the same slugs in the same
+order with the same labels, that every slug is unique and URL-safe, that every
+label carries Arabic and Spanish, that every tile `picks` entry resolves, and that
+`SUPPLIER_SERVICE_CATEGORIES`, `SERVICE_CATEGORIES` and `LEGACY_CATEGORIES` all
+name categories that exist.
 
 ## The country list
 
