@@ -9,7 +9,7 @@
    ============================================================= */
 
 /* ---------------------------------------------------------------
-   1 · SOLUTIONS  (9 product categories → products)
+   1 · SOLUTIONS  (10 product categories → products)
    icon = name registered in ui.jsx <Icon>
    Each product: code, en/ar name, en/ar blurb, tags[]
    --------------------------------------------------------------- */
@@ -348,6 +348,23 @@ const SOLUTIONS = [
       { code: 'BC Tool Cleaner', img: 'assets/products/bc-tool-cleaner.jpg', tds: 'https://erp.bcisaudi.net/files/BC%20Tool%20Cleaner%20TDS.pdf', sizes: ['20 kg pail', '200 kg drum'], en: { name: 'BC Tool Cleaner', desc: 'Is a highly reactive, low-boiling, fast-evaporating solvent with excellent solvency power. It is designed for effective cleaning of tools, equipment, and surfaces prior to coating or elastomer application.' }, ar: { name: 'BC Tool Cleaner', desc: 'Is a highly reactive, low-boiling, fast-evaporating solvent with excellent solvency power. It is designed for effective cleaning of tools, equipment, and surfaces prior to coating or elastomer application.' }, es: { name: 'BC Tool Cleaner', desc: 'Is a highly reactive, low-boiling, fast-evaporating solvent with excellent solvency power. It is designed for effective cleaning of tools, equipment, and surfaces prior to coating or elastomer application.' }, tags: ['Saudi-Made'] },
     ],
   },
+  {
+    slug: 'paints-coatings',
+    num: '10',
+    icon: 'paint-roller',
+    en: { name: 'Paints & Coatings',
+          tagline: 'Primers, sealers and decorative textures for interior and exterior walls.' },
+    ar: { name: 'الدهانات والطلاءات',
+          tagline: 'برايمرات ومواد عزل مسامات وتشطيبات زخرفية للجدران الداخلية والخارجية.' },
+    es: { name: 'Pinturas y Recubrimientos',
+          tagline: 'Imprimaciones, selladores y texturas decorativas para muros interiores y exteriores.' },
+    products: [
+      { code: 'BC Eco Prime', img: 'assets/products/bc-royal-prime.jpg', tds: 'https://erp.bcisaudi.net/files/BC%20ECO%20Prime.pdf', sizes: ['25 kg pail'], colors: ['White'], en: { name: 'BC Eco Prime', desc: 'Is a high-quality, water-based acrylic primer formulated using special acrylic polymer technology. It provides excellent penetration, superior adhesion, high alkali resistance, and outstanding durability for interior masonry substrates.' }, ar: { name: 'BC Eco Prime', desc: 'Is a high-quality, water-based acrylic primer formulated using special acrylic polymer technology. It provides excellent penetration, superior adhesion, high alkali resistance, and outstanding durability for interior masonry substrates.' }, es: { name: 'BC Eco Prime', desc: 'Is a high-quality, water-based acrylic primer formulated using special acrylic polymer technology. It provides excellent penetration, superior adhesion, high alkali resistance, and outstanding durability for interior masonry substrates.' }, tags: ['Saudi-Made'] },
+      { code: 'BC Royal Prime', img: 'assets/products/bc-royal-prime.jpg', tds: 'https://erp.bcisaudi.net/files/BC%20Royal%20Prime.pdf', sizes: ['25 kg pail'], colors: ['White'], en: { name: 'BC Royal Prime', desc: 'Is a premium quality, water-based acrylic copolymer primer specially formulated for exterior applications. It provides excellent penetration into porous substrates, superior adhesion to subsequent coatings, excellent resistance to alkali and weathering, and long-term durability.' }, ar: { name: 'BC Royal Prime', desc: 'Is a premium quality, water-based acrylic copolymer primer specially formulated for exterior applications. It provides excellent penetration into porous substrates, superior adhesion to subsequent coatings, excellent resistance to alkali and weathering, and long-term durability.' }, es: { name: 'BC Royal Prime', desc: 'Is a premium quality, water-based acrylic copolymer primer specially formulated for exterior applications. It provides excellent penetration into porous substrates, superior adhesion to subsequent coatings, excellent resistance to alkali and weathering, and long-term durability.' }, tags: ['Saudi-Made'] },
+      { code: 'BC Rustic Texture', img: 'assets/products/bc-royal-prime.jpg', tds: 'https://erp.bcisaudi.net/files/BC%20Rustic%20Texture.pdf', sizes: ['25 kg'], colors: ['White'], en: { name: 'BC Rustic Texture', desc: 'BC Rustic Texture - part of BCI\'s paint & decorative coating range, manufactured in Saudi Arabia. Download the technical data sheet for full specifications.' }, ar: { name: 'BC Rustic Texture', desc: 'BC Rustic Texture - part of BCI\'s paint & decorative coating range, manufactured in Saudi Arabia. Download the technical data sheet for full specifications.' }, es: { name: 'BC Rustic Texture', desc: 'BC Rustic Texture - part of BCI\'s paint & decorative coating range, manufactured in Saudi Arabia. Download the technical data sheet for full specifications.' }, tags: ['Saudi-Made'] },
+      { code: 'BC Universal Primer Sealer', img: 'assets/products/bc-royal-prime.jpg', tds: 'https://erp.bcisaudi.net/files/BC%20UNIVERSAL%20PRIMER%20SEALER.pdf', sizes: ['25 kg'], colors: ['White'], en: { name: 'BC Universal Primer Sealer', desc: 'Is a high-quality, water-based primer and sealer formulated with a special acrylic polymer for interior and exterior applications. It provides good penetration into porous substrates, improves surface uniformity and promotes adhesion between the substrate and subsequent coating systems.' }, ar: { name: 'BC Universal Primer Sealer', desc: 'Is a high-quality, water-based primer and sealer formulated with a special acrylic polymer for interior and exterior applications. It provides good penetration into porous substrates, improves surface uniformity and promotes adhesion between the substrate and subsequent coating systems.' }, es: { name: 'BC Universal Primer Sealer', desc: 'Is a high-quality, water-based primer and sealer formulated with a special acrylic polymer for interior and exterior applications. It provides good penetration into porous substrates, improves surface uniformity and promotes adhesion between the substrate and subsequent coating systems.' }, tags: ['Saudi-Made'] },
+    ],
+  },
 ];
 
 const SOLUTION_SEO = {
@@ -529,6 +546,26 @@ const SOLUTION_SEO = {
       description: 'Aditivos de hormigón, superplastificantes, compuestos de curado, desmoldantes, limpiadores y ayudas de obra para ready-mix.',
       body: 'Los aditivos y ayudas de obra BCI apoyan hormigón premezclado, prefabricado, curado, desencofrado, limpieza y preparación de obra. La línea incluye reductores de agua, aditivos de retención de revenimiento, curado y químicos especializados.',
       applications: ['aditivos de hormigón', 'superplastificante', 'curado', 'desmoldante', 'hormigón premezclado', 'limpiadores de obra'],
+    },
+  },
+  'paints-coatings': {
+    en: {
+      title: 'Paints, Primers & Wall Textures | BCI Saudi',
+      description: 'Water-based acrylic primers, primer sealers and decorative wall textures for interior and exterior masonry, made in Saudi Arabia.',
+      body: 'BCI paints and coatings prepare and finish interior and exterior walls. The line covers low-VOC acrylic primers that seal porous masonry and improve topcoat adhesion, universal primer sealers, and decorative rustic textures for facades and feature walls.',
+      applications: ['acrylic primer', 'primer sealer', 'exterior wall paint', 'interior masonry', 'wall texture', 'decorative finish'],
+    },
+    ar: {
+      title: 'دهانات وبرايمرات وتشطيبات جدران | BCI السعودية',
+      description: 'برايمرات أكريليك مائية ومواد عزل مسامات وتشطيبات زخرفية للجدران الداخلية والخارجية، صُنعت في السعودية.',
+      body: 'تُجهّز دهانات وطلاءات BCI الجدران الداخلية والخارجية وتُشطّبها. يشمل الخط برايمرات أكريليك منخفضة المركبات العضوية المتطايرة تعزل الأسطح المسامية وتحسّن التصاق الطبقة النهائية، وبرايمرات عازلة متعددة الاستخدامات، وتشطيبات ريفية زخرفية للواجهات والجدران.',
+      applications: ['برايمر أكريليك', 'برايمر عازل', 'دهانات خارجية', 'جدران داخلية', 'تشطيب جدران', 'تشطيب زخرفي'],
+    },
+    es: {
+      title: 'Pinturas, Imprimaciones y Texturas | BCI Arabia Saudita',
+      description: 'Imprimaciones acrílicas al agua, selladores y texturas decorativas para mampostería interior y exterior, fabricados en Arabia Saudita.',
+      body: 'Las pinturas y recubrimientos BCI preparan y terminan muros interiores y exteriores. La línea incluye imprimaciones acrílicas de bajo COV que sellan la mampostería porosa y mejoran la adherencia, selladores universales y texturas rústicas decorativas para fachadas.',
+      applications: ['imprimación acrílica', 'sellador', 'pintura exterior', 'mampostería interior', 'textura de muro', 'acabado decorativo'],
     },
   },
 };
@@ -1559,7 +1596,7 @@ const VALUES = [
    --------------------------------------------------------------- */
 const STATS = [
   { v: '200+', en: 'Products', ar: 'منتج', es: 'Productos' },
-  { v: '9', en: 'Solution Lines', ar: 'خطوط حلول', es: 'Líneas de soluciones' },
+  { v: '10', en: 'Solution Lines', ar: 'خطوط حلول', es: 'Líneas de soluciones' },
   { v: '2021', en: 'Founded', ar: 'سنة التأسيس', es: 'Fundado' },
   { v: '500+', en: 'Projects Delivered', ar: 'مشروع منجز', es: 'Proyectos entregados' },
 ];
@@ -1685,9 +1722,9 @@ const SEO_META = {
     en: { title: 'Construction Chemical Solutions | BCI Saudi Arabia',
           description: "Explore BCI waterproofing, polyurea, PU foam, epoxy flooring, protective coatings, concrete repair, tile grouts, sealants and admixtures." },
     ar: { title: 'الحلول — كيماويات إنشائية ودهانات | BCI السعودية',
-          description: 'اكتشف خطوط حلول BCI التسعة للكيماويات الإنشائية: العزل المائي والأسطح، أغشية البولي يوريا، رغوة الـ PU والعزل، أنظمة الأرضيات، الدهانات الواقية، إصلاح الخرسانة، الجراوت واللاصقات، المواد المانعة للتسرب، والإضافات.' },
+          description: 'اكتشف خطوط حلول BCI العشرة للكيماويات الإنشائية: العزل المائي والأسطح، أغشية البولي يوريا، رغوة الـ PU والعزل، أنظمة الأرضيات، الدهانات الواقية، إصلاح الخرسانة، الجراوت واللاصقات، المواد المانعة للتسرب، الإضافات، والدهانات والطلاءات.' },
     es: { title: 'Soluciones — Químicos y Recubrimientos para Construcción | BCI',
-          description: 'Explora las nueve líneas de soluciones de BCI: impermeabilización y cubiertas, membranas de poliurea, espuma PU y aislamiento, pavimentos, recubrimientos protectores, reparación de concreto, morteros y adhesivos, sellantes y juntas, y aditivos.' },
+          description: 'Explora las diez líneas de soluciones de BCI: impermeabilización y cubiertas, membranas de poliurea, espuma PU y aislamiento, pavimentos, recubrimientos protectores, reparación de concreto, morteros y adhesivos, sellantes y juntas, aditivos, y pinturas y recubrimientos.' },
   },
   projects: {
     en: { title: 'Projects — Reference Work Across Saudi Arabia | BCI',
@@ -1783,9 +1820,9 @@ const FAQS = [
   { q: { en: 'What products does BCI make?',
          ar: 'ما المنتجات التي تصنعها BCI؟',
          es: '¿Qué productos fabrica BCI?' },
-    a: { en: 'BCI manufactures over 200 products across nine solution lines: waterproofing & roofing, polyurea membranes, PU foam & insulation, flooring systems, protective coatings, concrete repair, tile adhesives & grouts, sealants & joints, and concrete admixtures.',
-         ar: 'تصنع BCI أكثر من 200 منتج عبر تسعة خطوط حلول: العزل المائي والأسطح، أغشية البولي يوريا، رغوة الـ PU والعزل، أنظمة الأرضيات، الدهانات الواقية، إصلاح الخرسانة، الجراوت واللاصقات، المواد المانعة للتسرب، وإضافات الخرسانة.',
-         es: 'BCI fabrica más de 200 productos en nueve líneas: impermeabilización y cubiertas, membranas de poliurea, espuma PU y aislamiento, pavimentos, recubrimientos protectores, reparación de concreto, morteros y adhesivos, sellantes y juntas, y aditivos para concreto.' } },
+    a: { en: 'BCI manufactures over 200 products across ten solution lines: waterproofing & roofing, polyurea membranes, PU foam & insulation, flooring systems, protective coatings, concrete repair, tile adhesives & grouts, sealants & joints, concrete admixtures, and paints & coatings.',
+         ar: 'تصنع BCI أكثر من 200 منتج عبر عشرة خطوط حلول: العزل المائي والأسطح، أغشية البولي يوريا، رغوة الـ PU والعزل، أنظمة الأرضيات، الدهانات الواقية، إصلاح الخرسانة، الجراوت واللاصقات، المواد المانعة للتسرب، إضافات الخرسانة، والدهانات والطلاءات.',
+         es: 'BCI fabrica más de 200 productos en diez líneas: impermeabilización y cubiertas, membranas de poliurea, espuma PU y aislamiento, pavimentos, recubrimientos protectores, reparación de concreto, morteros y adhesivos, sellantes y juntas, aditivos para concreto, y pinturas y recubrimientos.' } },
   { q: { en: 'Are BCI products certified?',
          ar: 'هل منتجات BCI معتمدة؟',
          es: '¿Los productos de BCI están certificados?' },

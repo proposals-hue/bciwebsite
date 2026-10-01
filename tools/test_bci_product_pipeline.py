@@ -29,6 +29,13 @@ class ProductPipelineTests(unittest.TestCase):
         self.assertEqual(families[0]["sizes"], ["20 kg pail"])
         self.assertEqual(families[0]["colors"], ["White"])
 
+    def test_unit_in_packaging_field_is_not_repeated(self):
+        self.assertEqual(p.pack_label({"custom_packaging": "Kg", "custom_packaging_in_kg": 25}), "25 kg")
+        self.assertEqual(p.pack_label({"custom_packaging": "Pail", "custom_packaging_in_kg": 25}), "25 kg pail")
+
+    def test_paints_category_maps_to_slug(self):
+        self.assertEqual(p.category_to_slug("Paints & Coatings"), "paints-coatings")
+
     def test_no_item_does_not_publish(self):
         rows = [
             {

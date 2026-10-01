@@ -1108,6 +1108,28 @@ const PRODUCT_I18N = {
     ar: 'BC Tool Cleaner هو مذيب عالي التفاعلية ومنخفض الغليان وسريع التبخّر بقدرة إذابة ممتازة، مصمّم للتنظيف الفعّال للأدوات والمعدات والأسطح قبل تطبيق الطلاء أو الإيلاستومر.',
     es: 'BC Tool Cleaner es un disolvente muy reactivo, de bajo punto de ebullición y evaporación rápida, con una excelente capacidad de disolución, diseñado para la limpieza eficaz de herramientas, equipos y superficies antes de aplicar recubrimientos o elastómeros.',
   },
+
+  /* ===== 10 · Paints & Coatings ===== */
+  'BC Eco Prime': {
+    en: 'BC Eco Prime is a high-quality, water-based acrylic primer made with special acrylic polymer technology. It offers excellent penetration, superior adhesion, high alkali resistance and outstanding durability on interior masonry. With ultra-low VOC content and very low odour, it suits environmentally conscious projects.',
+    ar: 'BC Eco Prime هو برايمر أكريليك مائي عالي الجودة مُصنّع بتقنية بوليمر أكريليك خاصة. يوفّر تغلغلًا ممتازًا والتصاقًا فائقًا ومقاومة عالية للقلويات ومتانة استثنائية على الأسطح الداخلية من البناء. وبفضل محتواه المنخفض جدًا من المركبات العضوية المتطايرة ورائحته الخفيفة جدًا، يناسب المشاريع الصديقة للبيئة.',
+    es: 'BC Eco Prime es una imprimación acrílica al agua de alta calidad, elaborada con tecnología de polímero acrílico especial. Ofrece excelente penetración, adherencia superior, alta resistencia a los álcalis y una durabilidad sobresaliente en mampostería interior. Con un contenido de COV ultrabajo y muy poco olor, es adecuada para proyectos respetuosos con el medio ambiente.',
+  },
+  'BC Royal Prime': {
+    en: 'BC Royal Prime is a premium, water-based acrylic copolymer primer formulated for exterior use. It penetrates porous substrates, gives superior adhesion to following coats and resists alkali and weathering for long-term durability. With ultra-low VOC content, it is an ideal base coat for exterior decorative paint systems.',
+    ar: 'BC Royal Prime هو برايمر فاخر مائي من الكوبوليمر الأكريليكي مُصمّم للاستخدام الخارجي. يتغلغل في الأسطح المسامية ويمنح التصاقًا فائقًا للطبقات التالية ويقاوم القلويات والعوامل الجوية لمتانة طويلة الأمد. وبمحتواه المنخفض جدًا من المركبات العضوية المتطايرة، يُعدّ طبقة أساس مثالية لأنظمة الدهانات الزخرفية الخارجية.',
+    es: 'BC Royal Prime es una imprimación premium de copolímero acrílico al agua, formulada para exteriores. Penetra en sustratos porosos, proporciona una adherencia superior a las capas siguientes y resiste los álcalis y la intemperie para una durabilidad a largo plazo. Con un contenido de COV ultrabajo, es la capa base ideal para sistemas de pintura decorativa exterior.',
+  },
+  'BC Rustic Texture': {
+    en: 'BC Rustic Texture is a white, water-based decorative textured coating for interior and exterior walls. It builds a rustic, textured finish over primed masonry and plaster for facades and feature walls. Download the technical data sheet for application details.',
+    ar: 'BC Rustic Texture هو طلاء زخرفي مائي محبّب باللون الأبيض للجدران الداخلية والخارجية. يكوّن تشطيبًا ريفيًا محبّبًا فوق أسطح البناء والمحارة المعالجة بالبرايمر، للواجهات والجدران المميّزة. حمّل نشرة البيانات الفنية لتفاصيل التطبيق.',
+    es: 'BC Rustic Texture es un recubrimiento decorativo texturizado al agua, de color blanco, para muros interiores y exteriores. Crea un acabado rústico con textura sobre mampostería y enlucido imprimados, para fachadas y muros destacados. Descargue la ficha técnica para conocer los detalles de aplicación.',
+  },
+  'BC Universal Primer Sealer': {
+    en: 'BC Universal Primer Sealer is a high-quality, water-based primer and sealer made with a special acrylic polymer for interior and exterior use. It penetrates porous substrates, evens out the surface and promotes adhesion between the substrate and the coating system that follows.',
+    ar: 'BC Universal Primer Sealer هو برايمر وعازل مائي عالي الجودة مُصنّع من بوليمر أكريليك خاص للاستخدام الداخلي والخارجي. يتغلغل في الأسطح المسامية ويوحّد السطح ويعزّز الالتصاق بين السطح ونظام الطلاء الذي يليه.',
+    es: 'BC Universal Primer Sealer es una imprimación y sellador al agua de alta calidad, elaborado con un polímero acrílico especial para interiores y exteriores. Penetra en sustratos porosos, uniformiza la superficie y favorece la adherencia entre el sustrato y el sistema de recubrimiento posterior.',
+  },
 };
 
 (function applyProductI18n() {

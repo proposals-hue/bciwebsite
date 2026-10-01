@@ -32,6 +32,7 @@ CAT_SLUG = {
     "Tile Adhesives, Grouts & Anchors": "tile-grouts-anchors",
     "Sealants, Joints & Adhesives": "sealants-joints",
     "Admixtures, Curing & Construction Aids": "admixtures-aids",
+    "Paints & Coatings": "paints-coatings",
 }
 SLUG_CAT = {v: k for k, v in CAT_SLUG.items()}
 CATEGORY_OPTIONS = list(CAT_SLUG.keys())
@@ -171,6 +172,7 @@ CAT_FALLBACK = {
     "tile-grouts-anchors": "tile, grout & anchoring",
     "sealants-joints": "sealant, joint & adhesive",
     "admixtures-aids": "admixture & construction aid",
+    "paints-coatings": "paint & decorative coating",
 }
 
 
@@ -254,7 +256,9 @@ def pack_label(rec: Dict) -> str:
 
     pkg = str(rec.get("custom_packaging") or rec.get("stock_uom") or "").strip()
     pkg_l = pkg.lower()
-    pkg_for_label = "" if pkg_l in ("", "nos") else pkg_l
+    # A unit typed into the packaging field ("Kg") is not a container - drop it, or the
+    # label reads "25 kg kg".
+    pkg_for_label = "" if pkg_l in ("", "nos", "kg", "kgs", "l", "ltr", "liter", "litre") else pkg_l
     kg = as_float(rec.get("custom_packaging_in_kg"))
     liter = as_float(rec.get("custom_packaging_in_liter"))
 
@@ -545,8 +549,8 @@ def write_products_to_data(data_path: Path, by_slug: Dict[str, List[Dict]]) -> i
         return match.group(1) + emit_products(by_slug.get(match.group(2), [])) + ","
 
     new_block, count = pattern.subn(replace, block)
-    if count != 9:
-        raise RuntimeError(f"expected 9 solution categories, replaced {count}")
+    if count != len(CAT_SLUG):
+        raise RuntimeError(f"expected {len(CAT_SLUG)} solution categories, replaced {count}")
     data_path.write_text(src[:start] + new_block + src[end:], encoding="utf-8")
     return sum(len(items) for items in by_slug.values())
 

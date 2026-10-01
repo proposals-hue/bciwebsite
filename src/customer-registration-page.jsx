@@ -13,7 +13,7 @@ const CUSTOMER_DOC_EXTENSIONS = ['.pdf'].concat(CUSTOMER_IMAGE_EXTENSIONS);
 /* The product lines a customer can register an interest in. `key` is what the
    ERP record stores, so keep it in step with INTERESTS in
    api/_customer-registration.js — the route rejects any key it does not know.
-   These mirror the nine SOLUTIONS categories. */
+   These mirror the ten SOLUTIONS categories. */
 const CUSTOMER_INTERESTS = [
   { key: 'waterproofing', en: 'Waterproofing & Roofing', ar: 'العزل المائي والأسطح', es: 'Impermeabilización y Cubiertas' },
   { key: 'polyurea', en: 'Polyurea Membranes', ar: 'أغشية البولي يوريا', es: 'Membranas de Poliurea' },
@@ -24,6 +24,7 @@ const CUSTOMER_INTERESTS = [
   { key: 'grouts', en: 'Grouts & Adhesives', ar: 'الجراوت واللاصقات', es: 'Morteros y Adhesivos' },
   { key: 'sealants', en: 'Sealants & Joints', ar: 'المواد المانعة للتسرب', es: 'Sellantes y Juntas' },
   { key: 'admixtures', en: 'Admixtures', ar: 'الإضافات', es: 'Aditivos' },
+  { key: 'paints', en: 'Paints & Coatings', ar: 'الدهانات والطلاءات', es: 'Pinturas y Recubrimientos' },
 ];
 
 function customerFileType(file) {

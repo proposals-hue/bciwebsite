@@ -21,7 +21,7 @@ function SolutionsPage() {
       {/* Quick index */}
       <section style={{ background: 'var(--bci-navy-800)', padding: '0' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', borderLeft: '1px solid rgba(255,255,255,0.06)', direction: isAr ? 'rtl' : 'ltr' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', borderLeft: '1px solid rgba(255,255,255,0.06)', direction: isAr ? 'rtl' : 'ltr' }}>
             {SOLUTIONS.map((s) => (
               <a key={s.slug} href={`#${s.slug}`} style={{
                 display: 'flex', alignItems: 'center', gap: 12, padding: '18px 22px',

@@ -58,6 +58,7 @@ CAT_FALLBACK = {
     "tile-grouts-anchors": "tile, grout & anchoring",
     "sealants-joints": "sealant, joint & adhesive",
     "admixtures-aids": "admixture & construction aid",
+    "paints-coatings": "paint & decorative coating",
 }
 
 def slugify(s):
@@ -178,7 +179,7 @@ def main():
     def repl(m):
         return m.group(1) + emit_products(m.group(2)) + ","
     newblock, n = pat.subn(repl, block)
-    assert n == 9, f"expected 9 categories, replaced {n}"
+    assert n == len(CAT_FALLBACK), f"expected {len(CAT_FALLBACK)} categories, replaced {n}"
 
     open(DATA, "w", encoding="utf-8").write(src[:start] + newblock + src[end:])
 

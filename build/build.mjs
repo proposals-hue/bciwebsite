@@ -33,7 +33,7 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(here, '..');
 const DIST = path.join(ROOT, 'dist');
 const ORIGIN = 'https://www.bcisaudi.com';
-const ASSET_V = '3.3';
+const ASSET_V = '3.4';
 const BLOB_UPLOAD_V = '3.6';
 const LANGS = ['en', 'ar', 'es'];
 const OG_LOCALE = { en: 'en_US', ar: 'ar_SA', es: 'es_ES' };
@@ -453,7 +453,7 @@ function llmsTxt(D) {
     .join('\n');
   return `# BCI — Building Chemistry Industry
 
-> BCI (Building Chemistry Industry) is a Saudi national manufacturer of construction chemicals and protective coatings, founded in Dammam in 2021. It produces 200+ products across nine solution lines for the Saudi Arabian and GCC construction market. Quality is certified to ISO 9001 and systems are aligned to EN 1504. Saudi-made, supporting Vision 2030.
+> BCI (Building Chemistry Industry) is a Saudi national manufacturer of construction chemicals and protective coatings, founded in Dammam in 2021. It produces 200+ products across ten solution lines for the Saudi Arabian and GCC construction market. Quality is certified to ISO 9001 and systems are aligned to EN 1504. Saudi-made, supporting Vision 2030.
 
 ## Company
 - Name: Building Chemistry Industry (BCI)
@@ -472,7 +472,7 @@ ${landingPages}
 
 ## Key pages
 - [About](${ORIGIN}/about): company, milestones and certifications
-- [Solutions](${ORIGIN}/solutions): all nine construction-chemical lines and products
+- [Solutions](${ORIGIN}/solutions): all ten construction-chemical lines and products
 - [Projects](${ORIGIN}/projects): reference projects across Saudi Arabia and the GCC
 - [Resources](${ORIGIN}/resources): technical data sheets (TDS), safety data sheets (SDS), certifications
 - [Careers](${ORIGIN}/career): open roles in Dammam

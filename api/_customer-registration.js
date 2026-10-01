@@ -53,6 +53,7 @@ const INTERESTS = {
   grouts: 'Grouts & Adhesives',
   sealants: 'Sealants & Joints',
   admixtures: 'Admixtures',
+  paints: 'Paints & Coatings',
 };
 
 const MAX_DETAILS = 5000;

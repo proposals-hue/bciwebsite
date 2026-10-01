@@ -26,6 +26,7 @@ CAT_SLUG = {
     "Tile Adhesives, Grouts & Anchors": "tile-grouts-anchors",
     "Sealants, Joints & Adhesives": "sealants-joints",
     "Admixtures, Curing & Construction Aids": "admixtures-aids",
+    "Paints & Coatings": "paints-coatings",
 }
 
 # ---- parse category md: item_code(backtick) -> slug -------------------------

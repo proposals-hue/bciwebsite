@@ -61,7 +61,7 @@ function SolutionsOverview() {
               fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-display)', fontWeight: 700,
               fontSize: 'clamp(40px, 4.4vw, 64px)', lineHeight: isAr ? 1.15 : 1.02,
               letterSpacing: isAr ? 0 : '-0.018em', color: 'var(--bci-navy)', margin: 0, maxWidth: 760
-            }}>{t(lang, <>Engineered Solutions For<br />Demanding Projects</>, <>تسعة خطوط حلول.<br />معيار واحد.</>, <>Soluciones de Ingeniería Para<br />Proyectos Exigentes</>)}</h2>
+            }}>{t(lang, <>Engineered Solutions For<br />Demanding Projects</>, <>عشرة خطوط حلول.<br />معيار واحد.</>, <>Soluciones de Ingeniería Para<br />Proyectos Exigentes</>)}</h2>
           </div>
           <a href={siteHref('Solutions.html')} className="link-arrow" style={{ whiteSpace: 'nowrap' }}>
             {t(lang, 'All solutions', 'كل الحلول', 'Todas las soluciones')} <Arrow size={14} />
