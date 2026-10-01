@@ -536,11 +536,16 @@ function SolutionsNavItem({ n, fg, barH = 72, fontSize = 17, isActive, open, set
   const isAr = lang === 'ar';
   const [cat, setCat] = useStateC(0);
   const label = n[lang] || n.en;
+  // Grace period on close so the pointer can cross the seam between trigger and panel
+  // (and any sub-pixel gap from the scroll-shrinking bar) without the menu vanishing.
+  const closeTimer = useRefC(null);
+  const cancelClose = () => {clearTimeout(closeTimer.current);};
+  useEffectC(() => cancelClose, []);
   return (
     <div
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-      style={{ position: 'relative', height: barH, display: 'flex', alignItems: 'center' }}>
+      onMouseEnter={() => {cancelClose();setOpen(true);}}
+      onMouseLeave={() => {cancelClose();closeTimer.current = setTimeout(() => setOpen(false), 180);}}
+      style={{ position: 'relative', zIndex: 5, height: barH, display: 'flex', alignItems: 'center' }}>
       <a href={siteHref(n.href, lang)} style={{
         fontFamily: isAr ? 'var(--ff-arabic)' : 'var(--ff-sans)', fontSize, fontWeight: 500,
         color: isActive || open ? 'var(--bci-green-600)' : fg, textDecoration: 'none', whiteSpace: 'nowrap',
