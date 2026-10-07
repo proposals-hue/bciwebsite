@@ -1110,6 +1110,11 @@ const PRODUCT_I18N = {
   },
 
   /* ===== 10 · Paints & Coatings ===== */
+  'BC All Purpose Joint Compound': {
+    en: 'BC All Purpose Joint Compound is a high-viscosity, ready-to-use, water-based jointing and finishing compound for interior gypsum board. It fills board joints, holes and cracks and levels gypsum surfaces before decorative finishing, with excellent filling, low shrinkage, smooth application and easy sanding.',
+    ar: 'BC All Purpose Joint Compound هو معجون وصلات وتشطيب مائي جاهز للاستخدام وعالي اللزوجة لألواح الجبس الداخلية. يملأ وصلات الألواح والثقوب والشقوق ويسوّي أسطح الجبس قبل التشطيب الزخرفي، مع قدرة ممتازة على الملء وانكماش منخفض وسهولة في الفرد والصنفرة.',
+    es: 'BC All Purpose Joint Compound es una pasta de juntas y acabado al agua, lista para usar y de alta viscosidad, para placas de yeso en interiores. Rellena juntas, agujeros y fisuras y nivela superficies de yeso antes del acabado decorativo, con excelente capacidad de relleno, baja contracción, aplicación suave y lijado fácil.',
+  },
   'BC Eco Prime': {
     en: 'BC Eco Prime is a high-quality, water-based acrylic primer made with special acrylic polymer technology. It offers excellent penetration, superior adhesion, high alkali resistance and outstanding durability on interior masonry. With ultra-low VOC content and very low odour, it suits environmentally conscious projects.',
     ar: 'BC Eco Prime هو برايمر أكريليك مائي عالي الجودة مُصنّع بتقنية بوليمر أكريليك خاصة. يوفّر تغلغلًا ممتازًا والتصاقًا فائقًا ومقاومة عالية للقلويات ومتانة استثنائية على الأسطح الداخلية من البناء. وبفضل محتواه المنخفض جدًا من المركبات العضوية المتطايرة ورائحته الخفيفة جدًا، يناسب المشاريع الصديقة للبيئة.',
@@ -1132,6 +1137,19 @@ const PRODUCT_I18N = {
   },
 };
 
+/* Colour availability beyond what ERP lists — ERP carries only the stock colour
+   (e.g. White), so the sync can't express "made to order in any standard colour".
+   Shown after the colour list on product cards and the product page. */
+const STANDARD_COLOURS_NOTE = {
+  en: 'Available in all BCI standard colours',
+  ar: 'متوفر بجميع ألوان BCI القياسية',
+  es: 'Disponible en todos los colores estándar de BCI',
+};
+const PRODUCT_COLOUR_NOTES = {
+  'BC Rustic Texture': STANDARD_COLOURS_NOTE,
+  'BC Universal Primer Sealer': STANDARD_COLOURS_NOTE,
+};
+
 (function applyProductI18n() {
   var W = (typeof window !== 'undefined') ? window : (typeof globalThis !== 'undefined' ? globalThis : null);
   if (!W) return;
@@ -1141,6 +1159,7 @@ const PRODUCT_I18N = {
     var prods = W.SOLUTIONS[ci].products || [];
     for (var pi = 0; pi < prods.length; pi++) {
       var p = prods[pi];
+      if (PRODUCT_COLOUR_NOTES[p.code]) p.colorNote = PRODUCT_COLOUR_NOTES[p.code];
       var tr = PRODUCT_I18N[p.code];
       if (!tr) continue;
       if (tr.en && p.en) p.en.desc = tr.en;

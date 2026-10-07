@@ -155,6 +155,7 @@ NAME_FIX = {
     "BC Floor Epu 100": "BC Floor EPU 100",
     "BC Poxy Terazzo 1000 LV": "BC Poxy Terrazzo 1000 LV",
     "BC Geo Textile 200": "BC Geotextile 200 g/m2",
+    "BC All Purpose Joint Compount": "BC All Purpose Joint Compound",
 }
 MERGE = {
     "BC Geo Textile": "BC Geotextile",

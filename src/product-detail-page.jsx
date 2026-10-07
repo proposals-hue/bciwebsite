@@ -90,7 +90,7 @@ function ProductDetailPage() {
                   <tr><th>{t(lang, 'Pack sizes', 'أحجام العبوات', 'Tamaños de envase')}</th><td className="value">{sizes.join(' · ')}</td></tr>
                 )}
                 {prod.colors && prod.colors.length > 0 && (
-                  <tr><th>{t(lang, 'Colours', 'الألوان', 'Colores')}</th><td className="value">{prod.colors.join(' · ')}</td></tr>
+                  <tr><th>{t(lang, 'Colours', 'الألوان', 'Colores')}</th><td className="value">{prod.colors.join(' · ')}{prod.colorNote && <> · {t(lang, prod.colorNote.en, prod.colorNote.ar, prod.colorNote.es)}</>}</td></tr>
                 )}
               </tbody>
             </table>

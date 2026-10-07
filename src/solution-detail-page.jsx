@@ -153,6 +153,7 @@ function DetailCard({ p, icon, catSlug }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16, flexWrap: 'wrap', flexDirection: isAr ? 'row-reverse' : 'row' }}>
           <span style={{ fontFamily: 'var(--ff-mono)', fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--bci-steel)' }}>{t(lang, 'Colours', 'الألوان', 'Colores')}</span>
           <span style={{ fontSize: 13, color: 'var(--bci-navy)' }}>{p.colors.join(' · ')}</span>
+          {p.colorNote && <span style={{ fontSize: 13, color: 'var(--bci-green-700)', fontWeight: 500 }}>· {t(lang, p.colorNote.en, p.colorNote.ar, p.colorNote.es)}</span>}
         </div>
       )}
       <div style={{ paddingTop: 16, borderTop: '1px solid var(--bci-hairline-light)', display: 'flex', gap: 18, alignItems: 'center', flexDirection: isAr ? 'row-reverse' : 'row' }}>
