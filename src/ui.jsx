@@ -308,23 +308,6 @@ function loadErpJobs() {
   return erpJobsPromise;
 }
 
-let erpDesignationsPromise;
-function loadErpDesignations() {
-  if (!erpDesignationsPromise) {
-    erpDesignationsPromise = fetch('/api/designations', { headers: { Accept: 'application/json' } })
-      .then(async (response) => {
-        const payload = await response.json().catch(() => ({}));
-        if (!response.ok) throw new Error(payload.error || 'Positions list unavailable');
-        return Array.isArray(payload.designations) ? payload.designations : [];
-      })
-      .catch((error) => {
-        erpDesignationsPromise = null;
-        throw error;
-      });
-  }
-  return erpDesignationsPromise;
-}
-
 let erpRfqItemsPromise;
 function loadErpRfqItems() {
   if (!erpRfqItemsPromise) {
@@ -434,7 +417,6 @@ if (typeof window !== 'undefined') Object.assign(window, {
   submitCustomerRegistration,
   thankYouHref,
   loadErpJobs,
-  loadErpDesignations,
   loadErpRfqItems,
 });
 

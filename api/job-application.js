@@ -131,15 +131,10 @@ module.exports = async function handler(req, res) {
     if (!position || !designation) {
       return sendJson(res, 400, { error: 'Please select the position you are applying for.' });
     }
+    // Applications are accepted only against a published vacancy; there is no
+    // open / "other position" route.
     if (!jobOpening && !requestReference) {
-      try {
-        await erpFetch(`/api/resource/Designation/${encodeURIComponent(designation)}`);
-      } catch (error) {
-        if (error.statusCode === 404) {
-          return sendJson(res, 400, { error: 'Please select a valid ERP position.' });
-        }
-        throw error;
-      }
+      return sendJson(res, 400, { error: 'Please select one of the open positions.' });
     }
     const [resume, photo] = await Promise.all([
       readResumeBlob(body.resume_blob),
@@ -154,7 +149,7 @@ module.exports = async function handler(req, res) {
       cover_letter: `Position applied for: ${position}\n${referenceLine}\n${coverNote}`.trim(),
     };
     if (jobOpening) data.job_title = jobOpening;
-    // Vacancy positions and other-position choices both map to ERP Designation.
+    // The vacancy's position maps to ERP Designation.
     data.designation = designation;
     // This ERP already has the standard "Website Listing" source. Always use
     // it unless deployment explicitly selects another valid source record, so

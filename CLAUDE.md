@@ -116,7 +116,7 @@ routes. All ERP credentials stay server-side.
 - `_erp.js` — the ERP client: `erpFetch` (REST, token auth), `erpWebForm` (guest Web Form
   submit), `erpUploadFile`, `sendJson`. Base URL is `ERP_BASE_URL`, defaulting to
   `https://erp.bcisaudi.net`.
-- Read routes: `jobs.js`, `designations.js`, `rfq-items.js` — return only publishable fields.
+- Read routes: `jobs.js`, `rfq-items.js` — return only publishable fields.
 - Write routes: `customer-rfq.js`, `submittal-request.js`, `sample-request.js`,
   `job-application.js`, `web-form-submit.js` (allow-listed fields → ERP Web Forms).
 - Every route that accepts a product code must run it through `_website-item.js` — ERP does
@@ -128,7 +128,7 @@ routes. All ERP credentials stay server-side.
   `api/_rfq-file.js`.
 - `erp-job-webhook.js` — inbound from ERP, bearer secret compared with `timingSafeEqual`.
 
-Client side, `src/ui.jsx` wraps these (`loadErpJobs`, `loadErpDesignations`, `loadErpRfqItems`,
+Client side, `src/ui.jsx` wraps these (`loadErpJobs`, `loadErpRfqItems`,
 `submitCustomerRfq`, `submitSubmittalRequest`, `submitSampleRequest`, `submitErpWebForm`) and
 deliberately surfaces real ERP errors — the UI must never report success on a 4xx. On success each
 request form navigates to `thankYouHref({ type, ref })`, which carries the ERP reference in the URL
