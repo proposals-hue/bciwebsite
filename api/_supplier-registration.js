@@ -1,5 +1,5 @@
 const { del } = require('@vercel/blob');
-const { erpFetch, erpWebForm, erpUploadFile, sendJson } = require('./_erp');
+const { erpFetch, erpWebForm, erpUploadFile, sendJson, holdResponse } = require('./_erp');
 const { readPrivateBlob } = require('./_rfq-file');
 
 // Supplier registration: structured offer lines, three company documents and a
@@ -507,6 +507,8 @@ function formatItem(item, index) {
 }
 
 module.exports = async function registerSupplier(body, res) {
+  // Reply only after the staged files are deleted — see holdResponse in _erp.js.
+  const reply = holdResponse(res);
   let logoBlobUrl = '';
   let profileBlobUrl = '';
   let catalogBlobUrl = '';
@@ -670,19 +672,20 @@ module.exports = async function registerSupplier(body, res) {
       console.error('ERP did not return a Supplier name; attachments were not linked.');
     }
 
-    return sendJson(res, 201, {
+    return sendJson(reply, 201, {
       ok: true,
       supplier_id: supplierId || null,
       attachment_warning: attachmentWarnings.length > 0,
     });
   } catch (error) {
     console.error('ERP supplier registration failed:', error.message);
-    return sendJson(res, ...erpErrorResponse(error));
+    return sendJson(reply, ...erpErrorResponse(error));
   } finally {
     const staged = [logoBlobUrl, profileBlobUrl, catalogBlobUrl, ...tdsBlobUrls];
     for (const blobUrl of staged.filter(Boolean)) {
       try { await del(blobUrl); }
       catch (error) { console.error('Temporary supplier file cleanup failed:', error.message); }
     }
+    reply.flush();
   }
 };

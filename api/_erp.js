@@ -113,4 +113,26 @@ function sendJson(res, status, body) {
   res.end(JSON.stringify(body));
 }
 
-module.exports = { erpFetch, erpWebForm, erpUploadFile, sendJson };
+// Vercel does not reliably run code after the response has been sent. Routes
+// that stage uploads in Blob used to delete them in a `finally` that ran after
+// `return sendJson(res, …)`; those deletes were dropped and the Hobby store
+// filled up (1 GB) and was suspended on 2026-10-19. Such routes now send their
+// reply into holdResponse(res), delete the staged files, then call flush().
+function holdResponse(res) {
+  let statusCode = 200;
+  let body = '';
+  const headers = [];
+  return {
+    get statusCode() { return statusCode; },
+    set statusCode(value) { statusCode = value; },
+    setHeader(name, value) { headers.push([name, value]); },
+    end(value) { body = value; },
+    flush() {
+      res.statusCode = statusCode;
+      for (const [name, value] of headers) res.setHeader(name, value);
+      res.end(body);
+    },
+  };
+}
+
+module.exports = { erpFetch, erpWebForm, erpUploadFile, sendJson, holdResponse };

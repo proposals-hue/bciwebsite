@@ -125,7 +125,9 @@ routes. All ERP credentials stay server-side.
   server-side into ERP. `_rfq-file.js`, `_resume.js`, `_photo.js` define per-kind path prefix,
   size and MIME limits — enforced when the upload token is issued **and** again when the blob is
   read. The staging prefixes in `build/blob-upload-entry.mjs` must match `FILE_KINDS` in
-  `api/_rfq-file.js`.
+  `api/_rfq-file.js`. Staged blobs must be deleted **before** the route replies: write the reply
+  into `holdResponse(res)` (`_erp.js`), delete, then `flush()`. Vercel drops work after
+  `res.end`, and deletes that ran after the reply filled the 1 GB Hobby store until it was suspended.
 - `erp-job-webhook.js` — inbound from ERP, bearer secret compared with `timingSafeEqual`.
 
 Client side, `src/ui.jsx` wraps these (`loadErpJobs`, `loadErpRfqItems`,

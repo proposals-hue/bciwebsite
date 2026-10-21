@@ -1,5 +1,5 @@
 const { del } = require('@vercel/blob');
-const { erpFetch, erpUploadFile, sendJson } = require('./_erp');
+const { erpFetch, erpUploadFile, sendJson, holdResponse } = require('./_erp');
 const { isValidIsoDate, riyadhToday } = require('./_dates');
 const { readPrivateBlob } = require('./_rfq-file');
 const { fetchWebsiteItem } = require('./_website-item');
@@ -35,6 +35,8 @@ module.exports = async function handler(req, res) {
     return sendJson(res, 405, { error: 'Method not allowed' });
   }
 
+  // Reply only after the staged files are deleted — see holdResponse in _erp.js.
+  const reply = holdResponse(res);
   let logoBlobUrl = '';
   let crBlobUrl = '';
   try {
@@ -148,7 +150,7 @@ module.exports = async function handler(req, res) {
       }
     }
 
-    return sendJson(res, 201, {
+    return sendJson(reply, 201, {
       ok: true,
       rfq_id: rfqId,
       attachment_warning: attachmentWarnings.length > 0,
@@ -156,7 +158,7 @@ module.exports = async function handler(req, res) {
   } catch (error) {
     console.error('ERP Customer RFQ submission failed:', error.message);
     const status = error.statusCode === 400 ? 400 : (error.statusCode === 503 ? 503 : 502);
-    return sendJson(res, status, {
+    return sendJson(reply, status, {
       error: status === 400
         ? error.message
         : 'We could not register the RFQ in ERP. Please try again.',
@@ -166,5 +168,6 @@ module.exports = async function handler(req, res) {
       try { await del(blobUrl); }
       catch (error) { console.error('Temporary RFQ file cleanup failed:', error.message); }
     }
+    reply.flush();
   }
 };

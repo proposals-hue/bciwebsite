@@ -1,5 +1,5 @@
 const { del } = require('@vercel/blob');
-const { erpFetch, erpUploadFile, sendJson } = require('./_erp');
+const { erpFetch, erpUploadFile, sendJson, holdResponse } = require('./_erp');
 const { readPrivateBlob } = require('./_rfq-file');
 
 // Customer registration: a prospective buyer opens an account from the website.
@@ -159,6 +159,8 @@ function customerDetails({ interests, address, city, country, notes, pageUrl, la
 }
 
 module.exports = async function registerCustomer(body, res) {
+  // Reply only after the staged files are deleted — see holdResponse in _erp.js.
+  const reply = holdResponse(res);
   const stagedUrls = [];
   let customerName = '';
   try {
@@ -352,18 +354,19 @@ module.exports = async function registerCustomer(body, res) {
       console.error('ERP did not return a Customer name; attachments were not linked.');
     }
 
-    return sendJson(res, 201, {
+    return sendJson(reply, 201, {
       ok: true,
       customer_id: customerId || null,
       attachment_warning: warnings.length > 0,
     });
   } catch (error) {
     console.error('ERP customer registration failed:', error.message);
-    return sendJson(res, ...erpErrorResponse(error, customerName));
+    return sendJson(reply, ...erpErrorResponse(error, customerName));
   } finally {
     for (const blobUrl of stagedUrls.filter(Boolean)) {
       try { await del(blobUrl); }
       catch (error) { console.error('Temporary customer file cleanup failed:', error.message); }
     }
+    reply.flush();
   }
 };

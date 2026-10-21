@@ -1,5 +1,5 @@
 const { del, get } = require('@vercel/blob');
-const { erpFetch, erpUploadFile, sendJson } = require('./_erp');
+const { erpFetch, erpUploadFile, sendJson, holdResponse } = require('./_erp');
 const { validateResumeContents, validateResumeMetadata } = require('./_resume');
 const { validatePhotoContents, validatePhotoMetadata } = require('./_photo');
 
@@ -108,13 +108,15 @@ module.exports = async function handler(req, res) {
     return sendJson(res, 405, { error: 'Method not allowed' });
   }
 
+  // Reply only after the staged files are deleted — see holdResponse in _erp.js.
+  const reply = holdResponse(res);
   let temporaryBlobUrl = '';
   let temporaryPhotoBlobUrl = '';
   try {
     const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
     temporaryBlobUrl = clean(body.resume_blob?.url, 1000);
     temporaryPhotoBlobUrl = clean(body.photo_blob?.url, 1000);
-    if (body.website) return sendJson(res, 200, { ok: true }); // honeypot
+    if (body.website) return sendJson(reply, 200, { ok: true }); // honeypot
 
     const applicantName = clean(body.name, 140);
     const email = clean(body.email, 180).toLowerCase();
@@ -126,15 +128,15 @@ module.exports = async function handler(req, res) {
     const requestReference = clean(body.request_reference, 180);
 
     if (!applicantName || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      return sendJson(res, 400, { error: 'Please provide a valid name and email address.' });
+      return sendJson(reply, 400, { error: 'Please provide a valid name and email address.' });
     }
     if (!position || !designation) {
-      return sendJson(res, 400, { error: 'Please select the position you are applying for.' });
+      return sendJson(reply, 400, { error: 'Please select the position you are applying for.' });
     }
     // Applications are accepted only against a published vacancy; there is no
     // open / "other position" route.
     if (!jobOpening && !requestReference) {
-      return sendJson(res, 400, { error: 'Please select one of the open positions.' });
+      return sendJson(reply, 400, { error: 'Please select one of the open positions.' });
     }
     const [resume, photo] = await Promise.all([
       readResumeBlob(body.resume_blob),
@@ -192,14 +194,14 @@ module.exports = async function handler(req, res) {
         custom_applicant_photo: photoUrl,
       }),
     });
-    return sendJson(res, 201, { ok: true, application_id: applicationId });
+    return sendJson(reply, 201, { ok: true, application_id: applicationId });
   } catch (error) {
     console.error('ERP job application failed:', error.message);
     const status = error.statusCode === 400 ? 400 : (error.statusCode === 503 ? 503 : 502);
     const message = status === 400
       ? error.message
       : 'We could not register the application in ERP. Please try again.';
-    return sendJson(res, status, { error: message });
+    return sendJson(reply, status, { error: message });
   } finally {
     if (temporaryBlobUrl) {
       try { await del(temporaryBlobUrl); }
@@ -209,5 +211,6 @@ module.exports = async function handler(req, res) {
       try { await del(temporaryPhotoBlobUrl); }
       catch (error) { console.error('Temporary photo cleanup failed:', error.message); }
     }
+    reply.flush();
   }
 };

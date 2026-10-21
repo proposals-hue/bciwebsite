@@ -1,5 +1,5 @@
 const { del } = require('@vercel/blob');
-const { erpFetch, erpUploadFile, sendJson } = require('./_erp');
+const { erpFetch, erpUploadFile, sendJson, holdResponse } = require('./_erp');
 const { readPrivateBlob } = require('./_rfq-file');
 const { fetchWebsiteItem } = require('./_website-item');
 
@@ -48,6 +48,8 @@ module.exports = async function handler(req, res) {
     return sendJson(res, 405, { error: 'Method not allowed' });
   }
 
+  // Reply only after the staged files are deleted — see holdResponse in _erp.js.
+  const reply = holdResponse(res);
   let specBlobUrl = '';
   try {
     const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
@@ -116,7 +118,7 @@ module.exports = async function handler(req, res) {
 
     const linked = await linkSpecification(fileName, requestId);
 
-    return sendJson(res, 201, {
+    return sendJson(reply, 201, {
       ok: true,
       request_id: requestId,
       attachment_warning: !linked,
@@ -124,7 +126,7 @@ module.exports = async function handler(req, res) {
   } catch (error) {
     console.error('ERP Submittal Request submission failed:', error.message);
     const status = error.statusCode === 400 ? 400 : (error.statusCode === 503 ? 503 : 502);
-    return sendJson(res, status, {
+    return sendJson(reply, status, {
       error: status === 400
         ? error.message
         : 'We could not register the submittal request in ERP. Please try again.',
@@ -134,5 +136,6 @@ module.exports = async function handler(req, res) {
       try { await del(specBlobUrl); }
       catch (error) { console.error('Temporary submittal file cleanup failed:', error.message); }
     }
+    reply.flush();
   }
 };
