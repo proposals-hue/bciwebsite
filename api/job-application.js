@@ -102,6 +102,35 @@ async function readPhotoBlob(file) {
   return { buffer, filename: stored.filename, contentType: stored.contentType };
 }
 
+// Files sent inline (base64 inside the JSON body) skip Blob staging entirely.
+// The Careers page does this whenever the CV and photo fit Vercel's 4.5 MB
+// request limit, and falls back to Blob staging only for larger CVs.
+function readInlineFile(file, missingMessage, validateMetadata, validateContents) {
+  const buffer = Buffer.from(typeof file?.data === 'string' ? file.data : '', 'base64');
+  if (!buffer.length) {
+    const error = new Error(missingMessage);
+    error.statusCode = 400;
+    throw error;
+  }
+  const stored = validateMetadata({ name: file.name, type: file.type, size: buffer.length });
+  validateContents(buffer, stored.extension);
+  return { buffer, filename: stored.filename, contentType: stored.contentType };
+}
+
+// A vacancy title is free text on the ERP request, but Job Applicant
+// `designation` is a Link to Designation: an unmatched title (e.g. a typo on
+// the request) makes ERP reject the whole application. Link it only when the
+// Designation exists — the title is always in the cover letter regardless.
+async function matchDesignation(title) {
+  try {
+    const payload = await erpFetch(`/api/resource/Designation/${encodeURIComponent(title)}`);
+    return clean(payload.data?.name, 180);
+  } catch (error) {
+    if (error.statusCode === 404) return '';
+    throw error;
+  }
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -139,9 +168,14 @@ module.exports = async function handler(req, res) {
       return sendJson(reply, 400, { error: 'Please select one of the open positions.' });
     }
     const [resume, photo] = await Promise.all([
-      readResumeBlob(body.resume_blob),
-      readPhotoBlob(body.photo_blob),
+      body.resume_file
+        ? readInlineFile(body.resume_file, 'Please attach your CV.', validateResumeMetadata, validateResumeContents)
+        : readResumeBlob(body.resume_blob),
+      body.photo_file
+        ? readInlineFile(body.photo_file, 'Please attach a recent photo.', validatePhotoMetadata, validatePhotoContents)
+        : readPhotoBlob(body.photo_blob),
     ]);
+    const designationName = await matchDesignation(designation);
 
     const referenceLine = requestReference ? `ERP request: ${requestReference}\n` : '';
     const data = {
@@ -151,8 +185,7 @@ module.exports = async function handler(req, res) {
       cover_letter: `Position applied for: ${position}\n${referenceLine}\n${coverNote}`.trim(),
     };
     if (jobOpening) data.job_title = jobOpening;
-    // The vacancy's position maps to ERP Designation.
-    data.designation = designation;
+    if (designationName) data.designation = designationName;
     // This ERP already has the standard "Website Listing" source. Always use
     // it unless deployment explicitly selects another valid source record, so
     // website applicants are filterable and do not arrive with Source blank.

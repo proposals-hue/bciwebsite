@@ -23,6 +23,24 @@ const MAX_PHOTO_BYTES = 5 * 1024 * 1024;
 const MAX_SOURCE_PHOTO_BYTES = 25 * 1024 * 1024;
 const PHOTO_UPLOAD_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
 const PHOTO_SOURCE_TYPES = [...PHOTO_UPLOAD_TYPES, 'image/heic', 'image/heif'];
+// Vercel rejects function request bodies over 4.5 MB. Whenever the CV and the
+// (shrunk) photo fit this budget once base64-encoded, they travel inside the
+// application request itself and need no Blob staging; only larger CVs are
+// staged in Blob. Keeps applications working while the Blob store is
+// unavailable (it was suspended on 2026-10-19 after filling up).
+const INLINE_UPLOAD_BUDGET = 4 * 1024 * 1024;
+const PHOTO_MAX_DIMENSION = 1280;
+
+const base64Size = (bytes) => Math.ceil(bytes / 3) * 4;
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result || '').split(',')[1] || '');
+    reader.onerror = () => reject(reader.error || new Error('FILE_READ_FAILED'));
+    reader.readAsDataURL(file);
+  });
+}
 
 function cvContentType(file) {
   if (file.type) return file.type;
@@ -60,6 +78,9 @@ function imageToJpegBlob(image, maxDimension = 2048, quality = 0.86) {
   canvas.height = Math.max(1, Math.round(sourceHeight * scale));
   const context = canvas.getContext('2d');
   if (!context) return Promise.reject(new Error('PHOTO_CONVERSION_FAILED'));
+  // JPEG has no transparency; without a fill a transparent PNG turns black.
+  context.fillStyle = '#fff';
+  context.fillRect(0, 0, canvas.width, canvas.height);
   context.drawImage(image, 0, 0, canvas.width, canvas.height);
   return new Promise((resolve, reject) => {
     canvas.toBlob(
@@ -70,11 +91,12 @@ function imageToJpegBlob(image, maxDimension = 2048, quality = 0.86) {
   });
 }
 
+// Every photo is re-encoded to a small JPEG so it can travel inline with the
+// application (see INLINE_UPLOAD_BUDGET). HEIC/HEIF must convert; any other
+// accepted image falls back to the original if conversion fails or is larger.
 async function prepareApplicantPhoto(file) {
   const sourceType = photoContentType(file);
-  const needsConversion = ['image/heic', 'image/heif'].includes(sourceType) || file.size > MAX_PHOTO_BYTES;
-  if (!needsConversion) return { file, type: sourceType };
-
+  const canKeepOriginal = PHOTO_UPLOAD_TYPES.includes(sourceType) && file.size <= MAX_PHOTO_BYTES;
   const objectUrl = URL.createObjectURL(file);
   try {
     const image = await new Promise((resolve, reject) => {
@@ -83,8 +105,9 @@ async function prepareApplicantPhoto(file) {
       candidate.onerror = () => reject(new Error('PHOTO_CONVERSION_FAILED'));
       candidate.src = objectUrl;
     });
-    const blob = await imageToJpegBlob(image);
+    const blob = await imageToJpegBlob(image, PHOTO_MAX_DIMENSION, 0.85);
     if (blob.size > MAX_PHOTO_BYTES) throw new Error('PHOTO_CONVERSION_FAILED');
+    if (canKeepOriginal && file.size <= blob.size) return { file, type: sourceType };
     return {
       file: new File([blob], replacePhotoExtension(file.name), {
         type: 'image/jpeg',
@@ -92,6 +115,9 @@ async function prepareApplicantPhoto(file) {
       }),
       type: 'image/jpeg',
     };
+  } catch (error) {
+    if (canKeepOriginal) return { file, type: sourceType };
+    throw error;
   } finally {
     URL.revokeObjectURL(objectUrl);
   }
@@ -191,10 +217,8 @@ function CareerPage() {
     setStatus('sending');
     setErrorMsg('');
     setUploadProgress(0);
+    let stagingFailed = false;
     try {
-      if (typeof window.uploadPrivateCv !== 'function' || typeof window.uploadPrivateApplicantPhoto !== 'function') {
-        throw new Error('Application uploaders are unavailable');
-      }
       const cvType = cvContentType(cv);
       let preparedPhoto;
       try {
@@ -208,16 +232,39 @@ function CareerPage() {
         setUploadProgress(0);
         return;
       }
-      const photoBlob = await window.uploadPrivateApplicantPhoto(
-        preparedPhoto.file,
-        { name: preparedPhoto.file.name, type: preparedPhoto.type, size: preparedPhoto.file.size },
-        ({ percentage }) => setUploadProgress(Math.max(0, Math.min(40, Math.round((percentage || 0) * 0.4)))),
-      );
-      const blob = await window.uploadPrivateCv(
-        cv,
-        { name: cv.name, type: cvType, size: cv.size },
-        ({ percentage }) => setUploadProgress(Math.max(40, Math.min(100, 40 + Math.round((percentage || 0) * 0.6)))),
-      );
+      const cvMeta = { name: cv.name, type: cvType, size: cv.size };
+      const photoMeta = { name: preparedPhoto.file.name, type: preparedPhoto.type, size: preparedPhoto.file.size };
+      let files;
+      if (base64Size(cv.size) + base64Size(preparedPhoto.file.size) <= INLINE_UPLOAD_BUDGET) {
+        const [cvData, photoData] = await Promise.all([fileToBase64(cv), fileToBase64(preparedPhoto.file)]);
+        files = {
+          resume_file: { ...cvMeta, data: cvData },
+          photo_file: { ...photoMeta, data: photoData },
+        };
+      } else {
+        try {
+          if (typeof window.uploadPrivateCv !== 'function' || typeof window.uploadPrivateApplicantPhoto !== 'function') {
+            throw new Error('Application uploaders are unavailable');
+          }
+          const photoBlob = await window.uploadPrivateApplicantPhoto(
+            preparedPhoto.file,
+            photoMeta,
+            ({ percentage }) => setUploadProgress(Math.max(0, Math.min(40, Math.round((percentage || 0) * 0.4)))),
+          );
+          const blob = await window.uploadPrivateCv(
+            cv,
+            cvMeta,
+            ({ percentage }) => setUploadProgress(Math.max(40, Math.min(100, 40 + Math.round((percentage || 0) * 0.6)))),
+          );
+          files = {
+            resume_blob: { url: blob.url, ...cvMeta },
+            photo_blob: { url: photoBlob.url, ...photoMeta },
+          };
+        } catch (uploadError) {
+          stagingFailed = true;
+          throw uploadError;
+        }
+      }
       const response = await fetch('/api/job-application', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
@@ -230,33 +277,32 @@ function CareerPage() {
           job_opening: selectedJob.jobOpening,
           request_reference: selectedJob.sourceDoctype !== 'Job Opening' ? selectedJob.id : '',
           cover_letter: fd.get('cover_letter') || '',
-          resume_blob: {
-            url: blob.url,
-            name: cv.name,
-            type: cvType,
-            size: cv.size,
-          },
-          photo_blob: {
-            url: photoBlob.url,
-            name: preparedPhoto.file.name,
-            type: preparedPhoto.type,
-            size: preparedPhoto.file.size,
-          },
+          ...files,
           website: fd.get('website') || '',
         }),
       });
       const payload = await response.json().catch(() => ({}));
-      if (!response.ok) throw new Error(payload.error || 'Application failed');
+      if (!response.ok) {
+        const error = new Error(payload.error || 'Application failed');
+        // 400s carry a message the applicant can act on (e.g. a wrong file type).
+        if (response.status === 400 && payload.error) error.userMessage = payload.error;
+        throw error;
+      }
       setStatus('sent');
       setUploadProgress(0);
       e.target.reset();
       setRole('');
       setTimeout(() => setStatus('idle'), 6000);
     } catch (err) {
-      setErrorMsg(t(lang,
-        'Something went wrong sending your application. Please try again, or email it to info@bcisaudi.com.',
-        'حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى أو إرساله إلى info@bcisaudi.com.',
-        'Hubo un problema al enviar tu solicitud. Inténtalo de nuevo o envíala a info@bcisaudi.com.'));
+      setErrorMsg(err.userMessage || (stagingFailed
+        ? t(lang,
+          'Your CV could not be uploaded. Please upload a smaller CV (under 2.5 MB), or email your application to info@bcisaudi.com.',
+          'تعذر رفع سيرتك الذاتية. يرجى رفع ملف أصغر (أقل من 2.5 ميجابايت)، أو إرسال طلبك إلى info@bcisaudi.com.',
+          'No se pudo subir tu CV. Sube un archivo más pequeño (menos de 2,5 MB) o envía tu solicitud a info@bcisaudi.com.')
+        : t(lang,
+          'Something went wrong sending your application. Please try again, or email it to info@bcisaudi.com.',
+          'حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى أو إرساله إلى info@bcisaudi.com.',
+          'Hubo un problema al enviar tu solicitud. Inténtalo de nuevo o envíala a info@bcisaudi.com.')));
       setStatus('error');
       setUploadProgress(0);
     }

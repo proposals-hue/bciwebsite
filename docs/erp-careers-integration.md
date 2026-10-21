@@ -73,6 +73,19 @@ Applicant uses this field as its ERP image field, so the picture is visible on
 the applicant record. Photo uploads use the same private temporary Blob flow
 and are deleted after the ERP transfer.
 
+**Inline uploads (since 2026-10-21).** Every photo is first shrunk in the browser
+to a JPEG no larger than 1280 px. When the CV and the photo together fit about 4 MB
+once base64-encoded, both are sent inside the `/api/job-application` request as
+`resume_file` / `photo_file`, with no Blob staging. Vercel caps request bodies at
+4.5 MB. In practice this covers CVs up to roughly 2.5–2.8 MB. Only larger CVs use
+the Blob flow described above. This change was made while the Blob store was
+suspended, and it also keeps Blob usage low.
+
+The vacancy title is written to Job Applicant `designation` only when a matching
+`Designation` exists in ERP; the match ignores letter case. ERP would reject an
+unmatched title, such as a typo on the request, so the website leaves the field blank
+instead. The title is always included in the cover letter.
+
 The position selector is required and lists only published vacancies. There is
 no "Other position" or open-application option: `/api/job-application`
 rejects any submission that is not tied to a vacancy (a Job Opening or an ERP
