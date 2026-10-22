@@ -777,6 +777,7 @@ function Footer() {
     { en: 'Careers', ar: 'الوظائف', es: 'Empleo', href: 'Career.html' },
     { en: 'Become a Supplier', ar: 'كن موردًا', es: 'Conviértete en Proveedor', href: 'Supplier.html' },
     { en: 'Open an Account', ar: 'افتح حسابًا', es: 'Abrir una Cuenta', href: 'Customer Registration.html' },
+    { en: 'Customer Care', ar: 'خدمة العملاء', es: 'Atención al Cliente', href: 'Support.html' },
     { en: 'Contact', ar: 'تواصل', es: 'Contacto', href: 'Contact.html' }]
 
   },

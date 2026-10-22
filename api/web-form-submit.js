@@ -1,6 +1,7 @@
 const { erpWebForm, sendJson } = require('./_erp');
 const registerSupplier = require('./_supplier-registration');
 const registerCustomer = require('./_customer-registration');
+const submitSupportRequest = require('./_support-request');
 
 const clean = (value, max) => String(value == null ? '' : value).trim().slice(0, max);
 
@@ -77,6 +78,13 @@ module.exports = async function handler(req, res) {
     // this route for the same 12-function reason as the supplier path.
     if (webForm === 'customer-registration') {
       return registerCustomer(body, res);
+    }
+
+    // Customer Care requests become ERP "Feedback and Improvement Request"
+    // records over the REST API, with their attachments inline. Same
+    // 12-function reason for living here.
+    if (webForm === 'support-request') {
+      return submitSupportRequest(body, res);
     }
 
     const config = FORMS[webForm];

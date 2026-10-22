@@ -33,7 +33,7 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(here, '..');
 const DIST = path.join(ROOT, 'dist');
 const ORIGIN = 'https://www.bcisaudi.com';
-const ASSET_V = '3.7';
+const ASSET_V = '3.8';
 const BLOB_UPLOAD_V = '3.6';
 const LANGS = ['en', 'ar', 'es'];
 const OG_LOCALE = { en: 'en_US', ar: 'ar_SA', es: 'es_ES' };
@@ -55,6 +55,7 @@ const CONTENT_PAGES = [
   { file: 'Supplier.html', key: 'supplier', active: 'Suppliers', path: 'supplier' },
   { file: 'Customer Registration.html', key: 'customerRegistration', active: 'Open an Account', path: 'customer-registration' },
   { file: 'Contact.html', key: 'contact', active: 'Contact', path: 'contact' },
+  { file: 'Support.html', key: 'support', active: '', path: 'support' },
   { file: 'Request Quote.html', key: 'requestQuote', active: '', path: 'request-quote' },
   { file: 'Submittal Request.html', key: 'submittalRequest', active: '', path: 'submittal-request' },
   { file: 'Sample Request.html', key: 'sampleRequest', active: '', path: 'sample-request' },
@@ -352,6 +353,7 @@ function pageSchema(key, lang, D) {
   if (key === 'career') { scripts.push(ld(breadcrumbLd([crumbHome, here('career', tr(lang, 'Careers', 'الوظائف', 'Empleo'))]))); scripts.push(jobPostingsLd(D, lang)); }
   if (key === 'supplier') scripts.push(ld(breadcrumbLd([crumbHome, here('supplier', tr(lang, 'Suppliers', 'الموردون', 'Proveedores'))])));
   if (key === 'customerRegistration') scripts.push(ld(breadcrumbLd([crumbHome, here('customer-registration', tr(lang, 'Open an account', 'فتح حساب', 'Abrir una cuenta'))])));
+  if (key === 'support') scripts.push(ld(breadcrumbLd([crumbHome, here('support', tr(lang, 'Customer Care & Support', 'خدمة العملاء والدعم الفني', 'Atención al Cliente y Soporte'))])));
   if (key === 'contact') { scripts.push(ld(breadcrumbLd([crumbHome, here('contact', tr(lang, 'Contact', 'تواصل', 'Contacto'))]))); scripts.push(ld(orgLd(D))); scripts.push(localBusinessLd(D, lang)); }
   if (key === 'requestQuote') scripts.push(ld(breadcrumbLd([crumbHome, here('request-quote', tr(lang, 'Request a quote', 'طلب عرض سعر', 'Solicitar cotización'))])));
   if (key === 'submittalRequest') scripts.push(ld(breadcrumbLd([crumbHome, here('submittal-request', tr(lang, 'Submittal request', 'طلب وثائق الاعتماد', 'Solicitud de documentación'))])));
@@ -478,6 +480,7 @@ ${landingPages}
 - [Careers](${ORIGIN}/career): open roles in Dammam
 - [Become a Supplier](${ORIGIN}/supplier): supplier registration — BCI procures raw materials and chemicals, fillers and aggregates, packaging, equipment and spares, logistics and services
 - [Open a Trade Account](${ORIGIN}/customer-registration): customer registration — contractors, applicators, traders and developers register a BCI trade account for quotes, orders and technical documents
+- [Customer Care & Support](${ORIGIN}/support): product complaints, technical support, order and delivery issues, and feedback — each request is logged with a ticket reference and routed to the responsible team
 - [Contact](${ORIGIN}/contact): sales, technical support and quotes
 
 ## Languages

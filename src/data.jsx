@@ -1663,7 +1663,9 @@ const KSA_BORDER = [
 
 const DEPARTMENTS = [
   { en: { t: 'Sales & Specification', d: 'info@bcisaudi.com' }, ar: { t: 'المبيعات والمواصفات', d: 'info@bcisaudi.com' }, es: { t: 'Ventas y Especificación', d: 'info@bcisaudi.com' }, icon: 'briefcase' },
-  { en: { t: 'Technical Support', d: 'info@bcisaudi.com' }, ar: { t: 'الدعم الفني', d: 'info@bcisaudi.com' }, es: { t: 'Soporte Técnico', d: 'info@bcisaudi.com' }, icon: 'flask' },
+  /* Technical Support routes to the Customer Care page, where a request is
+     logged in ERP with a ticket reference instead of landing in a mailbox. */
+  { en: { t: 'Technical Support', d: 'Open a support request' }, ar: { t: 'الدعم الفني', d: 'افتح طلب دعم' }, es: { t: 'Soporte Técnico', d: 'Abrir una solicitud' }, icon: 'flask', href: 'Support.html' },
   { en: { t: 'Careers / HR', d: 'info@bcisaudi.com' }, ar: { t: 'التوظيف', d: 'info@bcisaudi.com' }, es: { t: 'Empleo / RR. HH.', d: 'info@bcisaudi.com' }, icon: 'users' },
   /* Procurement routes to the supplier registration page instead of a mailto —
      it is where would-be suppliers land, and the form feeds the ERP directly. */
@@ -1766,6 +1768,14 @@ const SEO_META = {
           description: 'افتح حسابًا تجاريًا لدى BCI (صناعة كيمياء البناء) في الدمام. سجّل شركتك للحصول على عروض الأسعار والطلبات والوثائق الفنية عبر مسؤول حساب مخصص.' },
     es: { title: 'Registro de Clientes — Abre una Cuenta Comercial | BCI',
           description: 'Abre una cuenta comercial con BCI, fabricante saudí de químicos para construcción en Dammam. Registra tu empresa para cotizaciones, pedidos y documentación técnica con un gestor asignado.' },
+  },
+  support: {
+    en: { title: 'Customer Care & Support — Complaints, Technical Help | BCI',
+          description: 'Report a product complaint, get technical support, resolve an order or delivery issue, or share feedback with BCI. Every request gets a ticket reference.' },
+    ar: { title: 'خدمة العملاء والدعم الفني — الشكاوى والمساعدة الفنية | BCI',
+          description: 'قدّم شكوى على منتج، أو اطلب الدعم الفني، أو تابع مشكلة في طلب أو توصيل، أو شاركنا ملاحظاتك لدى BCI. يحصل كل طلب على رقم مرجعي.' },
+    es: { title: 'Atención al Cliente y Soporte — Quejas y Ayuda Técnica | BCI',
+          description: 'Presenta una queja de producto, solicita soporte técnico, resuelve un problema de pedido o entrega, o comparte tu opinión con BCI. Cada solicitud recibe una referencia.' },
   },
   contact: {
     en: { title: 'Contact BCI | Sales, Technical Support & Quotes',

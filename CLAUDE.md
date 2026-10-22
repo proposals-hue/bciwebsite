@@ -52,7 +52,7 @@ loads `submittal-form.jsx` and `Sample Request.html` loads `sample-form.jsx`, ea
 page file.
 
 Pages: `index`, `About`, `Solutions`, `Solution Detail`, `Product Detail`, `Projects`,
-`Resources`, `Career`, `Supplier`, `Customer Registration`, `Contact`, `Request Quote`,
+`Resources`, `Career`, `Supplier`, `Customer Registration`, `Contact`, `Support`, `Request Quote`,
 `Submittal Request`, `Sample Request`, `Thank You`, `SEO Landing` (a template, never served
 directly), `404`.
 
@@ -118,7 +118,9 @@ routes. All ERP credentials stay server-side.
   `https://erp.bcisaudi.net`.
 - Read routes: `jobs.js`, `rfq-items.js` — return only publishable fields.
 - Write routes: `customer-rfq.js`, `submittal-request.js`, `sample-request.js`,
-  `job-application.js`, `web-form-submit.js` (allow-listed fields → ERP Web Forms).
+  `job-application.js`, `web-form-submit.js` (allow-listed fields → ERP Web Forms; it also
+  dispatches on `web_form` to the `_supplier-registration`, `_customer-registration` and
+  `_support-request` helpers, which stay helpers because of the function cap).
 - Every route that accepts a product code must run it through `_website-item.js` — ERP does
   **not** validate the Item link on a child row, so an unchecked code is stored verbatim.
 - Uploads: files are staged to Vercel Blob by the browser (`blob-upload.js`) and pulled
@@ -183,7 +185,7 @@ host rewrites on disk via a `postMessage` protocol. `image-slot.js` is a standal
 - `AGENTS.md` is a near-duplicate of this file kept for Codex; if you substantially change
   guidance here, mirror it there.
 - `docs/` holds the ERP integration write-ups (careers, customer RFQ, supplier registration,
-  customer registration) — read the relevant one
+  customer registration, support requests) — read the relevant one
   before changing a form or its API route.
 - `google-ads/` (gitignored — contains an OAuth client secret) holds Python scripts against the
   Google Ads API plus campaign/ad-copy design docs.

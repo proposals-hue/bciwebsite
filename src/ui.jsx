@@ -253,6 +253,11 @@ function Icon({ name, size = 18, stroke = 'currentColor', strokeWidth = 1.5 }) {
     'heart': <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />,
     'menu': <><line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" /></>,
     'x': <><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></>,
+    'alert-triangle': <><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" /><line x1="12" y1="9" x2="12" y2="13" /><line x1="12" y1="17" x2="12.01" y2="17" /></>,
+    'truck': <><path d="M1 3h15v13H1z" /><path d="M16 8h4l3 3v5h-7V8z" /><circle cx="5.5" cy="18.5" r="2.5" /><circle cx="18.5" cy="18.5" r="2.5" /></>,
+    'paperclip': <path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />,
+    'copy': <><rect x="9" y="9" width="13" height="13" /><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" /></>,
+    'upload': <><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="17 8 12 3 7 8" /><line x1="12" y1="3" x2="12" y2="15" /></>,
   };
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={stroke}
@@ -385,6 +390,25 @@ async function submitCustomerRegistration(data) {
   return payload;
 }
 
+// Logs a Customer Care request (complaint, technical question, order problem or
+// feedback) as an ERP Feedback and Improvement Request — see
+// api/_support-request.js. Resolves with { ticket, routed_to, … }.
+async function submitSupportRequest(data) {
+  const response = await fetch('/api/web-form-submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({ web_form: 'support-request', ...data }),
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    // Vercel rejects an oversized body before the function runs, as plain text.
+    const error = new Error(payload.error || (response.status === 413 ? 'PAYLOAD_TOO_LARGE' : 'Support request failed'));
+    error.status = response.status;
+    throw error;
+  }
+  return payload;
+}
+
 // Destination every request form sends the browser to once ERP has accepted the
 // submission. The reference travels in the URL so the page can show it, and the
 // Google Ads conversion fires there rather than moments before navigating away.
@@ -415,6 +439,7 @@ if (typeof window !== 'undefined') Object.assign(window, {
   submitSampleRequest,
   submitSupplierRegistration,
   submitCustomerRegistration,
+  submitSupportRequest,
   thankYouHref,
   loadErpJobs,
   loadErpRfqItems,
