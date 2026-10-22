@@ -139,6 +139,19 @@ It creates:
    - *Website Support Request - Customer Status Update* (created **disabled**):
      emails the customer on Under Review / In Progress / Resolved / Closed.
 
+4. **A trimmed form for website requests.** Property Setters give 28 fields and
+   sections `depends_on: eval:doc.custom_source!='Website'`. A website record
+   then shows 23 fields instead of 58, plus the SLA / assignment / status-history
+   fields once they have values. Internal requests keep the full form. Hidden on
+   website records: the submitter and anonymity fields, the sales order / PO /
+   delivery note / invoice links, the SLA internals, and the whole Investigation
+   and Corrective Action, Improvement Evaluation, Resolution Satisfaction, R&D
+   and Private sections. In their place, a **Technical Investigation &
+   Remarks** section (`custom_technical_remarks`) sits directly under the
+   request details. Staff write findings there; it is never emailed to the
+   customer. `--apply --reset-layout` deletes the Property Setters and restores
+   the full form.
+
 The page says "a confirmation has been emailed" only when the route finds the
 acknowledgement Notification enabled **and** the customer gave an email. Its
 name is `ACK_NOTIFICATION` in the route; keep it in step with the script.

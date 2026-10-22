@@ -23,6 +23,12 @@ this script adds the pieces the website path needs on top:
        their request moves to Under Review / In Progress / Resolved / Closed.
        Review the wording in ERP, then enable it.
 
+4. Form layout for website requests - Property Setters that hide every field
+   a technical reviewer does not need, but only on records whose Source is
+   "Website" (internal feedback keeps the full form), plus a "Technical
+   Investigation & Remarks" section directly under the request details.
+   --reset-layout deletes those Property Setters again.
+
 Idempotent: anything that already exists is reported and left untouched.
 Read-only unless --apply is given.
 
@@ -63,7 +69,43 @@ FIELDS = [
      "label": "Customer Phone", "insert_after": "custom_customer_email"},
     {"fieldname": "custom_reported_invoice_po", "fieldtype": "Data",
      "label": "Invoice / PO No. (as reported)", "insert_after": "custom_customer_phone"},
+    # Where the technical reviewer writes up the case: straight under the
+    # request details, ahead of SLA and workflow. Website records only - the
+    # internal form keeps its own Investigation and Corrective Action section.
+    {"fieldname": "custom_technical_remarks_section", "fieldtype": "Section Break",
+     "label": "Technical Investigation & Remarks", "insert_after": "attachments",
+     "depends_on": "eval:doc.custom_source=='Website'"},
+    {"fieldname": "custom_technical_remarks", "fieldtype": "Text Editor",
+     "label": "Investigation / Remarks", "insert_after": "custom_technical_remarks_section",
+     "description": "Findings from the technical review, site visit or lab check, and notes for the team. "
+                    "Internal only - never sent to the customer.",
+     "depends_on": "eval:doc.custom_source=='Website'"},
 ]
+
+# Hidden on website requests (Source = Website); unchanged everywhere else.
+# None of these has a depends_on of its own, so the rule replaces nothing.
+# Section breaks hide their whole section; the rest are single fields inside
+# sections that stay visible.
+WEBSITE_HIDDEN = [
+    # Basic Information: only Submission Date and Customer stay.
+    "submitted_by", "user_type", "submit_anonymously", "contact_me", "company", "supplier",
+    "employee", "contractor", "contact_information", "branch", "department", "related_project",
+    # Complaint / Feedback Details: the order/invoice links (the customer's own
+    # numbers are in the Website Submission section) and duplicates.
+    "product_service", "product_code", "sales_order", "purchase_order", "delivery_note",
+    "invoice_type", "invoice",
+    # SLA and Assignment: keep department, responsible person, resolution due.
+    "initial_response_due", "sla_status", "assigned_on",
+    # Workflow and Resolution: Status says the same as Workflow State.
+    "workflow_state",
+    # Whole sections.
+    "section_5",                          # Investigation and Corrective Action
+    "section_6",                          # Improvement Evaluation
+    "section_7",                          # Resolution Satisfaction
+    "custom_rd_section",                  # Product Development / R&D Integration
+    "custom_private_submission_section",  # Private Submission Details
+]
+NOT_WEBSITE = "eval:doc.custom_source!='Website'"
 
 # Feedback Category -> Department. Must match TOPICS in api/_support-request.js.
 # Note "Technical support  - BCI" really has two spaces in ERP.
@@ -209,6 +251,8 @@ def main():
                         help='responsible person for a category, e.g. "Product Quality=user@bcisaudi.com"')
     parser.add_argument("--alert-email", default="info@bcisaudi.com",
                         help="mailbox copied on every new website request (default: info@bcisaudi.com)")
+    parser.add_argument("--reset-layout", action="store_true",
+                        help="with --apply: delete the website-layout Property Setters (restores the full form)")
     args = parser.parse_args()
 
     token = os.environ.get("ERP_TOKEN", "").strip()
@@ -225,6 +269,19 @@ def main():
 
     mode = "APPLY" if args.apply else "DRY RUN (nothing is written; add --apply)"
     print(f"{mode} against {erp.base}\n")
+
+    if args.reset_layout:
+        print("Website form layout - removing")
+        for fieldname in WEBSITE_HIDDEN:
+            name = f"{DOCTYPE}-{fieldname}-depends_on"
+            if not erp.exists("Property Setter", name):
+                print("  SKIP (absent)", fieldname)
+            elif args.apply:
+                erp.call("DELETE", f"/api/resource/Property Setter/{name}")
+                print("  DELETED", fieldname)
+            else:
+                print("  WOULD DELETE", fieldname)
+        return
 
     def write(label, doctype, payload):
         if not args.apply:
@@ -271,6 +328,26 @@ def main():
             **({"assigned_to": user} if user else {}),
             "active": 1,
         })
+
+    print("\nWebsite form layout (hidden when Source = Website)")
+    for fieldname in WEBSITE_HIDDEN:
+        name = f"{DOCTYPE}-{fieldname}-depends_on"
+        try:
+            current = erp.call("GET", f"/api/resource/Property Setter/{name}")["data"]["value"]
+        except urllib.error.HTTPError as error:
+            if error.code != 404:
+                raise
+            current = None
+        if current == NOT_WEBSITE:
+            print("  SKIP (exists)", fieldname)
+        elif current is not None:
+            print(f"  SKIP {fieldname}: already has depends_on {current!r} - left alone")
+        else:
+            write(fieldname, "Property Setter", {
+                "doctype": "Property Setter", "doctype_or_field": "DocField", "doc_type": DOCTYPE,
+                "field_name": fieldname, "property": "depends_on", "property_type": "Data",
+                "value": NOT_WEBSITE,
+            })
 
     print("\nNotifications")
     for notification in notifications(args.alert_email):
