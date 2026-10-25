@@ -29,7 +29,7 @@ function isPublic(doc, doctype) {
   const workflowState = text(doc.workflow_state).toLowerCase();
   const status = text(doc.status).toLowerCase();
   const state = workflowState || status;
-  const blockedStates = ['cancelled', 'canceled', 'closed', 'completed', 'filled', 'rejected'];
+  const blockedStates = ['cancelled', 'canceled', 'closed', 'completed', 'filled', 'rejected', 'selected'];
   if ([workflowState, status].some((value) => blockedStates.includes(value))) return false;
   if (doctype === 'Job Opening') return status === 'open' && truthy(doc.publish);
   if (doctype === 'Job Requisition') {
@@ -39,8 +39,11 @@ function isPublic(doc, doctype) {
   // cancelled/closed requests, and honour a publish checkbox when one exists.
   // This custom doctype is submittable in BCI ERP. Draft requests are internal;
   // only submitted requests (docstatus = 1) are vacancies ready for applicants.
+  // HR wants a vacancy listed through every hiring stage (Submitted, Interviewed,
+  // Offered) until a candidate is Selected or the request is Cancelled — both
+  // are caught by blockedStates above.
   if (doctype === 'Request For Job Applicant') {
-    return Number(doc.docstatus) === 1 && (!status || status === 'open');
+    return Number(doc.docstatus) === 1;
   }
   if (state) return ['approved', 'open', 'open & approved', 'open and approved'].includes(state);
   return Number(doc.docstatus) === 1;
