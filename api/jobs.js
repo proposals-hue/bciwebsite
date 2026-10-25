@@ -20,6 +20,11 @@ const plainText = (value) => text(value)
   .replace(/&amp;/gi, '&')
   .replace(/\s+/g, ' ')
   .trim();
+// ERP Location names are typed freely ("jeddah", "ALkhobar"). Show them as proper
+// nouns, but leave short all-caps codes such as "AJX" alone.
+const placeName = (value) => text(value).replace(/\b[A-Za-z]+\b/g, (word) => (
+  word.length <= 3 && word === word.toUpperCase() ? word : word[0].toUpperCase() + word.slice(1).toLowerCase()
+));
 
 function isPublic(doc, doctype) {
   const publishFields = ['publish', 'publish_on_website', 'published', 'show_on_website', 'website_visible'];
@@ -54,13 +59,18 @@ function normalize(doc, doctype) {
   if (!title) return null;
   const description = plainText(first(doc, ['job_description', 'description', 'reason_for_request', 'remarks']));
   const opening = first(doc, ['job_opening', 'linked_job_opening']);
+  // On the BCI request, `location` is only Inside/Outside Country; the city the
+  // job is based in is the `work_location` link.
+  const placeFields = doctype === 'Request For Job Applicant'
+    ? ['work_location']
+    : ['location', 'work_location', 'branch'];
   return {
     id: text(doc.name),
     source_doctype: doctype,
     job_opening: doctype === 'Job Opening' ? text(doc.name) : opening,
     title,
     department: first(doc, ['department', 'division']) || 'BCI',
-    location: first(doc, ['location', 'work_location', 'branch']) || 'Saudi Arabia',
+    location: placeName(first(doc, placeFields)) || 'Saudi Arabia',
     employment_type: first(doc, ['employment_type', 'job_type']) || 'Full-time',
     description: description.slice(0, 320),
     positions: Number(first(doc, ['no_of_positions', 'number_of_positions', 'vacancies', 'required_employees'])) || 1,

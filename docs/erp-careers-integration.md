@@ -39,11 +39,16 @@ cache delay.
 
 ## Publishing behaviour
 
-For `Request For Job Applicant`, a new **submitted** request appears on the
-website within about one minute. Draft and Completed requests remain internal. If the doctype has a `publish`,
-`publish_on_website`, `published`, `show_on_website`, or `website_visible`
-checkbox, only checked records appear. Closed, filled, rejected, and cancelled
-requests are hidden.
+For `Request For Job Applicant`, a request appears on the website within about
+one minute of being **submitted**. It stays listed through the Interviewed and
+Offered stages, and is hidden once it is Selected or Cancelled. Draft and
+Completed requests remain internal. The location shown is the request's
+`work_location` city, with its capitalisation tidied; the `location` field
+(Inside/Outside Country) is not shown.
+
+If the doctype has a `publish`, `publish_on_website`, `published`,
+`show_on_website`, or `website_visible` checkbox, only checked records appear.
+Closed, filled, rejected, selected, and cancelled requests are always hidden.
 
 Standard `Job Requisition` records must be Approved/Open & Approved. Standard
 `Job Opening` records must be Open with **Publish on website** enabled.
