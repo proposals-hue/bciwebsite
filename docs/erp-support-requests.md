@@ -159,6 +159,16 @@ name is `ACK_NOTIFICATION` in the route; keep it in step with the script.
 Emails go out from ERP's default outgoing account (`BCI Notifications`,
 proposals@bcisaudi.net). Set `sender` on a Notification to change that.
 
+**Customer emails after the acknowledgement: only on Resolved** (client decision,
+2026-10-26). The one that sends is *Feedback Customer Status Update*, a
+notification created in ERP by another user and changed that day to fire only on
+`status == "Resolved"`, with the resolution text. Its earlier version fired on
+Under Review and copied the acknowledgement's wording, so customers thought they
+had received the same email twice. Leave *Website Support Request - Customer
+Status Update* (from the setup script) **disabled**: two active status
+notifications would email the customer twice. A request that is Rejected or Closed
+without passing through Resolved sends the customer nothing.
+
 Existing notifications on the doctype also fire. *Feedback Request Submitted
 Alert* emails every Quality Manager and HR Manager on each new request.
 *Feedback Request Status Changed Alert* emails `submitted_by`, which for website
