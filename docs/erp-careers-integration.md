@@ -103,10 +103,31 @@ Arabic-Indic digits and removes other characters. If the result still does not
 fit, it leaves `phone_number` empty. Whenever the number was changed, the cover
 letter gets a `Phone (as typed): …` line with the original.
 
-**ERP rejections are shown to the applicant.** When ERP refuses the record with a
-417 or 409 (an email address it will not accept, a server-script rule), the API
-returns 400 with ERP's own reason instead of the generic "Something went wrong"
-message. Other failures stay generic, and the cause is in the Vercel function log.
+**No applicant is lost to ERP's vacancy rules (since 2026-11-02).** ERP's Job
+Applicant server scripts check the vacancy link: the designation, the request, and
+the request's status. They have changed under the website more than once, and each
+time applicants were silently turned away. When ERP refuses the linked record (417
+or 409), the API saves the applicant again with no vacancy link, no designation and
+no phone field. Those scripts skip such a record. The CV and photo are attached as
+usual, and HR still gets the normal new-applicant email (its recipients are field
+defaults). The cover letter starts with `WEBSITE FALLBACK: …`, giving ERP's reason
+and the request to link by hand. To find these, filter Job Applicant by cover letter
+containing `WEBSITE FALLBACK`.
+
+**ERP rejections are shown to the applicant.** If ERP refuses even the unlinked
+record (for example, an email address it will not accept), the API returns 400 with
+ERP's own reason instead of the generic "Something went wrong" message. Other
+failures keep the generic text with a step code: `[read]` means the browser could not
+read the file, `[net]` means the connection dropped, and a number is the HTTP status
+of `/api/job-application`. The cause is in the Vercel function log.
+
+**Daily health check.** `.github/workflows/careers-health.yml` runs every day at
+08:00 Saudi time. It checks that `/api/jobs` serves vacancies from ERP, which proves
+ERP is reachable and `ERP_TOKEN` works. It also checks that `/api/job-application`
+is deployed and that the careers page serves the form. A failed run makes GitHub
+email whoever last pushed the workflow file. It can also be run by hand from the
+repo's Actions tab. The repo is public, so GitHub pauses the schedule after 60 days
+without commits; re-enable it from the Actions tab.
 
 ## ERP designation validation
 

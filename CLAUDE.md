@@ -25,6 +25,9 @@ There is **no dev server, no lint, and no test runner** for the site itself.
   **`blob-upload.js` is generated — never hand-edit it.**
 - **Python tooling tests:** `python -m pytest tools/test_bci_product_pipeline.py` — the only
   test suite in the repo; it covers the ERP→website product pipeline.
+- **Careers health check:** `.github/workflows/careers-health.yml` runs daily on GitHub Actions
+  against the live site (`/api/jobs`, `/api/job-application`, `/career`); a failure emails the
+  last pusher. See `docs/erp-careers-integration.md`.
 
 The `api/` routes do **not** run under a plain static server. Forms detect this and fall back to
 the local catalogue, labelled as preview data (see `docs/erp-customer-rfq-integration.md`).

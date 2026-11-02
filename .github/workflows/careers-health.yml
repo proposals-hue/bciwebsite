@@ -1,0 +1,41 @@
+# Daily check that applicants can apply on the Careers page. A failed run makes
+# GitHub email whoever last pushed this file. ERP refusing an application's
+# vacancy link no longer loses the applicant (api/job-application.js saves it
+# unlinked and flags it for HR), so this watches what that fallback cannot
+# cover: ERP unreachable, the ERP token rejected, the site or API down.
+name: Careers health check
+
+on:
+  schedule:
+    - cron: '0 5 * * *' # 08:00 Saudi time
+  workflow_dispatch:
+
+jobs:
+  careers:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Vacancies load live from ERP
+        run: |
+          body=$(curl -sS --retry 3 --retry-delay 20 --retry-all-errors https://www.bcisaudi.com/api/jobs) || true
+          if ! echo "$body" | jq -e '(.jobs | length) > 0 and .source != null' > /dev/null 2>&1; then
+            echo "::error::/api/jobs is not serving vacancies from ERP (ERP down, or ERP_TOKEN rejected?): $body"
+            exit 1
+          fi
+          echo "$(echo "$body" | jq '.jobs | length') vacancies live from $(echo "$body" | jq -r .source)"
+
+      - name: Application API is deployed
+        run: |
+          status=$(curl -sS -o /dev/null -w '%{http_code}' --retry 3 --retry-all-errors https://www.bcisaudi.com/api/job-application)
+          # GET is refused with 405 when the route is up; anything else means it is missing or crashing.
+          if [ "$status" != "405" ]; then
+            echo "::error::/api/job-application answered $status instead of 405"
+            exit 1
+          fi
+
+      - name: Careers page serves the application form
+        run: |
+          if ! curl -sS --retry 3 --retry-all-errors https://www.bcisaudi.com/career | grep -q 'career-page.js'; then
+            echo "::error::The careers page is not loading its application form script"
+            exit 1
+          fi

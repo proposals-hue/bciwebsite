@@ -136,6 +136,13 @@ function normalizePhone(value) {
   return { phone: valid ? phone : '', asTyped: valid && phone === latin ? '' : value };
 }
 
+// The readable reason ERP gives when it refuses a record (417 validation or
+// 409 duplicate), or '' for any other kind of failure.
+function erpRejection(error) {
+  if (error.statusCode !== 417 && error.statusCode !== 409) return '';
+  return String(error.erpMessage || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 300);
+}
+
 // A vacancy title is free text on the ERP request, but Job Applicant
 // `designation` is a Link to Designation: an unmatched title (e.g. a typo on
 // the request) makes ERP reject the whole application. Link it only when the
@@ -168,7 +175,8 @@ module.exports = async function handler(req, res) {
 
     const applicantName = clean(body.name, 140);
     const email = clean(body.email, 180).toLowerCase();
-    const { phone, asTyped: phoneAsTyped } = normalizePhone(clean(body.phone, 40));
+    const typedPhone = clean(body.phone, 40);
+    const { phone, asTyped: phoneAsTyped } = normalizePhone(typedPhone);
     const position = clean(body.position, 180);
     const designation = clean(body.designation, 180);
     const coverNote = clean(body.cover_letter, 5000);
@@ -219,10 +227,38 @@ module.exports = async function handler(req, res) {
       data.request_for_job_applicant = requestReference;
     }
 
-    const payload = await erpFetch('/api/resource/Job Applicant', {
-      method: 'POST',
-      body: JSON.stringify(data),
-    });
+    let payload;
+    try {
+      payload = await erpFetch('/api/resource/Job Applicant', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      });
+    } catch (error) {
+      const reason = erpRejection(error);
+      if (!reason) throw error;
+      // ERP's server scripts validate the vacancy link (designation, request,
+      // its status) and have changed under the website more than once, each
+      // time silently losing applicants. Never lose one to them again: save
+      // the applicant without any vacancy link, which those scripts skip, and
+      // flag it for HR. They still get the usual new-applicant email, and the
+      // CV and photo are attached below as normal. If ERP refuses even this
+      // (e.g. an email address it will not accept), that error reaches the
+      // applicant instead.
+      console.error('ERP refused the linked application; saving it unlinked:', reason);
+      const vacancy = requestReference || jobOpening;
+      const flag = `WEBSITE FALLBACK: ERP refused to link this application to its vacancy (${reason}).\n`
+        + `Please link it to ${vacancy} (${position}) by hand.\n`
+        + (typedPhone ? `Phone: ${typedPhone}\n` : '');
+      payload = await erpFetch('/api/resource/Job Applicant', {
+        method: 'POST',
+        body: JSON.stringify({
+          applicant_name: applicantName,
+          email_id: email,
+          source: data.source,
+          cover_letter: `${flag}\n${data.cover_letter}`,
+        }),
+      });
+    }
     const applicationId = payload.data?.name;
     if (!applicationId) throw new Error('ERP did not return the Job Applicant ID');
 
@@ -259,9 +295,7 @@ module.exports = async function handler(req, res) {
     // script rule) with 417 and a readable reason; show that reason instead of
     // a generic apology, so the applicant can fix it and the failure explains
     // itself. Anything else stays generic, with the cause in the function log.
-    const erpReason = (error.statusCode === 417 || error.statusCode === 409)
-      ? String(error.erpMessage || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 300)
-      : '';
+    const erpReason = erpRejection(error);
     if (erpReason) {
       return sendJson(reply, 400, { error: `We could not accept the application: ${erpReason}` });
     }

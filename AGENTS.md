@@ -20,6 +20,9 @@ There is **no dev server, lint, or test setup**. Workflow:
   `.jsx` → plain `.js` into `../dist/`, strips the in-browser Babel `<script>`, and rewrites
   each page's `<script>` tags to load the compiled `.js`. Deploy the **contents of `dist/`**
   to any static host and point its 404 handler at `404.html`. `dist/` is gitignored.
+- **Careers health check:** `.github/workflows/careers-health.yml` runs daily on GitHub Actions
+  against the live site (`/api/jobs`, `/api/job-application`, `/career`); a failure emails the
+  last pusher. See `docs/erp-careers-integration.md`.
 
 ## Architecture
 
