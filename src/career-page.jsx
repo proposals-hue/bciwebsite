@@ -33,6 +33,13 @@ const PHOTO_MAX_DIMENSION = 1280;
 
 const base64Size = (bytes) => Math.ceil(bytes / 3) * 4;
 
+// Tags a failure with the step it happened at ("read", "net", or the HTTP
+// status). The code is shown after the generic error, so an applicant's
+// screenshot says what went wrong without needing the function logs.
+const failedAt = (code) => (error) => {
+  throw Object.assign(new Error((error && error.message) || code), { code });
+};
+
 function fileToBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -236,7 +243,8 @@ function CareerPage() {
       const photoMeta = { name: preparedPhoto.file.name, type: preparedPhoto.type, size: preparedPhoto.file.size };
       let files;
       if (base64Size(cv.size) + base64Size(preparedPhoto.file.size) <= INLINE_UPLOAD_BUDGET) {
-        const [cvData, photoData] = await Promise.all([fileToBase64(cv), fileToBase64(preparedPhoto.file)]);
+        const [cvData, photoData] = await Promise.all([fileToBase64(cv), fileToBase64(preparedPhoto.file)])
+          .catch(failedAt('read'));
         files = {
           resume_file: { ...cvMeta, data: cvData },
           photo_file: { ...photoMeta, data: photoData },
@@ -280,10 +288,11 @@ function CareerPage() {
           ...files,
           website: fd.get('website') || '',
         }),
-      });
+      }).catch(failedAt('net'));
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) {
         const error = new Error(payload.error || 'Application failed');
+        error.code = String(response.status);
         // 400s carry a message the applicant can act on (e.g. a wrong file type).
         if (response.status === 400 && payload.error) error.userMessage = payload.error;
         throw error;
@@ -294,15 +303,21 @@ function CareerPage() {
       setRole('');
       setTimeout(() => setStatus('idle'), 6000);
     } catch (err) {
+      const code = err.code ? ` [${err.code}]` : '';
       setErrorMsg(err.userMessage || (stagingFailed
         ? t(lang,
           'Your CV could not be uploaded. Please upload a smaller CV (under 2.5 MB), or email your application to info@bcisaudi.com.',
           'تعذر رفع سيرتك الذاتية. يرجى رفع ملف أصغر (أقل من 2.5 ميجابايت)، أو إرسال طلبك إلى info@bcisaudi.com.',
           'No se pudo subir tu CV. Sube un archivo más pequeño (menos de 2,5 MB) o envía tu solicitud a info@bcisaudi.com.')
-        : t(lang,
-          'Something went wrong sending your application. Please try again, or email it to info@bcisaudi.com.',
-          'حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى أو إرساله إلى info@bcisaudi.com.',
-          'Hubo un problema al enviar tu solicitud. Inténtalo de nuevo o envíala a info@bcisaudi.com.')));
+        : err.code === 'net'
+          ? t(lang,
+            'The connection dropped while sending your application. Please check your internet connection and try again.',
+            'انقطع الاتصال أثناء إرسال طلبك. يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى.',
+            'Se perdió la conexión al enviar tu solicitud. Comprueba tu conexión a internet e inténtalo de nuevo.') + code
+          : t(lang,
+            'Something went wrong sending your application. Please try again, or email it to info@bcisaudi.com.',
+            'حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى أو إرساله إلى info@bcisaudi.com.',
+            'Hubo un problema al enviar tu solicitud. Inténtalo de nuevo o envíala a info@bcisaudi.com.') + code));
       setStatus('error');
       setUploadProgress(0);
     }

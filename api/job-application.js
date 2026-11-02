@@ -117,6 +117,25 @@ function readInlineFile(file, missingMessage, validateMetadata, validateContents
   return { buffer, filename: stored.filename, contentType: stored.contentType };
 }
 
+// ERP validates Job Applicant `phone_number` as a Phone field: at most 20 of
+// digits, spaces and + - _ ( ) . , * #. Applicants type Arabic-Indic digits,
+// labels ("WhatsApp: …") or two numbers, and ERP then rejects the whole
+// application. Convert the digits and drop the rest; when it still does not
+// fit, leave the field empty — the number as typed goes in the cover letter.
+const ERP_PHONE = /^[0-9 +_\-,.*#()]{1,20}$/;
+
+function normalizePhone(value) {
+  const latin = value
+    .replace(/[٠-٩]/g, (digit) => String(digit.charCodeAt(0) - 0x0660))
+    .replace(/[۰-۹]/g, (digit) => String(digit.charCodeAt(0) - 0x06f0));
+  const phone = latin
+    .replace(/[^0-9 +_\-,.*#()]+/g, ' ')
+    .replace(/^[^0-9+(]+|[^0-9)]+$/g, '')
+    .replace(/\s+/g, ' ');
+  const valid = ERP_PHONE.test(phone);
+  return { phone: valid ? phone : '', asTyped: valid && phone === latin ? '' : value };
+}
+
 // A vacancy title is free text on the ERP request, but Job Applicant
 // `designation` is a Link to Designation: an unmatched title (e.g. a typo on
 // the request) makes ERP reject the whole application. Link it only when the
@@ -149,7 +168,7 @@ module.exports = async function handler(req, res) {
 
     const applicantName = clean(body.name, 140);
     const email = clean(body.email, 180).toLowerCase();
-    const phone = clean(body.phone, 40);
+    const { phone, asTyped: phoneAsTyped } = normalizePhone(clean(body.phone, 40));
     const position = clean(body.position, 180);
     const designation = clean(body.designation, 180);
     const coverNote = clean(body.cover_letter, 5000);
@@ -178,11 +197,12 @@ module.exports = async function handler(req, res) {
     const designationName = await matchDesignation(designation);
 
     const referenceLine = requestReference ? `ERP request: ${requestReference}\n` : '';
+    const phoneLine = phoneAsTyped ? `Phone (as typed): ${phoneAsTyped}\n` : '';
     const data = {
       applicant_name: applicantName,
       email_id: email,
       phone_number: phone,
-      cover_letter: `Position applied for: ${position}\n${referenceLine}\n${coverNote}`.trim(),
+      cover_letter: `Position applied for: ${position}\n${referenceLine}${phoneLine}\n${coverNote}`.trim(),
     };
     if (jobOpening) data.job_title = jobOpening;
     if (designationName) data.designation = designationName;
@@ -230,6 +250,16 @@ module.exports = async function handler(req, res) {
     return sendJson(reply, 201, { ok: true, application_id: applicationId });
   } catch (error) {
     console.error('ERP job application failed:', error.message);
+    // ERP answers a field it refuses (an email it will not accept, a server
+    // script rule) with 417 and a readable reason; show that reason instead of
+    // a generic apology, so the applicant can fix it and the failure explains
+    // itself. Anything else stays generic, with the cause in the function log.
+    const erpReason = (error.statusCode === 417 || error.statusCode === 409)
+      ? String(error.erpMessage || '').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 300)
+      : '';
+    if (erpReason) {
+      return sendJson(reply, 400, { error: `We could not accept the application: ${erpReason}` });
+    }
     const status = error.statusCode === 400 ? 400 : (error.statusCode === 503 ? 503 : 502);
     const message = status === 400
       ? error.message

@@ -10,6 +10,18 @@ function authHeader() {
   return /^token\s/i.test(raw) ? raw : `token ${raw}`;
 }
 
+// Frappe puts the human-readable reason for a rejected document ("x is not a
+// valid Phone Number") in `_server_messages`: a JSON list of JSON strings.
+function serverMessage(payload) {
+  if (!payload?._server_messages) return '';
+  try {
+    const messages = JSON.parse(payload._server_messages);
+    return messages.map((item) => {
+      try { return JSON.parse(item).message; } catch (_) { return item; }
+    }).filter(Boolean).join(' ');
+  } catch (_) { return ''; }
+}
+
 async function erpFetch(path, options = {}) {
   const auth = authHeader();
   if (!auth) {
@@ -31,8 +43,10 @@ async function erpFetch(path, options = {}) {
   let payload = null;
   try { payload = await response.json(); } catch (_) { /* handled below */ }
   if (!response.ok) {
-    const error = new Error(payload?.exception || payload?.message || `ERP returned ${response.status}`);
+    const erpMessage = serverMessage(payload);
+    const error = new Error(payload?.exception || erpMessage || payload?.message || `ERP returned ${response.status}`);
     error.statusCode = response.status;
+    error.erpMessage = erpMessage;
     throw error;
   }
   return payload || {};
@@ -55,16 +69,7 @@ async function erpWebForm(webForm, data) {
   let payload = null;
   try { payload = await response.json(); } catch (_) { /* handled below */ }
   if (!response.ok || payload?.exc || payload?.exception) {
-    let serverMessage = '';
-    if (payload?._server_messages) {
-      try {
-        const messages = JSON.parse(payload._server_messages);
-        serverMessage = messages.map((item) => {
-          try { return JSON.parse(item).message; } catch (_) { return item; }
-        }).filter(Boolean).join(' ');
-      } catch (_) { /* use the fallback below */ }
-    }
-    const error = new Error(serverMessage || payload?.exception || payload?.message || `ERP returned ${response.status}`);
+    const error = new Error(serverMessage(payload) || payload?.exception || payload?.message || `ERP returned ${response.status}`);
     error.statusCode = response.status || 502;
     throw error;
   }

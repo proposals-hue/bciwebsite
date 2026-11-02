@@ -95,3 +95,30 @@ The position selector is required and lists only published vacancies. There is
 no "Other position" or open-application option: `/api/job-application`
 rejects any submission that is not tied to a vacancy (a Job Opening or an ERP
 request reference). Created records use the `Website Listing` source by default.
+
+**Phone numbers (since 2026-11-01).** ERP validates Job Applicant `phone_number`
+as a Phone field: at most 20 characters, using only digits, spaces and `+ - _ ( ) . , * #`.
+Anything else makes ERP reject the whole application. The API converts
+Arabic-Indic digits and removes other characters. If the result still does not
+fit, it leaves `phone_number` empty. Whenever the number was changed, the cover
+letter gets a `Phone (as typed): …` line with the original.
+
+**ERP rejections are shown to the applicant.** When ERP refuses the record with a
+417 or 409 (an email address it will not accept, a server-script rule), the API
+returns 400 with ERP's own reason instead of the generic "Something went wrong"
+message. Other failures stay generic, and the cause is in the Vercel function log.
+
+## ERP designation validation
+
+The ERP Server Script `Job Applicant - Link Recruitment Request` runs before
+saving applicants. Its source is kept in
+`erp_customizations/careers/job_applicant_link_recruitment_request.py`.
+Designation names and recruitment-request titles are trimmed and compared
+without regard to capitalization. Different positions and missing request
+titles are still rejected. This fixes the uppercase Designation versus
+title-case vacancy rejection seen on 2026-10-25.
+
+This script runs in ERP; publishing website assets does not update it. Update
+the existing ERP Server Script's `script` field to deploy a change. Run its
+regression checks with
+`python erp_customizations/careers/test_recruitment_validation.py`.
