@@ -118,6 +118,12 @@ without regard to capitalization. Different positions and missing request
 titles are still rejected. This fixes the uppercase Designation versus
 title-case vacancy rejection seen on 2026-10-25.
 
+The website always sends the vacancy's request ID in `request_for_job_applicant`
+(as well as `custom_job_request`), so the script compares the designation with
+that request directly. Without it, the script searches for an **Open** request
+with the same title. Every vacancy HR had moved to Interviewed or Offered was
+rejected that way until 2026-11-02 (9 of the 16 listed at the time).
+
 This script runs in ERP; publishing website assets does not update it. Update
 the existing ERP Server Script's `script` field to deploy a change. Run its
 regression checks with

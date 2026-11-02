@@ -212,6 +212,11 @@ module.exports = async function handler(req, res) {
     data.source = clean(process.env.ERP_JOB_APPLICANT_SOURCE, 140) || 'Website Listing';
     if (requestReference) {
       data[clean(process.env.ERP_JOB_APPLICANT_REFERENCE_FIELD, 140) || 'custom_job_request'] = requestReference;
+      // ERP's "Link Recruitment Request" script reads this field. Left empty, it
+      // searches for an *Open* request with the same title instead, and rejects
+      // every vacancy HR has moved on to Interviewed or Offered, though the
+      // website keeps listing those until Selected or Cancelled.
+      data.request_for_job_applicant = requestReference;
     }
 
     const payload = await erpFetch('/api/resource/Job Applicant', {
